@@ -1,0 +1,111 @@
+/* join_form */
+.join_form {
+
+    margin-top: 58px;
+    height: 40rem;
+}
+
+.changePw_form {
+    margin-top: 15%;
+    margin-bottom: 18%;
+
+}
+
+.checkId {
+    display: inline-block;
+    margin-top: 1%;
+    margin-bottom: 3%;
+}
+
+/* JoinCheck.php */
+
+#notice {
+    margin-top: 10px;
+    text-align: center;
+}
+
+#closeBtn {
+    margin-top: 28px;
+    text-align: center;
+}
+
+
+
+/* Find_Id_Pw_Form */
+.find_div {
+    height: 74vh;
+
+}
+
+.find_form {
+    margin-top: 8%;
+
+}
+
+.checkBtn {
+    margin-top: 10%;
+}
+
+#checkIdbox {
+    display: inline-block;
+    margin-top: 48%;
+}
+
+
+
+
+
+#profileCheckBox {
+    margin-top: 25px;
+    /* border:1px solid red; */
+    text-align: center;
+}
+
+/* 아이디 비밀번호 찾기 */
+
+#finedId {
+    text-align: center;
+}
+
+
+/* login_form */
+.Social {
+    padding: 20px;
+    font-size: 30px;
+    width: 65px;
+    text-align: center;
+    text-decoration: none;
+    margin: 5px 2px;
+}
+
+.Social:hover {
+    opacity: 0.7;
+    text-decoration: none;
+}
+
+.fa-facebook {
+    background: #3B5998;
+    color: white;
+}
+
+.fa-twitter {
+    background: #55ACEE;
+    color: white;
+}
+
+.fa-google {
+    background: #dd4b39;
+    color: white;
+}
+
+.fa-yahoo {
+    background: #430297;
+    color: white;
+}
+
+/* profile form */
+.profile_form {
+
+    margin-top: 19%;
+    height: 30rem;
+}
