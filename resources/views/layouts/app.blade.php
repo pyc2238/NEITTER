@@ -14,9 +14,10 @@
     <script src="{{ asset('js/app.js') }}" defer></script>
 
     {{-- bootstrap4 --}}
+    <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
     <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
     <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
-    <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+    
 
 
     <!-- Fonts -->
@@ -62,7 +63,7 @@
                         <a class="nav-link text-uppercase" href="index.html">Penpal <span class="sr-only">(current)</span></a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link text-uppercase" href="">community</a>
+                        <a class="nav-link text-uppercase" href="{{route('community.index')}}">community</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link text-uppercase" href="/TermProject/forum/forum.php">Forum</a>
@@ -121,6 +122,9 @@
 </body>
 
 
+<br>
+<br>
+<br>
 <footer class="footer" style='margin-top:1%;height:5vh'>
     <a href="{{url('introduction')}}">소개</a>
 </footer>

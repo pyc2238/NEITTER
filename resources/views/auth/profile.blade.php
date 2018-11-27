@@ -1,13 +1,12 @@
 @extends('layouts.app')
 @section('title')
-유저 프로필
+회원 프로필
 @endsection
 @section('content')
 
 <br>
 <h3>NEITTER-회원 정보 수정</h3>
 <hr>
-
 
 <div class="row" style='margin-bottom:4%;margin-top:8%margin-bottom:8%;'>
     <div class="col-sm"> </div>
@@ -44,7 +43,7 @@
             <br>
             <div id="joinBtnBox">
                 <button class="btn btn-outline-warning " type="submit"><i class="fa fa-pencil">수정</i></button>
-                <button class="btn btn-outline-warning " type="button" onclick=" processDelete();"><i class="fa fa-trash">회원탈퇴</i></button>
+            <button class="btn btn-outline-warning " type="button" onclick="location.href ='{{route('destroy')}}'"><i class="fa fa-trash">회원탈퇴</i></button>
             </div>
         </form>
     </div>

@@ -1,5 +1,7 @@
 @extends('layouts.app')
-
+@section('title')
+회원가입
+@endsection
 @section('content')
 
 <div class="container">

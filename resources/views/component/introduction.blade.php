@@ -67,6 +67,10 @@
                     -2018년11월 21일 게시판 CRUD ORM전환4<br>
                     -2018년11월 22일 게시판 CRUD ORM전환5<br>
                     <b style='color:red'>-2018년11월 25일 현재 구현된 코드 대폭 수정1</b><br>
+                    <b style='color:red'>-2018년11월 26일 현재 구현된 코드 대폭 수정2</b><br>
+                    <b style='color:red'>-2018년11월 27일 현재 구현된 코드 대폭 수정3</b><br>
+                    <b style='color:red'>-2018년11월 28일 현재 구현된 코드 대폭 수정4</b><br>
+                    
 
             </ul>
         </div>

@@ -6,6 +6,7 @@ use Illuminate\Notifications\Notifiable;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Support\Facades\Hash;
+use Auth;
 
 class User extends Authenticatable
 {
@@ -35,5 +36,33 @@ class User extends Authenticatable
         'password', 'remember_token',
     ];
 
-   
+    public function communities(){
+        return $this->hasMany(Community::class);
+    }
+
+
+
+
+    public function getName($name){
+        return $this::where('name',$name)->first();  
+    }
+
+    public function getEmail($email){
+        return $this::where('email',$email)->first();
+    }
+
+    public function changePassword($email,$newPw){
+        $this::where('email',$email)
+            ->update(['password' => Hash::make($newPw)]);
+    }
+
+    public function updateSelfContext($selfContext){
+        $this::where('id',Auth::user()->id)
+            ->update(['selfContext' => $selfContext]);
+    }
+
+    public function updatePassword($password){
+        $this::where('id',Auth::user()->id)
+            ->update(['password' =>Hash::make($password)]);
+    }
 }

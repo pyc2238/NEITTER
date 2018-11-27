@@ -19,12 +19,6 @@ function checkName() {
 }
 
 
-
-
-
-
-
-
 // login_form.blade.php
 function show_Banner(num) {
     for (i = 0; i < 16; i++) {
@@ -36,10 +30,3 @@ function show_Banner(num) {
     }
 }
 
-// profile.blade.php
-function processDelete() {
-    var result = confirm("회원 탈퇴를 하시겠습니까?");
-    if (result) {
-        location.href = "destroy";
-    }
-}

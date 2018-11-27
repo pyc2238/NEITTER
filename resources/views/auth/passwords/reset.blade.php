@@ -1,5 +1,7 @@
 @extends('layouts.app')
-
+@section('title')
+비밀번호 변경
+@endsection
 @section('content')
 <br>
 <h3>NEITTER-회원 비밀번호 찾기 결과</h3>

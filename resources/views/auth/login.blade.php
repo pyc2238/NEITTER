@@ -1,5 +1,7 @@
 @extends('layouts.app')
-
+@section('title')
+로그인
+@endsection
 @section('content')
 
 <br>

@@ -407,3 +407,22 @@ small {
 .pnt {
     cursor: pointer;
 }
+
+
+/* 맨 위 페이지 버튼 */
+a#MOVE_TOP_BTN {
+    position: fixed;
+    right: 1%;
+    bottom: 50px;
+    display: none;
+    z-index: 999;
+}
+
+/* 댓글 이동 버튼 */
+a#MOVE_COMMENT_BTN {
+    position: fixed;
+    right: 7%;
+    bottom: 50px;
+    display: none;
+    z-index: 999;
+}
