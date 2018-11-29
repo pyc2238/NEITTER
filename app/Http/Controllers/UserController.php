@@ -101,10 +101,10 @@ class UserController extends Controller
 
     
     //회원 탈퇴
-    public function destroy(){
+    public function destroy(Request $request){
       
         User::where('id',Auth::user()->id)->delete();
-
+        $request->session()->flush();
         return 
             redirect(route('home'))
             ->with('message','회원탈퇴가 완료되었습니다.');

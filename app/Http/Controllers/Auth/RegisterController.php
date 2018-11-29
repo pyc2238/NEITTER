@@ -3,6 +3,9 @@
 namespace App\Http\Controllers\Auth;
 
 use App\User;
+use Mail;
+use Session; 
+use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
@@ -40,37 +43,54 @@ class RegisterController extends Controller
         $this->middleware('guest');
     }
 
-    /**
-     * Get a validator for an incoming registration request.
-     *
-     * @param  array  $data
-     * @return \Illuminate\Contracts\Validation\Validator
-     */
-    protected function validator(array $data)
-    {
-        return Validator::make($data, [
-            'name' => ['required', 'string', 'max:255'],
-            'email' => ['required', 'string', 'email', 'max:255','unique:users'],
-            'password' => ['required', 'string', 'min:6','max:15','regex:/^.*(?=^.{8,15}$)(?=.*\d)(?=.*[a-zA-Z])(?=.*[!@#$%^&+=]).*$/' ,'confirmed'],
-        ]);
-    }
-
+    
     /**
      * Create a new user instance after a valid registration.
      *
      * @param  array  $data
      * @return \App\User
      */
-    protected function create(array $data)
+    public function register(Request $request)
     {
-        return User::create([
-            'name' => $data['name'],
-            'email' => $data['email'],
-            'password' =>Hash::make($data['password']),
-            'gender' => $data['gender'],
-            'age' => $data['age'],
-            'address' => $data['address'],
-            'country' => $data['country']
+
+        $this->validate($request,[
+            'name' => 'required|string|max:255',
+            'email' => 'required|string|email|max:255|unique:users',
+            'password' => 'required|string|min:6|max:15|regex:/^.*(?=^.{8,15}$)(?=.*\d)(?=.*[a-zA-Z])(?=.*[!@#$%^&+=]).*$/|confirmed',
         ]);
+
+        $uname = $request->name;
+        $uemail = $request->email;
+       
+        $upassword = $request->password;
+        $ugender = $request->gender; 
+        $uage = $request->age;
+        $uaddress = $request->address;
+        $ucountry = $request->country;
+             
+        Session::put('newUser',$uname);
+
+        Mail::send(['html'=>'component.welcomeMail'],['name','Sathak'],function($message) use ($uemail,$uname){
+            $message->to($uemail,$uname.'님')->subject('안녕하세요 NEITTER입니다.');
+            $message->from('pyc2238@gmail.com','보근');
+        });
+        
+        $request->session()->flush();
+
+         User::create([
+            'name' => $uname,
+            'email' => $uemail,
+            'password' =>Hash::make($upassword),
+            'gender' => $ugender,
+            'age' => $uage,
+            'address' => $uaddress,
+            'country' => $ucountry
+        ]);
+
+
+        return redirect('login');
+        
     }
+
 }
+

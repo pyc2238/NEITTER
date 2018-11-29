@@ -36,7 +36,7 @@ Route::group(['middleware' => ['auth']], function () {
     //회원 탈퇴 처리
     Route::get('destroy','UserController@destroy')->name('destroy');
     // 비밀번호 변경 폼       
-    Route::get('ChangePassword/{id}','UserController@ChangePasswordFrom')->name('ChangePasswordFrom');
+    Route::get('password/{id}','UserController@ChangePasswordFrom')->name('ChangePasswordFrom');
     //회원 비밀번호 변경
     Route::put('update/{id}','UserController@updatePasswords')->name('updatePassword');
     

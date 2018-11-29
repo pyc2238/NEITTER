@@ -4,6 +4,7 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 use App\User;
+
 class Community extends Model
 {
     protected $fillable = [
@@ -23,8 +24,6 @@ class Community extends Model
     }
 
 
-
-
     public function insertMsg($country,$title,$content,$id){
         
         if($country == "한국"){
@@ -42,7 +41,7 @@ class Community extends Model
     }
 
     public function getMsgs(){
-        return $this::with('user:id,name')->orderBy('created_at','desc')->paginate(10);
+        return $this::with('user:id,name')->orderBy('created_at','desc')->paginate(10)->onEachSide(5);
     }
 
     public function getMsg($id){
@@ -56,4 +55,56 @@ class Community extends Model
     public function deleteMsg($id){
         $this::where('num',$id)->delete();
     }
+
+    public function searchTitle($search){
+        return $this::where('title','LIKE',"%$search%")->orderBy('num', 'desc')->paginate(10)->onEachSide(5);
+          
+    }
+    public function searchTitleCount($search){
+        $result = $this::where('title','LIKE',"%$search%")->get();
+        $result= count($result);
+        return $result; 
+     }
+
+    public function searchWriter($search){
+        return
+            User::select(['users.name','communities.num','communities.country','communities.title', 'communities.content','communities.hits','communities.commend','communities.created_at',])
+            ->join('communities', 'communities.user_id', '=', 'users.id')
+            ->where('users.name', 'LIKE', "%$search%")->orderBy('num', 'desc')->paginate(10)->onEachSide(5);
+    }
+
+
+    public function searchWriterCount($search){
+
+        $result = User::select(['users.name','communities.num','communities.country','communities.title', 'communities.content','communities.hits','communities.commend','communities.created_at',])
+            ->join('communities', 'communities.user_id', '=', 'users.id')
+            ->where('users.name', 'LIKE', "%$search%")->get();
+        
+            return count($result);
+    }
+
+    public function searchContent($search){
+        return $this::where('content','LIKE',"%$search%")->orderBy('num', 'desc')->paginate(10)->onEachSide(5);
+    }
+
+    public function searchContentCount($search){
+        $result = $this->where('content','LIKE',"%$search%")->get();
+        $result= count($result);
+        
+        return $result;     
+    }
+
+    public function searchTitleAndCotent($search){
+        return $this->where('title','LIKE',"%$search%")->orWhere('content','LIKE',"%$search%")->orderBy('num', 'desc')->paginate(10);
+    }
+
+    public function searchTitleAndCotentCount($search){
+        $result = $this->where('title','LIKE',"%$search%")->orWhere('content','LIKE',"%$search%")->get();
+        $result= count($result);
+        
+        return $result; 
+    
+    }
+
+
 }

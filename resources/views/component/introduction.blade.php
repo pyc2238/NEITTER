@@ -3,6 +3,7 @@
 소개
 @endsection
 @section('content')
+<div class="container content">
 <br>
     <div class="row">
         <div class="col">
@@ -75,4 +76,5 @@
             </ul>
         </div>
     </div>
+</div>
 @endsection

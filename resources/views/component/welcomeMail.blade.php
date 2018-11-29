@@ -6,7 +6,7 @@
 
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>NEITTER비밀번호 찾기</title>
+    <title>NEITTER 회원가입 완료</title>
 </head>
 <style>
     a {
@@ -16,7 +16,7 @@
 </style>
 
 <body>
-    <img id=Rand_Banner class="img-fluid" src="http://dl.stickershop.line.naver.jp/products/0/0/1/1600906/android/stickers/20394946.png"
+    <img id=Rand_Banner class="img-fluid" src="https://stickershop.line-scdn.net/stickershop/v1/product/1439496/LINEStorePC/main@2x.png;compress=true"
         alt="Responsive image">
 
     <br>
@@ -24,8 +24,8 @@
             alt="Logo" ondragstart="return false"></div>
     <br>
     <br>
-    @if(Session::has('newPw'))
-        안녕하세요. 새로 부여된 비밀번호는 "<b style="color:blue;">{{Session::get('newPw')}}</b>"입니다.
+    @if(Session::has('newUser'))
+    안녕하세요 NEITTER입니다."<b style="color:blue;">{{Session::get('newUser')}}</b>"님의 회원가입을 환영합니다.
     @endif
     <br>
     <a href="{{route('login')}}">NEITTER 로그인하러 가기</a>

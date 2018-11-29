@@ -357,7 +357,7 @@ small {
 
 /* pagination */
 
-.pagination a {
+.Custompagination a {
     color: black;
     float: left;
     padding: 8px 12px;
@@ -367,7 +367,7 @@ small {
     margin: 0 2px 2px 0px;
 }
 
-.pagination a:hover {
+.Custompagination a:hover {
     background-color: #dd0000;
     color: white;
     border: 1px solid #e2e2e2;

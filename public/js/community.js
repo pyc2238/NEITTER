@@ -1,20 +1,21 @@
 // communiy.blade.php
-function searchBtn() {
+
+function searchBtn(page) {
     var searchValue = document.getElementById('inputState').value;
     var search = document.getElementById('inputText').value;
-
-    var url = '/search/' + search + '/' + searchValue;
-
+    page = 1;
+    var url = 'community?search=' + search + '&where=' + searchValue+'&page='+page;
+   
     location.href = url;
 }
 
-function enterkey() {
+function enterkey(page) {
     if (window.event.keyCode == 13) {
 
         var searchValue = document.getElementById('inputState').value;
         var search = document.getElementById('inputText').value;
-
-        var url = '/search/' + search + '/' + searchValue;
+        page = 1;
+         var url = 'community?search=' + search + '&where=' + searchValue+'&page='+page;
 
         location.href = url;
     }

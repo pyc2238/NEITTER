@@ -3,7 +3,7 @@
 회원 프로필
 @endsection
 @section('content')
-
+<div class="container content">
 <br>
 <h3>NEITTER-회원 정보 수정</h3>
 <hr>
@@ -54,5 +54,5 @@
 
 </div>
 
-
+</div>
 @endsection

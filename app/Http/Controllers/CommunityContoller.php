@@ -4,7 +4,6 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Session; 
-use Mail;
 use Auth;
 use App\User;
 use App\Community;
@@ -25,12 +24,41 @@ class CommunityContoller extends Controller
     public function index(Request $request)
     {
         $page = $request->page;
-        $msgs = $this->communityModel->getMsgs();
+        $search = $request->search;
+        $where = $request->where;
         
+        $msgs = $this->communityModel->getMsgs();
+        $count = count(Community::all());
+        
+        if($search){
+            switch($where){
+                    
+                case "title":
+                    $msgs = $this->communityModel->searchTitle($search);  
+                    $count = $this->communityModel->searchTitleCount($search);
+                    break;
+                case "writer":
+                    $msgs = $this->communityModel->searchWriter($search); 
+                    $count = $this->communityModel->searchWriterCount($search);
+                    break;
+                case "content":
+                    $msgs = $this->communityModel->searchContent($search); 
+                    $count = $this->communityModel->searchContentCount($search);
+                    break;
+                case "titleAndcotent":
+                    $msgs = $this->communityModel->searchTitleAndCotent($search); 
+                    $count = $this->communityModel->searchTitleAndCotentCount($search);
+                    break;    
+            }
+        }
+      
         return 
             view('community.index')
+            ->with('page',$page)
+            ->with('search',$search)
+            ->with('where',$where)
             ->with('msgs',$msgs)
-            ->with('page',$page);
+            ->with('count',$count);
     }
 
     /**
@@ -42,10 +70,14 @@ class CommunityContoller extends Controller
     public function create(Request $request)
     {
         $page = $request->page;
+        $search = $request->search;
+        $where = $request->where;
 
         return 
             view('community.create')
-            ->with('page',$page);
+            ->with('page',$page)
+            ->with('search',$search)
+            ->with('where',$where);
     }
 
     /**
@@ -58,13 +90,17 @@ class CommunityContoller extends Controller
     
     public function store(Request $request)
     {
+        $search = $request->search;
+        $where = $request->where;
        
         $this->communityModel->insertMsg(Auth::user()->country,$request->title,$request->content,Auth::user()->id);
         
         return 
             redirect()
             ->route('community.index')
-            ->with('message','글 작성이 완료되었습니다.');
+            ->with('message','글 작성이 완료되었습니다.')
+            ->with('search',$search)
+            ->with('where',$where);
     }
 
     /**
@@ -78,7 +114,9 @@ class CommunityContoller extends Controller
     {
        
         $page = $request->page;
-        
+        $search = $request->search;
+        $where = $request->where;
+       
         $community = $this->communityModel->getMsg($id);
         $translationTitle = $this->translation($community->title,0);
         $translationContent = $this->translation($community->content,0);
@@ -87,6 +125,8 @@ class CommunityContoller extends Controller
             view('community.show')
             ->with('community',$community)
             ->with('page',$page)
+            ->with('search',$search)
+            ->with('where',$where)
             ->with('translationTitle',$translationTitle)
             ->with('translationContent',$translationContent);
     }
@@ -101,6 +141,8 @@ class CommunityContoller extends Controller
     public function edit(Request $request,$id)
     {   
         $page = $request->page;
+        $search = $request->search;
+        $where = $request->where;
         $user = $this->communityModel->getMsg($id);
          
         if(!Auth::check()){
@@ -109,6 +151,8 @@ class CommunityContoller extends Controller
             return 
                 view('community.edit')
                 ->with('page',$page)
+                ->with('search',$search)
+                ->with('where',$where)
                 ->with('id',$id)
                 ->with('title',$user->title)
                 ->with('content',$user->content);
@@ -130,8 +174,11 @@ class CommunityContoller extends Controller
     public function update(Request $request, $id)
     {
         $page = $request->page;
+        $search = $request->search;
+        $where = $request->where;
+        
         $this->communityModel->updateMsg($id,$request->title,$request->content);
-        return redirect(route('community.index',['page'=>$page]));
+        return redirect(route('community.index',['search'=>$search,'where'=>$where,'page'=>$page]));
     }
 
     /**
@@ -144,17 +191,20 @@ class CommunityContoller extends Controller
     public function destroy(Request $request,$id)
     {
         $page = $request->page;
+        $search = $request->search;
+        $where = $request->where;
         $user = $this->communityModel->getMsg($id);
         
         if(!Auth::check()){
             return back()->with('message','로그인 후 사용가능합니다.');
         }else if(Auth::user()->id == $user->user_id ){
             $this->communityModel->deleteMsg($id);
-            return redirect(route('community.index',['page'=>$page]));
+            return redirect(route('community.index',['search'=>$search,'where'=>$where,'page'=>$page]));
         }else{
             return back()->with('message','삭제권한이 없습니다.');
         }      
     }
+
 
 
     //언어 감지
