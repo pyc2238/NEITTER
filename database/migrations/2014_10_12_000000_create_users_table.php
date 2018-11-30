@@ -24,6 +24,7 @@ class CreateUsersTable extends Migration
             $table->string('address',255);
             $table->string('country',20);
             $table->string('selfContext',255)->nullable();
+            $table->text('selfPhoto')->nullable();
             $table->timestamps();
             $table->rememberToken();       
             });

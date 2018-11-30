@@ -34,7 +34,7 @@ class UserController extends Controller
     public function find(Request $request){
         $randPw = array("@zxc123456", "!zxc123456", "#zxc123456", "&zxc123456");
         $selected = array_rand($randPw);
-        Session::put('newPw',$randPw[$selected]);
+        $request->session()->put('newPw',$randPw[$selected]);
 
         $uemail = $request->email;
         $email = $this->userModel->getEmail($uemail);
@@ -62,11 +62,18 @@ class UserController extends Controller
     }
    
     
-    //회원정보 수정 자기소개글 삽입
-    public function updateSelfContext(Request $request){
+    //회원정보 수정 자기소개글 삽입 및 대표사진
+    public function updateProfile(Request $request){
         
-        $this->userModel->updateSelfContext($request->selfContext);
+        
+      if($request->file){
+        $file_name = $request->file('file')->getClientOriginalName();
+        $request->file->storeAs('public/slefPhoto',$file_name);
+        $this->userModel->updateFile($file_name);  
+      }
 
+      $this->userModel->updateSelfContext($request->selfContext);
+        
         return 
             redirect('home')
             ->with('message','회원정보가 수정되었습니다.');

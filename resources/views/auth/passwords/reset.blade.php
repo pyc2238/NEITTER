@@ -5,7 +5,7 @@
 @section('content')
 <div class="container content">
     <br>
-    <h3>NEITTER-회원 비밀번호 찾기 결과</h3>
+    <h3><b>NEITTER-회원 비밀번호 찾기 결과</b></h3>
     <hr>
     <div class="row find_div">
         <div class="col-sm">

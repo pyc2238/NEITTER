@@ -53,6 +53,8 @@ class RegisterController extends Controller
     public function register(Request $request)
     {
 
+        $result = true;
+
         $this->validate($request,[
             'name' => 'required|string|max:255',
             'email' => 'required|string|email|max:255|unique:users',
@@ -88,7 +90,7 @@ class RegisterController extends Controller
         ]);
 
 
-        return redirect('login');
+        return redirect('login')->with('result',$result);
         
     }
 

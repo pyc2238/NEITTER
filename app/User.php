@@ -40,6 +40,10 @@ class User extends Authenticatable
         return $this->hasMany(Community::class);
     }
 
+    public function comments(){
+        return $this->hasMany(Communities_Comment::class);
+    }
+
 
 
 
@@ -64,5 +68,10 @@ class User extends Authenticatable
     public function updatePassword($password){
         $this::where('id',Auth::user()->id)
             ->update(['password' =>Hash::make($password)]);
+    }
+
+    public function updateFile($file){
+        $this::where('id',Auth::user()->id)
+            ->update(['selfPhoto' => $file]);
     }
 }

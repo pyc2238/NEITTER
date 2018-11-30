@@ -5,7 +5,7 @@
 @section('content')
 <div class="container content">
     <br>
-    <h2>Community-글 작성</h2>
+    <h2><b>Community-글 작성</b></h2>
     <hr>
     <form action="{{route('community.store',['search'=>$search,'where'=>$where,'page'=>$page])}}" method="post" style="margin-top:3%;margin-bottom:3%">
         @csrf

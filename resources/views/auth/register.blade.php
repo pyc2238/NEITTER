@@ -6,7 +6,7 @@
 <div class="container content">
     <div class="container">
         <br>
-        <h3>NEITTER-로그인</h3>
+        <h3><b>NEITTER-로그인</b></h3>
         <hr>
         <div class="row justify-content-center" style="margin-bottom:2%">
 

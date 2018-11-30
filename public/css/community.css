@@ -36,7 +36,7 @@
 }
 
 div>#comments {
-    margin-top: 133px;
+    margin-top: 1%;
     background-color: white;
     border: 1px solid #bcbcbc;
 }
@@ -50,6 +50,8 @@ div>#commentWrite {
     font-weight: bold;
 
 }
+
+
 
 div>.commentBoxfirst {
     background-color: #fcf7f5;
@@ -336,7 +338,7 @@ small {
 .button {
 
     width: 50px;
-
+    height: 37px;
     background-color: #f8585b;
 
     border: none;
@@ -353,6 +355,9 @@ small {
 
 }
 
+#inputState{
+    height: 37px;
+}
 
 
 /* pagination */
@@ -409,6 +414,10 @@ small {
 }
 
 
+.translation{
+    margin-bottom:5%;
+}
+
 /* 맨 위 페이지 버튼 */
 a#MOVE_TOP_BTN {
     position: fixed;
@@ -426,3 +435,6 @@ a#MOVE_COMMENT_BTN {
     display: none;
     z-index: 999;
 }
+
+
+

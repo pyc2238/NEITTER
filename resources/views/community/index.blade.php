@@ -8,7 +8,7 @@
     <link rel="stylesheet" href="{{asset('/css/community.css')}}">
 
     <br>
-    <h3>NEITTER-지식교류</h3>
+    <h3><b>NEITTER-지식교류</b></h3>
     <hr>
 
     <div class="row">
@@ -16,9 +16,19 @@
             <h5 style="font:bold; display:inline-block;" class='float-right'><i class="fa fa-calculator ">TOTAL :
             {{$count}}</i></h5>
         </div>
-
+       
         <div class="container" style="height:95vh">
+                @if($count == 0)
+                <div class="text-center" style="margin-top:15%">
+                        @include('component.siteImage')
 
+                        <script language="javascript">
+                            var R=Math.floor(Math.random()*16);
+                                show_Banner(R);
+                        </script>
+                    <h1 style="margin-top:5%"><b style="color:blue">"{{$search}}"</b>라는 검색 결과가 존재하지 않습니다.</h1>
+                </div>
+                @else
             <table class="table table-hover" style="table-layout:fixed">
                 <thead>
                     <tr>
@@ -34,20 +44,21 @@
                 </thead>
                 <tbody>
 
+                   
                     @foreach($msgs as $msg)
                     <tr>
-                        <td style="width:60px;">{{$msg->num}}</td>
+                        <td style="width:60px;"><b>{{$msg->num}}</b></td>
                         <td style="width:50px;"><img src="{{$msg->country}}" alt="국적"></td>
-                        <td style="overflow:hidden;white-space:nowrap;text-overflow:ellipsis;"><a href="{{route('community.show',['boardNum'=>$msg->num,'search'=>$search,'where'=>$where,'page'=>$page])}}">{{$msg->title}}</a></td>
+                        <td style="overflow:hidden;white-space:nowrap;text-overflow:ellipsis;"><a href="{{route('community.show',['boardNum'=>$msg->num,'search'=>$search,'where'=>$where,'page'=>$page])}}"><b>{{$msg->title}}</b></a></td>
                         
                         @if($where == 'writer')
-                        <td style="width:150px;">{{$msg->name}}</td>
+                        <td style="width:150px;"><b>{{$msg->name}}</b></td>
                         @else
-                        <td style="width:150px;">{{$msg->user->name}}</td>
+                        <td style="width:150px;"><b>{{$msg->user->name}}</b></td>
                         @endif
-                        <td style="width:60px;">{{date('m-d',strtotime($msg->created_at))}}</td>
-                        <td class="text-right" style="width:70px;">{{$msg->hits}}</td>
-                        <td class="text-right" style="width:70px;">{{$msg->commend}}</td>
+                        <td style="width:60px;"><b>{{date('m-d',strtotime($msg->created_at))}}</b></td>
+                        <td class="text-right" style="width:70px;"><b>{{$msg->hits}}</b></td>
+                        <td class="text-right" style="width:70px;"><b>{{$msg->commend}}</b></td>
                         <td class="text-right" style="width:150px;">
                             <button type="button" rel="tooltip" class="btn btn-success btn-just-icon btn-sm" onclick="location.href='{{route('community.edit',['boardNum'=>$msg->num,'search'=>$search,'where'=>$where,'page'=>$page])}}'">
                                 <h2><i class="fa fa-edit"></i></h2>
@@ -65,9 +76,10 @@
                     @endforeach
                 </tbody>
             </table>
+            @endif
         </div>
-
-        <div class="col-sm" style='margin-top:5%;margin-bottom:3%'>
+        
+        <div class="col-sm" style='margin-top:5%;margin-bottom:3%;'>
             <div class="input-group col-md-10">
                 <select id="inputState" class="form-control" name="where" required>
                     <option selected value="title">제목</option>
@@ -79,13 +91,15 @@
                 <button class="button" onclick="searchBtn(<?=$page?>)">검색</button>
             </div>
         </div>
+        <div class="Custompagination "style='margin-top:5%;margin-bottom:3%;'>
         @if($msgs->hasPages())
-        <div class="col-4 pagination" style='margin-top:5%'>
+        
             {{$msgs->appends(['search'=>$search,'where'=>$where])->links()}}
-        </div>
+        
         @endif
-
+    </div>
         <div class="col-4" style='margin-top:4%'>
+           
             @if(Auth::check())
             <button class="btn btn-outline-warning float-right" type="button"><i class="fa fa-pencil" style="font-size:15px;"
                     onclick="location.href='{{route('community.create',['search'=>$search,'where'=>$where,'page'=>$page])}}'">글쓰기</i></button>
@@ -98,7 +112,7 @@
 
     </div>
     <!--end of row-->
-
 </div>
+
 
 @endsection

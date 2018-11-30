@@ -5,7 +5,7 @@
 @section('content')
 <div class="container content">
     <br>
-    <h2>Community-글 수정</h2>
+    <h2><b>Community-글 수정</b></h2>
     <hr>
     <form action="{{route('community.update',[$id,'search'=>$search,'where'=>$where,'page'=>$page])}}" method="post"
         style="margin-top:3%;margin-bottom:3%">

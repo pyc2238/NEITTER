@@ -5,7 +5,7 @@
 @section('content')
 <div class="container content">
     <br>
-    <h3>NEITTER-회원 비밀번호 확인</h3>
+    <h3><b>NEITTER-회원 비밀번호 확인</b></h3>
     <hr>
     <div class="row profile_form">
         <div class="col-sm"></div>

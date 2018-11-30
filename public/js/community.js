@@ -4,8 +4,8 @@ function searchBtn(page) {
     var searchValue = document.getElementById('inputState').value;
     var search = document.getElementById('inputText').value;
     page = 1;
-    var url = 'community?search=' + search + '&where=' + searchValue+'&page='+page;
-   
+    var url = 'community?search=' + search + '&where=' + searchValue + '&page=' + page;
+
     location.href = url;
 }
 
@@ -15,7 +15,7 @@ function enterkey(page) {
         var searchValue = document.getElementById('inputState').value;
         var search = document.getElementById('inputText').value;
         page = 1;
-         var url = 'community?search=' + search + '&where=' + searchValue+'&page='+page;
+        var url = 'community?search=' + search + '&where=' + searchValue + '&page=' + page;
 
         location.href = url;
     }
@@ -32,10 +32,21 @@ function choice(num, pages) {
 // view.blade.php
 function choiceComment(commentNum, page) {
     var choice = confirm("해당 댓글을 삭제하시겠습니까?");
+    if (!page) {
+        page = 1;
+    }
     if (choice) {
-        location.href = "community_delete_comment.php?id=" + commentNum + "&page=" + page;
+        location.href = "/comment/delete?id=" + commentNum + "&page=" + page;
     }
 }
+
+
+
+
+
+
+
+
 
 function choice(num, pages) {
     var choice = confirm("해당 게시글을 삭제하시겠습니까?");
@@ -53,33 +64,46 @@ $(document).on("click", ".translation > button", function () {
 });
 
 
-$(function() {  
-    $(window).scroll(function() {
-        if ($(this).scrollTop() > 300) {    //스크롤이  500px보다 커질 때
+$(function () {
+    $(window).scroll(function () {
+        if ($(this).scrollTop() > 300) { //스크롤이  500px보다 커질 때
             $('#MOVE_TOP_BTN').fadeIn();
         } else {
             $('#MOVE_TOP_BTN').fadeOut();
         }
     });
-    
-    $("#MOVE_TOP_BTN").click(function() {
+
+    $("#MOVE_TOP_BTN").click(function () {
         $('html, body').animate({
-            scrollTop : 0
+            scrollTop: 0
         }, 400);
         return false;
     });
 });
 
-  $(function() {  
-    $(window).scroll(function() {
-        if ($(this).scrollTop() > 300) {    //스크롤이  200px보다 커질 때
+$(function () {
+    $(window).scroll(function () {
+        if ($(this).scrollTop() > 300) { //스크롤이  200px보다 커질 때
             $('#MOVE_COMMENT_BTN').fadeIn();
         } else {
             $('#MOVE_COMMENT_BTN').fadeOut();
         }
     });
 });
-function fnMove(){
- var offset = $("#commentBox").offset();
-$('html, body').animate({scrollTop : offset.top}, 400);
+
+$(function () {
+    $(window).scroll(function () {
+        if ($(this).scrollTop() > 300) { //스크롤이  200px보다 커질 때
+            $('#MOVE_WRITE_BTN').fadeIn();
+        } else {
+            $('#MOVE_WRITE_BTN').fadeOut();
+        }
+    });
+});
+
+function fnMove() {
+    var offset = $("#tool").offset();
+    $('html, body').animate({
+        scrollTop: offset.top
+    }, 400);
 }

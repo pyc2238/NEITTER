@@ -7,11 +7,19 @@ use Session;
 use Auth;
 use App\User;
 use App\Community;
+use App\Communities_commends;
+use App\Communities_hit;
+use App\Communities_ip;
+use App\Communities_Comment;
 
 class CommunityContoller extends Controller
 {
     public function __construct(){
         $this->communityModel = new Community();
+        $this->commendsModel = new Communities_commends();
+        $this->hitsModel = new Communities_hit();
+        $this->ipsModel = new Communities_ip();
+        $this->commentModel = new Communities_Comment();
     }
 
     /**
@@ -23,6 +31,7 @@ class CommunityContoller extends Controller
     
     public function index(Request $request)
     {
+        
         $page = $request->page;
         $search = $request->search;
         $where = $request->where;
@@ -112,23 +121,45 @@ class CommunityContoller extends Controller
     //해당 아이디의 관련정보를 보여줌
     public function show(Request $request,$id)
     {
+     
        
         $page = $request->page;
         $search = $request->search;
         $where = $request->where;
-       
+        $comments = $this->commentModel->getComments($id);
+        
+        $ip = $this->ipsModel->getHitsIp($request->getClientIp(),$id); //사용자의 ip값으로 레코드를 받아온다.
+        
+        if(!Auth::check()){ //사용자의 로그인 여부 판단
+            if(!$ip){    //해당 ip로 저장된 레코드가 존재하지않다면
+                $this->ipsModel->insertHitIp($id,$request->getClientIp()); //데이터베이스에 ip와 게시판 번호를 저장
+                $this->communityModel->updateHits($id);//조회수 1 증가    
+             }
+            }else{
+                $userId = $this->hitsModel->getHitsId(Auth::user()->id,$id);  //사용자의 id값으로 레코드를 받아온다.
+                if(!$userId ){ //해당 id로 저장된 레코드가 존재하지 않다면
+                    $this->hitsModel->insertHitId(Auth::user()->id,$id);//데이터베이스에 id와 게시판 번호를 저장
+                    $this->communityModel->updateHits($id);//조회수 1 증가
+                }
+            }
+        
         $community = $this->communityModel->getMsg($id);
         $translationTitle = $this->translation($community->title,0);
         $translationContent = $this->translation($community->content,0);
-        
+
+        // $langCodeComment = $this->langCode($comments);
+        // $translation = $this->translation($comments,$langCodeComment);
+
         return
             view('community.show')
             ->with('community',$community)
             ->with('page',$page)
             ->with('search',$search)
             ->with('where',$where)
+            ->with('comments',$comments)
             ->with('translationTitle',$translationTitle)
             ->with('translationContent',$translationContent);
+            // ->with('translation',$translation);
     }
 
     /**
@@ -178,7 +209,7 @@ class CommunityContoller extends Controller
         $where = $request->where;
         
         $this->communityModel->updateMsg($id,$request->title,$request->content);
-        return redirect(route('community.index',['search'=>$search,'where'=>$where,'page'=>$page]));
+        return redirect(route('community.index',['search'=>$search,'where'=>$where,'page'=>$page]))->with('message','게시물이 수정되었습니다.');
     }
 
     /**
@@ -206,11 +237,63 @@ class CommunityContoller extends Controller
     }
 
 
+    public function increaseCommend(Request $request,$id){
+        $page = $request->page;
+        $search = $request->search;
+        $where = $request->where;
+       
+        $userNum = Auth::user()->id;  
+        $result = $this->commendsModel->getCommendId($userNum,$id);
+        
+        if($result){
+            return back()->with('message','이미 추천을 누른 게시물입니다.');
+        }else{
+            $this->commendsModel->insertCommendId($userNum,$id);
+            $this->communityModel->updateCommend($id);
+          
+            return redirect(route('community.show',['id'=>$id,'search'=>$search,'where'=>$where,'page'=>$page]));
+        }
+    }
+
+
+    public function insertComment(Request $request,$id){
+        $page = $request->page;
+        $search = $request->search;
+        $where = $request->where; 
+
+        
+        $this->commentModel->insertComment($request->comment,Auth::user()->country,$id,Auth::user()->id);
+    
+        // return $comments;
+        // return response()->json($comments, 200, [], JSON_PRETTY_PRINT);
+        
+        return redirect(route('community.show',['id'=>$id,'search'=>$search,'where'=>$where,'page'=>$page]));
+    }
+
+
+    public function updateComment(Request $request,$id){
+        $page = $request->page;
+        $search = $request->search;
+        $where = $request->where;
+        
+        $this->commentModel->updateComments($request->commentId,$request->comment);
+        
+        return redirect(route('community.show',['id'=>$id,'search'=>$search,'where'=>$where,'page'=>$page]));
+    }
+
+    public function deleteComment(Request $request){
+        $page = $request->page;
+        
+        $this->commentModel->deleteComments($request->id);
+        return redirect(route('community.show',['page'=>$page]));
+    }
+
+   
 
     //언어 감지
-    public function langCode($papago){
+    public static function langCode($papago){
    
-        //네이버 Papago 언어감지 API 예제 
+        //네이버 Papago 언어감지 Open API 
         $client_id = "GsqdMHiH8jYipihfkH23";
         $client_secret = "49rHFbtM4x";
         $encQuery = urlencode($papago);
@@ -242,7 +325,7 @@ class CommunityContoller extends Controller
     }
 
     //언어 변환
-    public  function translation($papago,$langCode) {
+    public static function translation($papago,$langCode) {
           // 네이버 Papago SMT 기계번역 Open API 
           $client_id = "XhF4hpyBJquD0uxxiIT9"; // 네이버 개발자센터에서 발급받은 CLIENT ID
           $client_secret = "v15ft5DNeN";// 네이버 개발자센터에서 발급받은 CLIENT SECRET

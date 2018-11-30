@@ -67,6 +67,15 @@ body {
     content: url('/data/ProjectImages/master/home2.png');
 }
 
+#searchImg{
+    margin-left:2%;
+}
+#searchImg:hover,
+#searchImg:active {
+    content: url('/data/ProjectImages/master/search2.png');
+}
+
+
 .userInfo {
     width: 50%;
     text-align: center;

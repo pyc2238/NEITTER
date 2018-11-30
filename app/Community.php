@@ -23,6 +23,17 @@ class Community extends Model
         return $this->belongsTo(User::class);
     }
 
+    
+    public function comments(){
+        return $this->hasMany(Communities_Comment::class);
+    }
+
+
+
+
+
+
+
 
     public function insertMsg($country,$title,$content,$id){
         
@@ -32,7 +43,7 @@ class Community extends Model
             $countryImg =  asset("/data/ProjectImages/community/japan.png");
         }
 
-        Community::create([
+        $this::create([
             'country' => $countryImg,
             'title' => $title,
             'content' => $content,
@@ -47,7 +58,7 @@ class Community extends Model
     public function getMsg($id){
         return $this::with('user:id,name')->where('num',$id)->first();
     }
-
+    
     public function updateMsg($id,$title,$content){
         $this::where('num',$id)->update(['title'=>$title,'content'=>$content]);
     }
@@ -61,14 +72,13 @@ class Community extends Model
           
     }
     public function searchTitleCount($search){
-        $result = $this::where('title','LIKE',"%$search%")->get();
-        $result= count($result);
-        return $result; 
+        return count($this::where('title','LIKE',"%$search%")->get());
+        
      }
 
     public function searchWriter($search){
         return
-            User::select(['users.name','communities.num','communities.country','communities.title', 'communities.content','communities.hits','communities.commend','communities.created_at',])
+            User::select(['users.name','communities.num','communities.country','communities.title','communities.hits','communities.commend','communities.created_at',])
             ->join('communities', 'communities.user_id', '=', 'users.id')
             ->where('users.name', 'LIKE', "%$search%")->orderBy('num', 'desc')->paginate(10)->onEachSide(5);
     }
@@ -76,11 +86,8 @@ class Community extends Model
 
     public function searchWriterCount($search){
 
-        $result = User::select(['users.name','communities.num','communities.country','communities.title', 'communities.content','communities.hits','communities.commend','communities.created_at',])
-            ->join('communities', 'communities.user_id', '=', 'users.id')
-            ->where('users.name', 'LIKE', "%$search%")->get();
-        
-            return count($result);
+        return count(User::join('communities', 'communities.user_id', '=', 'users.id')->where('users.name', 'LIKE', "%$search%")->get());
+             
     }
 
     public function searchContent($search){
@@ -88,10 +95,7 @@ class Community extends Model
     }
 
     public function searchContentCount($search){
-        $result = $this->where('content','LIKE',"%$search%")->get();
-        $result= count($result);
-        
-        return $result;     
+        return count($this->where('content','LIKE',"%$search%")->get());     
     }
 
     public function searchTitleAndCotent($search){
@@ -99,12 +103,18 @@ class Community extends Model
     }
 
     public function searchTitleAndCotentCount($search){
-        $result = $this->where('title','LIKE',"%$search%")->orWhere('content','LIKE',"%$search%")->get();
-        $result= count($result);
-        
-        return $result; 
-    
+        return count( $this->where('title','LIKE',"%$search%")->orWhere('content','LIKE',"%$search%")->get());
     }
 
 
+    public function updateCommend($id){
+        $result = $this::where('num',$id)->first();
+        $result->commend++;
+        $result->save();
+    }
+    public function updateHits($id){
+        $result = $this::where('num',$id)->first();
+        $result->hits++;
+        $result->save();
+    }
 }
