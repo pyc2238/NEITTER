@@ -7,7 +7,10 @@ use Illuminate\Support\Facades\Hash;
 use Session; 
 use Mail;
 use Auth;
+use Exception;
 use App\User;
+use Event;
+use App\Events\SendMailResetPw;
 
 
 class UserController extends Controller 
@@ -20,7 +23,7 @@ class UserController extends Controller
 
 
     /* 회원가입 닉네임 중복 체크 */
-    public function CheckName(Request $request){
+    public function getUserName(Request $request){
         $name =  $this->userModel->getName($request->name);
 
         return 
@@ -31,7 +34,7 @@ class UserController extends Controller
 
 
     /* 이메일 비밀번호 변경  */
-    public function find(Request $request){
+    public function postFindPassword(Request $request){
         $randPw = array("@zxc123456", "!zxc123456", "#zxc123456", "&zxc123456");
         $selected = array_rand($randPw);
         $request->session()->put('newPw',$randPw[$selected]);
@@ -44,26 +47,23 @@ class UserController extends Controller
         $uname = $email->name; 
          
         if($uemail == $email->email){
-            Mail::send(['html'=>'component.mail'],['name','Sathak'],function($message) use ($uemail,$uname){
-                $message->to($uemail,$uname.'님')->subject('안녕하세요 NEITTER입니다.');
-                $message->from('pyc2238@gmail.com','보근');
-            });
+            Event::fire(new SendMailResetPw($uemail,$uname));
         
-         $this->userModel->changePassword($uemail,$randPw[$selected]);
+            $this->userModel->changePassword($uemail,$randPw[$selected]);
           
-         return view('auth.passwords.reset');
+            return view('auth.passwords.reset');
          }
     }
 
 
     //유저 비밀번호 확인
-    public function userInfo(Request $request){
+    public function getUserInfo(Request $request){
          return view('auth.profile');
     }
    
     
     //회원정보 수정 자기소개글 삽입 및 대표사진
-    public function updateProfile(Request $request){
+    public function putUpdateProfile(Request $request){
         
         
       if($request->file){
@@ -81,13 +81,13 @@ class UserController extends Controller
 
 
     //비밀번호 변경 폼
-    public function ChangePasswordFrom(){
+    public function getChanegePasswordFrom(){
         return view('auth.change_Password_Form');
     }
 
 
     //비밀번호 변경
-    public function updatePasswords(Request $request){
+    public function putUpdatePasswords(Request $request){
         
         $upw = $request->password;
         $new_pw = $request->new_password;
@@ -108,7 +108,7 @@ class UserController extends Controller
 
     
     //회원 탈퇴
-    public function destroy(Request $request){
+    public function getDestroy(Request $request){
       
         User::where('id',Auth::user()->id)->delete();
         $request->session()->flush();

@@ -10,6 +10,8 @@ use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Foundation\Auth\RegistersUsers;
+use Event;
+use App\Events\SendMail;
 
 class RegisterController extends Controller
 {
@@ -69,13 +71,11 @@ class RegisterController extends Controller
         $uage = $request->age;
         $uaddress = $request->address;
         $ucountry = $request->country;
-             
+      
+
         Session::put('newUser',$uname);
 
-        Mail::send(['html'=>'component.welcomeMail'],['name','Sathak'],function($message) use ($uemail,$uname){
-            $message->to($uemail,$uname.'님')->subject('안녕하세요 NEITTER입니다.');
-            $message->from('pyc2238@gmail.com','보근');
-        });
+        Event::fire(new SendMail($uemail,$uname));
         
         $request->session()->flush();
 
@@ -86,7 +86,7 @@ class RegisterController extends Controller
             'gender' => $ugender,
             'age' => $uage,
             'address' => $uaddress,
-            'country' => $ucountry
+            'country' => $ucountry,
         ]);
 
 

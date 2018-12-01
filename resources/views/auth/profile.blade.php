@@ -40,7 +40,7 @@
                 <br>
                 <div class="form-group">
                     <label for="comment">자기소개</label>
-                    <textarea class="form-control" rows="5" style="resize: none;" name="selfContext" autocomplete=off>{{Auth::user()->selfContext}}</textarea>
+                    <textarea class="form-control" rows="5" style="resize: none;" name="selfContext" autocomplete=off placeholder="간단한 자기소개글을 작성해보세요!..">{{Auth::user()->selfContext}}</textarea>
                 </div>
                 <br>
                 <br>
@@ -76,9 +76,15 @@
 
                     <div class="row">
                         <div class="col">
+                            @if(Auth::user()->selfPhoto == null)
+                            <img src="{{asset('data/ProjectImages/master/basics.jpg')}}" alt="selfPhoto" class="img-thumbnail"
+                                width="100%">
+                            <h4 class="text-center" style="margin-top:3%"><b>대표사진을 설정해주세요.</b></h4>
+                            @else
                             <img src="{{'/storage/slefPhoto/'.Auth::user()->selfPhoto}}" alt="selfPhoto" class="img-thumbnail"
                                 width="100%">
                             <h4 class="text-center" style="margin-top:3%"><b>대표사진</b></h4>
+                            @endif
                         </div>
                         <div class="col-7">
                             <h5 class="text-center" style="background-color:#ea314e;color:white;"><b>프로필</b></h5>

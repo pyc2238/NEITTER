@@ -68,7 +68,7 @@
             <!-- Add font awesome icons -->
             <a href="#" class="fa fa-facebook Social"></a>
             <a href="#" class="fa fa-twitter Social"></a>
-            <a href="#" class="fa fa-google Social"></a>
+        <a href="{{ url('/redirect') }}" class="fa fa-google Social"></a>
             <a href="#" class="fa fa-yahoo Social"></a>
         </div>
         <div class="col-sm"></div>
@@ -98,7 +98,7 @@ $(window).load(function()
                 </button>
             </div>
             <div class="modal-body">
-                <img src="https://ssl.pstatic.net/static/pwe/nm/st/cony_brown/50.png" alt="회원가입 성공">
+                <img src="https://vignette.wikia.nocookie.net/line/images/b/b5/10384549.gif/revision/latest?cb=20160318062245" alt="회원가입 성공">
             </div>
             <b class="text-center"> <a href="{{url('introduction')}}">사이트소개 바로가기</a></b>
             <div class="modal-footer">

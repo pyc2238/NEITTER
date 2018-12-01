@@ -18,6 +18,13 @@ class EventServiceProvider extends ServiceProvider
         Registered::class => [
             SendEmailVerificationNotification::class,
         ],
+        'App\Events\SendMail' => [
+            'App\Listeners\SendMailFired',
+        ],
+        'App\Events\SendMailResetPw' => [
+            'App\Listeners\SendMailResetPassword',
+        ],
+        
     ];
 
     /**

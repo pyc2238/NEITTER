@@ -18,6 +18,8 @@
                 <label for="inputPassword">현재 비밀번호</label>
                 <input type="password" id="inputPassword" name="password" class="form-control" autocomplete=off
                     required>
+                <br>
+                <br>
                 <label for="inputPassword">새 비밀번호</label>
                 <input type="password" id="inputPassword" name="new_password" class="form-control" autocomplete=off
                     required>

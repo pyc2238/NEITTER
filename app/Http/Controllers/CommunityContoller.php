@@ -144,10 +144,10 @@ class CommunityContoller extends Controller
             }
         
         $community = $this->communityModel->getMsg($id);
-        $translationTitle = $this->translation($community->title,0);
-        $translationContent = $this->translation($community->content,0);
+        $translationTitle = $this->translation($community->title,$this->langCode($community->title));
+        $translationContent = $this->translation($community->content,$this->langCode($community->title));
 
-        // $langCodeComment = $this->langCode($comments);
+       
         // $translation = $this->translation($comments,$langCodeComment);
 
         return
@@ -159,7 +159,6 @@ class CommunityContoller extends Controller
             ->with('comments',$comments)
             ->with('translationTitle',$translationTitle)
             ->with('translationContent',$translationContent);
-            // ->with('translation',$translation);
     }
 
     /**
@@ -237,7 +236,7 @@ class CommunityContoller extends Controller
     }
 
 
-    public function increaseCommend(Request $request,$id){
+    public function putIncreaseCommend(Request $request,$id){
         $page = $request->page;
         $search = $request->search;
         $where = $request->where;
@@ -256,7 +255,7 @@ class CommunityContoller extends Controller
     }
 
 
-    public function insertComment(Request $request,$id){
+    public function postInsertComment(Request $request,$id){
         $page = $request->page;
         $search = $request->search;
         $where = $request->where; 
@@ -271,7 +270,7 @@ class CommunityContoller extends Controller
     }
 
 
-    public function updateComment(Request $request,$id){
+    public function putUpdateComment(Request $request,$id){
         $page = $request->page;
         $search = $request->search;
         $where = $request->where;
@@ -281,7 +280,7 @@ class CommunityContoller extends Controller
         return redirect(route('community.show',['id'=>$id,'search'=>$search,'where'=>$where,'page'=>$page]));
     }
 
-    public function deleteComment(Request $request){
+    public function getDeleteComment(Request $request){
         $page = $request->page;
         
         $this->commentModel->deleteComments($request->id);
