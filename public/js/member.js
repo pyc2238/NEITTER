@@ -9,7 +9,7 @@ function checkName() {
 
     var name = document.getElementById("name").value; //uid의 id값을 가진 elements객체의 값을 userid변수에 저장
     if (name) {
-        url = "check_name?name=" + name; //userid의 값을 joinCheck.php에 넘겨준다.
+        url = "check-name?name=" + name; //userid의 값을 joinCheck.php에 넘겨준다.
         //팝업창 설정
         window.open(url, "chkid", 'status=no, width=300, height=100, left=' + popupX +
             ', top=' + popupY + ', screenX=' + popupX + ', screenY= ' + popupY);
@@ -30,3 +30,12 @@ function show_Banner(num) {
     }
 }
 
+function findCheckId(chkbox) {
+    if (chkbox.checked == true) {
+            document.getElementById("password").readOnly = true;
+         document.getElementById("password").value = "";
+    } else {
+         document.getElementById("password").readOnly = false;
+
+    }
+}

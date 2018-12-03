@@ -66,10 +66,10 @@
         <div class="col-sm"></div>
         <div class="col-sm text-center" style="margin-top:3%;margin-bottom:5%">
             <!-- Add font awesome icons -->
-            <a href="#" class="fa fa-facebook Social"></a>
-            <a href="#" class="fa fa-twitter Social"></a>
-        <a href="{{ url('/redirect') }}" class="fa fa-google Social"></a>
-            <a href="#" class="fa fa-yahoo Social"></a>
+            <a href="#" class="fa fa-facebook Social" title="facebook"></a>
+            <a href="#" class="fa fa-twitter Social" title="twitter"></a>
+        <a href="{{ url('/redirect') }}" class="fa fa-google Social" title="google"></a>
+            <a href="#" class="fa fa-yahoo Social" title="yahoo"></a>
         </div>
         <div class="col-sm"></div>
     </div>

@@ -1,6 +1,6 @@
 @extends('layouts.app')
 @section('title')
-회원 프로필
+소셜 회원 프로필
 @endsection
 @section('content')
 <div class="container content">
@@ -21,34 +21,27 @@
                     readonly>
                 <!--autocomplete 자동완성기능 off , autofocus , required-->
                 <br>
-                <br>
-
-                비밀번호 <a href="{{route('password.from',Auth::user()->id)}}"><b>[ 비밀번호 변경 ]</b></a>
-                <br>
-                <br>
 
                 <i class="fa fa-exclamation-circle"><label for="inputNickname">닉네임</label></i>
                 <input style="color:blue;" type="text" name="name" class="form-control" value="{{Auth::user()->name}}"
                     readonly>
                 <br>
-                <br>
+
 
                 <div class="form-row">
-                        <div class="form-group col-md-6">
-                            <label>나이</label>
-                            <input type="number" class="form-control" name="age" value="{{Auth::user()->age}}" min="1"
-                                max="120" required>
-                        </div> <!-- form-group end.// -->
-                        <div class="form-group col-md-6">
-                            <label>성별</label>
-                            <select id="inputState" class="form-control" name="gender" required>
-                                <option selected value="남자">남자</option>
-                                <option value="여자">여자</option>
-                            </select>
-                        </div> <!-- form-group end.// -->
-                    </div> <!-- form-row.// -->
-                <br>
-                <br>
+                    <div class="form-group col-md-6">
+                        <label>나이</label>
+                        <input type="number" class="form-control" name="age" value="{{Auth::user()->age}}" min="1" max="120"
+                            required>
+                    </div> <!-- form-group end.// -->
+                    <div class="form-group col-md-6">
+                        <label>성별</label>
+                        <select id="inputState" class="form-control" name="gender" required>
+                            <option selected value="남자">남자</option>
+                            <option value="여자">여자</option>
+                        </select>
+                    </div> <!-- form-group end.// -->
+                </div> <!-- form-row.// -->
 
                 <div class="form-row">
                     <div class="form-group col-md-6">
@@ -59,17 +52,15 @@
                     <div class="form-group col-md-6">
                         <label>국적</label>
                         <select id="inputState" class="form-control" name="country" required>
-                            <option value="한국">한국</option>
+                            <option selected value="한국">한국</option>
                             <option value="일본">일본</option>
                         </select>
                     </div> <!-- form-group end.// -->
                 </div> <!-- form-row.// -->
-                <br>
-                <br>
+
 
                 <label for="exampleFormControlFile1">대표사진</label>
                 <input type="file" name="file" class="form-control-file" id="exampleFormControlFile1">
-                <br>
                 <br>
 
                 <div class="form-group">
@@ -78,8 +69,7 @@
                         placeholder="간단한 자기소개글을 작성해보세요!..">{{Auth::user()->selfContext}}</textarea>
                 </div>
                 <br>
-                <br>
-                <br>
+
                 <div id="joinBtnBox">
                     <button class="btn btn-outline-warning " type="submit"><i class="fa fa-pencil">수정</i></button>
                     <button class="btn btn-outline-warning " type="button" onclick="location.href ='{{route('destroy')}}'"><i

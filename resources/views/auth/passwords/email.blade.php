@@ -12,7 +12,7 @@
         <div class="row find_div">
             <div class="col-sm"></div>
             <!--첫번 째 그리드 박스-->
-            <div class="col-sm" style="padding-top:3%">
+            <div class="col-sm" style="padding-top:4%">
                 @include('component.siteImage')
 
                 <script language="javascript">

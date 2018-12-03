@@ -22,12 +22,14 @@ Route::get('introduction','SubController@getIntroduction');//사이트 소개
 /*로그인 및 회원가입*/
 Auth::routes();
 Route::get('/home', 'HomeController@index')->name('home');
+
 /*google ouath*/
 Route::get('/redirect', 'SubController@redirect');
 Route::get('/callback', 'SubController@callback');
+Route::get('socialite/register','SubController@getRegister')->name('socialite.register');  
 
 /*닉네임 중복체크*/
-Route::get('check_name','UserController@getUserName');
+Route::get('check-name','UserController@getUserName');
 /*아이디/ 비밀번호 찾기 처리*/ 
 Route::post('reset','UserController@postFindPassword')->name('reset');    
 
@@ -35,9 +37,11 @@ Route::post('reset','UserController@postFindPassword')->name('reset');
 Route::group(['middleware' => ['auth']], function () { 
     
     /*유저 체크*/ 
-    Route::get('user/check','SubController@getUser')->name('CheckUser');
+    Route::get('user/check','SubController@getUser')->name('checkUser');
     /*내정보 보기*/   
-    Route::any('user/{id}','UserController@getUserInfo')->name('UserInfo')->middleware('user');   
+    Route::any('user/{id}','UserController@getUserInfo')->name('userInfo')->middleware('user'); 
+    /*소셜라이트 회원 정보 보기*/
+    Route::any('socialiteUser','SubController@getUserInfo')->name('socialite.userInfo');     
     /*내정보 수정*/
     Route::put('update','UserController@putUpdateProfile')->name('update');
     /*회원 탈퇴 처리*/

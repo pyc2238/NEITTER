@@ -25,6 +25,7 @@ class User extends Authenticatable
         'address',
         'country',
         'email',
+        'socialite',
     ];
    
     /**
@@ -60,9 +61,17 @@ class User extends Authenticatable
             ->update(['password' => Hash::make($newPw)]);
     }
 
-    public function updateSelfContext($selfContext){
+    public function updateProfile($gender,$age,$address,$country,$selfContext){
+
+
         $this::where('id',Auth::user()->id)
-            ->update(['selfContext' => $selfContext]);
+            ->update([
+                'gender' => $gender,
+                'age' => $age,
+                'address' => $address,
+                'country' => $country,
+                'selfContext' => $selfContext
+                ]);
     }
 
     public function updatePassword($password){
@@ -74,4 +83,6 @@ class User extends Authenticatable
         $this::where('id',Auth::user()->id)
             ->update(['selfPhoto' => $file]);
     }
+
+  
 }

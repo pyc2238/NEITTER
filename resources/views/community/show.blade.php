@@ -58,7 +58,8 @@
                 <button class='btn btn-warning'><b>일본어로 보기</b></button>
                 <div style="display:none; border:1px dashed gray;">
                     <div>
-                        <h4> {{$translationTitle}}</h4>
+                        <br>
+                        <h4> <b>{{$translationTitle}}</b></h4>
                         <br>
                         <br>
                         <br>
@@ -141,10 +142,12 @@
                     </p>
                     <p class='float-right' style='font-size:15px; '>
                         {{$comment->created_at}}
-                        @if(Auth::user()->name == $comment->user->name))
-                        <i class="fa fa-edit updateBtn pnt" style='color:blue' title='수정' id="updateBtn{{$comment->id}}"></i>
-                        <i class="fa fa-trash pnt" style='color:red' title='삭제' onclick="choiceComment({{$comment->id}},{{ $page }})"></i>
+                    
+                        @if(Auth::check() && Auth::user()->name == $comment->user->name)
+                            <i class="fa fa-edit updateBtn pnt" style='color:blue' title='수정' id="updateBtn{{$comment->id}}"></i>
+                            <i class="fa fa-trash pnt" style='color:red' title='삭제' onclick="choiceComment({{$comment->id}},{{ $page }})"></i>
                         @endif
+                
                     </p>
 
                 </div>

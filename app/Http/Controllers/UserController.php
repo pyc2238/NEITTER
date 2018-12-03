@@ -71,9 +71,13 @@ class UserController extends Controller
         $request->file->storeAs('public/slefPhoto',$file_name);
         $this->userModel->updateFile($file_name);  
       }
+    
+      
+      $this->userModel->updateProfile($request->gender,$request->age,$request->address,$request->country,$request->selfContext);
+      
 
-      $this->userModel->updateSelfContext($request->selfContext);
-        
+      
+
         return 
             redirect('home')
             ->with('message','회원정보가 수정되었습니다.');
