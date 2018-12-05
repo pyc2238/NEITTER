@@ -33,6 +33,7 @@
     {{-- font-awesome --}}
     <link rel="stylesheet" href="{{asset('data/icon/css/font-awesome.min.css')}}">
     <script src="{{asset('/data/ckeditor/ckeditor.js')}}"></script>
+    
     {{-- member css --}}
     <link rel="stylesheet" href="{{asset('/css/member.css')}}">
 

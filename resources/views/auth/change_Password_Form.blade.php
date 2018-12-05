@@ -12,7 +12,7 @@
         <!--첫번 째 그리드 박스-->
         <div class="col-sm">
 
-            <form action="{{route('password.updatePassword',Auth::user()->id)}}" method="post">
+            <form action="{{route('user.updatePassword',Auth::user()->id)}}" method="post">
                 @csrf
                 @method('put')
                 <label for="inputPassword">현재 비밀번호</label>

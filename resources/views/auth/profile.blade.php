@@ -13,7 +13,7 @@
         <!--첫번째 그리드 박스-->
         <div class="col-sm">
 
-            <form action="{{route('update')}}" method="post" style="margin-top:8%;margin-bottom:8%" enctype="multipart/form-data">
+            <form action="{{route('user.update')}}" method="post" style="margin-top:8%;margin-bottom:8%" enctype="multipart/form-data">
                 @method('PUT')
                 @csrf
                 <i class="fa fa-exclamation-circle"><label for="inputEmail">이메일</label></i>
@@ -23,7 +23,7 @@
                 <br>
                 <br>
 
-                비밀번호 <a href="{{route('password.from',Auth::user()->id)}}"><b>[ 비밀번호 변경 ]</b></a>
+                비밀번호 <a href="{{route('user.passwordFrom',Auth::user()->id)}}"><b>[ 비밀번호 변경 ]</b></a>
                 <br>
                 <br>
 
@@ -82,7 +82,7 @@
                 <br>
                 <div id="joinBtnBox">
                     <button class="btn btn-outline-warning " type="submit"><i class="fa fa-pencil">수정</i></button>
-                    <button class="btn btn-outline-warning " type="button" onclick="location.href ='{{route('destroy')}}'"><i
+                    <button class="btn btn-outline-warning " type="button" onclick="location.href ='{{route('user.destroy')}}'"><i
                             class="fa fa-trash">회원탈퇴</i></button>
                     <button class="btn btn-outline-danger float-right" type='button'><i class="fa fa-database"
                             data-toggle="modal" data-target="#Modal-large-demo">내정보</i></button>

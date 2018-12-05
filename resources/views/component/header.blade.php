@@ -47,7 +47,7 @@
         <a href="{{route('logout')}}" onclick="event.preventDefault();
             document.getElementById('logout-form').submit();"
             class=""><i class="fa fa-sign-out">로그아웃</i></a>
-        <a href="{{route('checkUser')}}"><i class="fa fa-cogs">내정보</i></a>
+        <a href="{{route('user.check')}}"><i class="fa fa-cogs">내정보</i></a>
         <a href=""><i class="fa fa-envelope">쪽지</i></a>
         <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
             @csrf

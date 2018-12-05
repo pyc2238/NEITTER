@@ -35,6 +35,12 @@
     background-color: white;
 }
 
+#commentBox{
+    background-color:white;
+    border:1px solid #bcbcbc;
+    margin-top:1%;
+}
+
 div>#comments {
     margin-top: 1%;
     background-color: white;

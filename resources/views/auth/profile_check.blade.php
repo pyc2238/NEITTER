@@ -12,7 +12,7 @@
         <!--첫번 째 그리드 박스-->
         <div class="col-sm">
 
-            <form action="{{route('userInfo',Auth::user()->id)}}" method="post">
+            <form action="{{route('user.info',Auth::user()->id)}}" method="post">
                 @csrf
                 <b>회원이메일</b><b style="color:blue;">
                     {{Auth::user()->email}}</b>

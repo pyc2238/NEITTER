@@ -19,7 +19,7 @@
                     var R=Math.floor(Math.random()*16);
                 show_Banner(R);
             </script>
-                <form action="{{route('reset')}}" class='form-group find_form' method="post">
+                <form action="{{route('user.reset')}}" class='form-group find_form' method="post">
                     @csrf
                     <h1 class="h3 mb-3 font-weight-normal text-center">Please enter your email</h1>
                     <i class="fa fa-envelope"><label for="inputPassword">이메일</label></i>

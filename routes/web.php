@@ -26,30 +26,31 @@ Route::get('/home', 'HomeController@index')->name('home');
 /*google ouath*/
 Route::get('/redirect', 'SubController@redirect');
 Route::get('/callback', 'SubController@callback');
+/*소셜라이트 유저 추가정보 양식*/ 
 Route::get('socialite/register','SubController@getRegister')->name('socialite.register');  
 
 /*닉네임 중복체크*/
 Route::get('check-name','UserController@getUserName');
 /*아이디/ 비밀번호 찾기 처리*/ 
-Route::post('reset','UserController@postFindPassword')->name('reset');    
+Route::post('reset','UserController@postFindPassword')->name('user.reset');    
 
 /*유저 정보*/
 Route::group(['middleware' => ['auth']], function () { 
     
     /*유저 체크*/ 
-    Route::get('user/check','SubController@getUser')->name('checkUser');
+    Route::get('user/check','SubController@getUser')->name('user.check');
     /*내정보 보기*/   
-    Route::any('user/{id}','UserController@getUserInfo')->name('userInfo')->middleware('user'); 
+    Route::any('user/{id}','UserController@getUserInfo')->name('user.info')->middleware('user'); 
     /*소셜라이트 회원 정보 보기*/
     Route::any('socialiteUser','SubController@getUserInfo')->name('socialite.userInfo');     
     /*내정보 수정*/
-    Route::put('update','UserController@putUpdateProfile')->name('update');
+    Route::put('update','UserController@putUpdateProfile')->name('user.update');
     /*회원 탈퇴 처리*/
-    Route::get('destroy','UserController@getDestroy')->name('destroy');
+    Route::get('destroy','UserController@getDestroy')->name('user.destroy');
     /*비밀번호 변경 폼*/       
-    Route::get('password/{id}','UserController@getChanegePasswordFrom')->name('password.from');
+    Route::get('password/{id}','UserController@getChanegePasswordFrom')->name('user.passwordFrom');
     /*회원 비밀번호 변경*/
-    Route::put('update/{id}','UserController@putUpdatePasswords')->name('password.updatePassword');
+    Route::put('update/{id}','UserController@putUpdatePasswords')->name('user.updatePassword');
 });
 
 
@@ -61,8 +62,6 @@ Route::group(['middleware' => ['comment']], function () {
     /*댓글 작성*/
     Route::post('community/comment/{id}','CommunityContoller@postInsertComment')->name('community.comment'); 
     Route::put('community/comment/{id}','CommunityContoller@putUpdateComment')->name('community.comment.update');
-    Route::get('/comment/{id}','CommunityContoller@getDeleteComment');
+    Route::get('/comment/{id}','CommunityContoller@getDeleteComment')->name('community.comment.delete');
 });
-
-
 

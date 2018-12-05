@@ -20,6 +20,8 @@ class CommunityContoller extends Controller
         $this->hitsModel = new Communities_hit();
         $this->ipsModel = new Communities_ip();
         $this->commentModel = new Communities_Comment();
+        $this->middleware('loginCheck')->only(['edit','destroy']);
+        
     }
 
     /**
@@ -127,7 +129,7 @@ class CommunityContoller extends Controller
         $search = $request->search;
         $where = $request->where;
         $comments = $this->commentModel->getComments($id);
-        
+        $commentCount = count($comments);
         $ip = $this->ipsModel->getHitsIp($request->getClientIp(),$id); //사용자의 ip값으로 레코드를 받아온다.
         
         if(!Auth::check()){ //사용자의 로그인 여부 판단
@@ -144,11 +146,12 @@ class CommunityContoller extends Controller
             }
         
         $community = $this->communityModel->getMsg($id);
+        // return $community->title;
         $translationTitle = $this->translation($community->title,$this->langCode($community->title));
         $translationContent = $this->translation($community->content,$this->langCode($community->title));
 
        
-        // $translation = $this->translation($comments,$langCodeComment);
+      
 
         return
             view('community.show')
@@ -157,6 +160,7 @@ class CommunityContoller extends Controller
             ->with('search',$search)
             ->with('where',$where)
             ->with('comments',$comments)
+            ->with('commentCount',$commentCount)
             ->with('translationTitle',$translationTitle)
             ->with('translationContent',$translationContent);
     }
@@ -174,10 +178,7 @@ class CommunityContoller extends Controller
         $search = $request->search;
         $where = $request->where;
         $user = $this->communityModel->getMsg($id);
-         
-        if(!Auth::check()){
-            return back()->with('message','로그인 후 사용가능합니다.');
-        }else if(Auth::user()->id == $user->user_id ){
+        if(Auth::user()->id == $user->user_id ){
             return 
                 view('community.edit')
                 ->with('page',$page)
@@ -189,8 +190,6 @@ class CommunityContoller extends Controller
         }else{
             return back()->with('message','수정권한이 없습니다.');
         }   
-
-       
     }
 
     /**
@@ -225,9 +224,7 @@ class CommunityContoller extends Controller
         $where = $request->where;
         $user = $this->communityModel->getMsg($id);
         
-        if(!Auth::check()){
-            return back()->with('message','로그인 후 사용가능합니다.');
-        }else if(Auth::user()->id == $user->user_id ){
+         if(Auth::user()->id == $user->user_id ){
             $this->communityModel->deleteMsg($id);
             return redirect(route('community.index',['search'=>$search,'where'=>$where,'page'=>$page]));
         }else{
@@ -263,7 +260,7 @@ class CommunityContoller extends Controller
         
         $this->commentModel->insertComment($request->comment,Auth::user()->country,$id,Auth::user()->id);
     
-        // return $comments;
+      
         // return response()->json($comments, 200, [], JSON_PRETTY_PRINT);
         
         return redirect(route('community.show',['id'=>$id,'search'=>$search,'where'=>$where,'page'=>$page]));
@@ -280,14 +277,24 @@ class CommunityContoller extends Controller
         return redirect(route('community.show',['id'=>$id,'search'=>$search,'where'=>$where,'page'=>$page]));
     }
 
-    public function getDeleteComment(Request $request){
+    public function getDeleteComment(Request $request,$id){
         $page = $request->page;
-        
-        $this->commentModel->deleteComments($request->id);
-        return redirect(route('community.show',['page'=>$page]));
+        $search = $request->search;
+        $where = $request->where;
+        $this->commentModel->deleteComments($request->commentId);
+        return redirect(route('community.show',['id'=>$id,'search'=>$search,'where'=>$where,'page'=>$page]));
     }
 
-   
+
+    public function fetch_data(Request $request){
+        if($request->ajax()){
+            $msgs = Coumminty::orderBy('num','desc')->paginate(2);
+            return view('community.component.indexTable',compact('msgs'))->render();
+        }
+    }
+
+
+
 
     //언어 감지
     public static function langCode($papago){
