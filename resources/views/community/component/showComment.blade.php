@@ -2,6 +2,7 @@
 <div class='container' id='commentBox'>
 
     @foreach($comments as $comment)
+   
     <div class="row" style='margin-top:1%;'>
         <div class="col">
         </div>

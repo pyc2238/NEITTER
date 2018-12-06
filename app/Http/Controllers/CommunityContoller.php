@@ -146,10 +146,11 @@ class CommunityContoller extends Controller
             }
         
         $community = $this->communityModel->getMsg($id);
-        // return $community->title;
+        
         $translationTitle = $this->translation($community->title,$this->langCode($community->title));
         $translationContent = $this->translation($community->content,$this->langCode($community->title));
-
+         
+        
         return
             view('community.show')
             ->with('community',$community)
@@ -160,7 +161,7 @@ class CommunityContoller extends Controller
             ->with('commentCount',$commentCount)
             ->with('translationTitle',$translationTitle)
             ->with('translationContent',$translationContent);
-    }
+        }
 
     /**
      * Show the form for editing the specified resource.

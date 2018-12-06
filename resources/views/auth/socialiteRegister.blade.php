@@ -12,8 +12,9 @@
         <div class="col-sm"> </div>
         <!--첫번째 그리드 박스-->
         <div class="col-sm">
-
-            <form action="{{ url('/redirect') }}" method="get" style="margin-top:8%;margin-bottom:8%" enctype="multipart/form-data">
+            
+            
+        <form action="{{route('socialite.login',['social'=>Session::get('social')])}}" method="get" style="margin-top:8%;margin-bottom:8%" enctype="multipart/form-data">
                 @csrf
 
 

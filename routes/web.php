@@ -24,8 +24,11 @@ Auth::routes();
 Route::get('/home', 'HomeController@index')->name('home');
 
 /*google ouath*/
-Route::get('/redirect', 'SubController@redirect');
-Route::get('/callback', 'SubController@callback');
+Route::get('login/{social}', 'Auth\LoginController@redirect')->name('socialite.login');
+Route::get('/callback', 'Auth\LoginController@callback')->name('socialite.callback');
+
+
+
 /*소셜라이트 유저 추가정보 양식*/ 
 Route::get('socialite-register','SubController@getRegister')->name('socialite.register');  
 

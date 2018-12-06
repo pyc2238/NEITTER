@@ -40,9 +40,15 @@ return [
         ],
     ],
     'google' => [
-        'client_id' => env('GOOGLE_ID'),         // Your GitHub Client ID
-        'client_secret' => env('GOOGLE_SECRET'), // Your GitHub Client Secret
+        'client_id' => env('GOOGLE_ID'),         
+        'client_secret' => env('GOOGLE_SECRET'), 
         'redirect' => env('GOOGLE_URL'),
+    ],
+
+    'twitter' => [
+        'client_id'     => env('TWITTER_ID'),
+        'client_secret' => env('TWITTER_SECRET'),
+        'redirect'      => env('TWITTER_URL'),
     ],
 
 ];
