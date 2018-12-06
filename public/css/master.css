@@ -60,20 +60,36 @@ body {
     width: 50%;
     align-items: center;
     padding-left: 10rem;
+   
 }
 
-#homeImg:hover,
-#homeImg:active {
-    content: url('/data/ProjectImages/master/home2.png');
+#home{
+    font-size:21px;
+    color: black;
+}
+#search{
+    font-size:20px;
+    color: black;
+    margin-left:2%;
+}
+
+#home:hover,
+#home:active {
+    color:#ea314e;
+    text-decoration: none;
+    /* content: url('/data/ProjectImages/master/home2.png'); */
+}
+#search:hover,
+#search:active {
+    color:#ea314e;
+    text-decoration: none;
+    /* content: url('/data/ProjectImages/master/home2.png'); */
 }
 
 #searchImg{
     margin-left:2%;
 }
-#searchImg:hover,
-#searchImg:active {
-    content: url('/data/ProjectImages/master/search2.png');
-}
+
 
 
 .userInfo {

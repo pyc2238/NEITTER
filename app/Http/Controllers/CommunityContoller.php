@@ -150,9 +150,6 @@ class CommunityContoller extends Controller
         $translationTitle = $this->translation($community->title,$this->langCode($community->title));
         $translationContent = $this->translation($community->content,$this->langCode($community->title));
 
-       
-      
-
         return
             view('community.show')
             ->with('community',$community)
@@ -294,12 +291,9 @@ class CommunityContoller extends Controller
     }
 
 
-
-
-    //언어 감지
+    //언어 감지 Papago
     public static function langCode($papago){
    
-        //네이버 Papago 언어감지 Open API 
         $client_id = "GsqdMHiH8jYipihfkH23";
         $client_secret = "49rHFbtM4x";
         $encQuery = urlencode($papago);
@@ -330,11 +324,11 @@ class CommunityContoller extends Controller
         return $langCode;    
     }
 
-    //언어 변환
+    //언어 변환 Papago SMT 
     public static function translation($papago,$langCode) {
-          // 네이버 Papago SMT 기계번역 Open API 
-          $client_id = "XhF4hpyBJquD0uxxiIT9"; // 네이버 개발자센터에서 발급받은 CLIENT ID
-          $client_secret = "v15ft5DNeN";// 네이버 개발자센터에서 발급받은 CLIENT SECRET
+
+          $client_id = "XhF4hpyBJquD0uxxiIT9";
+          $client_secret = "v15ft5DNeN";
           $encText = urlencode($papago);
           
 

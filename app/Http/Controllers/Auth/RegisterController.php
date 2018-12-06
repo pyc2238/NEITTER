@@ -12,6 +12,7 @@ use Illuminate\Support\Facades\Validator;
 use Illuminate\Foundation\Auth\RegistersUsers;
 use Event;
 use App\Events\SendMail;
+use Auth;
 
 class RegisterController extends Controller
 {
@@ -26,6 +27,8 @@ class RegisterController extends Controller
     |
     */
 
+
+   
     use RegistersUsers;
 
     /**
@@ -65,13 +68,11 @@ class RegisterController extends Controller
 
         $uname = $request->name;
         $uemail = $request->email;
-       
         $upassword = $request->password;
         $ugender = $request->gender; 
         $uage = $request->age;
         $uaddress = $request->address;
         $ucountry = $request->country;
-      
 
         Session::put('newUser',$uname);
 

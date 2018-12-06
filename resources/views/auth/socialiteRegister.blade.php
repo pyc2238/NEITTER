@@ -16,6 +16,20 @@
             <form action="{{ url('/redirect') }}" method="get" style="margin-top:8%;margin-bottom:8%" enctype="multipart/form-data">
                 @csrf
 
+
+                <label for="name">닉네임</label>
+                <input id="name" class="form-control" name="name" value="{{ old('name') }}" autocomplete=off
+                    placeholder="Nickname" required>
+
+                <div class="checkId">
+                    <input type="button" value="중복검사" onclick="checkName();" class="btn btn-primary" />
+                    <input type="hidden" value="0" name="chs" />
+                </div>
+
+                <br>
+                <br>
+                <br>
+
                 <div class="form-row">
                     <div class="form-group col-md-6">
                         <label>나이</label>
@@ -30,6 +44,8 @@
                         </select>
                     </div> <!-- form-group end.// -->
                 </div> <!-- form-row.// -->
+
+                <br>
                 <br>
                 <br>
                 <div class="form-row">
@@ -46,30 +62,20 @@
                         </select>
                     </div> <!-- form-group end.// -->
                 </div> <!-- form-row.// -->
-                <br>
-                <br>
-                <div class="form-group">
-                    <label for="comment">자기소개</label>
-                    <textarea class="form-control" rows="5" style="resize: none;" name="selfContext" autocomplete=off
-                        placeholder="간단한 자기소개글을 작성해보세요!.."></textarea>
-                </div>
-                <br>
-                <br>
-                <div id="joinBtnBox">
-                    <button class="btn btn-outline-warning" type="submit"><i class="fa fa-pencil">가입</i></button>
-                    <button class="btn btn-outline-warning " type="reset"><i class="fa fa-eraser">다시쓰기</i></button>
 
+                <br>
+                <br>
+                <br>
+
+                <div class="col text-center" style=" margin-bottom:5px">
+                    <button class="btn btn-outline-warning " type="submit"><i class="fa fa-pencil">가입</i></button>
+                    <button class="btn btn-outline-warning " type="reset"><i class="fa fa-eraser">다시쓰기</i></button>
                 </div>
             </form>
         </div>
 
         <div class="col-sm"></div>
-
     </div>
-
-
-
-
 </div>
 
 @endsection

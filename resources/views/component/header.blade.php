@@ -33,10 +33,8 @@
 
 <div class=" headcontainer">
     <div class="home">
-        <a href="{{ url('/') }}"><img id="homeImg" src="{{asset('data/ProjectImages/master/home.png')}}" alt="homeLogo"
-                ondragstart="return false"></a>
-        <a href="#"><img id="searchImg" src="{{asset('data/ProjectImages/master/search.png')}}" alt="searchLogo"
-                ondragstart="return false"></a>
+        <a href="{{ url('/') }}"><i class="fa fa-home" id="home" ></i> </a>
+        <a href="#"><i class="fa fa-search" id="search" ></i> </a>
     </div>
 
 

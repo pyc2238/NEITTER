@@ -27,7 +27,7 @@ Route::get('/home', 'HomeController@index')->name('home');
 Route::get('/redirect', 'SubController@redirect');
 Route::get('/callback', 'SubController@callback');
 /*소셜라이트 유저 추가정보 양식*/ 
-Route::get('socialite/register','SubController@getRegister')->name('socialite.register');  
+Route::get('socialite-register','SubController@getRegister')->name('socialite.register');  
 
 /*닉네임 중복체크*/
 Route::get('check-name','UserController@getUserName');
@@ -51,6 +51,7 @@ Route::group(['middleware' => ['auth']], function () {
     Route::get('password/{id}','UserController@getChanegePasswordFrom')->name('user.passwordFrom');
     /*회원 비밀번호 변경*/
     Route::put('update/{id}','UserController@putUpdatePasswords')->name('user.updatePassword');
+
 });
 
 
@@ -61,7 +62,9 @@ Route::group(['middleware' => ['comment']], function () {
     Route::put('community/increaseCommend/{id}','CommunityContoller@putIncreaseCommend')->name('community.increaseCommend');
     /*댓글 작성*/
     Route::post('community/comment/{id}','CommunityContoller@postInsertComment')->name('community.comment'); 
+    /* 댓글 수정*/
     Route::put('community/comment/{id}','CommunityContoller@putUpdateComment')->name('community.comment.update');
+    /* 댓글 삭제*/
     Route::get('/comment/{id}','CommunityContoller@getDeleteComment')->name('community.comment.delete');
 });
 

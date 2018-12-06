@@ -32,12 +32,14 @@
     <link rel="stylesheet" href="{{asset('/css/master.css')}}">
     {{-- font-awesome --}}
     <link rel="stylesheet" href="{{asset('data/icon/css/font-awesome.min.css')}}">
+    {{-- ckeditor --}}
     <script src="{{asset('/data/ckeditor/ckeditor.js')}}"></script>
-    
     {{-- member css --}}
     <link rel="stylesheet" href="{{asset('/css/member.css')}}">
 
-    <title>@yield('title')</title>
+    <title>
+        @yield('title')
+    </title>
 </head>
 
 
@@ -77,7 +79,7 @@
 
 @include('component.header')
 
-<body>
+<body> 
     @yield('content')
 </body>
 

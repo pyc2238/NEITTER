@@ -45,12 +45,10 @@ class User extends Authenticatable
         return $this->hasMany(Communities_Comment::class);
     }
 
-
-
-
     public function getName($name){
         return $this::where('name',$name)->first();  
     }
+    
 
     public function getEmail($email){
         return $this::where('email',$email)->first();

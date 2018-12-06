@@ -27,18 +27,16 @@ class SubController extends Controller
         return view('auth.socialiteProfile');
     }
 
-
-
-
+    
     /*구글 로그인 */
     public function redirect(Request $request)
     {
-        
+        Session::put('name',$request->name);
         Session::put('age',$request->age);
         Session::put('gender',$request->gender);
         Session::put('address',$request->address);
         Session::put('country',$request->country);
-        Session::put('selfContext',$request->selfContext);
+        
         
         return Socialite::driver('google')->redirect();
     }
@@ -64,14 +62,12 @@ class SubController extends Controller
                 }  
 
                 $user = new User;
-                $user->name = $googleUser->name;
+                $user->name = Session::get('name');
                 $user->email = $googleUser->email;
-                $user->password = md5(rand(1,10000));
                 $user->gender = Session::get('gender');
                 $user->age = Session::get('age');
                 $user->address = Session::get('address');
                 $user->country = Session::get('country');
-                $user->selfContext = Session::get('selfContext');
                 $user->socialite = 1;
                 $user->save();
                 Session::put('newUser',$googleUser->name);
