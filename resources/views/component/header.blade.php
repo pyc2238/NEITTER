@@ -51,7 +51,8 @@
             @csrf
         </form>
     </div>
-    @else
+    @endif
+    @unless(Auth::check())
     <div class="userInfo">
         <a href="{{ route('login') }}"><i class="fa fa-check">로그인</i></a>
 
@@ -59,7 +60,7 @@
 
         <a href="{{ route('password.request') }}"><i class="fa fa-question-circle">비밀번호 찾기/변경</i></a>
     </div>
-    @endif
+    @endunless
 </div>
 
 

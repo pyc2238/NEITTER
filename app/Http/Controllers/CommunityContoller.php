@@ -11,6 +11,7 @@ use App\Communities_commends;
 use App\Communities_hit;
 use App\Communities_ip;
 use App\Communities_Comment;
+use Illuminate\Support\Facades\DB;
 
 class CommunityContoller extends Controller
 {
@@ -62,6 +63,8 @@ class CommunityContoller extends Controller
                     break;    
             }
         }
+
+        $autoSearch = $this->communityModel->select('title')->get(); //테이블 자동 검색창
       
         return 
             view('community.index')
@@ -69,7 +72,8 @@ class CommunityContoller extends Controller
             ->with('search',$search)
             ->with('where',$where)
             ->with('msgs',$msgs)
-            ->with('count',$count);
+            ->with('count',$count)
+            ->with('autoSearch',$autoSearch);
     }
 
     /**

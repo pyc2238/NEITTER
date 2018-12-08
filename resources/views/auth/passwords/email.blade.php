@@ -16,7 +16,7 @@
                 @include('component.siteImage')
 
                 <script language="javascript">
-                    var R=Math.floor(Math.random()*16);
+                    var R=Math.floor(Math.random()*17);
                 show_Banner(R);
             </script>
                 <form action="{{route('user.reset')}}" class='form-group find_form' method="post">

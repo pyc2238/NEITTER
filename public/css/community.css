@@ -340,6 +340,11 @@ small {
     margin-right: 3px;
 }
 
+.thead{
+    background-color:#c1bbbb;
+    color:white;
+}
+
 /* 검색버튼 */
 .button {
 

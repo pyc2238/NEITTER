@@ -14,7 +14,8 @@
         <div class="col-sm">
             
             
-        <form action="{{route('socialite.login',['social'=>Session::get('social')])}}" method="get" style="margin-top:8%;margin-bottom:8%" enctype="multipart/form-data">
+            
+        <form action="{{ url("socialauth/".Session::get('social')) }}" method="get" style="margin-top:8%;margin-bottom:8%" enctype="multipart/form-data">
                 @csrf
 
 

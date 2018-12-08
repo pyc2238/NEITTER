@@ -24,8 +24,8 @@ Auth::routes();
 Route::get('/home', 'HomeController@index')->name('home');
 
 /*google ouath*/
-Route::get('login/{social}', 'Auth\LoginController@redirect')->name('socialite.login');
-Route::get('/callback', 'Auth\LoginController@callback')->name('socialite.callback');
+Route::get('socialauth/{social}', 'Auth\LoginController@redirect');
+Route::get('socialauth/{social}/callback', 'Auth\LoginController@callback');
 
 
 

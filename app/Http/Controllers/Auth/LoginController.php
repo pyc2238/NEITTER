@@ -48,24 +48,24 @@ class LoginController extends Controller
      /*구글 로그인 */
      public function redirect(Request $request,$social)
      {
-         Session::put('social',$social);
+         
+        
+         Session::put('social',$social); 
          Session::put('name',$request->name);
          Session::put('age',$request->age);
          Session::put('gender',$request->gender);
          Session::put('address',$request->address);
          Session::put('country',$request->country);
          
-         
+       
          return Socialite::driver($social)->redirect();
      }
  
  
-     public function callback(Request $request)
+     public function callback(Request $request,$social)
      {
-         
- 
-         $social = Session::get('social');
- 
+        
+        
          try {
              $socialiteLogin = true;            
              

@@ -107,3 +107,20 @@ function fnMove() {
         scrollTop: offset.top
     }, 400);
 }
+
+function searchDB(getDB) {
+    var availableTags = [];
+    var getDB = getDB;
+
+    for (var i in getDB) {
+        for (var j in getDB[i]) {
+            availableTags.push([getDB[i][j]]);
+        }
+    }
+    $(document).ready(function () {
+        $("#inputText").autocomplete(availableTags, {
+            matchContains: true,
+            selectFirst: false
+        });
+    });
+}

@@ -17,7 +17,7 @@
                 @include('component.siteImage')
 
                 <script language="javascript">
-                    var R=Math.floor(Math.random()*16);
+                    var R=Math.floor(Math.random()*17);
                         show_Banner(R);
                 </script>
 
@@ -66,9 +66,9 @@
         <div class="col-sm"></div>
         <div class="col-sm text-center" style="margin-top:3%;margin-bottom:5%">
             <!-- Add font awesome icons -->
-            <a href="#" class="fa fa-facebook Social" title="facebook"></a>
+            <a href="{{ url('socialauth/github') }}" class="fa fa-github Social" title="github"></a>
         <a href="#" class="fa fa-twitter Social" title="twitter"></a>
-        <a href="{{ route('socialite.login',['social'=>'google']) }}" class="fa fa-google Social" title="google"></a>
+        <a href="{{ url('socialauth/google') }}" class="fa fa-google Social" title="google"></a>
             <a href="#" class="fa fa-yahoo Social" title="yahoo"></a>
         </div>
         <div class="col-sm"></div>
@@ -98,7 +98,7 @@ $(window).load(function()
                 </button>
             </div>
             <div class="modal-body">
-                <img src="https://vignette.wikia.nocookie.net/line/images/b/b5/10384549.gif/revision/latest?cb=20160318062245" alt="회원가입 성공">
+                <img width="100%" src="https://1.bp.blogspot.com/-4wFqJEBc_8o/WhYrKpjHUEI/AAAAAAAKPE4/aRPRv_-MYrowlgVT7r_8H1URKzXjvCuawCLcBGAs/s1600/AS003339_05.gif" alt="회원가입 성공">
             </div>
             <b class="text-center"> <a href="{{url('introduction')}}">사이트소개 바로가기</a></b>
             <div class="modal-footer">

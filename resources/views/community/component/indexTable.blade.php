@@ -1,5 +1,5 @@
 <table class="table table-hover" style="table-layout:fixed">
-        <thead>
+        <thead class="thead">
             <tr>
                 <th class="text-center" style="width:55px;">번호</th>
                 <th style="width:50px;"></th>

@@ -63,6 +63,7 @@ class Kernel extends HttpKernel
         'user' => \App\Http\Middleware\User::class,
         'comment' =>\App\Http\Middleware\Comment::class,
         'loginCheck' =>\App\Http\Middleware\loginCheck::class,
+        
     ];
 
     /**
