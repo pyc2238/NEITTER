@@ -64,7 +64,7 @@ class LoginController extends Controller
      public function callback(Request $request,$social)
      {
         
-       return $social;
+    
         
          try {
              $socialiteLogin = true;            
