@@ -13,9 +13,9 @@ class SendMailResetPassword
      *
      * @return void
      */
-    public function __construct()
+    public function __construct(SendMailResetPw $event)
     {
-        //
+       
     }
 
     /**

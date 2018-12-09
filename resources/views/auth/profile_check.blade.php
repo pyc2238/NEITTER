@@ -14,8 +14,15 @@
 
             <form action="{{route('user.info',Auth::user()->id)}}" method="post">
                 @csrf
-                <b>회원이메일</b><b style="color:blue;">
+                
+                    @if(Auth::user()->email)
+                    <b>회원이메일</b><b style="color:blue;">
                     {{Auth::user()->email}}</b>
+                    @endif
+                    @unless(Auth::user()->email)
+                    <b>회원닉네임</b><b style="color:blue;">
+                    {{Auth::user()->name}}</b>
+                    @endunless
                 <br>
                 <br>
                 <br>

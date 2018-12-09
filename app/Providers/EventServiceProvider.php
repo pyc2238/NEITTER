@@ -19,16 +19,15 @@ class EventServiceProvider extends ServiceProvider
         Registered::class => [
             SendEmailVerificationNotification::class,
         ],
-        \SocialiteProviders\Manager\SocialiteWasCalled::class => [
-            // add your listeners (aka providers) here
-            'SocialiteProviders\\Twitter\\TwitterExtendSocialite@handle',
-        ],
         
         'App\Events\SendMail' => [
             'App\Listeners\SendMailFired',
         ],
         'App\Events\SendMailResetPw' => [
             'App\Listeners\SendMailResetPassword',
+        ],
+        'App\Events\registeredUserMail' => [
+            'App\Listeners\registeredUser',
         ],
         
     ];

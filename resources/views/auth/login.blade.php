@@ -67,9 +67,9 @@
         <div class="col-sm text-center" style="margin-top:3%;margin-bottom:5%">
             <!-- Add font awesome icons -->
             <a href="{{ url('socialauth/github') }}" class="fa fa-github Social" title="github"></a>
-        <a href="#" class="fa fa-twitter Social" title="twitter"></a>
+        <a href="{{ url('socialauth/twitter') }}" class="fa fa-twitter Social" title="twitter"></a>
         <a href="{{ url('socialauth/google') }}" class="fa fa-google Social" title="google"></a>
-            <a href="#" class="fa fa-yahoo Social" title="yahoo"></a>
+            <a href="#" class="fa fa-question Social" title="yahoo"></a>
         </div>
         <div class="col-sm"></div>
     </div>

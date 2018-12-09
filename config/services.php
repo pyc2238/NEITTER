@@ -51,4 +51,16 @@ return [
         'redirect' => env('GITHUB_URL'),
     ],
 
+    'twitter' => [
+        'client_id' => env('TWITTER_ID'),
+        'client_secret' => env('TWITTER_SECRET'),
+        'redirect' => env('TWITTER_URI')
+    ],
+
+    'line' => [
+        'client_id' => env('LINE_ID'),
+        'client_secret' => env('LINE_SECRET'),
+        'redirect' => env('LINE_URI')
+    ],
+
 ];

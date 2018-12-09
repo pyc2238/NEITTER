@@ -49,7 +49,6 @@ class LoginController extends Controller
      public function redirect(Request $request,$social)
      {
          
-        
          Session::put('social',$social); 
          Session::put('name',$request->name);
          Session::put('age',$request->age);
@@ -65,6 +64,7 @@ class LoginController extends Controller
      public function callback(Request $request,$social)
      {
         
+       return $social;
         
          try {
              $socialiteLogin = true;            
@@ -92,7 +92,9 @@ class LoginController extends Controller
                  $user->socialite = 1;
                  $user->save();
                  Session::put('newUser',$socialUser->name);
+                 if($socialUser->email && $socialUser->name){
                  Event::fire(new SendMail($socialUser->email,$socialUser->name));
+                }
                  Auth::loginUsingId($user->id);
                
                  return redirect()->to('/home')->with('socialiteLogin',$socialiteLogin);

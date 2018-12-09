@@ -11,7 +11,9 @@
         "laravel/framework": "5.7.*",
         "laravel/socialite": "^3.2",
         "laravel/tinker": "^1.0",
+        "socialiteproviders/line": "^2.1",
         "socialiteproviders/twitter": "^3.0",
+        "socialiteproviders/yahoo": "^3.0",
         "tightenco/ziggy": "^0.6.9"
     },
     "require-dev": {
