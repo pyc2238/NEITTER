@@ -1,11 +1,11 @@
-@section('search')
+{{-- @section('search')
     <script type="text/javascript" src="{{asset('/jquery/lib/jquery.js')}}"></script>
     <script type='text/javascript' src="{{asset('/jquery/lib/jquery.bgiframe.min.js')}}"></script>
     <script type='text/javascript' src="{{asset('/jquery/lib/jquery.ajaxQueue.js')}}"></script>
     <script type='text/javascript' src="{{asset('/jquery/jquery.autocomplete.js')}}"></script>
     <link rel="stylesheet" type="text/css" href="{{asset('/jquery/jquery.autocomplete.css')}}" />
     
-@endsection
+@endsection --}}
 
 
 <div class="col-sm" style='margin-top:5%;margin-bottom:3%;'>
@@ -37,8 +37,8 @@
     @endif
 </div>
 
-<script language="javascript">
+{{-- <script language="javascript">
     var autoSearch = {!!$autoSearch!!}
     searchDB(autoSearch);
 
-</script>
+</script> --}}

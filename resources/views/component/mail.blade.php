@@ -16,7 +16,7 @@
 </style>
 
 <body>
-    <img id=Rand_Banner class="img-fluid" src="http://dl.stickershop.line.naver.jp/products/0/0/1/1600906/android/stickers/20394946.png"
+    <img id=Rand_Banner class="img-fluid" src="{{asset("data/ProjectImages/master/logoImage/6.png")}}"
         alt="Responsive image">
 
     <br>

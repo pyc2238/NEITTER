@@ -7,7 +7,7 @@
     <br>
     <div class="row">
         <div class="col">
-            <img src="https://4.bp.blogspot.com/-uQWbVG90eTI/WTraoe8kREI/AAAAAAAAAts/AhwUW2JKwvIBVpoG4uvpoA_eHE8J9RRlgCLcB/s1600/TW444618.png"
+            <img src="{{asset("data/ProjectImages/master/logoImage/22.png")}}"
                 width="72" alt="thumbnail">
             <h2 style='display:inline-block;'>NEITTER 소개</h2>
             <hr>
@@ -20,7 +20,7 @@
             <p><b>NEITTER&nbsp;:&nbsp;&nbsp;&nbsp;neighbor+letter 이웃나라 사람과의 펜팔</b></p>
 
             <p>NEITTER는 2018년 10월 2일 처음 개발한 한일 펜팔사이트로 한일간 개개인의 문화적 교류를 통하여 정치적,역사적문제로 얽힌 한일관계의 어려움에 있어 민간
-                <img width="16%" src="https://stickershop.line-scdn.net/stickershop/v1/product/1439496/LINEStorePC/main@2x.png;compress=true"
+                <img width="16%" src="{{asset("data/ProjectImages/master/logoImage/17.png")}}"
                     align="right">
                 차원의 교류를 시작으로, 한일간 국가적 교류의 발전에도 작은 보탬이 될수 있게 하자는 취지에 개발 되었습니다.</p>
 
@@ -75,6 +75,9 @@
                 -2018년12월 1일 회원가입시 메일 발송 추가<br>
                 -2018년12월 2일 google 사용자 인증 로그인 추가<br>
                 -2018년12월 9일 github 사용자 인증 로그인 추가 및 검색어 자동완성기능 도입 <br>
+                <b style='color:red'>-2018년12월 12일 프로젝트 제출 (구현률 20%)</b><br><br>
+                <li><b>FORUM개발 시작</b></li>
+
             </ul>
         </div>
     </div>

@@ -1,34 +1,52 @@
-<a  onfocus="this.blur();"><img id=Rand_Banner class="img-fluid" src="https://stickershop.line-scdn.net/stickershop/v1/product/1274436/LINEStorePC/main@2x.png;compress=true"
+<a onfocus="this.blur();"><img id=Rand_Banner class="img-fluid" src="{{asset("data/ProjectImages/master/logoImage/1.png")}}"
         alt="Responsive image"></a>
-<a  onfocus="this.blur();"><img id=Rand_Banner class="img-fluid" src="https://stickershop.line-scdn.net/stickershop/v1/product/1419641/LINEStorePC/main@2x.png;compress=true"
+<a onfocus="this.blur();"><img id=Rand_Banner class="img-fluid" src="{{asset("data/ProjectImages/master/logoImage/2.png")}}"
         alt="Responsive image"></a>
-<a  onfocus="this.blur();"><img id=Rand_Banner class="img-fluid" src="https://stickershop.line-scdn.net/stickershop/v1/product/1432005/LINEStorePC/main@2x.png;compress=true"
+<a onfocus="this.blur();"><img id=Rand_Banner class="img-fluid" src="{{asset("data/ProjectImages/master/logoImage/3.png")}}"
         alt="Responsive image"></a>
-<a  onfocus="this.blur();"><img id=Rand_Banner class="img-fluid" src="https://stickershop.line-scdn.net/stickershop/v1/product/1439190/LINEStorePC/main@2x.png;compress=true?__=20161019"
+<a onfocus="this.blur();"><img id=Rand_Banner class="img-fluid" src="{{asset("data/ProjectImages/master/logoImage/4.png")}}"
         alt="Responsive image"></a>
-<a  onfocus="this.blur();"><img id=Rand_Banner class="img-fluid" src="https://stickershop.line-scdn.net/stickershop/v1/product/1439496/LINEStorePC/main@2x.png;compress=true"
+<a onfocus="this.blur();"><img id=Rand_Banner class="img-fluid" src="{{asset("data/ProjectImages/master/logoImage/5.png")}}"
         alt="Responsive image"></a>
-<a  onfocus="this.blur();"><img id=Rand_Banner class="img-fluid" src="https://stickershop.line-scdn.net/stickershop/v1/product/1448386/LINEStorePC/main@2x.png;compress=true"
+<a onfocus="this.blur();"><img id=Rand_Banner class="img-fluid" src="{{asset("data/ProjectImages/master/logoImage/6.png")}}"
         alt="Responsive image"></a>
-<a  onfocus="this.blur();"><img id=Rand_Banner class="img-fluid" src="https://stickershop.line-scdn.net/stickershop/v1/product/1600906/LINEStorePC/main@2x.png;compress=true"
+<a onfocus="this.blur();"><img id=Rand_Banner class="img-fluid" src="{{asset("data/ProjectImages/master/logoImage/7.png")}}"
         alt="Responsive image"></a>
-<a  onfocus="this.blur();"><img id=Rand_Banner class="img-fluid" src="https://4.bp.blogspot.com/-uQWbVG90eTI/WTraoe8kREI/AAAAAAAAAts/AhwUW2JKwvIBVpoG4uvpoA_eHE8J9RRlgCLcB/s1600/TW444618.png"
+<a onfocus="this.blur();"><img id=Rand_Banner class="img-fluid" src="{{asset("data/ProjectImages/master/logoImage/8.png")}}"
         alt="Responsive image"></a>
-<a  onfocus="this.blur();"><img id=Rand_Banner class="img-fluid" src="https://4.bp.blogspot.com/-oQAS2K2DvOQ/WUjlgzg2qYI/AAAAAAAAMDE/OIp8oS1M-lkxca6-wE5Z_paCSNUq4kVZQCLcBGAs/s1600/TW453311.png"
+<a onfocus="this.blur();"><img id=Rand_Banner class="img-fluid" src="{{asset("data/ProjectImages/master/logoImage/9.png")}}"
         alt="Responsive image"></a>
-<a  onfocus="this.blur();"><img id=Rand_Banner class="img-fluid" src="http://dl.stickershop.line.naver.jp/products/0/0/1/1600906/android/stickers/20394946.png"
+<a onfocus="this.blur();"><img id=Rand_Banner class="img-fluid" src="{{asset("data/ProjectImages/master/logoImage/10.png")}}"
         alt="Responsive image"></a>
-<a  onfocus="this.blur();"><img id=Rand_Banner class="img-fluid" src="https://i.pinimg.com/originals/80/2e/6f/802e6f25b7a51f25e033d06d21235b3c.png"
+<a onfocus="this.blur();"><img id=Rand_Banner class="img-fluid" src="{{asset("data/ProjectImages/master/logoImage/11.png")}}"
         alt="Responsive image"></a>
-<a  onfocus="this.blur();"><img id=Rand_Banner class="img-fluid" src="https://sdl-stickershop.line.naver.jp/stickershop/v1/sticker/18062306/android/sticker.png"
+<a onfocus="this.blur();"><img id=Rand_Banner class="img-fluid" src="{{asset("data/ProjectImages/master/logoImage/12.png")}}"
         alt="Responsive image"></a>
-<a  onfocus="this.blur();"><img id=Rand_Banner class="img-fluid" src="https://i.pinimg.com/originals/da/af/77/daaf771f6eda191f52c7b11e48a9a82b.png"
+<a onfocus="this.blur();"><img id=Rand_Banner class="img-fluid" src="{{asset("data/ProjectImages/master/logoImage/13.png")}}"
         alt="Responsive image"></a>
-<a  onfocus="this.blur();"><img id=Rand_Banner class="img-fluid" src="https://i.pinimg.com/originals/e3/e9/3a/e3e93a80b6df39f14b34a85e07d0a760.png"
+<a onfocus="this.blur();"><img id=Rand_Banner class="img-fluid" src="{{asset("data/ProjectImages/master/logoImage/14.png")}}"
         alt="Responsive image"></a>
-<a  onfocus="this.blur();"><img id=Rand_Banner class="img-fluid" src="https://i.pinimg.com/originals/b8/a2/5f/b8a25f5c0b6923a988d7ec83b6cd296c.png"
+<a onfocus="this.blur();"><img id=Rand_Banner class="img-fluid" src="{{asset("data/ProjectImages/master/logoImage/15.png")}}"
         alt="Responsive image"></a>
-<a href="#" onfocus="this.blur();"><img id=Rand_Banner class="img-fluid" src="https://t1.daumcdn.net/cfile/tistory/232D064D56ACFB8704"
+<a onfocus="this.blur();"><img id=Rand_Banner class="img-fluid" src="{{asset("data/ProjectImages/master/logoImage/16.png")}}"
         alt="Responsive image"></a>
-<a  onfocus="this.blur();"><img id=Rand_Banner class="img-fluid" src="https://3.bp.blogspot.com/-jjDIk3QGMxU/WZBHUX05-1I/AAAAAAAQ0Bs/EVbIQE3MY24cS21Hn0J7WSqn35FG9LkvQCLcBGAs/s1600/TW500793.png"
+<a onfocus="this.blur();"><img id=Rand_Banner class="img-fluid" src="{{asset("data/ProjectImages/master/logoImage/17.png")}}"
+        alt="Responsive image"></a>
+<a onfocus="this.blur();"><img id=Rand_Banner class="img-fluid" src="{{asset("data/ProjectImages/master/logoImage/18.png")}}"
+        alt="Responsive image"></a>
+<a onfocus="this.blur();"><img id=Rand_Banner class="img-fluid" src="{{asset("data/ProjectImages/master/logoImage/19.png")}}"
+        alt="Responsive image"></a>
+<a onfocus="this.blur();"><img id=Rand_Banner class="img-fluid" src="{{asset("data/ProjectImages/master/logoImage/20.png")}}"
+        alt="Responsive image"></a>
+<a onfocus="this.blur();"><img id=Rand_Banner class="img-fluid" src="{{asset("data/ProjectImages/master/logoImage/21.png")}}"
+        alt="Responsive image"></a>
+<a onfocus="this.blur();"><img id=Rand_Banner class="img-fluid" src="{{asset("data/ProjectImages/master/logoImage/22.png")}}"
+        alt="Responsive image"></a>
+<a onfocus="this.blur();"><img id=Rand_Banner class="img-fluid" src="{{asset("data/ProjectImages/master/logoImage/23.png")}}"
+        alt="Responsive image"></a>
+
+
+<a href="#" onclick="showTitle()" onfocus="this.blur();"><img id=Rand_Banner  class="img-fluid" src="{{asset("data/ProjectImages/master/logoImage/umr1.png")}}"
+        alt="Responsive image"></a>
+<a href="#" onclick="showTitle()" onfocus="this.blur();"><img id=Rand_Banner  class="img-fluid" src="{{asset("data/ProjectImages/master/logoImage/umr2.png")}}"
         alt="Responsive image"></a>

@@ -20,10 +20,11 @@
         <div class="container" style="height:95vh">
             @if($count == 0)
             <div class="text-center" style="margin-top:15%">
-                @include('component.siteImage')
-
+                <img id=Rand_Banner class="img-fluid" src="{{asset("data/ProjectImages/master/logoImage/search.png")}}"
+                    alt="Responsive image">
+                
                 <script language="javascript">
-                    var R = Math.floor(Math.random() * 16);
+                    var R = Math.floor(Math.random() * 25);
                     show_Banner(R);
 
                 </script>

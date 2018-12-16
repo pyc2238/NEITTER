@@ -13,12 +13,8 @@
             <div class="col-sm"></div>
             <!--첫번 째 그리드 박스-->
             <div class="col-sm" style="padding-top:4%">
-                @include('component.siteImage')
+                <img class="img-fluid" src="{{asset("data/ProjectImages/master/logoImage/6.png")}}" alt="Responsive image">
 
-                <script language="javascript">
-                    var R=Math.floor(Math.random()*17);
-                show_Banner(R);
-            </script>
                 <form action="{{route('user.reset')}}" class='form-group find_form' method="post">
                     @csrf
                     <h1 class="h3 mb-3 font-weight-normal text-center">Please enter your email</h1>

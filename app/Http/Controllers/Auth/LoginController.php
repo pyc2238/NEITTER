@@ -45,7 +45,6 @@ class LoginController extends Controller
     }
 
 
-     /*구글 로그인 */
      public function redirect(Request $request,$social)
      {
          

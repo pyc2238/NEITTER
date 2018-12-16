@@ -35,11 +35,13 @@
     <script src="{{asset('/data/ckeditor/ckeditor.js')}}"></script>
     {{-- member css --}}
     <link rel="stylesheet" href="{{asset('/css/member.css')}}">
+    @yield("umr")
+    
 
     <title>
         @yield('title')
     </title>
-    @yield('search')
+    {{-- @yield('search') --}}
 
 </head>
 

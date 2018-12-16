@@ -35,6 +35,7 @@
     <div class="home">
         <a href="{{ url('/') }}"><i class="fa fa-home" id="home" ></i> </a>
         <a href="#"><i class="fa fa-search" id="search" ></i> </a>
+        {{-- <a href="#"><img src="{{asset("data/ProjectImages/master/escort.png")}}" alt=""> </a> --}}
     </div>
 
 

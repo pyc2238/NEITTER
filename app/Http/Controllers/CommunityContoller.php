@@ -64,7 +64,7 @@ class CommunityContoller extends Controller
             }
         }
 
-        $autoSearch = $this->communityModel->select('title')->get(); //테이블 자동 검색창
+        // $autoSearch = $this->communityModel->select('title')->get(); //테이블 자동 검색창
       
         return 
             view('community.index')
@@ -72,8 +72,8 @@ class CommunityContoller extends Controller
             ->with('search',$search)
             ->with('where',$where)
             ->with('msgs',$msgs)
-            ->with('count',$count)
-            ->with('autoSearch',$autoSearch);
+            ->with('count',$count);
+            // ->with('autoSearch',$autoSearch);
     }
 
     /**

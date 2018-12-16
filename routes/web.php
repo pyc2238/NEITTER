@@ -23,7 +23,7 @@ Route::get('introduction','SubController@getIntroduction');//사이트 소개
 Auth::routes();
 Route::get('/home', 'HomeController@index')->name('home');
 
-/*google ouath*/
+/*socialauth ouath*/
 Route::get('socialauth/{social}', 'Auth\LoginController@redirect');
 Route::get('socialauth/{social}/callback', 'Auth\LoginController@callback');
 

@@ -21,7 +21,7 @@ function checkName() {
 
 // login_form.blade.php
 function show_Banner(num) {
-    for (i = 0; i < 17; i++) {
+    for (i = 0; i < 25; i++) {
         if (num == i) {
             Rand_Banner[i].style.dispaly = "";
         } else {

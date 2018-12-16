@@ -16,7 +16,7 @@
 </style>
 
 <body>
-    <img id=Rand_Banner class="img-fluid" src="https://stickershop.line-scdn.net/stickershop/v1/product/1439496/LINEStorePC/main@2x.png;compress=true"
+    <img id=Rand_Banner class="img-fluid" src="{{asset("data/ProjectImages/master/logoImage/6.png")}}"
         alt="Responsive image">
 
     <br>
