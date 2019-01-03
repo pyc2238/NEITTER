@@ -6,12 +6,13 @@ use Illuminate\Notifications\Notifiable;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Support\Facades\Hash;
+// use Illuminate\Database\Eloquent\SoftDeletes;
 use Auth;
 
 class User extends Authenticatable
 {
     use Notifiable;
-
+    // use SoftDeletes;
     /**
      * The attributes that are mass assignable.
      *
@@ -37,12 +38,31 @@ class User extends Authenticatable
         'password', 'remember_token',
     ];
 
+    // protected $dates = ['deleted_at'];
+
     public function communities(){
         return $this->hasMany(Community::class);
     }
 
     public function comments(){
         return $this->hasMany(Communities_Comment::class);
+    }
+
+
+    public function createUser($uname,$uemail,$upassword,$ugender,$uage,$uaddress,$ucountry){
+
+        $param = [
+            'name' => $uname,
+            'email' => $uemail,
+            'password' =>Hash::make($upassword),
+            'gender' => $ugender,
+            'age' => $uage,
+            'address' => $uaddress,
+            'country' => $ucountry
+        ];
+
+        $this::create($param);
+    
     }
 
     public function getName($name){
@@ -60,16 +80,16 @@ class User extends Authenticatable
     }
 
     public function updateProfile($gender,$age,$address,$country,$selfContext){
-
+        $param = [
+            'gender' => $gender,
+            'age' => $age,
+            'address' => $address,
+            'country' => $country,
+            'selfContext' => $selfContext
+        ];
 
         $this::where('id',Auth::user()->id)
-            ->update([
-                'gender' => $gender,
-                'age' => $age,
-                'address' => $address,
-                'country' => $country,
-                'selfContext' => $selfContext
-                ]);
+            ->update($param);
     }
 
     public function updatePassword($password){

@@ -36,8 +36,8 @@
             class="fa fa-list" style="font-size:15px;">목록</i></button>
     @endif
 </div>
-
-{{-- <script language="javascript">
+{{-- 
+<script language="javascript">
     var autoSearch = {!!$autoSearch!!}
     searchDB(autoSearch);
 

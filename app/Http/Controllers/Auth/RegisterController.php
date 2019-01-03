@@ -16,6 +16,7 @@ use Auth;
 
 class RegisterController extends Controller
 {
+
     /*
     |--------------------------------------------------------------------------
     | Register Controller
@@ -46,6 +47,7 @@ class RegisterController extends Controller
     public function __construct()
     {
         $this->middleware('guest');
+        $this->user = new User();
     }
 
     
@@ -57,6 +59,8 @@ class RegisterController extends Controller
      */
     public function register(Request $request)
     {
+
+       
 
         $result = true;
 
@@ -80,16 +84,7 @@ class RegisterController extends Controller
         
         $request->session()->flush();
 
-         User::create([
-            'name' => $uname,
-            'email' => $uemail,
-            'password' =>Hash::make($upassword),
-            'gender' => $ugender,
-            'age' => $uage,
-            'address' => $uaddress,
-            'country' => $ucountry,
-        ]);
-
+        $this->user->createUser($uname,$uemail,$upassword,$ugender,$uage,$uaddress,$ucountry);
 
         return redirect('login')->with('result',$result);
         

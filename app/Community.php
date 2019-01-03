@@ -3,10 +3,15 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\SoftDeletes;
+
 use App\User;
 
 class Community extends Model
 {
+
+    use SoftDeletes;
+
     protected $fillable = [
         'num',
         'country',
@@ -18,7 +23,7 @@ class Community extends Model
     ];
 
     protected $primaryKey = 'num'; //find() 를 사용하면 기본 키 열이 id 가 될 것이라고 자동으로 가정합니다. 모델에서 기본 키를 명시해야합니다.
-
+    protected $dates = ['deleted_at'];
     public function user(){
         return $this->belongsTo(User::class);
     }
@@ -60,7 +65,11 @@ class Community extends Model
     }
     
     public function updateMsg($id,$title,$content){
-        $this::where('num',$id)->update(['title'=>$title,'content'=>$content]);
+        $param = [
+            'title'=>$title,
+            'content'=>$content
+        ];
+        $this::where('num',$id)->update($param);
     }
 
     public function deleteMsg($id){

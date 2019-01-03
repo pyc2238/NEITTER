@@ -2,10 +2,13 @@
 
 namespace App;
 
+use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Database\Eloquent\Model;
 
 class Communities_Comment extends Model
 {
+    use SoftDeletes;
+
     protected $fillable = [
         'id',
         'content',
@@ -13,6 +16,10 @@ class Communities_Comment extends Model
         'board_id',
         'user_id',
     ];
+
+    
+    protected $dates = ['deleted_at'];
+
 
     public function user(){
         return $this->belongsTo(User::class);
@@ -30,12 +37,14 @@ class Communities_Comment extends Model
             $countryImg =  asset("/data/ProjectImages/community/japan2.png");
         }
 
-        $this::create([
+        $param = [
             'content' => $content,
             'country' => $countryImg,
             'board_id' => $board_id,
             'user_id' => $user_id
-        ]);
+        ];
+
+        $this::create($param);
     }
 
     public function getComments($id){
