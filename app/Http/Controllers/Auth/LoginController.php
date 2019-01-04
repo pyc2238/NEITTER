@@ -5,12 +5,15 @@ namespace App\Http\Controllers\Auth;
 use App\Http\Controllers\Controller;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
 use Illuminate\Http\Request;
-use Socialite;
-use App\User;
-use Auth;
-use Event;
+
 use App\Events\SendMail;
-use Session; 
+use Socialite;
+use Event;
+use Session;
+
+use Auth;
+use App\User;
+
 
 class LoginController extends Controller
 {

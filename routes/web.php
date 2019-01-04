@@ -30,44 +30,46 @@ Route::get('socialauth/{social}/callback', 'Auth\LoginController@callback');
 
 
 /*소셜라이트 유저 추가정보 양식*/ 
-Route::get('socialite-register','SubController@getRegister')->name('socialite.register');  
+Route::get('socialite-register','User\UserController@getRegister')->name('socialite.register');  
 
 /*닉네임 중복체크*/
-Route::get('check-name','UserController@getUserName');
+Route::get('check-name','User\UserController@getUserName');
 /*아이디/ 비밀번호 찾기 처리*/ 
-Route::post('reset','UserController@postFindPassword')->name('user.reset');    
+Route::post('reset','User\UserController@postFindPassword')->name('user.reset');    
 
 /*유저 정보*/
 Route::group(['middleware' => ['auth']], function () { 
     
     /*유저 체크*/ 
-    Route::get('user/check','SubController@getUser')->name('user.check');
+    Route::get('user/check','User\UserController@getUser')->name('user.check');
     /*내정보 보기*/   
-    Route::any('user/{id}','UserController@getUserInfo')->name('user.info')->middleware('user'); 
+    Route::any('user/{id}','User\UserController@getUserInfo')->name('user.info')->middleware('user'); 
     /*소셜라이트 회원 정보 보기*/
-    Route::any('socialiteUser','SubController@getUserInfo')->name('socialite.userInfo');     
+    Route::any('socialiteUser','User\UserController@getSocialiteUserInfo')->name('socialite.userInfo');     
     /*내정보 수정*/
-    Route::put('update','UserController@putUpdateProfile')->name('user.update');
+    Route::put('update','User\UserController@putUpdateProfile')->name('user.update');
     /*회원 탈퇴 처리*/
-    Route::get('destroy','UserController@getDestroy')->name('user.destroy');
+    Route::get('destroy','User\UserController@getDestroy')->name('user.destroy');
     /*비밀번호 변경 폼*/       
-    Route::get('password/{id}','UserController@getChanegePasswordFrom')->name('user.passwordFrom');
+    Route::get('password/{id}','User\UserController@getChanegePasswordFrom')->name('user.passwordFrom');
     /*회원 비밀번호 변경*/
-    Route::put('update/{id}','UserController@putUpdatePasswords')->name('user.updatePassword');
+    Route::put('update/{id}','User\UserController@putUpdatePasswords')->name('user.updatePassword');
 
 });
 
 
 /*지식교류 게시판*/
-Route::resource('community','CommunityContoller');
+Route::resource('community','Community\CommunityContoller');
 Route::group(['middleware' => ['comment']], function () { 
     /*게시판 추천*/
-    Route::put('community/increaseCommend/{id}','CommunityContoller@putIncreaseCommend')->name('community.increaseCommend');
+    Route::put('community/increaseCommend/{id}','Community\CommunityContoller@putIncreaseCommend')->name('community.increaseCommend');
     /*댓글 작성*/
-    Route::post('community/comment/{id}','CommunityContoller@postInsertComment')->name('community.comment'); 
+    Route::post('community/comment/{id}','Community\CommunityContoller@postInsertComment')->name('community.comment'); 
     /* 댓글 수정*/
-    Route::put('community/comment/{id}','CommunityContoller@putUpdateComment')->name('community.comment.update');
+    Route::put('community/comment/{id}','Community\CommunityContoller@putUpdateComment')->name('community.comment.update');
     /* 댓글 삭제*/
-    Route::get('/comment/{id}','CommunityContoller@getDeleteComment')->name('community.comment.delete');
+    Route::get('/comment/{id}','Community\CommunityContoller@getDeleteComment')->name('community.comment.delete');
 });
 
+/*포럼 게시판*/
+Route::resource('forum','Forum\ForumController');

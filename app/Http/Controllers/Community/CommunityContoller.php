@@ -1,17 +1,22 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Community; 
 
+use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+
 use Session; 
 use Auth;
+
 use App\User;
 use App\Community;
 use App\Communities_commends;
 use App\Communities_hit;
 use App\Communities_ip;
 use App\Communities_Comment;
+
 use Illuminate\Support\Facades\DB;
+
 
 class CommunityContoller extends Controller
 {

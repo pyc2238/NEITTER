@@ -2,17 +2,19 @@
 
 namespace App\Http\Controllers\Auth;
 
-use App\User;
-use Mail;
-use Session; 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Foundation\Auth\RegistersUsers;
+
+use Session; 
 use Event;
+use Mail;
 use App\Events\SendMail;
+
 use Auth;
+use App\User;
 
 class RegisterController extends Controller
 {

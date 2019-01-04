@@ -1,16 +1,21 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\User;
 
+use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
+
 use Session; 
 use Mail;
-use Auth;
 use Exception;
-use App\User;
 use Event;
 use App\Events\SendMailResetPw;
+
+use Auth;
+use App\User;
+
+
 
 
 class UserController extends Controller 
@@ -120,6 +125,20 @@ class UserController extends Controller
             redirect(route('home'))
             ->with('message','회원탈퇴가 완료되었습니다.');
     }
+
+
+      //내정보 보기
+      public function getUser(){return view('auth.profile_check');}
+
+      /*소셜라이트 회원 가입양식*/ 
+      public function getRegister(){
+          return view('auth.socialiteRegister');
+      }
+
+      /*소셜라이트 회원 내정보*/
+      public function getSocialiteUserInfo(){
+          return view('auth.socialiteProfile');
+      }
 
 }
 
