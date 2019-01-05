@@ -102,7 +102,7 @@ $(window).load(function()
             <div class="modal-body">
                 <img width="100%" src="{{asset("data/ProjectImages/master/logoImage/registered.gif")}}" alt="회원가입 성공">
             </div>
-            <b class="text-center"> <a href="{{url('introduction')}}">사이트소개 바로가기</a></b>
+            <b class="text-center"> <a href="{{route('home.introduction')}}">사이트소개 바로가기</a></b>
             <div class="modal-footer">
                 <button type="button" class="btn btn-danger" data-dismiss="modal"> OK </button>
             </div>

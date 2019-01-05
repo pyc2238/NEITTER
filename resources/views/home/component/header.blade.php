@@ -1,7 +1,7 @@
 
 <nav class="navbar navbar-expand-lg navbar-light bg-danger text-light py-3 main-nav">
     <div class="container">
-        <a class="navbar-brand" href="{{ url('/') }}"><img src="{{asset("data/ProjectImages/master/NEITTER.png")}}" alt="Logo"
+        <a class="navbar-brand" href="{{ route('home.index') }}"><img src="{{asset("data/ProjectImages/master/NEITTER.png")}}" alt="Logo"
                 ondragstart="return false"></a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
             aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -34,7 +34,7 @@
 
 <div class=" headcontainer">
     <div class="home">
-        <a href="{{ url('/') }}"><i class="fa fa-home" id="home" ></i> </a>
+        <a href="{{ route('home.index') }}"><i class="fa fa-home" id="home" ></i> </a>
         <a href="#"><i class="fa fa-search" id="search" ></i> </a>
         {{-- <a href="#"><img src="{{asset("data/ProjectImages/master/escort.png")}}" alt=""> </a> --}}
     </div>

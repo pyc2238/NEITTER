@@ -15,6 +15,7 @@ class Communities_Comment extends Model
         'country',
         'board_id',
         'user_id',
+        'ip'
     ];
 
     
@@ -30,7 +31,7 @@ class Communities_Comment extends Model
     }
 
 
-    public function insertComment($content,$country,$board_id,$user_id){
+    public function insertComment($content,$country,$board_id,$user_id,$ip){
         if($country == "한국"){
             $countryImg = asset("/data/ProjectImages/community/korea2.png"); 
         }else if($country == "일본"){
@@ -41,7 +42,8 @@ class Communities_Comment extends Model
             'content' => $content,
             'country' => $countryImg,
             'board_id' => $board_id,
-            'user_id' => $user_id
+            'user_id' => $user_id,
+            'ip' => $ip
         ];
 
         $this::create($param);
@@ -51,8 +53,8 @@ class Communities_Comment extends Model
         return $this::with('user:id,name')->where('board_id',$id)->paginate(15);
     }
 
-    public function updateComments($id,$content){
-        $this::where('id',$id)->update(['content'=>$content]);
+    public function updateComments($id,$content,$ip){
+        $this::where('id',$id)->update(['content'=>$content,'ip' => $ip]);
     }
 
     public function deleteComments($id){

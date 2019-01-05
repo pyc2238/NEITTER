@@ -21,6 +21,7 @@ class CreateCommunitiesCommentTable extends Migration
             $table->integer('user_id')->unsigned();
             $table->foreign('board_id')->references('num')->on('communities')->onDelete('cascade');
             $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
+            $table->string('ip',50);
             $table->softDeletes();
             $table->timestamps();
         });

@@ -113,7 +113,7 @@ class CommunityContoller extends Controller
         $search = $request->search;
         $where = $request->where;
        
-        $this->communityModel->insertMsg(Auth::user()->country,$request->title,$request->content,Auth::user()->id);
+        $this->communityModel->insertMsg(Auth::user()->country,$request->title,$request->content,Auth::user()->id,$request->getClientIp());
         
         return 
             redirect()
@@ -213,7 +213,7 @@ class CommunityContoller extends Controller
         $search = $request->search;
         $where = $request->where;
         
-        $this->communityModel->updateMsg($id,$request->title,$request->content);
+        $this->communityModel->updateMsg($id,$request->title,$request->content,$request->getClientIp());
         return redirect(route('community.index',['search'=>$search,'where'=>$where,'page'=>$page]))->with('message','게시물이 수정되었습니다.');
     }
 
@@ -265,7 +265,7 @@ class CommunityContoller extends Controller
         $where = $request->where; 
 
         
-        $this->commentModel->insertComment($request->comment,Auth::user()->country,$id,Auth::user()->id);
+        $this->commentModel->insertComment($request->comment,Auth::user()->country,$id,Auth::user()->id,$request->getClientIp());
     
       
         // return response()->json($comments, 200, [], JSON_PRETTY_PRINT);
@@ -279,7 +279,7 @@ class CommunityContoller extends Controller
         $search = $request->search;
         $where = $request->where;
         
-        $this->commentModel->updateComments($request->commentId,$request->comment);
+        $this->commentModel->updateComments($request->commentId,$request->comment,$request->getClientIp());
         
         return redirect(route('community.show',['id'=>$id,'search'=>$search,'where'=>$where,'page'=>$page]));
     }

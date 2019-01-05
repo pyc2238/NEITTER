@@ -15,13 +15,13 @@
 
 
 
-/*초기화면*/
-Route::get('/', function () {return view('home');});
-Route::get('introduction','SubController@getIntroduction');//사이트 소개
+/*메인 페이지*/
+Route::resource('home','Home\WelcomeController');
+Route::get('Home\introduction','Home\WelcomeController@getIntroduction')->name('home.introduction');//사이트 소개
 
 /*로그인 및 회원가입*/
 Auth::routes();
-Route::get('/home', 'HomeController@index')->name('home');
+
 
 /*socialauth ouath*/
 Route::get('socialauth/{social}', 'Auth\LoginController@redirect');

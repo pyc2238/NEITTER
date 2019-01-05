@@ -19,7 +19,8 @@ class Community extends Model
         'content',
         'hits',
         'commend',
-        'user_id'
+        'user_id',
+        'ip'
     ];
 
     protected $primaryKey = 'num'; //find() 를 사용하면 기본 키 열이 id 가 될 것이라고 자동으로 가정합니다. 모델에서 기본 키를 명시해야합니다.
@@ -40,7 +41,7 @@ class Community extends Model
 
 
 
-    public function insertMsg($country,$title,$content,$id){
+    public function insertMsg($country,$title,$content,$id,$ip){
         
         if($country == "한국"){
             $countryImg = asset("/data/ProjectImages/community/korea.png"); 
@@ -52,7 +53,8 @@ class Community extends Model
             'country' => $countryImg,
             'title' => $title,
             'content' => $content,
-            'user_id' => $id
+            'user_id' => $id,
+            'ip' => $ip
         ]);
     }
 
@@ -64,10 +66,11 @@ class Community extends Model
         return $this::with('user:id,name')->where('num',$id)->first();
     }
     
-    public function updateMsg($id,$title,$content){
+    public function updateMsg($id,$title,$content,$ip){
         $param = [
             'title'=>$title,
-            'content'=>$content
+            'content'=>$content,
+            'ip' => $ip
         ];
         $this::where('num',$id)->update($param);
     }

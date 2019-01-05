@@ -59,13 +59,13 @@
 
 
 @include('component.noticeModal')
-@include('component.header')
+@include('home.component.header')
 
 <body>
     @yield('content')
 </body>
 
 
-@include('component.footer')
+@include('home.component.footer')
 
 </html>
