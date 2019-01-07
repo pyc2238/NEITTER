@@ -16,6 +16,7 @@
 
 
 /*메인 페이지*/
+Route::get('/','Home\WelcomeController@index');
 Route::resource('home','Home\WelcomeController');
 Route::get('Home\introduction','Home\WelcomeController@getIntroduction')->name('home.introduction');//사이트 소개
 

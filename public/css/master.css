@@ -122,10 +122,21 @@ body {
     margin-top: 0.5%;
 }
 
-footer>a {
+.Internationalization{
+    background-color: #f6543d;
+}
+
+.copyright{
+    margin-top: 3vh;
     color: white;
 }
 
-footer>a:hover {
+
+footer>div>a {
+    color: white;
+}
+
+
+footer>div>a:hover {
     text-decoration: none;
 }
