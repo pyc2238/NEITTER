@@ -1,11 +1,11 @@
 @extends('layouts.app')
 @section('title')
-비밀번호 변경
+@lang('auth/change_Password_Form.title')
 @endsection
 @section('content')
 <div class="container content">
     <br>
-    <h3><b>NEITTER-회원 비밀번호 확인</b></h3>
+    <h3><b>@lang('auth/change_Password_Form.subject')</b></h3>
     <hr>
     <div class="row changePw_form">
         <div class="col-sm"></div>
@@ -15,23 +15,23 @@
             <form action="{{route('user.updatePassword',Auth::user()->id)}}" method="post">
                 @csrf
                 @method('put')
-                <label for="inputPassword">현재 비밀번호</label>
+                <label for="inputPassword">@lang('auth/change_Password_Form.password')</label>
                 <input type="password" id="inputPassword" name="password" class="form-control" autocomplete=off
                     required>
                 <br>
                 <br>
-                <label for="inputPassword">새 비밀번호</label>
+                <label for="inputPassword">@lang('auth/change_Password_Form.new_password')</label>
                 <input type="password" id="inputPassword" name="new_password" class="form-control" autocomplete=off
                     required>
-                <small style="color:red">8~15자,영문,숫자,특수문자가 들어가야 합니다.</small>
+                <small style="color:red">@lang('auth/change_Password_Form.notice')</small>
                 <br>
                 <br>
-                <label for="inputPassword">새 비밀번호 확인</label>
+                <label for="inputPassword">@lang('auth/change_Password_Form.new_password_check')</label>
                 <input type="password" id="inputPassword" name="new_password_check" class="form-control" autocomplete=off
                     required>
 
                 <div id="profileCheckBox">
-                    <button class="btn btn-outline-warning" type="submit">&nbsp;&nbsp;&nbsp;&nbsp;확인&nbsp;&nbsp;&nbsp;&nbsp;</button>
+                    <button class="btn btn-outline-warning" type="submit">&nbsp;&nbsp;&nbsp;&nbsp;@lang('auth/change_Password_Form.check')&nbsp;&nbsp;&nbsp;&nbsp;</button>
                 </div>
             </form>
             <!--end of form-->

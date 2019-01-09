@@ -1,6 +1,6 @@
 @extends('layouts.app')
 @section('title')
-로그인
+@lang('auth/login_form.title')
 @endsection
 @section("umr")
 <script src="{{asset('/js/umr.js')}}"></script>
@@ -9,7 +9,7 @@
 @section('content')
 <div class="container content">
     <br>
-    <h3><b>NEITTER-로그인</b></h3>
+    <h3><b>@lang('auth/login_form.subject')</b></h3>
     <hr>
 
     <div class="row" style="margin-top:7%;">
@@ -53,9 +53,9 @@
             <br>
 
             <div class="text-center">
-                <button class="btn btn-outline-warning " type="submit">&nbsp;&nbsp;&nbsp;로그인&nbsp;&nbsp;&nbsp;</button>
-                <button class="btn btn-outline-warning" type="button" onclick="location.href='{{ route('register') }}'">&nbsp;&nbsp;회원가입&nbsp;&nbsp;</button>
-                <button class="btn btn-outline-warning" type="button" onclick="location.href='{{ route('password.request') }}'">ID/PW찾기</button>
+                <button class="btn btn-outline-warning " type="submit">&nbsp;&nbsp;&nbsp;@lang('auth/login_form.login')&nbsp;&nbsp;&nbsp;</button>
+                <button class="btn btn-outline-warning" type="button" onclick="location.href='{{ route('register') }}'">&nbsp;&nbsp;@lang('auth/login_form.register')&nbsp;&nbsp;</button>
+                <button class="btn btn-outline-warning" type="button" onclick="location.href='{{ route('password.request') }}'">@lang('auth/login_form.modify')</button>
             </div>
 
             </form>
@@ -94,7 +94,7 @@ $(window).load(function()
     <div class="modal-dialog modal-sm" role="document">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title" id="Modal-small">회원가입이 완료되었습니다!</h5>
+                <h5 class="modal-title" id="Modal-small">@lang('auth/login_form.joined')</h5>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true"> &times; </span>
                 </button>
@@ -102,9 +102,9 @@ $(window).load(function()
             <div class="modal-body">
                 <img width="100%" src="{{asset("data/ProjectImages/master/logoImage/registered.gif")}}" alt="회원가입 성공">
             </div>
-            <b class="text-center"> <a href="{{route('home.introduction')}}">사이트소개 바로가기</a></b>
+            <b class="text-center"> <a href="{{route('home.introduction')}}">@lang('auth/login_form.introduction')</a></b>
             <div class="modal-footer">
-                <button type="button" class="btn btn-danger" data-dismiss="modal"> OK </button>
+                <button type="button" class="btn btn-danger" data-dismiss="modal"> @lang('auth/login_form.introduction') </button>
             </div>
         </div>
     </div>

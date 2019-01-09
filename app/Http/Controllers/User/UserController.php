@@ -52,7 +52,11 @@ class UserController extends Controller
         $uname = $email->name; 
          
         if($uemail == $email->email){
-            Event::fire(new SendMailResetPw($uemail,$uname));
+            
+            Mail::send(['html'=>'component.mail'],['name','Sathak'],function($message) use ($uemail,$uname){
+                $message->to($uemail,$uname.'님')->subject('안녕하세요 NEITTER입니다.');
+                $message->from('pyc2238@gmail.com','보근');
+            });
         
             $this->userModel->changePassword($uemail,$randPw[$selected]);
           

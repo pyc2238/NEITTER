@@ -12,8 +12,14 @@
 |
 */
 
+/**test */
 
 
+/*언어 지역화*/
+Route::get('locale/{locale}',function($locale = 'ko'){
+    Session::put('locale',$locale);
+    return redirect()->back();
+});
 
 /*메인 페이지*/
 Route::get('/','Home\WelcomeController@index');
@@ -23,12 +29,9 @@ Route::get('Home\introduction','Home\WelcomeController@getIntroduction')->name('
 /*로그인 및 회원가입*/
 Auth::routes();
 
-
 /*socialauth ouath*/
 Route::get('socialauth/{social}', 'Auth\LoginController@redirect');
 Route::get('socialauth/{social}/callback', 'Auth\LoginController@callback');
-
-
 
 /*소셜라이트 유저 추가정보 양식*/ 
 Route::get('socialite-register','User\UserController@getRegister')->name('socialite.register');  
@@ -57,7 +60,6 @@ Route::group(['middleware' => ['auth']], function () {
     Route::put('update/{id}','User\UserController@putUpdatePasswords')->name('user.updatePassword');
 
 });
-
 
 /*지식교류 게시판*/
 Route::resource('community','Community\CommunityContoller');
