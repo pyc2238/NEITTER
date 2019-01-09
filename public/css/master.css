@@ -131,6 +131,15 @@ body {
     color: white;
 }
 
+div>.copyright>a{
+    color:#00e0d0;
+}
+
+div>.copyright>a:hover{
+    color:orange;
+
+    text-decoration: none;
+}
 
 footer>div>a {
     color: white;
