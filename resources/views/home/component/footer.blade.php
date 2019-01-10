@@ -1,6 +1,6 @@
 <style>
-    div>.copyright>a{
-        color:#00e0d0;
+    div>.copyright>a {
+        color: #00e0d0;
     }
 
 </style>
@@ -21,15 +21,15 @@
             </div>
             <div class="col-md4 copyright" style="margin-left:3%;">
                 <a href="{{route('home.introduction')}}"><b>@lang('home/footer.introduction')</b></a>&nbsp; |
-                <a href="#"><b>@lang('home/footer.site_policy')</b></a>&nbsp; | 
-                <a href="#"><b>@lang('home/footer.privacy_policy')</b></a>&nbsp; | 
-                <a href="#"><b>@lang('home/footer.report')</b></a>&nbsp; | 
+                <a href="#"><b>@lang('home/footer.site_policy')</b></a>&nbsp; |
+                <a href="#"><b>@lang('home/footer.privacy_policy')</b></a>&nbsp; |
+                <a href="#"><b>@lang('home/footer.report')</b></a>&nbsp; |
                 <a href="mailto:pyc2238@gmail.com"><b>@lang('home/footer.inquiry')</b></a>&nbsp; | &nbsp;
                 <a href=""><img src="{{asset("data/ProjectImages/master/escort.png")}}" alt="escort"></a>
                 <br>
                 <br>
                 @if(Session::get('locale') == 'ja')
-                代表メール：gdays.kjclub@gmail.com 
+                代表メール：pyc2238@gmail.com
                 @else
                 서비스 운영<br>
 
@@ -37,7 +37,7 @@
                 <br>
                 <br>
                 시스템 운영<br>
-                YJCWDJ(주) 대표이사: 박보근 부대표: 곽민수  청소부: 김승연 / 사업자번호: 1501107
+                YJCWDJ(주) 대표이사: 박보근 부대표: 곽민수 청소부: 김승연 / 사업자번호: 1501107
                 주소: 대구 북구 복현동 335-13 207호
                 @endif
                 <br>

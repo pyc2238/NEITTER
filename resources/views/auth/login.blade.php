@@ -89,7 +89,7 @@ $(window).load(function()
     
 });
 </script>
-<!-- 회원가입 이메일 -->
+<!-- 회원가입 모달 -->
 <div class="modal fade" id="Modal-small" tabindex="-1" role="dialog" aria-labelledby="Modal-small" aria-hidden="true">
     <div class="modal-dialog modal-sm" role="document">
         <div class="modal-content">
@@ -104,7 +104,7 @@ $(window).load(function()
             </div>
             <b class="text-center"> <a href="{{route('home.introduction')}}">@lang('auth/login_form.introduction')</a></b>
             <div class="modal-footer">
-                <button type="button" class="btn btn-danger" data-dismiss="modal"> @lang('auth/login_form.introduction') </button>
+                <button type="button" class="btn btn-danger" data-dismiss="modal"> @lang('auth/login_form.check') </button>
             </div>
         </div>
     </div>

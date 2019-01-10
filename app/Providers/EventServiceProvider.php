@@ -26,6 +26,9 @@ class EventServiceProvider extends ServiceProvider
         'App\Events\registeredUserMail' => [
             'App\Listeners\registeredUser',
         ],
+        'App\Events\ResetPwMail' => [
+            'App\Listeners\ResetPwMailFired',
+        ],
         
     ];
 

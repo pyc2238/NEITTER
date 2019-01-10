@@ -6,7 +6,7 @@
 
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>NEITTER비밀번호 찾기</title>
+    <title>@lang('home/componet/mail.title')</title>
 </head>
 <style>
     a {
@@ -25,10 +25,10 @@
     <br>
     <br>
     @if(Session::has('newPw'))
-        안녕하세요. 새로 부여된 비밀번호는 "<b style="color:blue;">{{Session::get('newPw')}}</b>"입니다.
+        @lang('home/component/mail.notice1') "<b style="color:blue;">{{Session::get('newPw')}}</b>"@lang('home/component/mail.notice2')
     @endif
     <br>
-    <a href="{{route('login')}}">NEITTER 로그인하러 가기</a>
+    <a href="{{route('login')}}">@lang('home/component/mail.goLogin')</a>
 </body>
 
 </html>

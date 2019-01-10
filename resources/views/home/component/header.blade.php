@@ -1,8 +1,7 @@
-
 <nav class="navbar navbar-expand-lg navbar-light bg-danger text-light py-3 main-nav">
     <div class="container">
-        <a class="navbar-brand" href="{{ route('home.index') }}"><img src="{{asset("data/ProjectImages/master/NEITTER.png")}}" alt="Logo"
-                ondragstart="return false"></a>
+        <a class="navbar-brand" href="{{ route('home.index') }}"><img src="{{asset("data/ProjectImages/master/NEITTER.png")}}"
+                alt="Logo" ondragstart="return false"></a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
             aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
@@ -34,8 +33,8 @@
 
 <div class=" headcontainer">
     <div class="home">
-        <a href="{{ route('home.index') }}"><i class="fa fa-home" id="home" ></i> </a>
-        <a href="#"><i class="fa fa-search" id="search" ></i> </a>
+        <a href="{{ route('home.index') }}"><i class="fa fa-home" id="home"></i> </a>
+        <a href="#"><i class="fa fa-search" id="search"></i> </a>
         {{-- <a href="#"><img src="{{asset("data/ProjectImages/master/escort.png")}}" alt=""> </a> --}}
     </div>
 
@@ -57,28 +56,10 @@
     @unless(Auth::check())
     <div class="userInfo">
         <a href="{{ route('login') }}"><i class="fa fa-check">@lang('home/header.login')</i></a>
-        
+
         <a href="{{ route('register') }}"><i class="fa fa-address-card">@lang('home/header.register')</i></a>
 
         <a href="{{ route('password.request') }}"><i class="fa fa-question-circle">@lang('home/header.modify')</i></a>
     </div>
     @endunless
 </div>
-
-
-
-
-
-
-
-
-
- 
-
- 
-
- 
- 
-
- 
- 

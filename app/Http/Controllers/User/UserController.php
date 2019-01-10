@@ -10,7 +10,7 @@ use Session;
 use Mail;
 use Exception;
 use Event;
-use App\Events\SendMailResetPw;
+use App\Events\ResetPwMail;
 
 use Auth;
 use App\User;
@@ -53,11 +53,8 @@ class UserController extends Controller
          
         if($uemail == $email->email){
             
-            Mail::send(['html'=>'component.mail'],['name','Sathak'],function($message) use ($uemail,$uname){
-                $message->to($uemail,$uname.'님')->subject('안녕하세요 NEITTER입니다.');
-                $message->from('pyc2238@gmail.com','보근');
-            });
-        
+            Event::fire(new ResetPwMail($uemail,$uname));
+            
             $this->userModel->changePassword($uemail,$randPw[$selected]);
           
             return view('auth.passwords.reset');

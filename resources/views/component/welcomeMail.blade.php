@@ -6,7 +6,7 @@
 
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>NEITTER 회원가입 완료</title>
+    <title>@lang('home/component/welcomeMail.title')</title>
 </head>
 <style>
     a {
@@ -25,10 +25,10 @@
     <br>
     <br>
     @if(Session::has('newUser'))
-    안녕하세요 NEITTER입니다."<b style="color:blue;">{{Session::get('newUser')}}</b>"님의 회원가입을 환영합니다.
+        @lang('home/component/welcomeMail.notice1')"<b style="color:blue;">{{Session::get('newUser')}}</b>"@lang('home/component/welcomeMail.notice2')
     @endif
     <br>
-    <a href="{{route('login')}}">NEITTER 로그인하러 가기</a>
+    <a href="{{route('login')}}">@lang('home/component/welcomeMail.goLogin')</a>
 </body>
 
 </html>

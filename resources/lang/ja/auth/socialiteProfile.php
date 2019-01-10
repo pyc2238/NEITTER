@@ -2,11 +2,9 @@
 
     return [
         
-        'title' => '会員プロフィール',
+        'title' => 'ソーシャル会員プロフィール',
         'subject' => 'NEITTER-会員情報修正',
         'email' => 'メール',
-        'password' => 'パスワード',
-        'password_update' => 'パスワード変更',
         'nickname' => 'ニックネーム',
         'age' => '年齢',
         'gender' => '性別',

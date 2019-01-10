@@ -55,8 +55,8 @@ class LoginController extends Controller
 
      public function redirect(Request $request,$social)
      {
-         
-         Session::put('social',$social); 
+       
+          
          Session::put('name',$request->name);
          Session::put('age',$request->age);
          Session::put('gender',$request->gender);
@@ -72,11 +72,17 @@ class LoginController extends Controller
      {
         
     
-        
          try {
              $socialiteLogin = true;            
-             
-             $socialUser = Socialite::driver($social)->user();  
+            
+             if($social == 'twitter'){
+                $socialUser = Socialite::driver($social)->user();
+             }else{
+                $socialUser = Socialite::driver($social)->stateless()->user();
+             }
+                   
+            
+
              $existUser = User::where('email',$socialUser->email)->first();
               
              if($existUser) {    
@@ -85,8 +91,9 @@ class LoginController extends Controller
              }
              else {
                  if(!Session::get('age')){
-                     
-                     return redirect(route('socialite.register'));
+                    Session::put('social',$social);
+                
+                     return redirect()->route('socialite.register');
                  }  
  
                  $user = new User;

@@ -1,27 +1,106 @@
 @extends('layouts.app')
 @section('title')
-소개
+    @lang('home/introduction.title')
 @endsection
 @section('content')
 <div class="container content">
     <br>
     <div class="row">
         <div class="col">
-            <img src="{{asset("data/ProjectImages/master/logoImage/22.png")}}"
-                width="72" alt="thumbnail">
-            <h2 style='display:inline-block;'>NEITTER 소개</h2>
+            <img src="{{asset("data/ProjectImages/master/logoImage/22.png")}}" width="72" alt="thumbnail">
+            <h2 style='display:inline-block;'>@lang('home/introduction.subject')</h2>
             <hr>
         </div>
         <div class="w-100"></div>
+
+        @if(Session::get('locale') == 'ja')
         <div class="col" style='margin-top:40px'>
+
+            <h4 style='color:blue;font-family: "Nanum Gothic", sans-serif;'><b>プロジェクト概要</b></h4>
+            <br>
+
+            <p><b>NEITTER&nbsp;:&nbsp;&nbsp;&nbsp;neighbor+letter 隣国の人とのペンパル</b></p>
+
+            <p>NEITTEERは2018年10月2日,初めて開発した韓日文通サイトで日韓両国一人ひとりの文化的交流を通じて政治的,歴史的問題と関連した韓日関係の困難において民間
+                <img width="16%" src="{{asset("data/ProjectImages/master/logoImage/17.png")}}" align="right">
+                レベルの交流をはじめ,日韓間の国家交流の発展にも小さな力になれるようにしようという主旨に開発されました。</p>
+
+            <p>韓国に対して感情的に接する人もいるでしょうが,このような民間レベルの交流を通じて,韓国人日本人との個人的な交流において,政治的,歴史的問題が必要でしょうか？
+                いいえ.　これは国家と国家の交流よりは人間と人間との交流であることを強調したいです.</p>
+
+            <p> "寝巻き姿で隣の家の友達とパソコンでチャットでもするように手紙を書いた。"こうした個々人の文化交流がNEITTEERの追求する交流です。</p>
+
+            <p>NEITTEERはインターネット上で発生する全ての日韓間の民間交流を支援します。 あわせて韓国,日本国内のオフライン会合を通じて情報交換及び語学的関心事を持った会員間の語学会などを支援し
+                育成させます。</p>
+        </div>
+
+        <div class="w-100"></div>
+        <div class="col" style='margin-top:40px'>
+            <h4 style='color:blue;font-family: "Nanum Gothic", sans-serif;'><b>開発現況</b></h4>
+            <br>
+            2018年10月2日~ing
+            <br>
+            <br>
+            <ul style='margin-left:35px'>
+                <li><b>初開発開始の基本的な画面設計</b></li>
+                -2018年10月4日: サイトナビゲーションデザイン及びコンテンツ構想<br>
+                -2018年10月5日: メイン画面レイアウト設計<br>
+                -2018年10月9日: サイトコンテンツ及びデータベース構想<br>
+                -2018年10月12日: ソースコードの整理及びコメント作業<br><br>
+                <li><b>member機能開発開始</b></li>
+                -2018年10月18日: 会員加入機能の具現およびデータベース生成<br>
+                -2018年10月20日: ログイ ン及びログアウトのレイアウト設計及び実装<br>
+                -2018年10月22日: ログインID重複検査,PW正規表現式導入<br>
+                -2018年10月22日: 会員加入時の空白防止及び電子メール重複防止,会員脱会機能の追加,電子メールでのID検索及びパスワードの再設定<br>
+                -2018年10月24日: 会員プロフィール修正フォームおよび機能具現<br>
+                -2018年10月25日: 作文フォーム(NaverEdtior)の適用および電子メール正規式導入 <br><br>
+                <li><b>Community開発開始</b></li>
+                -2018年10月26日: データベース生成及びレイアウト設計<br>
+                -2018年10月27日: 掲示板のタイトルおよびニックネームの長さの制限,html文字の分かち書きの修正,国籍別イメージの出力,CRUD機能<br>
+                -2018年10月28日: CKeditor交替,掲示板デザイン修正およびページネーション<br>
+                <b style='color:red'>-2018年10月29日: PHP TermProject中間発表</b><br>
+                -2018年11月4日: 検索機能を追加<br>
+                -2018年11月5日: 検索機能ページネーションおよびタイトル+内容検索追加<br>
+                -2018年11月9日: 書き込みの書き込み機能CRUD<br>
+                -2018年11月10日: ネイバーパパAPI導入<br>
+                -2018年11月11日: 推薦·照会数の具現<br><br>
+                <li><b>Laravelフレームワーク転換</b></li>
+                -2018年11月12日: フォーラム·レイアウト·デザイン,パパゴ·言語感知機能の追加<br>
+                <b style='color:red'>-2018年11月14日: PHP->Laravel フレームワーク切り替え開始</b><br>
+                <img width="23%" src="{{asset("data/ProjectImages/master/umr2.png")}}" align="right" style="margin-right:50px">
+                -2018年11月15日: レイアウト及びラウトの設定<br>
+                -2018年11月16日: 会員加入及びログインORM転換1<br>
+                -2018年11月17日: 会員加入及びログインORM転換2<br>
+                -2018年11月18日: 掲示板CRUD ORM転換1<br>
+                -2018年11月19日: 掲示板CRUD ORM転換2<br>
+                -2018年11月20日: 掲示板CRUD ORM転換3<br>
+                -2018年11月21日: 掲示板CRUD ORM転換4<br>
+                -2018年11月22日: 掲示板CRUD ORM転換5<br>
+                <b style='color:red'>-2018年11月25日~12月1日現在で実装されたコード大幅修正</b><br>
+                -2018年12月1日: 会員加入時,メール発送追加<br>
+                -2018年12月2日: Googleユーザー認証ログインを追加<br>
+                -2018年12月9日: githubユーザー認証ログインを追加,および検索語自動完成機能を導入<br>
+                -2018年12月11日: 加入者確認メールスケジュール機能を追加<br>
+                <b style='color:red'>-2018年12月12日: プロジェクト提出(具現率20%)</b><br><br>
+                <li><b>その他修正</b></li>
+                -2018年1月7日: コントローラ階層の構造化,右マルコントローラ<br>
+                -2018年1月8日: footer Copyright<br>
+                -2018年1月9日: 韓日言語の地域化1<br>
+                -2018年1月10日: 韓日言語の地域化2<br>
+
+            </ul>
+        </div>
+        @else
+
+        <div class="col" style='margin-top:40px'>
+
             <h4 style='color:blue;font-family: "Nanum Gothic", sans-serif;'><b>프로젝트 개요</b></h4>
             <br>
 
             <p><b>NEITTER&nbsp;:&nbsp;&nbsp;&nbsp;neighbor+letter 이웃나라 사람과의 펜팔</b></p>
 
             <p>NEITTER는 2018년 10월 2일 처음 개발한 한일 펜팔사이트로 한일간 개개인의 문화적 교류를 통하여 정치적,역사적문제로 얽힌 한일관계의 어려움에 있어 민간
-                <img width="16%" src="{{asset("data/ProjectImages/master/logoImage/17.png")}}"
-                    align="right">
+                <img width="16%" src="{{asset("data/ProjectImages/master/logoImage/17.png")}}" align="right">
                 차원의 교류를 시작으로, 한일간 국가적 교류의 발전에도 작은 보탬이 될수 있게 하자는 취지에 개발 되었습니다.</p>
 
             <p>일본에 혹은 한국에 대해 감정적으로 대하는 사람도 있겠지만 이러한 민간차원의 교류를 통한 한국인 일본인과의 개인적인 교류에서 정치적, 역사적 문제가 필요할까요?
@@ -36,6 +115,9 @@
         <div class="w-100"></div>
         <div class="col" style='margin-top:40px'>
             <h4 style='color:blue;font-family: "Nanum Gothic", sans-serif;'><b>개발현황</b></h4>
+            <br>
+            2018년 10월 2일 ~ ing
+            <br>
             <br>
             <ul style='margin-left:35px'>
                 <li><b>첫 개발시작 기본적인 화면설계</b></li>
@@ -63,6 +145,7 @@
                 <li><b>Laravel 프레임 워크 전환</b></li>
                 -2018년11월 12일 : 포럼 레이아웃 디자인,파파고 언어감지 기능 추가 <br>
                 <b style='color:red'>-2018년11월 14일 PHP->Laravel 프레임워크 전환 시작</b><br>
+                <img width="23%" src="{{asset("data/ProjectImages/master/umr2.png")}}" align="right" style="margin-right:50px">
                 -2018년11월 15일 레이아웃 및 라우트 설정<br>
                 -2018년11월 16일 회원가입 및 로그인 ORM 전환1<br>
                 -2018년11월 17일 회원가입 및 로그인 ORM 전환2<br>
@@ -75,11 +158,20 @@
                 -2018년12월 1일 회원가입시 메일 발송 추가<br>
                 -2018년12월 2일 google 사용자 인증 로그인 추가<br>
                 -2018년12월 9일 github 사용자 인증 로그인 추가 및 검색어 자동완성기능 도입 <br>
+                -2018년12월 11일 가입자 확인 메일 스케쥴 기능 추가<br>
                 <b style='color:red'>-2018년12월 12일 프로젝트 제출 (구현률 20%)</b><br><br>
-                <li><b>Forum개발 시작</b></li>
+                <li><b>기타 수정</b></li>
+                -2018년12월 17일 가입자 확인 메일 스케쥴 기능 추가<br>
+                -2018년1월 7일 컨트롤러 계층 구조화,우마루 컨트롤러<br>
+                -2018년1월 8일 footer Copyright<br>
+                -2018년1월 9일 한일 언어 지역화1<br>
+                -2018년1월 10일 한일 언어 지역화2<br>
                 
+
             </ul>
         </div>
+
+        @endif
     </div>
 </div>
 @endsection

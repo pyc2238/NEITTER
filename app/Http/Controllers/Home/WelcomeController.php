@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Home;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use Session;
 
 class WelcomeController extends Controller
 {
@@ -14,7 +15,8 @@ class WelcomeController extends Controller
      */
     public function index()
     {
-      
+
+
         return view('home.welcome');
     }
 
@@ -85,6 +87,8 @@ class WelcomeController extends Controller
     }
 
      //사이트 소개 URL
-     public function getIntroduction(){return view('home.component.introduction');}
+     public function getIntroduction(){
+         return view('home.component.introduction');
+        }
 
 }

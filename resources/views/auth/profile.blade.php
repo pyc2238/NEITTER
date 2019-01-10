@@ -23,7 +23,8 @@
                 <br>
                 <br>
 
-                @lang('auth/profile.password') <a href="{{route('user.passwordFrom',Auth::user()->id)}}"><b>[ @lang('auth/profile.password_update') ]</b></a>
+                @lang('auth/profile.password') <a href="{{route('user.passwordFrom',Auth::user()->id)}}"><b>[
+                        @lang('auth/profile.password_update') ]</b></a>
                 <br>
                 <br>
 
@@ -34,19 +35,19 @@
                 <br>
 
                 <div class="form-row">
-                        <div class="form-group col-md-6">
-                            <label>@lang('auth/profile.age')</label>
-                            <input type="number" class="form-control" name="age" value="{{Auth::user()->age}}" min="1"
-                                max="120" required>
-                        </div> <!-- form-group end.// -->
-                        <div class="form-group col-md-6">
-                            <label>@lang('auth/profile.gender')</label>
-                            <select id="inputState" class="form-control" name="gender" required>
-                                <option selected value="남자">@lang('auth/profile.men')</option>
-                                <option value="여자">@lang('auth/profile.women')</option>
-                            </select>
-                        </div> <!-- form-group end.// -->
-                    </div> <!-- form-row.// -->
+                    <div class="form-group col-md-6">
+                        <label>@lang('auth/profile.age')</label>
+                        <input type="number" class="form-control" name="age" value="{{Auth::user()->age}}" min="1" max="120"
+                            required>
+                    </div> <!-- form-group end.// -->
+                    <div class="form-group col-md-6">
+                        <label>@lang('auth/profile.gender')</label>
+                        <select id="inputState" class="form-control" name="gender" required>
+                            <option selected value="남자">@lang('auth/profile.men')</option>
+                            <option value="여자">@lang('auth/profile.women')</option>
+                        </select>
+                    </div> <!-- form-group end.// -->
+                </div> <!-- form-row.// -->
                 <br>
                 <br>
 
@@ -134,7 +135,14 @@
                                 </tr>
                                 <tr>
                                     <th>@lang('auth/profile.model_gender') :&nbsp;</th>
-                                    <td><b style="color:blue">{{Auth::user()->gender}}<b></td>
+
+                                    @if(Auth::user()->gender == '남자')
+
+                                    <td><img src="{{asset("data/ProjectImages/master/men.png")}}" alt="men"></td>
+                                    @else
+                                    <td><img src="{{asset("data/ProjectImages/master/women.png")}}" alt="women"></td>
+                                    @endif
+
                                 </tr>
                                 <tr>
                                     <th>@lang('auth/profile.model_area') :&nbsp;</th>

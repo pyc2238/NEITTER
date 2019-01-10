@@ -1,11 +1,9 @@
 <?php
+
     return [
-        'title' => '会員登録',
-        'subject' => 'NEITTER-会員登録',
-        'guide' => '様式によって作成してください。',
-        'email' => 'メール',
-        'password' => 'パスワード',
-        'password_check' => 'パスワード確認',
+
+        'title' => 'ソーシャル会員登録',
+        'subject' => 'NEITTER-登録',        
         'nickname' => 'ニックネーム',
         'age' => '年齢',
         'gender' => '性別',
@@ -17,7 +15,9 @@
         'japan' => '日本',
         'sign' => '登録',
         'reset' => 'リセット',
-        'notice' => '8~15字,英文,数字,特殊文字が入らなければなりません',
         'nickname_check' => '重複検査'
+
     ];
+
 ?>
+
