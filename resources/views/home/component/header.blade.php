@@ -1,3 +1,4 @@
+ 
 <nav class="navbar navbar-expand-lg navbar-light bg-danger text-light py-3 main-nav">
     <div class="container">
         <a class="navbar-brand" href="{{ route('home.index') }}"><img src="{{asset("data/ProjectImages/master/NEITTER.png")}}"
@@ -33,12 +34,12 @@
 
 <div class=" headcontainer">
     <div class="home">
-        <a href="{{ route('home.index') }}"><i class="fa fa-home" id="home"></i> </a>
-        <a href="#"><i class="fa fa-search" id="search"></i> </a>
-        {{-- <a href="#"><img src="{{asset("data/ProjectImages/master/escort.png")}}" alt=""> </a> --}}
+        <a href="{{ route('home.index') }}" title="home"><i class="fa fa-home" id="home"></i> </a>
+        <a href="#" title="search"><i class="fa fa-search" id="search"></i> </a>
+        <a href="#" title="notice"><i class="fa fa-bullhorn" id="bullhorn"></i></a>
     </div>
 
-
+    
     @if(Auth::check())
     <div class="userInfo">
         <a href="#"><i class="fa fa-user">{{Auth::user()->name}}

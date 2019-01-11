@@ -25,6 +25,7 @@ Route::get('locale/{locale}',function($locale = 'ko'){
 Route::get('/','Home\WelcomeController@index');
 Route::resource('home','Home\WelcomeController');
 Route::get('introduction','Home\WelcomeController@getIntroduction')->name('home.introduction');//사이트 소개
+Route::get('policy','Home\WelcomeController@getPolicy')->name('home.policy');//이용 약관
 
 /*로그인 및 회원가입*/
 Auth::routes();

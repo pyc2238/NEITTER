@@ -27,17 +27,25 @@
     <script src="{{asset('/js/community.js')}}"></script>
     {{-- member.js --}}
     <script src="{{asset('/js/member.js')}}"></script>
+
+    {{-- home.js --}}
+
+    <script src="{{asset('/js/home.js')}}"></script>
+    
     {{-- master.css --}}
     <link rel="stylesheet" href="{{asset('/css/master.css')}}">
+    
     {{-- font-awesome --}}
     <link rel="stylesheet" href="{{asset('data/icon/css/font-awesome.min.css')}}">
+    
     {{-- ckeditor --}}
     <script src="{{asset('/data/ckeditor/ckeditor.js')}}"></script>
+    
     {{-- member css --}}
     <link rel="stylesheet" href="{{asset('/css/member.css')}}">
+    
     @yield("umr")
     
-
     <title>
         @yield('title')
     </title>

@@ -10,8 +10,9 @@
     <div class="col Internationalization">
         <a href="{{url('locale/ko')}}"><img src="{{asset('data\ProjectImages\master/korea.png')}}" alt="Korea">&nbsp;&nbsp;Korean&nbsp;&nbsp;</a>
         <a href="{{url('locale/ja')}}"><img src="{{asset('data\ProjectImages\master/japan.png')}}" alt="Japan">&nbsp;&nbsp;Japanese&nbsp;&nbsp;</a>
-
+        <a href="#" id="MOVE_TOP" class="float-right" title="MOVE_TOP"><img src="{{asset('data\ProjectImages\master/back to the top.png')}}" alt="back to the top"></a>
     </div>
+
     <div class="w-100"></div>
     <div class="col copyright">
         <div class="row">
@@ -21,7 +22,7 @@
             </div>
             <div class="col-md4 copyright" style="margin-left:3%;">
                 <a href="{{route('home.introduction')}}"><b>@lang('home/footer.introduction')</b></a>&nbsp; |
-                <a href="#"><b>@lang('home/footer.site_policy')</b></a>&nbsp; |
+                <a href="{{route('home.policy')}}"><b>@lang('home/footer.site_policy')</b></a>&nbsp; |
                 <a href="#"><b>@lang('home/footer.privacy_policy')</b></a>&nbsp; |
                 <a href="#"><b>@lang('home/footer.report')</b></a>&nbsp; |
                 <a href="mailto:pyc2238@gmail.com"><b>@lang('home/footer.inquiry')</b></a>&nbsp; | &nbsp;

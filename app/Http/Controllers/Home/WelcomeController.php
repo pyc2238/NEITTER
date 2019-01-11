@@ -86,9 +86,13 @@ class WelcomeController extends Controller
         //
     }
 
-     //사이트 소개 URL
-     public function getIntroduction(){
+    //사이트 소개 URL
+    public function getIntroduction(){
          return view('home.component.introduction');
-        }
+    }
+    //이용약관 URL
+    public function getPolicy(){
+        return view('home.component.policy');
+    }
 
 }

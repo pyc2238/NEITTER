@@ -73,17 +73,30 @@ body {
     margin-left:2%;
 }
 
+#bullhorn{
+    font-size:20px;
+    color: black;
+    margin-left:2%;
+}
+
 #home:hover,
 #home:active {
     color:#ea314e;
     text-decoration: none;
-    /* content: url('/data/ProjectImages/master/home2.png'); */
+
 }
 #search:hover,
 #search:active {
     color:#ea314e;
     text-decoration: none;
-    /* content: url('/data/ProjectImages/master/home2.png'); */
+    
+}
+
+#bullhorn:hover,
+#bullhorn:active {
+    color:#ea314e;
+    text-decoration: none;
+    
 }
 
 #searchImg{
