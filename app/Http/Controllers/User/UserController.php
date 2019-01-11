@@ -168,7 +168,9 @@ class UserController extends Controller
 
 
       //내정보 보기
-      public function getUser(){return view('auth.profile_check');}
+      public function getUser(){
+          return view('auth.profile_check');
+        }
 
       /*소셜라이트 회원 가입양식*/ 
       public function getRegister(){
