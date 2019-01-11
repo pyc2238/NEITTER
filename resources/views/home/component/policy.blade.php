@@ -43,7 +43,7 @@
                 <li><b>サービスの内容</b></li>
                 (1) ペンパル<br>
                 (2) 翻訳<br>
-                (3)コンテンツ
+                (3)コンテンツ<br>
                 (4) チャット<br>
                 (5) その他サービス<br><br>
 
@@ -76,7 +76,6 @@
         <div class="w-100"></div>
         <div class="col" style='margin-top:40px'>
             <h4 style='color:blue;font-family: "Nanum Gothic", sans-serif;'><b>서비스 이용</b></h4>
-            <br>
 
             <ul style='margin-left:35px'>
                 <li><b>서비스의 내용</b></li>

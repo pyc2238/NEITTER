@@ -1,6 +1,6 @@
 @extends('layouts.app')
 @section('title')
-    @lang('home/introduction.title')
+    @lang('home/component/introduction.title')
 @endsection
 @section('content')
 <div class="container content">
@@ -8,7 +8,7 @@
     <div class="row">
         <div class="col">
             <img src="{{asset("data/ProjectImages/master/logoImage/22.png")}}" width="72" alt="thumbnail">
-            <h2 style='display:inline-block;'>@lang('home/introduction.subject')</h2>
+            <h2 style='display:inline-block;'>@lang('home/component/introduction.subject')</h2>
             <hr>
         </div>
         <div class="w-100"></div>
