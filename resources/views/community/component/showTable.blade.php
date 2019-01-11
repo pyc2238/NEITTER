@@ -11,19 +11,19 @@
         <table class="table">
             <thead>
                 <tr style="height:1px">
-                    <th style="width:80px">글쓴이</th>
+                    <th style="width:80px">@lang('community/component/showTable.writer')</th>
                     <th>
                         {{$community->user->name}}
                     </th>
-                    <th style="width:80px">작성일</th>
+                    <th style="width:80px">@lang('community/component/showTable.date')</th>
                     <th>
                         {{$community->created_at}}
                     </th>
-                    <th style="width:58px;">조회</th>
+                    <th style="width:58px;">@lang('community/component/showTable.hits')</th>
                     <th>
                         {{$community->hits}}
                     </th>
-                    <th style="width:58px;">추천</th>
+                    <th style="width:58px;">@lang('community/component/showTable.commend')</th>
                     <th>
                         {{$community->commend}}
                     </th>
@@ -41,7 +41,7 @@
         <div class="col text-center" style="margin-top:40%;">
 
             <div class="col translation">
-                <button class='btn btn-warning'><b>일본어로 보기</b></button>
+                <button class='btn btn-warning'><b>@lang('community/component/showTable.translation')</b></button>
                 <div style="display:none; border:1px dashed gray;">
                     <div>
                         <br>

@@ -1,6 +1,6 @@
 @extends('layouts.app')
 @section('title')
-게시글
+        @lang('community/show.title')
 @endsection
 @section('content')
 

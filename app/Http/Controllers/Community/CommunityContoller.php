@@ -112,13 +112,21 @@ class CommunityContoller extends Controller
     {
         $search = $request->search;
         $where = $request->where;
-       
+        
         $this->communityModel->insertMsg(Auth::user()->country,$request->title,$request->content,Auth::user()->id,$request->getClientIp());
         
+        
+        if(Session::get('locale') == 'ja'){
+            $message = 'スレッド作成が完了しました。';
+        }else{
+            $message = '글 작성이 완료되었습니다.';
+        }
+
+
         return 
             redirect()
             ->route('community.index')
-            ->with('message','글 작성이 완료되었습니다.')
+            ->with('message',$message)
             ->with('search',$search)
             ->with('where',$where);
     }
@@ -185,6 +193,14 @@ class CommunityContoller extends Controller
         $search = $request->search;
         $where = $request->where;
         $user = $this->communityModel->getMsg($id);
+
+        if(Session::get('locale') == 'ja'){
+            $message = '修正権限がありません。';
+        }else{
+            $message = '수정권한이 없습니다.';
+        }
+
+
         if(Auth::user()->id == $user->user_id ){
             return 
                 view('community.edit')
@@ -195,7 +211,7 @@ class CommunityContoller extends Controller
                 ->with('title',$user->title)
                 ->with('content',$user->content);
         }else{
-            return back()->with('message','수정권한이 없습니다.');
+            return back()->with('message',$message);
         }   
     }
 
@@ -212,9 +228,16 @@ class CommunityContoller extends Controller
         $page = $request->page;
         $search = $request->search;
         $where = $request->where;
+
+        if(Session::get('locale') == 'ja'){
+            $message = 'スレッドが修正されました。';
+        }else{
+            $message = '게시물이 수정되었습니다.';
+        }
+
         
         $this->communityModel->updateMsg($id,$request->title,$request->content,$request->getClientIp());
-        return redirect(route('community.index',['search'=>$search,'where'=>$where,'page'=>$page]))->with('message','게시물이 수정되었습니다.');
+        return redirect(route('community.index',['search'=>$search,'where'=>$where,'page'=>$page]))->with('message',$message);
     }
 
     /**
@@ -230,12 +253,19 @@ class CommunityContoller extends Controller
         $search = $request->search;
         $where = $request->where;
         $user = $this->communityModel->getMsg($id);
+
+        if(Session::get('locale') == 'ja'){
+            $message = '削除権限がありません。';
+        }else{
+            $message = '삭제권한이 없습니다.';
+        }
+
         
          if(Auth::user()->id == $user->user_id ){
             $this->communityModel->deleteMsg($id);
             return redirect(route('community.index',['search'=>$search,'where'=>$where,'page'=>$page]));
         }else{
-            return back()->with('message','삭제권한이 없습니다.');
+            return back()->with('message',$message);
         }      
     }
 
@@ -245,11 +275,18 @@ class CommunityContoller extends Controller
         $search = $request->search;
         $where = $request->where;
        
+        if(Session::get('locale') == 'ja'){
+            $message = 'すでに推薦したスレッドです';
+        }else{
+            $message = '이미 추천을 누른 게시물입니다.';
+        }
+
+
         $userNum = Auth::user()->id;  
         $result = $this->commendsModel->getCommendId($userNum,$id);
         
         if($result){
-            return back()->with('message','이미 추천을 누른 게시물입니다.');
+            return back()->with('message',$message);
         }else{
             $this->commendsModel->insertCommendId($userNum,$id);
             $this->communityModel->updateCommend($id);

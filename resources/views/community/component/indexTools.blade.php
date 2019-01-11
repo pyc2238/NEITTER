@@ -11,13 +11,13 @@
 <div class="col-sm" style='margin-top:5%;margin-bottom:3%;'>
     <div class="input-group col-md-10">
         <select id="inputState" class="form-control" name="where" required>
-            <option selected value="title">제목</option>
-            <option value="writer">글쓴이</option>
-            <option value="content">내용</option>
-            <option value="titleAndcotent">제목+내용</option>
+            <option selected value="title">@lang('community/component/indexTools.title')</option>
+            <option value="writer">@lang('community/component/indexTools.writer')</option>
+            <option value="content">@lang('community/component/indexTools.content')</option>
+            <option value="titleAndcotent">@lang('community/component/indexTools.titleAndcontent')</option>
         </select>
         <input id="inputText" type="search" class="form-control" name="search" autocomplete=off onkeyup="enterkey(<?=$page?>);">
-        <button class="button" type="button" onclick="searchBtn(<?=$page?>)">검색</button>
+        <button class="button" type="button" onclick="searchBtn(<?=$page?>)">@lang('community/component/indexTools.search')</button>
     </div>
 </div>
 <div class="Custompagination " style='margin-top:5%;margin-bottom:3%;'>
@@ -29,11 +29,11 @@
 
     @if(Auth::check())
     <button class="btn btn-outline-warning float-right" type="button"><i class="fa fa-pencil" style="font-size:15px;"
-            onclick="location.href='{{route('community.create',['search'=>$search,'where'=>$where,'page'=>$page])}}'">글쓰기</i></button>
+            onclick="location.href='{{route('community.create',['search'=>$search,'where'=>$where,'page'=>$page])}}'">@lang('community/component/indexTools.write')</i></button>
     @endif
     @if($search&& $where)
     <button class="btn btn-outline-warning  float-right" type="button" onclick="location.href='{{route('community.index')}}'"><i
-            class="fa fa-list" style="font-size:15px;">목록</i></button>
+            class="fa fa-list" style="font-size:15px;">@lang('community/component/indexTools.list')</i></button>
     @endif
 </div>
 {{-- 

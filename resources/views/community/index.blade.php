@@ -1,6 +1,6 @@
 @extends('layouts.app')
 @section('title')
-게시판
+    @lang('community/index.title')
 @endsection
 
 @section('content')
@@ -8,7 +8,7 @@
     <link rel="stylesheet" href="{{asset('/css/community.css')}}">
 
     <br>
-    <h3><b>NEITTER-지식교류</b></h3>
+    <h3><b>@lang('community/index.subject')</b></h3>
     <hr>
 
     <div class="row">
@@ -28,7 +28,7 @@
                     show_Banner(R);
 
                 </script>
-                <h1 style="margin-top:5%"><b style="color:blue">"{{$search}}"</b>라는 검색 결과가 존재하지 않습니다.</h1>
+                <h1 style="margin-top:5%"><b style="color:blue">"{{$search}}"</b>@lang('community/index.search_result')</h1>
             </div>
             @else
             @include('community.component.indexTable')

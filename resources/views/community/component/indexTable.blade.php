@@ -1,14 +1,14 @@
 <table class="table table-hover" style="table-layout:fixed">
         <thead class="thead">
             <tr>
-                <th class="text-center" style="width:55px;">번호</th>
+                <th class="text-center" style="width:55px;">@lang('community/component/indexTable.number')</th>
                 <th style="width:50px;"></th>
-                <th>제목</th>
-                <th style="width:150px;">글쓴이</th>
-                <th style="width:60px;">날짜</th>
-                <th class="text-right" style="width:70px;">조회</th>
-                <th class="text-right" style="width:70px;">추천</th>
-                <th class="text-right" style="width:150px;">수정/삭제</th>
+                <th>@lang('community/component/indexTable.title')</th>
+                <th style="width:150px;">@lang('community/component/indexTable.writer')</th>
+                <th style="width:60px;">@lang('community/component/indexTable.date')</th>
+                <th class="text-right" style="width:70px;">@lang('community/component/indexTable.hits')</th>
+                <th class="text-right" style="width:70px;">@lang('community/component/indexTable.commend')</th>
+                <th class="text-right" style="width:150px;">@lang('community/component/indexTable.modify')</th>
             </tr>
         </thead>
         <tbody>
