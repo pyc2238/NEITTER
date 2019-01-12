@@ -20,7 +20,7 @@
                 <a href="{{route('home.creator')}}"><b>@lang('home/footer.creator')</b></a>&nbsp; |
                 <a href="#"><b>@lang('home/footer.report')</b></a>&nbsp; |
                 <a href="mailto:pyc2238@gmail.com"><b>@lang('home/footer.inquiry')</b></a>&nbsp; | &nbsp;
-                <span class="pnt" data-tooltip-text="@lang('home/footer.escort')"><img src="{{asset("data/ProjectImages/master/escort.png")}}"
+                <span style="cursor: pointer" data-tooltip-text="@lang('home/footer.escort')"><img src="{{asset("data/ProjectImages/master/escort.png")}}"
                         alt="escort"></span>
                 <br>
                 <br>

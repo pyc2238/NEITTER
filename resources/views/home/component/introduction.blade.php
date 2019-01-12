@@ -1,6 +1,6 @@
 @extends('layouts.app')
 @section('title')
-    @lang('home/component/introduction.title')
+@lang('home/component/introduction.title')
 @endsection
 @section('content')
 <div class="container content">
@@ -88,7 +88,24 @@
                 -2018年1月9日: 韓日言語の地域化1<br>
                 -2018年1月10日: 韓日言語の地域化2<br>
                 -2018年1月10日: 韓日言語の地域化3<br>
+                -2018年1月12日: クリエーターページを追加<br>
 
+            </ul>
+        </div>
+        <div class="w-100"></div>
+        <div class="col" style='margin-top:40px'>
+            <h4 style='color:blue;font-family: "Nanum Gothic", sans-serif;'><b>エラー修正日誌</b></h4>
+            <ul style='margin-left:35px'>
+                <li><b>2018年1月11日</b></li>
+                プロフィール詳細表示性別地域化<br>
+                ログアウト時,地域化セッション処理<br>
+                ソーシャルライト処理<br>
+                メールの地域化<br>
+                ログアウト時,地域化セッション処理<br>
+                ログイン時のセッション処理<br>
+                パスワードを探すメールイベントエラー<br>
+                footer上にいくボタン<br>
+                コミュニティー地域化<br>
             </ul>
         </div>
         @else
@@ -112,6 +129,7 @@
             <p>NEITTER은 인터넷상에서 발생하는 모든 한일간 민간교류를 지원합니다. 아울러 한국, 일본내의 오프라인 모임을 통하여 정보교환 및 어학적관심사를 가진 회원간의 어학 모임등을 지원하고
                 육성시킵니다.</p>
         </div>
+
 
         <div class="w-100"></div>
         <div class="col" style='margin-top:40px'>
@@ -168,11 +186,26 @@
                 -2018년1월 9일 한일 언어 지역화1<br>
                 -2018년1월 10일 한일 언어 지역화2<br>
                 -2018년1월 10일 한일 언어 지역화3<br>
-                
+                -2018년1월 12일 만든사람들 페이지 추가<br>
+            </ul>
+        </div>
+        <div class="w-100"></div>
+        <div class="col" style='margin-top:40px'>
+            <h4 style='color:blue;font-family: "Nanum Gothic", sans-serif;'><b>오류 수정일지</b></h4>
+            <ul style='margin-left:35px'>
+                <li><b>2018년1월 11일</b></li>
+                프로필 상세보기 성별 지역화<br>
+                로그아웃시 지역화 세션 처리<br>
+                소셜라이트 처리<br>
+                메일 지역화<br>
+                로그아웃시 지역화 세션 처리<br>
+                로그인시 세션 처리<br>
+                비밀번호 찾기 메일 이벤트 에러<br>
+                footer위로 가기 버튼<br>
+                커뮤니티 지역화<br>
 
             </ul>
         </div>
-
         @endif
     </div>
 </div>
