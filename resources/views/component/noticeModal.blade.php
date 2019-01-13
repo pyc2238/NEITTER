@@ -5,7 +5,7 @@
         <div class="modal-content">
             <div class="modal-header">
                 <img src="{{asset('data/ProjectImages/master/notice.png')}}" alt="notice">
-                <h5 class="modal-title" id="Modal-small-demo-label">알림</h5>
+                <h5 class="modal-title" id="Modal-small-demo-label">@lang('home/component/noticeModal.notice')</h5>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true"> &times; </span>
                 </button>

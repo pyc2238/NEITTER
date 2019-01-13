@@ -4,6 +4,7 @@
 <head>
 
     <meta charset="utf-8">
+    {{-- - 웹브라우저의 화면을 각 디바이스에 최적화 된 크기로 표현해준다. --}}
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
     <!-- CSRF Token -->
