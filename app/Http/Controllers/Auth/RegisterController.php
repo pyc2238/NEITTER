@@ -62,9 +62,20 @@ class RegisterController extends Controller
     public function register(Request $request)
     {
 
-       
-
+        
         $result = true;
+        
+
+        if($this->user->getName($request->name)){
+
+            if(Session::get('locale') == 'ja'){
+                $message = 'このIDは使用できません';
+            }else{
+                $message = '해당 아이디는 사용 할 수 없습니다.';
+            }
+            return back()->with('message',$message);
+        }
+
 
         $this->validate($request,[
             'name' => 'required|string|max:255',

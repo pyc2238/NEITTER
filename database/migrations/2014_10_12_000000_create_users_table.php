@@ -26,6 +26,7 @@ class CreateUsersTable extends Migration
             $table->string('selfContext',255)->nullable();
             $table->text('selfPhoto')->nullable();
             $table->integer('socialite')->default(0)->unsigned();
+            $table->boolean('admin')->default(false);
             $table->timestamps();
             // $table->softDeletes();
             $table->rememberToken();       

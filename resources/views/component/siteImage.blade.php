@@ -46,7 +46,7 @@
         alt="Responsive image"></a>
 
 
-<a href="#" onclick="showTitle()" onfocus="this.blur();"><img id=Rand_Banner  class="img-fluid" src="{{asset("data/ProjectImages/master/logoImage/umr1.png")}}"
+<a href="#" onclick="showTitle()" onfocus="this.blur();"><img id=Rand_Banner class="img-fluid" src="{{asset("data/ProjectImages/master/logoImage/umr1.png")}}"
         alt="Responsive image"></a>
-<a href="#" onclick="showTitle()" onfocus="this.blur();"><img id=Rand_Banner  class="img-fluid" src="{{asset("data/ProjectImages/master/logoImage/umr2.png")}}"
+<a href="#" onclick="showTitle()" onfocus="this.blur();"><img id=Rand_Banner class="img-fluid" src="{{asset("data/ProjectImages/master/logoImage/umr2.png")}}"
         alt="Responsive image"></a>

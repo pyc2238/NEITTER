@@ -19,7 +19,7 @@
 
             <h4 style='color:blue;font-family: "Nanum Gothic", sans-serif;'><b>クリエーター紹介</b></h4>
             <br>
-            <div>
+            <div style="margin-bottom:10%">
                 <img width="30%" class="img-thumbnail" src="{{asset("data/ProjectImages/master/creators/bogeun.jpg")}}"
                     alt="Bogeun">
                 <br><br><br>
@@ -44,151 +44,103 @@
             </div>
             <div class="w-100"></div>
             <br><br>
-            <div class="container">
-                <div class="row">
+            <div class="container" style="margin-bottom:5%">
+                <div class="row text-center">
                     <div class="col-sm">
-                        <img width="50%" class="img-thumbnail" src="{{asset("data/ProjectImages/master/logoImage/6.png")}}"
-                            alt="Bogeun">
+
+                        <img class="img-thumbnail sub" src="{{asset("data/ProjectImages/master/logoImage/6.png")}}" alt="Bogeun">
                         <br><br>
-                        <table>
 
-                            <tr>
-                                <th>@lang('home/component/creator.name')&nbsp; </th>
-                                <td>チュ・ホジン</td>
-                            </tr>
-                            <tr>
-                                <th>@lang('home/component/creator.role')&nbsp;</th>
-                                <td>デザイン·フロントエント</td>
-                            </tr>
-                            <tr>
-                                <th>@lang('home/component/creator.skill')&nbsp;</th>
-                                <td>Vue.js,HTML,Jquery</td>
-                            </tr>
-                        </table>
-                        <br>
-                        フロントエントの天才と呼ばれる。
-                    </div>
 
-                    <div class="col-sm">
-                        <img width="50%" class="img-thumbnail" src="{{asset("data/ProjectImages/master/logoImage/6.png")}}"
-                            alt="Bogeun">
-                        <br><br>
-                        <table>
+                        <div class="row">
+                            <div class="col"></div>
+                            <div class="col-9">
+                                <table class="text-center">
 
-                            <tr>
-                                <th>@lang('home/component/creator.name')&nbsp; </th>
-                                <td>カク·ミンス</td>
-                            </tr>
-                            <tr>
-                                <th>@lang('home/component/creator.role')&nbsp;</th>
-                                <td>ラブライブコンサルタント</td>
-                            </tr>
-                            <tr>
-                                <th>@lang('home/component/creator.skill')&nbsp;</th>
-                                <td>LoveLive</td>
-                            </tr>
-                        </table>
-                        <br>
-                        ラブライブが好きだ。
+                                    <tr>
+                                        <th>@lang('home/component/creator.name')&nbsp; </th>
+                                        <td class="float-left">チュ・ホジン</td>
+                                    </tr>
+                                    <tr>
+                                        <th>@lang('home/component/creator.role')&nbsp;</th>
+                                        <td class="float-left">デザイン·フロントエント</td>
+                                    </tr>
+                                    <tr>
+                                        <th>@lang('home/component/creator.skill')&nbsp;</th>
+                                        <td class="float-left">Vue.js,HTML,Jquery</td>
+                                    </tr>
+                                </table>
+                                <br>
+                                フロントエントの天才と呼ばれる。
+                            </div>
+                            <div class="col"></div>
+                        </div>
+
                     </div>
                     <div class="col-sm">
-
-                        <img width="50%" class="img-thumbnail" src="{{asset("data/ProjectImages/master/logoImage/6.png")}}"
-                            alt="Bogeun">
+                        <img class="img-thumbnail sub" src="{{asset("data/ProjectImages/master/logoImage/6.png")}}" alt="Bogeun">
                         <br><br>
-                        <table>
 
-                            <tr>
-                                <th>@lang('home/component/creator.name')&nbsp; </th>
-                                <td>キム·スンヨン</td>
-                            </tr>
-                            <tr>
-                                <th>@lang('home/component/creator.role')&nbsp;</th>
-                                <td>ネットワーク通信·フロントエント</td>
-                            </tr>
-                            <tr>
-                                <th>@lang('home/component/creator.skill')&nbsp;</th>
-                                <td>Vue.js,Ajax</td>
-                            </tr>
-                        </table>
-                        <br>
-                        物好きが多い
-                    </div>
-                </div>
-            </div>
-            <div class="w-100"></div>
-            <br><br>
-            <div class="container">
-                <div class="row">
-                    <div class="col-sm">
-                        <img width="50%" class="img-thumbnail" src="{{asset("data/ProjectImages/master/logoImage/6.png")}}"
-                            alt="Bogeun">
-                        <br><br>
-                        <table>
 
-                            <tr>
-                                <th>@lang('home/component/creator.name')&nbsp; </th>
-                                <td>未定</td>
-                            </tr>
-                            <tr>
-                                <th>@lang('home/component/creator.role')&nbsp;</th>
-                                <td>未定</td>
-                            </tr>
-                            <tr>
-                                <th>@lang('home/component/creator.skill')&nbsp;</th>
-                                <td>未定</td>
-                            </tr>
-                        </table>
-                        <br>
-                        
-                    </div>
+                        <div class="row">
+                            <div class="col"></div>
+                            <div class="col-9">
+                                <table class="text-center">
 
-                    <div class="col-sm">
-                        <img width="50%" class="img-thumbnail" src="{{asset("data/ProjectImages/master/logoImage/6.png")}}"
-                            alt="Bogeun">
-                        <br><br>
-                        <table>
+                                    <tr>
+                                        <th>@lang('home/component/creator.name')&nbsp; </th>
+                                        <td class="float-left">カク·ミンス</td>
+                                    </tr>
+                                    <tr>
+                                        <th>@lang('home/component/creator.role')&nbsp;</th>
+                                        <td class="float-left">ラブライブコンサルタント</td>
+                                    </tr>
+                                    <tr>
+                                        <th>@lang('home/component/creator.skill')&nbsp;</th>
+                                        <td class="float-left">LoveLive</td>
+                                    </tr>
+                                </table>
+                                <br>
+                                ラブライブが好きだ。
+                            </div>
+                            <div class="col"></div>
+                        </div>
 
-                            <tr>
-                                <th>@lang('home/component/creator.name')&nbsp; </th>
-                                <td>未定</td>
-                            </tr>
-                            <tr>
-                                <th>@lang('home/component/creator.role')&nbsp;</th>
-                                <td>未定</td>
-                            </tr>
-                            <tr>
-                                <th>@lang('home/component/creator.skill')&nbsp;</th>
-                                <td>未定</td>
-                            </tr>
-                        </table>
-                        <br>
-                        
                     </div>
                     <div class="col-sm">
 
-                        <img width="50%" class="img-thumbnail" src="{{asset("data/ProjectImages/master/logoImage/6.png")}}"
-                            alt="Bogeun">
+                        <img class="img-thumbnail sub" src="{{asset("data/ProjectImages/master/logoImage/6.png")}}" alt="Bogeun">
                         <br><br>
-                        <table>
 
-                            <tr>
-                                <th>@lang('home/component/creator.name')&nbsp; </th>
-                                <td>未定</td>
-                            </tr>
-                            <tr>
-                                <th>@lang('home/component/creator.role')&nbsp;</th>
-                                <td>未定</td>
-                            </tr>
-                            <tr>
-                                <th>@lang('home/component/creator.skill')&nbsp;</th>
-                                <td>未定</td>
-                            </tr>
-                        </table>
-                        <br>
-                        
+
+                        <div class="row">
+                            <div class="col"></div>
+                            <div class="col-9">
+                                <table class="text-center">
+
+                                    <tr>
+                                        <th>@lang('home/component/creator.name')&nbsp; </th>
+                                        <td class="float-left">キム·スンヨン</td>
+                                    </tr>
+                                    <tr>
+                                        <th>@lang('home/component/creator.role')&nbsp;</th>
+                                        <td class="float-left">ネットワーク·フロントエント</td>
+                                    </tr>
+                                    <tr>
+                                        <th>@lang('home/component/creator.skill')&nbsp;</th>
+                                        <td class="float-left">Vue.js,HTML,Jquery</td>
+                                    </tr>
+                                </table>
+                                <br>
+                                物好きが多い
+                            </div>
+                            <div class="col"></div>
+                        </div>
+
                     </div>
                 </div>
+                <div class="w-100"></div>
+                <br><br>
             </div>
         </div>
         @else
@@ -197,7 +149,7 @@
 
             <h4 style='color:blue;font-family: "Nanum Gothic", sans-serif;'><b>크리에이터 소개</b></h4>
             <br>
-            <div>
+            <div style="margin-bottom:10%">
                 <img width="30%" class="img-thumbnail" src="{{asset("data/ProjectImages/master/creators/bogeun.jpg")}}"
                     alt="Bogeun">
                 <br><br><br>
@@ -222,155 +174,106 @@
             </div>
             <div class="w-100"></div>
             <br><br>
-            <div class="container">
-                <div class="row">
+            <div class="container" style="margin-bottom:5%">
+                <div class="row text-center">
                     <div class="col-sm">
-                        <img width="50%" class="img-thumbnail" src="{{asset("data/ProjectImages/master/logoImage/6.png")}}"
-                            alt="Bogeun">
+
+                        <img class="img-thumbnail" src="{{asset("data/ProjectImages/master/logoImage/6.png")}}" alt="Bogeun">
                         <br><br>
-                        <table>
 
-                            <tr>
-                                <th>@lang('home/component/creator.name')&nbsp; </th>
-                                <td>추호진</td>
-                            </tr>
-                            <tr>
-                                <th>@lang('home/component/creator.role')&nbsp;</th>
-                                <td>디자인 및 프론트엔트</td>
-                            </tr>
-                            <tr>
-                                <th>@lang('home/component/creator.skill')&nbsp;</th>
-                                <td>Vue.js,HTML,Jquery</td>
-                            </tr>
-                        </table>
-                        <br>
-                        프론트엔트의 천재로 불린다.
-                    </div>
 
-                    <div class="col-sm">
-                        <img width="50%" class="img-thumbnail" src="{{asset("data/ProjectImages/master/logoImage/6.png")}}"
-                            alt="Bogeun">
-                        <br><br>
-                        <table>
+                        <div class="row">
+                            <div class="col"></div>
+                            <div class="col-9">
+                                <table class="text-center">
 
-                            <tr>
-                                <th>@lang('home/component/creator.name')&nbsp; </th>
-                                <td>곽민수</td>
-                            </tr>
-                            <tr>
-                                <th>@lang('home/component/creator.role')&nbsp;</th>
-                                <td>러브라이브 컨설턴트</td>
-                            </tr>
-                            <tr>
-                                <th>@lang('home/component/creator.skill')&nbsp;</th>
-                                <td>LoveLive</td>
-                            </tr>
-                        </table>
-                        <br>
-                        러브라이브를 좋아한다.
+                                    <tr>
+                                        <th>@lang('home/component/creator.name')&nbsp; </th>
+                                        <td class="float-left">추호진</td>
+                                    </tr>
+                                    <tr>
+                                        <th>@lang('home/component/creator.role')&nbsp;</th>
+                                        <td class="float-left">디자인 및 프론트엔트</td>
+                                    </tr>
+                                    <tr>
+                                        <th>@lang('home/component/creator.skill')&nbsp;</th>
+                                        <td class="float-left">Vue.js,HTML,Jquery</td>
+                                    </tr>
+                                </table>
+                                <br>
+                                프론트엔드의 천재로 불린다.
+                            </div>
+                            <div class="col"></div>
+                        </div>
+
                     </div>
                     <div class="col-sm">
-
-                        <img width="50%" class="img-thumbnail" src="{{asset("data/ProjectImages/master/logoImage/6.png")}}"
-                            alt="Bogeun">
+                        <img class="img-thumbnail" src="{{asset("data/ProjectImages/master/logoImage/6.png")}}" alt="Bogeun">
                         <br><br>
-                        <table>
 
-                            <tr>
-                                <th>@lang('home/component/creator.name')&nbsp; </th>
-                                <td>김승연</td>
-                            </tr>
-                            <tr>
-                                <th>@lang('home/component/creator.role')&nbsp;</th>
-                                <td>네트워크 통신 및 프론트엔트</td>
-                            </tr>
-                            <tr>
-                                <th>@lang('home/component/creator.skill')&nbsp;</th>
-                                <td>Vue.js,Ajax</td>
-                            </tr>
-                        </table>
-                        <br>
-                        도게자를 잘한다.
-                    </div>
-                </div>
-            </div>
-            <div class="w-100"></div>
-            <br><br>
-            <div class="container">
-                <div class="row">
-                    <div class="col-sm">
-                        <img width="50%" class="img-thumbnail" src="{{asset("data/ProjectImages/master/logoImage/6.png")}}"
-                            alt="Bogeun">
-                        <br><br>
-                        <table>
 
-                            <tr>
-                                <th>@lang('home/component/creator.name')&nbsp; </th>
-                                <td>미정</td>
-                            </tr>
-                            <tr>
-                                <th>@lang('home/component/creator.role')&nbsp;</th>
-                                <td>미정</td>
-                            </tr>
-                            <tr>
-                                <th>@lang('home/component/creator.skill')&nbsp;</th>
-                                <td>미정</td>
-                            </tr>
-                        </table>
-                        <br>
-                        
-                    </div>
+                        <div class="row">
+                            <div class="col"></div>
+                            <div class="col-9">
+                                <table class="text-center">
 
-                    <div class="col-sm">
-                        <img width="50%" class="img-thumbnail" src="{{asset("data/ProjectImages/master/logoImage/6.png")}}"
-                            alt="Bogeun">
-                        <br><br>
-                        <table>
+                                    <tr>
+                                        <th>@lang('home/component/creator.name')&nbsp; </th>
+                                        <td class="float-left">곽민수</td>
+                                    </tr>
+                                    <tr>
+                                        <th>@lang('home/component/creator.role')&nbsp;</th>
+                                        <td class="float-left">러브라이브 컨설턴트</td>
+                                    </tr>
+                                    <tr>
+                                        <th>@lang('home/component/creator.skill')&nbsp;</th>
+                                        <td class="float-left">LoveLive</td>
+                                    </tr>
+                                </table>
+                                <br>
+                                러브라이브를 좋아한다.
+                            </div>
+                            <div class="col"></div>
+                        </div>
 
-                            <tr>
-                                <th>@lang('home/component/creator.name')&nbsp; </th>
-                                <td>미정</td>
-                            </tr>
-                            <tr>
-                                <th>@lang('home/component/creator.role')&nbsp;</th>
-                                <td>미정</td>
-                            </tr>
-                            <tr>
-                                <th>@lang('home/component/creator.skill')&nbsp;</th>
-                                <td>미정</td>
-                            </tr>
-                        </table>
-                        <br>
-                        
                     </div>
                     <div class="col-sm">
 
-                        <img width="50%" class="img-thumbnail" src="{{asset("data/ProjectImages/master/logoImage/6.png")}}"
-                            alt="Bogeun">
+                        <img class="img-thumbnail" src="{{asset("data/ProjectImages/master/logoImage/6.png")}}" alt="Bogeun">
                         <br><br>
-                        <table>
 
-                            <tr>
-                                <th>@lang('home/component/creator.name')&nbsp; </th>
-                                <td>미정</td>
-                            </tr>
-                            <tr>
-                                <th>@lang('home/component/creator.role')&nbsp;</th>
-                                <td>미정</td>
-                            </tr>
-                            <tr>
-                                <th>@lang('home/component/creator.skill')&nbsp;</th>
-                                <td>미정</td>
-                            </tr>
-                        </table>
-                        <br>
-                        
+
+                        <div class="row">
+                            <div class="col"></div>
+                            <div class="col-9">
+                                <table class="text-center">
+
+                                    <tr>
+                                        <th>@lang('home/component/creator.name')&nbsp; </th>
+                                        <td class="float-left">김승연</td>
+                                    </tr>
+                                    <tr>
+                                        <th>@lang('home/component/creator.role')&nbsp;</th>
+                                        <td class="float-left">네트워크 및 프론트엔트</td>
+                                    </tr>
+                                    <tr>
+                                        <th>@lang('home/component/creator.skill')&nbsp;</th>
+                                        <td class="float-left">Vue.js,HTML,Jquery</td>
+                                    </tr>
+                                </table>
+                                <br>
+                                프론트엔드의 천재로 불린다.
+                            </div>
+                            <div class="col"></div>
+                        </div>
+
                     </div>
                 </div>
-            </div>
+                <div class="w-100"></div>
+                <br><br>
 
+            </div>
         </div>
-
         @endif
     </div>
 </div>

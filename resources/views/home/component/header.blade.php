@@ -1,4 +1,3 @@
- 
 <nav class="navbar navbar-expand-lg navbar-light bg-danger text-light py-3 main-nav">
     <div class="container">
         <a class="navbar-brand" href="{{ route('home.index') }}"><img src="{{asset("data/ProjectImages/master/NEITTER.png")}}"
@@ -39,13 +38,28 @@
         <a href="#" title="notice"><i class="fa fa-bullhorn" id="bullhorn"></i></a>
     </div>
 
-    
+
+
     @if(Auth::check())
+    @if(Auth::user()->admin == 1)
     <div class="userInfo">
-        <a href="#"><i class="fa fa-user">{{Auth::user()->name}}
+        <a href=""><i class="fa fa-audio-description" style="">{{Auth::user()->name}}
             </i></a>
         <a href="{{route('logout')}}" onclick="event.preventDefault();
-            document.getElementById('logout-form').submit();"
+                    document.getElementById('logout-form').submit();"
+            class=""><i class="fa fa-sign-out">>@lang('home/header.logout')</i></a>
+        <a href=""><i class="fa fa-database">관리</i></a>
+        <a href=""><i class="fa fa-cog">설정</i></a>
+        <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+            @csrf
+        </form>
+    </div>
+    @else
+    <div class="userInfo">
+        <a href=""><i class="fa fa-user">{{Auth::user()->name}}</b>
+            </i></a>
+        <a href="{{route('logout')}}" onclick="event.preventDefault();
+                    document.getElementById('logout-form').submit();"
             class=""><i class="fa fa-sign-out">@lang('home/header.logout')</i></a>
         <a href="{{route('user.check')}}"><i class="fa fa-cogs">@lang('home/header.profile')</i></a>
         <a href=""><i class="fa fa-envelope">@lang('home/header.mailbox')</i></a>
@@ -53,6 +67,7 @@
             @csrf
         </form>
     </div>
+    @endif
     @endif
     @unless(Auth::check())
     <div class="userInfo">

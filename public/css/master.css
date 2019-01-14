@@ -207,3 +207,11 @@ div>.copyright>a {
 	left: auto;
 	opacity: 1;
 }
+
+
+/* 만든 사람들 소개 */
+
+.sub{
+    width: 70%;
+    height:auto;
+}

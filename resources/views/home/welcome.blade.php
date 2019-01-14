@@ -30,15 +30,16 @@ neitter
 
 
 <script>
-    var socialite = '{{Session::has('socialiteLogin')}}'    
-            $(window).load(function()
-            {
-                if(socialite){
-                    $('#Modal-small').modal('show');
-                }
-                
-            });
-            </script>
+    var socialite = '{{Session::has('
+    socialiteLogin ')}}'
+    $(window).load(function () {
+        if (socialite) {
+            $('#Modal-small').modal('show');
+        }
+
+    });
+
+</script>
 <!-- 회원가입 이메일 -->
 
 @include('home.component.welcomeModel')
