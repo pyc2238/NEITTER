@@ -35,7 +35,7 @@
     <div class="home">
         <a href="{{ route('home.index') }}" title="home"><i class="fa fa-home" id="home"></i> </a>
         <a href="#" title="search"><i class="fa fa-search" id="search"></i> </a>
-        <a href="#" title="notice"><i class="fa fa-bullhorn" id="bullhorn"></i></a>
+        <a href="{{ route('notice.index') }}" title="notice"><i class="fa fa-bullhorn" id="bullhorn"></i></a>
     </div>
 
 

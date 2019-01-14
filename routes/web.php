@@ -78,3 +78,6 @@ Route::group(['middleware' => ['comment']], function () {
 
 /*포럼 게시판*/
 Route::resource('forum','Forum\ForumController');
+
+/*공지사항 게시판 */
+Route::resource('notice','Admin\NoticeBoardController');

@@ -25,7 +25,11 @@
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
     {{-- community.js --}}
-    <script src="{{asset('/js/community.js')}}"></script>
+    @yield('communityJS')
+
+    {{-- notice.js --}}
+    @yield('noticeJS')
+    
     {{-- member.js --}}
     <script src="{{asset('/js/member.js')}}"></script>
 
@@ -55,8 +59,7 @@
 </head>
 
 <script>
-    var exist = '{{Session::has('
-    message ')}}';
+    var exist = '{{Session::has('message')}}';
     $(window).load(function () {
         if (exist) {
             $('#Modal-small-demo').modal('show');
