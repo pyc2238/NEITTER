@@ -67,7 +67,7 @@
                 <li><b>Laravelフレームワーク転換</b></li>
                 -2018年11月12日: フォーラム·レイアウト·デザイン,パパゴ·言語感知機能の追加<br>
                 <b style='color:red'>-2018年11月14日: PHP->Laravel フレームワーク切り替え開始</b><br>
-                <img width="23%" src="{{asset("data/ProjectImages/master/umr2.png")}}" align="right" style="margin-right:50px">
+                <img width="23%" src="{{asset("data/ProjectImages/master/umr2.png")}}" align="right" style="margin-right:8%">
                 -2018年11月15日: レイアウト及びラウトの設定<br>
                 -2018年11月16日: 会員加入及びログインORM転換1<br>
                 -2018年11月17日: 会員加入及びログインORM転換2<br>
@@ -92,11 +92,13 @@
                 -2018年1月14日: プロジェクトモデルペクトリーを追加<br><br>
                 <li><b>Notice お知らせ掲示板を追加</b></li>
                 -2018年1月14日: お知らせ掲示板を追加及びパパゴ翻訳関数モジュール化,アドミンユーザー追加<br>
+                -2018年1月15日,ModelクエリスコフTrait,会員脱退および掲示文脱退時の実行可否確認を追加<br>
 
             </ul>
         </div>
         <div class="w-100"></div>
         <div class="col" style='margin-top:40px'>
+            <img width="23%" src="{{asset("data/ProjectImages/master/umr3.jpg")}}" align="right" style="margin-right:20%">
             <h4 style='color:blue;font-family: "Nanum Gothic", sans-serif;'><b>エラー修正日誌</b></h4>
             <ul style='margin-left:35px'>
                 <li><b>2018年1月11日</b></li>
@@ -169,7 +171,7 @@
                 <li><b>Laravel 프레임 워크 전환</b></li>
                 -2018년11월 12일 : 포럼 레이아웃 디자인,파파고 언어감지 기능 추가 <br>
                 <b style='color:red'>-2018년11월 14일 PHP->Laravel 프레임워크 전환 시작</b><br>
-                <img width="23%" src="{{asset("data/ProjectImages/master/umr2.png")}}" align="right" style="margin-right:50px">
+                <img width="23%" src="{{asset("data/ProjectImages/master/umr2.png")}}" align="right" style="margin-right:8%">
                 -2018년11월 15일 레이아웃 및 라우트 설정<br>
                 -2018년11월 16일 회원가입 및 로그인 ORM 전환1<br>
                 -2018년11월 17일 회원가입 및 로그인 ORM 전환2<br>
@@ -195,11 +197,13 @@
                 -2018년1월 14일 프로젝트 모델 펙토리 추가<br><br>
                 <li><b>Notice 공지사항 추가</b></li>
                 -2018년1월 14일 공지사항 게시판 추가 및 파파고 번역 함수 모듈화,관리자 유저 추가<br>
+                -2018년1월 15일 Model 쿼리스코프Trait 및 회원 탈퇴 및 게시글 탈퇴시 여부 확인 추가 <br>
                 
             </ul>
         </div>
         <div class="w-100"></div>
         <div class="col" style='margin-top:40px'>
+            <img width="23%" src="{{asset("data/ProjectImages/master/umr3.jpg")}}" align="right" style="margin-right:20%">
             <h4 style='color:blue;font-family: "Nanum Gothic", sans-serif;'><b>오류 수정일지</b></h4>
             <ul style='margin-left:35px'>
                 <li><b>2018년1월 11일</b></li>

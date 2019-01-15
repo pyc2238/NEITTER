@@ -2,12 +2,13 @@
 @section('title')
 @lang('notice/index.title')
 @endsection
-@section('noticeJS')
+@section('noticeJsCss')
 <script src="{{asset('/js/notice.js')}}"></script>
+<link rel="stylesheet" href="{{asset('/css/community.css')}}">
 @endsection
 @section('content')
 <div class="container content">
-    <link rel="stylesheet" href="{{asset('/css/community.css')}}">
+    
 
     <br>
     <h3><b>@lang('notice/index.subject')</b></h3>

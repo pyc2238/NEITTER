@@ -35,7 +35,10 @@
         'model_area' => '지역',
         'model_Date_of_entry' => '가입날짜',
         'model_self_introduction' => '자기소개',
-        'model_check' => '확인',
+        'model_subject' => '회원탈퇴',
+        'model_body' => ' 회원탈퇴를 하시겠습니까?',
+        'model_destory' => '탈퇴',
+        'model_check' => '취소',
     ];
 
 ?>

@@ -24,11 +24,11 @@
 
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
-    {{-- community.js --}}
-    @yield('communityJS')
+    {{-- community.js,css --}}
+    @yield('communityJsCss')
 
-    {{-- notice.js --}}
-    @yield('noticeJS')
+    {{-- notice.js,css --}}
+    @yield('noticeJsCss')
     
     {{-- member.js --}}
     <script src="{{asset('/js/member.js')}}"></script>
@@ -37,6 +37,7 @@
 
     <script src="{{asset('/js/home.js')}}"></script>
 
+    
     {{-- master.css --}}
     <link rel="stylesheet" href="{{asset('/css/master.css')}}">
 

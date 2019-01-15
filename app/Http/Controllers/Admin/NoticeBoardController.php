@@ -108,7 +108,7 @@ class NoticeBoardController extends Controller
         $search = $request->search;
         $where = $request->where;
         
-        $this->noticeModel->insertMsg(Auth::user()->country,$request->title,$request->content,Auth::user()->id);
+        $this->noticeModel->insertMsg(Auth::user()->country,$request->title,$request->content,Auth::user()->id,$request->getClientIp());
         
         
         if(Session::get('locale') == 'ja'){
@@ -225,7 +225,7 @@ class NoticeBoardController extends Controller
         }
 
         
-        $this->noticeModel->updateMsg($id,$request->title,$request->content);
+        $this->noticeModel->updateMsg($id,$request->title,$request->content,$request->getClientIp());
         return redirect(route('notice.index',['search'=>$search,'where'=>$where,'page'=>$page]))->with('message',$message);
     }
 

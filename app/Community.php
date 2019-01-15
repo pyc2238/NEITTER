@@ -6,11 +6,13 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
 use App\User;
+use App\Traits\ModelScopes;
 
 class Community extends Model
 {
 
     use SoftDeletes;
+    use ModelScopes;
 
     protected $fillable = [
         'num',
@@ -36,58 +38,6 @@ class Community extends Model
 
 
 
-
-
-
-
-
-    public function insertMsg($country,$title,$content,$id,$ip){
-        
-        if($country == "한국"){
-            $countryImg = asset("/data/ProjectImages/community/korea.png"); 
-        }else if($country == "일본"){
-            $countryImg =  asset("/data/ProjectImages/community/japan.png");
-        }
-
-        $this::create([
-            'country' => $countryImg,
-            'title' => $title,
-            'content' => $content,
-            'user_id' => $id,
-            'ip' => $ip
-        ]);
-    }
-
-    public function getMsgs(){
-        return $this::with('user:id,name')->orderBy('created_at','desc')->paginate(10)->onEachSide(5);
-    }
-
-    public function getMsg($id){
-        return $this::with('user:id,name')->where('num',$id)->first();
-    }
-    
-    public function updateMsg($id,$title,$content,$ip){
-        $param = [
-            'title'=>$title,
-            'content'=>$content,
-            'ip' => $ip
-        ];
-        $this::where('num',$id)->update($param);
-    }
-
-    public function deleteMsg($id){
-        $this::where('num',$id)->delete();
-    }
-
-    public function searchTitle($search){
-        return $this::where('title','LIKE',"%$search%")->orderBy('num', 'desc')->paginate(10)->onEachSide(5);
-          
-    }
-    public function searchTitleCount($search){
-        return count($this::where('title','LIKE',"%$search%")->get());
-        
-     }
-
     public function searchWriter($search){
         return
             User::select(['users.name','communities.num','communities.country','communities.title','communities.hits','communities.commend','communities.created_at',])
@@ -102,31 +52,7 @@ class Community extends Model
              
     }
 
-    public function searchContent($search){
-        return $this::where('content','LIKE',"%$search%")->orderBy('num', 'desc')->paginate(10)->onEachSide(5);
-    }
-
-    public function searchContentCount($search){
-        return count($this->where('content','LIKE',"%$search%")->get());     
-    }
-
-    public function searchTitleAndCotent($search){
-        return $this->where('title','LIKE',"%$search%")->orWhere('content','LIKE',"%$search%")->orderBy('num', 'desc')->paginate(10);
-    }
-
-    public function searchTitleAndCotentCount($search){
-        return count( $this->where('title','LIKE',"%$search%")->orWhere('content','LIKE',"%$search%")->get());
-    }
 
 
-    public function updateCommend($id){
-        $result = $this::where('num',$id)->first();
-        $result->commend++;
-        $result->save();
-    }
-    public function updateHits($id){
-        $result = $this::where('num',$id)->first();
-        $result->hits++;
-        $result->save();
-    }
+
 }

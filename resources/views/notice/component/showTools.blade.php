@@ -1,3 +1,5 @@
+@include('community.component.showDestoryModal')
+
 <div class='container'>
     <div class="text-center" id="tool" style="margin-top:1%;">
         @if(Auth::check())
@@ -5,11 +7,11 @@
                 <button class="btn btn-outline-warning" id="sombra_fija" type="button" title="modify" onclick="location.href='{{route('notice.edit',['boardNum'=>$notice->num,'search'=>$search,'where'=>$where,'page'=>$page])}}'">
                     <h2><i class="fa fa-pencil"></i></h2>
                 </button>
-                <form action="{{route('notice.destroy',['boardNum'=>$notice->num,'search'=>$search,'where'=>$where,'page'=>$page])}}"
+                <form id="destory-form" action="{{route('notice.destroy',['boardNum'=>$notice->num,'search'=>$search,'where'=>$where,'page'=>$page])}}"
                     method="post" style="display:inline-block">
                     @csrf
                     @method('delete')
-                    <button class="btn btn-outline-warning" id="sombra_fija" type="submit" title="delete">
+                    <button class="btn btn-outline-warning" id="sombra_fija" type="button" title="delete" data-toggle="modal" data-target="#Modal-choice">
                         <h2><i class="fa fa-trash"></i></h2>
                     </button>
                 </form>

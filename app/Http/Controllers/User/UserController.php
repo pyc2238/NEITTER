@@ -162,7 +162,7 @@ class UserController extends Controller
         User::where('id',Auth::user()->id)->delete();
         $request->session()->flush();
         return 
-            redirect(route('home'))
+            redirect(route('login'))
             ->with('message',$message);
     }
 

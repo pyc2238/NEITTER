@@ -35,7 +35,10 @@
         'model_area' => '住所',
         'model_Date_of_entry' => '加入日付',
         'model_self_introduction' => '自己紹介',
-        'model_check' => '完了',
+        'model_subject' => '会員脱会',
+        'model_body' => '会員脱会しますか?',
+        'model_destory' => '脱退',
+        'model_check' => 'キャンセル',
     ];
 
 ?>

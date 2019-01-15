@@ -28,15 +28,12 @@ neitter
 </div>
 
 
-
 <script>
-    var socialite = '{{Session::has('
-    socialiteLogin ')}}'
+    var socialite = '{{Session::has('socialiteLogin')}}'
     $(window).load(function () {
         if (socialite) {
             $('#Modal-small').modal('show');
         }
-
     });
 
 </script>

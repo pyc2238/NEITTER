@@ -48,7 +48,7 @@ class CommunityContoller extends Controller
         
         $msgs = $this->communityModel->getMsgs();
         $count = count(Community::all());
-        
+       
         if($search){
             switch($where){
                     
