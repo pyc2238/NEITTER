@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class AdminNoticesHits extends Migration
+class CreateInquiryBoardsCommend extends Migration
 {
     /**
      * Run the migrations.
@@ -13,7 +13,7 @@ class AdminNoticesHits extends Migration
      */
     public function up()
     {
-        Schema::create('admin__notice_hits', function (Blueprint $table) {
+        Schema::create('inquiry_board_commends', function (Blueprint $table) {
             $table->increments('id');
             $table->integer('userNum')->unsigned();
             $table->integer('boardNum')->unsigned();
@@ -27,6 +27,6 @@ class AdminNoticesHits extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('Admin_notices_hits');
+        Schema::dropIfExists('inquiry_boards_commends');
     }
 }

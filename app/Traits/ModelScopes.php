@@ -113,6 +113,9 @@ trait ModelScopes{
     public function scopeDeleteComments($query,$id){
         $query->where('id',$id)->delete();
     }
+
+
+   
  
 }
 

@@ -37,15 +37,6 @@ function choice(num, pages) {
     }
 }
 
-$(document).on("click", ".noticeTranslation > button", function () {
-    if ($(this).next().css("display") == "none") {
-        $(this).next().show();
-    } else {
-        $(this).next().hide();
-    }
-});
-
-
 $(function () {
     $(window).scroll(function () {
         if ($(this).scrollTop() > 400) { //스크롤이  400px보다 커질 때

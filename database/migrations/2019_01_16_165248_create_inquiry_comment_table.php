@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateAdminNotices extends Migration
+class CreateInquiryCommentTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,14 +13,14 @@ class CreateAdminNotices extends Migration
      */
     public function up()
     {
-        Schema::create('admin__notices', function (Blueprint $table) {
-            $table->increments('num');
-            $table->string('country',255);
-            $table->string('title',255);
+        Schema::create('inquiry_board__comments', function (Blueprint $table) {
+            $table->increments('id');
             $table->text('content');
-            $table->integer('hits')->default(0)->unsigned();
+            $table->string('country',255);
+            $table->integer('board_id')->unsigned();
             $table->integer('user_id')->unsigned();
-            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade')->onUpdate('cascade');
+            $table->foreign('board_id')->references('num')->on('inquiry_boards')->onDelete('cascade');
+            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
             $table->string('ip',50);
             $table->softDeletes();
             $table->timestamps();
@@ -34,6 +34,6 @@ class CreateAdminNotices extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('admin__notices');
+        Schema::dropIfExists('inquiry_boards__comments');
     }
 }

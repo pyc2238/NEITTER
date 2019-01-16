@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class AdminNoticesIps extends Migration
+class CreateAdminNoticesIps extends Migration
 {
     /**
      * Run the migrations.
@@ -27,6 +27,6 @@ class AdminNoticesIps extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('Admin_notices_ips');
+        Schema::dropIfExists('admin__notice_ips');
     }
 }

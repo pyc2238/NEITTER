@@ -18,7 +18,7 @@
                 <a href="{{route('home.introduction')}}"><b>@lang('home/footer.introduction')</b></a>&nbsp; |
                 <a href="{{route('home.policy')}}"><b>@lang('home/footer.site_policy')</b></a>&nbsp; |
                 <a href="{{route('home.creator')}}"><b>@lang('home/footer.creator')</b></a>&nbsp; |
-                <a href="#"><b>@lang('home/footer.report')</b></a>&nbsp; |
+            <a href="{{route('inquiry.index')}}"><b>@lang('home/footer.report')</b></a>&nbsp; |
                 <a href="mailto:pyc2238@gmail.com"><b>@lang('home/footer.inquiry')</b></a>&nbsp; | &nbsp;
                 <span style="cursor: pointer" data-tooltip-text="@lang('home/footer.escort')"><img src="{{asset("data/ProjectImages/master/escort.png")}}"
                         alt="escort"></span>

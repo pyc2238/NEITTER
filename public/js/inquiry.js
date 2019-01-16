@@ -1,21 +1,21 @@
 // communiy.blade.php
 
-function searchBtn(page) {
+function jquirySearchBtn(page) {
     var searchValue = document.getElementById('inputState').value;
     var search = document.getElementById('inputText').value;
     page = 1;
-    var url = 'community?search=' + search + '&where=' + searchValue + '&page=' + page;
+    var url = 'inquiry?search=' + search + '&where=' + searchValue + '&page=' + page;
 
     location.href = url;
 }
 
-function enterkey(page) {
+function jquiryEnterkey(page) {
     if (window.event.keyCode == 13) {
 
         var searchValue = document.getElementById('inputState').value;
         var search = document.getElementById('inputText').value;
         page = 1;
-        var url = 'community?search=' + search + '&where=' + searchValue + '&page=' + page;
+        var url = 'inquiry?search=' + search + '&where=' + searchValue + '&page=' + page;
 
         location.href = url;
     }
@@ -29,24 +29,6 @@ function choice(num, pages) {
 }
 
 
-// view.blade.php
-function choiceComment(commentNum, page) {
-    var choice = confirm("해당 댓글을 삭제하시겠습니까?");
-    if (!page) {
-        page = 1;
-    }
-    if (choice) {
-        location.href = "/comment/delete?id=" + commentNum + "&page=" + page;
-    }
-}
-
-
-
-
-
-
-
-
 
 function choice(num, pages) {
     var choice = confirm("해당 게시글을 삭제하시겠습니까?");
@@ -54,14 +36,6 @@ function choice(num, pages) {
         location.href = "/deleteRecord/" + num + '/' + pages;
     }
 }
-
-$(document).on("click", ".communityTranslation > button", function () {
-    if ($(this).next().css("display") == "none") {
-        $(this).next().show();
-    } else {
-        $(this).next().hide();
-    }
-});
 
 
 $(function () {

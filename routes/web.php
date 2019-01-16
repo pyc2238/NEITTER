@@ -65,15 +65,27 @@ Route::group(['middleware' => ['auth']], function () {
 
 /*지식교류 게시판*/
 Route::resource('community','Community\CommunityContoller');
+ /*불편및 문의사항 게시판 */
+ Route::resource('inquiry','inquiryBoard\inquiryBoardController');
+
 Route::group(['middleware' => ['comment']], function () { 
-    /*게시판 추천*/
+    /*지식교류 게시판 추천*/
     Route::put('community/increaseCommend/{id}','Community\CommunityContoller@putIncreaseCommend')->name('community.increaseCommend');
-    /*댓글 작성*/
+    /*지식 교류 댓글 작성*/
     Route::post('community/comment/{id}','Community\CommunityContoller@postInsertComment')->name('community.comment'); 
-    /* 댓글 수정*/
+    /* 지식 교류 댓글 수정*/
     Route::put('community/comment/{id}','Community\CommunityContoller@putUpdateComment')->name('community.comment.update');
-    /* 댓글 삭제*/
+    /*지식 교류 댓글 삭제*/
     Route::get('/comment/{id}','Community\CommunityContoller@getDeleteComment')->name('community.comment.delete');
+
+   
+    /*문의 게시판 추천*/
+    Route::put('inquiry/increaseCommend/{id}','inquiryBoard\inquiryBoardController@putIncreaseCommend')->name('inquiry.increaseCommend');/*댓글 작성*/
+    Route::post('inquiry/comment/{id}','inquiryBoard\inquiryBoardController@postInsertComment')->name('inquiry.comment'); 
+    /* 문의 게시판 댓글 수정*/
+    Route::put('inquiry/comment/{id}','inquiryBoard\inquiryBoardController@putUpdateComment')->name('inquiry.comment.update');
+    /* 문의 게시판 댓글 삭제*/
+    Route::get('/comment/{id}','inquiryBoard\inquiryBoardController@getDeleteComment')->name('inquiry.comment.delete');
 });
 
 /*포럼 게시판*/
@@ -81,3 +93,4 @@ Route::resource('forum','Forum\ForumController');
 
 /*공지사항 게시판 */
 Route::resource('notice','Admin\NoticeBoardController');
+

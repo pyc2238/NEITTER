@@ -14,6 +14,5 @@ return [
     */
 
     'failed' => 'IDまたはパスワードが一致しません.',
-    'throttle' => 'Too many login attempts. Please try again in :seconds seconds.',
-
+    'throttle' => 'ログイン回数を超えています. :seconds 秒後にまたしてください.',
 ];

@@ -44,13 +44,19 @@ class User extends Authenticatable
         return $this->hasMany(Community::class);
     }
 
+    public function comments(){
+        return $this->hasMany(Communities_Comment::class);
+    }
+
     public function admin__notices(){
         return $this->hasMany(Admin_Notice::class);
     }
 
-    public function comments(){
-        return $this->hasMany(Communities_Comment::class);
+    public function inquiryBoards(){
+        return $this->hasMany(inquiryBoard::class);
     }
+    
+    
 
 
     public function createUser($uname,$uemail,$upassword,$ugender,$uage,$uaddress,$ucountry){

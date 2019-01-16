@@ -14,6 +14,6 @@ return [
     */
 
     'failed' => '아이디또는 비밀번호가 일치하지 않습니다.',
-    'throttle' => 'Too many login attempts. Please try again in :seconds seconds.',
+    'throttle' => '로그인 횟수를 초과하였습니다. :seconds 후에 다시 시도하십시오.',
 
 ];

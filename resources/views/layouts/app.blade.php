@@ -30,6 +30,10 @@
     {{-- notice.js,css --}}
     @yield('noticeJsCss')
     
+    {{-- inquiry.js,css --}}
+    @yield('inquiryJsCss')
+    
+
     {{-- member.js --}}
     <script src="{{asset('/js/member.js')}}"></script>
 
