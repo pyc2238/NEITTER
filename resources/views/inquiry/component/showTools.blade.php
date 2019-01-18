@@ -29,19 +29,21 @@
 
     </div>
     @if(Auth::check())
-    <div class="row">
-        <div class="col" id="comments">
-            <form class="form-group" action="{{route('inquiry.comment',['boardNum'=>$inquiry->num,'search'=>$search,'where'=>$where,'page'=>$page])}}"
-                method='post'>
-                @csrf
-                <div class="row">
-                    <div class="col-10"><textarea name="comment" class='form-control' style='resize: none;' id='commentText'
-                            rows="3" placeholder='@lang('inquiry/component/showTable.comment_notice')' required></textarea></div>
-                    <div class="col-2"><input type="submit" class="btn btn-outline-info" value='@lang('inquiry/component/showTable.comment_write')'
-                            id='commentWrite'></div>
-            </form>
+        @if(Auth::user()->admin == 1)
+        <div class="row">
+            <div class="col" id="comments">
+                <form class="form-group" action="{{route('inquiry.comment',['boardNum'=>$inquiry->num,'search'=>$search,'where'=>$where,'page'=>$page])}}"
+                    method='post'>
+                    @csrf
+                    <div class="row">
+                        <div class="col-10"><textarea name="comment" class='form-control' style='resize: none;' id='commentText'
+                                rows="3" placeholder='@lang('inquiry/component/showTable.comment_notice')' required></textarea></div>
+                        <div class="col-2"><input type="submit" class="btn btn-outline-info" value='@lang('inquiry/component/showTable.comment_write')'
+                                id='commentWrite'></div>
+                </form>
+            </div>
         </div>
+        @endif
     </div>
-</div>
 @endif
 </div>

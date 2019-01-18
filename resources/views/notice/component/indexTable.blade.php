@@ -16,7 +16,7 @@
         <tr>
             <td style="width:60px;"><b>{{$msg->num}}</b></td>
             <td style="width:50px;"><img src="{{$msg->country}}" alt="국적"></td>
-            <td style="overflow:hidden;white-space:nowrap;text-overflow:ellipsis;"><a href="{{route('notice.show',['boardNum'=>$msg->num,'search'=>$search,'where'=>$where,'page'=>$page])}}"><b>{{$msg->title}}</b></a></td>
+            <td style="overflow:hidden;white-space:nowrap;text-overflow:ellipsis;"><b style="color:red">[공지]</b>&nbsp;<a href="{{route('notice.show',['boardNum'=>$msg->num,'search'=>$search,'where'=>$where,'page'=>$page])}}"><b>{{$msg->title}}</b></a></td>
             @if($where == 'writer')
             <td style="width:150px;"><b>{{$msg->name}}</b></td>
             @else

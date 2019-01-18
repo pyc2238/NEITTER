@@ -124,7 +124,6 @@ class CommunityContoller extends Controller
             $message = '글 작성이 완료되었습니다.';
         }
 
-
         return 
             redirect()
             ->route('community.index')
@@ -139,6 +138,7 @@ class CommunityContoller extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
+
     //해당 아이디의 관련정보를 보여줌
     public function show(Request $request,$id)
     {
@@ -169,7 +169,6 @@ class CommunityContoller extends Controller
         $translationTitle = $this->translation->translation($community->title,$this->translation->langCode($community->title));
         $translationContent = $this->translation->translation($community->content,$this->translation->langCode($community->title));
          
-        
         return
             view('community.show')
             ->with('community',$community)
@@ -188,6 +187,7 @@ class CommunityContoller extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
+    
     //해당 아이디의 수정 폼
     public function edit(Request $request,$id)
     {   
@@ -263,7 +263,7 @@ class CommunityContoller extends Controller
         }
 
         
-         if(Auth::user()->id == $user->user_id ){
+         if(Auth::user()->id == $user->user_id || Auth::user()->admin == 1 ){
             $this->communityModel->deleteMsg($id);
             return redirect(route('community.index',['search'=>$search,'where'=>$where,'page'=>$page]));
         }else{

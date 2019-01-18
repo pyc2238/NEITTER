@@ -24,15 +24,8 @@
 
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
-    {{-- community.js,css --}}
-    @yield('communityJsCss')
-
-    {{-- notice.js,css --}}
-    @yield('noticeJsCss')
-    
-    {{-- inquiry.js,css --}}
-    @yield('inquiryJsCss')
-    
+    {{-- boards js/css --}}
+    @yield('boards')
 
     {{-- member.js --}}
     <script src="{{asset('/js/member.js')}}"></script>

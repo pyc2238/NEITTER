@@ -1,13 +1,3 @@
-<script>
-
-$(document).on("click", ".noticeTranslation > button", function () {
-    if ($(this).next().css("display") == "none") {
-        $(this).next().show();
-    } else {
-        $(this).next().hide();
-    }
-});
-</script>
 
 
 <div class="container content">
@@ -49,7 +39,7 @@ $(document).on("click", ".noticeTranslation > button", function () {
     
             <div class="col text-center" style="margin-top:40%;">
     
-                <div class="col noticeTranslation">
+                <div class="col translation">
                     <button class='btn btn-warning'><b>@lang('notice/component/showTable.translation')</b></button>
                     <div style="display:none; border:1px dashed gray;">
                         <div>

@@ -48,14 +48,15 @@ class inquiryBoardController extends Controller
         $count = count(inquiryBoard::all());
 
         if($search){
+            
             switch($where){
-                    
+
                 case "title":
                     $msgs = $this->inquiryModel->searchTitle($search);  
                     $count = $this->inquiryModel->searchTitleCount($search);
                     break;
                 case "writer":
-                    $msgs = $this->inquiryModel->searchWriter($search); 
+                    $msgs = $this->inquiryModel->searchWriter($search);             
                     $count = $this->inquiryModel->searchWriterCount($search);
                     break;
                 case "content":
@@ -68,7 +69,7 @@ class inquiryBoardController extends Controller
                     break;    
             }
         }
-
+        
         return
             view('inquiry.index')
             ->with('page',$page)
@@ -83,6 +84,7 @@ class inquiryBoardController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+
     public function create(Request $request)
     {
         $page = $request->page;
@@ -102,6 +104,7 @@ class inquiryBoardController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
+
     public function store(Request $request)
     {
         $search = $request->search;
@@ -130,11 +133,29 @@ class inquiryBoardController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
+
     public function show(Request $request,$id)
     {
+        $user = $this->inquiryModel->getMsg($id);
+       
+        if(Session::get('locale') == 'ja'){
+            $message = '該当権限がありません';
+        }else{
+            $message = '글을 열람할 권한이 없습니다.';
+        }
 
-    
+        //로그인 여부를 판단
+        if(!Auth::check()){
+            return back()->with('message',$message);
+                
+        }else{
+            //해당 문의 글을 작성한 작성자 또는 운영자
+            if(Auth::user()->id != $user->user_id && Auth::user()->admin != 1 ){
+                return back()->with('message',$message);
+            }
+        }
 
+        
         $page = $request->page;
         $search = $request->search;
         $where = $request->where;
@@ -179,6 +200,7 @@ class inquiryBoardController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
+
     public function edit(Request $request,$id)
     {
         $page = $request->page;
@@ -214,6 +236,7 @@ class inquiryBoardController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
+
     public function update(Request $request, $id)
     {
         $page = $request->page;
@@ -237,6 +260,7 @@ class inquiryBoardController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
+
     public function destroy(Request $request,$id)
     {
         $page = $request->page;
@@ -251,7 +275,7 @@ class inquiryBoardController extends Controller
         }
 
         
-         if(Auth::user()->id == $user->user_id ){
+         if(Auth::user()->id == $user->user_id || Auth::user()->admin == 1 ){
             $this->inquiryModel->deleteMsg($id);
             return redirect(route('inquiry.index',['search'=>$search,'where'=>$where,'page'=>$page]));
         }else{
@@ -318,4 +342,5 @@ class inquiryBoardController extends Controller
         $this->commentModel->deleteComments($request->commentId);
         return redirect(route('inquiry.show',['id'=>$id,'search'=>$search,'where'=>$where,'page'=>$page]));
     }
+    
 }

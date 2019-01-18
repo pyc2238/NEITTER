@@ -1,14 +1,5 @@
 <div class="container content">
-    <script>
-        $(document).on("click", ".translation > button", function () {
-            if ($(this).next().css("display") == "none") {
-                $(this).next().show();
-            } else {
-                $(this).next().hide();
-            }
-        });
-
-    </script>
+    
     <div class="col">
         <br>
         <h4><img src="{{$community->country}}" alt="국적">&nbsp;

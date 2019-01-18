@@ -47,7 +47,7 @@
             </i></a>
         <a href="{{route('logout')}}" onclick="event.preventDefault();
                     document.getElementById('logout-form').submit();"
-            class=""><i class="fa fa-sign-out">>@lang('home/header.logout')</i></a>
+            class=""><i class="fa fa-sign-out">@lang('home/header.logout')</i></a>
         <a href=""><i class="fa fa-database">관리</i></a>
         <a href=""><i class="fa fa-cog">설정</i></a>
         <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">

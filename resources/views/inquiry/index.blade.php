@@ -2,8 +2,8 @@
 @section('title')
 @lang('inquiry/index.title')
 @endsection
-@section('inquiryJsCss')
-<script src="{{asset('/js/inquiry.js')}}"></script>
+@section('boards')
+<script src="{{asset('/js/boards.js')}}"></script>
 <link rel="stylesheet" href="{{asset('/css/community.css')}}">
 @endsection
 @section('content')

@@ -40,15 +40,32 @@ class inquiryBoard extends Model
 
     public function searchWriter($search){
         return
-            User::select(['users.name','inquiry_boards.num','inquiry_boards.country','inquiry_boards.title','inquiry_boards.hits','inquiry_boards.commend','inquiry_boards.created_at',])
+            User::select([
+                'users.name',
+                'inquiry_boards.num',
+                'inquiry_boards.country',
+                'inquiry_boards.title',
+                'inquiry_boards.hits',
+                'inquiry_boards.commend',
+                'inquiry_boards.created_at',
+                'inquiry_boards.deleted_at'
+                ])
             ->join('inquiry_boards', 'inquiry_boards.user_id', '=', 'users.id')
-            ->where('users.name', 'LIKE', "%$search%")->orderBy('num', 'desc')->paginate(10)->onEachSide(5);
+            ->whereNull('inquiry_boards.deleted_at') 
+            ->where('users.name', 'LIKE', "%$search%")
+            ->orderBy('num', 'desc')
+            ->paginate(10)
+            ->onEachSide(5);
     }
 
 
     public function searchWriterCount($search){
 
-        return count(User::join('inquiry_boards', 'inquiry_boards.user_id', '=', 'users.id')->where('users.name', 'LIKE', "%$search%")->get());
+        return 
+            count(User::join('inquiry_boards', 'inquiry_boards.user_id', '=', 'users.id')
+            ->whereNull('inquiry_boards.deleted_at')
+            ->where('users.name', 'LIKE', "%$search%")
+            ->get());
              
     }
 

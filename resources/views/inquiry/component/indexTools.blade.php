@@ -7,8 +7,8 @@
             <option value="content">@lang('inquiry/component/indexTools.content')</option>
             <option value="titleAndcotent">@lang('inquiry/component/indexTools.titleAndcontent')</option>
         </select>
-        <input id="inputText" type="search" class="form-control" name="search" autocomplete=off onkeyup="jquiryEnterkey(<?=$page?>);">
-        <button class="button" type="button" onclick="jquirySearchBtn(<?=$page?>)">@lang('inquiry/component/indexTools.search')</button>
+        <input id="inputText" type="search" class="form-control" name="search" autocomplete=off onkeyup="enterkey('inquiry');">
+        <button class="button" type="button" onclick="searchBtn('inquiry')">@lang('inquiry/component/indexTools.search')</button>
     </div>
 </div>
 <div class="Custompagination " style='margin-top:5%;margin-bottom:3%;'>

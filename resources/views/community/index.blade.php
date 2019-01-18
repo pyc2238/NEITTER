@@ -2,8 +2,8 @@
 @section('title')
 @lang('community/index.title')
 @endsection
-@section('communityJsCss')
-<script src="{{asset('/js/community.js')}}"></script>
+@section('boards')
+<script src="{{asset('/js/boards.js')}}"></script>
 <link rel="stylesheet" href="{{asset('/css/community.css')}}">
 @endsection
 @section('content')

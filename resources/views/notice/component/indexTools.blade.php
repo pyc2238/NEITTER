@@ -6,8 +6,8 @@
             <option value="content">@lang('notice/component/indexTools.content')</option>
             <option value="titleAndcotent">@lang('notice/component/indexTools.titleAndcontent')</option>
         </select>
-        <input id="inputText" type="search" class="form-control" name="search" autocomplete=off onkeyup="noticeEnterkey(<?=$page?>);">
-        <button class="button" type="button" onclick="noticeSearchBtn(<?=$page?>)">@lang('notice/component/indexTools.search')</button>
+        <input id="inputText" type="search" class="form-control" name="search" autocomplete=off onkeyup="enterkey('notice');">
+        <button class="button" type="button" onclick="searchBtn('notice')">@lang('notice/component/indexTools.search')</button>
     </div>
 </div>
 <div class="Custompagination " style='margin-top:5%;margin-bottom:3%;'>

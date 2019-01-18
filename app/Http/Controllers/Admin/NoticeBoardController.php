@@ -23,7 +23,6 @@ use App\Admin_Notice_ip;
 class NoticeBoardController extends Controller
 {
     
-
     public function __construct(){
         $this->noticeModel = new Admin_Notice();
         $this->hitsModel = new Admin_Notice_hit();
@@ -86,6 +85,15 @@ class NoticeBoardController extends Controller
      */
     public function create(Request $request)
     {
+
+        if(!Auth::check()){
+            return back();
+        }else{
+            if(Auth::user()->admin != 1){
+                return back();
+            }
+        }
+
         $page = $request->page;
         $search = $request->search;
         $where = $request->where;
@@ -103,7 +111,8 @@ class NoticeBoardController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    
+     public function store(Request $request)
     {
         $search = $request->search;
         $where = $request->where;
@@ -177,6 +186,7 @@ class NoticeBoardController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
+
     public function edit(Request $request,$id)
     {
         $page = $request->page;
@@ -212,6 +222,7 @@ class NoticeBoardController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
+
     public function update(Request $request, $id)
     {
         $page = $request->page;
@@ -235,6 +246,7 @@ class NoticeBoardController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
+    
     public function destroy(Request $request,$id)
     {
         $page = $request->page;

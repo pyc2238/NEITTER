@@ -16,8 +16,8 @@
             <option value="content">@lang('community/component/indexTools.content')</option>
             <option value="titleAndcotent">@lang('community/component/indexTools.titleAndcontent')</option>
         </select>
-        <input id="inputText" type="search" class="form-control" name="search" autocomplete=off onkeyup="enterkey(<?=$page?>);">
-        <button class="button" type="button" onclick="searchBtn(<?=$page?>)">@lang('community/component/indexTools.search')</button>
+        <input id="inputText" type="search" class="form-control" name="search" autocomplete=off onkeyup="enterkey('community');">
+        <button class="button" type="button" onclick="searchBtn('community')">@lang('community/component/indexTools.search')</button>
     </div>
 </div>
 <div class="Custompagination " style='margin-top:5%;margin-bottom:3%;'>

@@ -35,16 +35,31 @@ class Admin_Notice extends Model
 
     public function searchWriter($search){
         return
-            User::select(['users.name','admin__notices.num','admin__notices.country','admin__notices.title','admin__notices.hits','admin__notices.created_at',])
+            User::select([
+                'users.name',
+                'admin__notices.num',
+                'admin__notices.country',
+                'admin__notices.title',
+                'admin__notices.hits',
+                'admin__notices.created_at',
+                'admin__notices.deleted_at'
+            ])
             ->join('admin__notices', 'admin__notices.user_id', '=', 'users.id')
-            ->where('users.name', 'LIKE', "%$search%")->orderBy('num', 'desc')->paginate(10)->onEachSide(5);
+            ->whereNull('admin__notices.deleted_at') 
+            ->where('users.name', 'LIKE', "%$search%")
+            ->orderBy('num', 'desc')
+            ->paginate(10)
+            ->onEachSide(5);
     }
 
 
     public function searchWriterCount($search){
 
-        return count(User::join('communities', 'communities.user_id', '=', 'users.id')->where('users.name', 'LIKE', "%$search%")->get());
-             
+        return 
+            count(User::join('communities', 'communities.user_id', '=', 'users.id')
+            ->whereNull('admin__notices.deleted_at')
+            ->where('users.name', 'LIKE', "%$search%")
+            ->get()); 
     }
 
 }

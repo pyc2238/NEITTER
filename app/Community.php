@@ -40,15 +40,32 @@ class Community extends Model
 
     public function searchWriter($search){
         return
-            User::select(['users.name','communities.num','communities.country','communities.title','communities.hits','communities.commend','communities.created_at',])
+            User::select([
+                'users.name',
+                'communities.num',
+                'communities.country',
+                'communities.title',
+                'communities.hits',
+                'communities.commend',
+                'communities.created_at',
+                'communities.deleted_at'
+                ])
             ->join('communities', 'communities.user_id', '=', 'users.id')
-            ->where('users.name', 'LIKE', "%$search%")->orderBy('num', 'desc')->paginate(10)->onEachSide(5);
+            ->whereNull('communities.deleted_at') 
+            ->where('users.name', 'LIKE', "%$search%")
+            ->orderBy('num', 'desc')
+            ->paginate(10)
+            ->onEachSide(5);
     }
 
 
     public function searchWriterCount($search){
 
-        return count(User::join('communities', 'communities.user_id', '=', 'users.id')->where('users.name', 'LIKE', "%$search%")->get());
+        return 
+            count(User::join('communities', 'communities.user_id', '=', 'users.id')
+            ->whereNull('communities.deleted_at')
+            ->where('users.name', 'LIKE', "%$search%")
+            ->get());
              
     }
 
