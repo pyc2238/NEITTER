@@ -109,7 +109,7 @@ class inquiryBoardController extends Controller
     {
         $search = $request->search;
         $where = $request->where;
-        
+       
         $this->inquiryModel->insertMsg(Auth::user()->country,$request->title,$request->content,Auth::user()->id,$request->getClientIp());
         
         
@@ -282,7 +282,6 @@ class inquiryBoardController extends Controller
             return back()->with('message',$message);
         }      
     }
-
 
     public function putIncreaseCommend(Request $request,$id){
         $page = $request->page;

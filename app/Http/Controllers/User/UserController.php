@@ -87,7 +87,12 @@ class UserController extends Controller
         
       if($request->file){
         $file_name = $request->file('file')->getClientOriginalName();
-        $request->file->storeAs('public/slefPhoto',$file_name);
+        $request->file('file')->storeAs(
+            'users_profile_photo',
+            $file_name,
+            's3'
+        );
+        
         $this->userModel->updateFile($file_name);  
       }
 

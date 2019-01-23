@@ -19,7 +19,7 @@
                     <textarea name="content" id="content" required></textarea>
                     <script type="text/javascript">
                         CKEDITOR.replace('content', {
-                            'filebrowserUploadUrl': '/upload.php'
+                            'filebrowserUploadUrl': '/ckUpload?_token={{csrf_token()}}&type=image&buckets=community_board'
                         });
 
                     </script>

@@ -21,6 +21,9 @@ Route::get('locale/{locale}',function($locale = 'ko'){
     return redirect()->back();
 });
 
+/*CkEditor 파일업로드*/
+Route::post('/ckUpload','SubController\FileUploadController@fileUpload')->name('ckUpload');
+
 /*메인 페이지*/
 Route::get('/','Home\WelcomeController@index');
 Route::resource('home','Home\WelcomeController');
@@ -65,8 +68,8 @@ Route::group(['middleware' => ['auth']], function () {
 
 /*지식교류 게시판*/
 Route::resource('community','Community\CommunityContoller');
- /*불편및 문의사항 게시판 */
- Route::resource('inquiry','inquiryBoard\inquiryBoardController');
+/*불편및 문의사항 게시판 */
+Route::resource('inquiry','inquiryBoard\inquiryBoardController');
 
 Route::group(['middleware' => ['comment']], function () { 
     /*지식교류 게시판 추천*/
@@ -93,4 +96,6 @@ Route::resource('forum','Forum\ForumController');
 
 /*공지사항 게시판 */
 Route::resource('notice','Admin\NoticeBoardController');
+
+
 
