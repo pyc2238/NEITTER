@@ -1,5 +1,4 @@
 <?php
-
 /*
 |--------------------------------------------------------------------------
 | REST API 설계 규칙
@@ -11,8 +10,8 @@
 |
 |
 */
-
 /**test */
+
 
 
 /*언어 지역화*/
@@ -30,22 +29,17 @@ Route::resource('home','Home\WelcomeController');
 Route::get('introduction','Home\WelcomeController@getIntroduction')->name('home.introduction');//사이트 소개
 Route::get('policy','Home\WelcomeController@getPolicy')->name('home.policy');//이용 약관
 Route::get('creator','Home\WelcomeController@getCreator')->name('home.creator');//개인정보 취급 방침
-
 /*로그인 및 회원가입*/
 Auth::routes();
-
 /*socialauth ouath*/
 Route::get('socialauth/{social}', 'Auth\LoginController@redirect');
 Route::get('socialauth/{social}/callback', 'Auth\LoginController@callback');
-
 /*소셜라이트 유저 추가정보 양식*/ 
 Route::get('socialite-register','User\UserController@getRegister')->name('socialite.register');  
-
 /*닉네임 중복체크*/
 Route::get('check-name','User\UserController@getUserName');
 /*아이디/ 비밀번호 찾기 처리*/ 
 Route::post('reset','User\UserController@postFindPassword')->name('user.reset');    
-
 /*유저 정보*/
 Route::group(['middleware' => ['auth']], function () { 
     
@@ -63,14 +57,11 @@ Route::group(['middleware' => ['auth']], function () {
     Route::get('password/{id}','User\UserController@getChanegePasswordFrom')->name('user.passwordFrom');
     /*회원 비밀번호 변경*/
     Route::put('update/{id}','User\UserController@putUpdatePasswords')->name('user.updatePassword');
-
 });
-
 /*지식교류 게시판*/
 Route::resource('community','Community\CommunityContoller');
 /*불편및 문의사항 게시판 */
 Route::resource('inquiry','inquiryBoard\inquiryBoardController');
-
 Route::group(['middleware' => ['comment']], function () { 
     /*지식교류 게시판 추천*/
     Route::put('community/increaseCommend/{id}','Community\CommunityContoller@putIncreaseCommend')->name('community.increaseCommend');
@@ -79,8 +70,7 @@ Route::group(['middleware' => ['comment']], function () {
     /* 지식 교류 댓글 수정*/
     Route::put('community/comment/{id}','Community\CommunityContoller@putUpdateComment')->name('community.comment.update');
     /*지식 교류 댓글 삭제*/
-    Route::get('/comment/{id}','Community\CommunityContoller@getDeleteComment')->name('community.comment.delete');
-
+    Route::get('community/comment/{id}','Community\CommunityContoller@getDeleteComment')->name('community.comment.delete');
    
     /*문의 게시판 추천*/
     Route::put('inquiry/increaseCommend/{id}','inquiryBoard\inquiryBoardController@putIncreaseCommend')->name('inquiry.increaseCommend');/*댓글 작성*/
@@ -88,14 +78,12 @@ Route::group(['middleware' => ['comment']], function () {
     /* 문의 게시판 댓글 수정*/
     Route::put('inquiry/comment/{id}','inquiryBoard\inquiryBoardController@putUpdateComment')->name('inquiry.comment.update');
     /* 문의 게시판 댓글 삭제*/
-    Route::get('/comment/{id}','inquiryBoard\inquiryBoardController@getDeleteComment')->name('inquiry.comment.delete');
+    Route::get('inquiry/comment/{id}','inquiryBoard\inquiryBoardController@getDeleteComment')->name('inquiry.comment.delete');
 });
 
-/*포럼 게시판*/
-Route::resource('forum','Forum\ForumController');
 
 /*공지사항 게시판 */
 Route::resource('notice','Admin\NoticeBoardController');
 
-
-
+/*포럼 게시판*/
+Route::resource('forum','Forum\ForumController');
