@@ -42,7 +42,8 @@
     <link rel="stylesheet" href="{{asset('data/icon/css/font-awesome.min.css')}}">
 
     {{-- ckeditor --}}
-    <script src="{{asset('/data/ckeditor/ckeditor.js')}}"></script>
+    @yield('ckeditor')
+    
 
     {{-- member css --}}
     <link rel="stylesheet" href="{{asset('/css/member.css')}}">

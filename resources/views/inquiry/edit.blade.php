@@ -2,6 +2,9 @@
 @section('title')
 @lang('inquiry/edit.title')
 @endsection
+@section('ckeditor')
+<script src="{{asset('/data/ckeditor/ckeditor.js')}}"></script>
+@endsection
 @section('content')
 <div class="container content">
     <br>
@@ -21,7 +24,7 @@
                     <textarea name="content" id="content">{!!$content!!}</textarea>
                     <script type="text/javascript">
                         CKEDITOR.replace('content', {
-                            'filebrowserUploadUrl': '/upload.php'
+                            'filebrowserUploadUrl': '/ckUpload?_token={{csrf_token()}}&type=image&buckets=inquiry_board'
                         });
 
                     </script>

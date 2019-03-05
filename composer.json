@@ -12,6 +12,7 @@
         "laravel/socialite": "^3.2",
         "laravel/tinker": "^1.0",
         "league/flysystem-aws-s3-v3": "^1.0",
+        "pusher/pusher-php-server": "~3.0",
         "ramsey/uuid": "^3.8",
         "socialiteproviders/line": "^2.1",
         "socialiteproviders/twitter": "^3.0",

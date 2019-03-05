@@ -1,4 +1,5 @@
 <?php
+use App\Events\CommunityPusher;
 /*
 |--------------------------------------------------------------------------
 | REST API 설계 규칙
@@ -11,6 +12,20 @@
 |
 */
 /**test */
+
+Route::get('/counter', function () {
+    return view('counter');
+});
+Route::get('/sender', function () {
+    return view('sender');
+});
+Route::post('/sender', function () {
+    $text = request()->text;
+    
+    event(new CommunityPusher($text));
+    
+});
+
 
 
 

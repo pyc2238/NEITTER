@@ -2,6 +2,9 @@
 @section('title')
     @lang('community/create.title')
 @endsection
+@section('ckeditor')
+<script src="{{asset('/data/ckeditor/ckeditor.js')}}"></script>
+@endsection
 @section('content')
 <div class="container content">
     <br>
