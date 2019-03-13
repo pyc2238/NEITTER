@@ -20,7 +20,7 @@ use App\User;
 
 class UserController extends Controller 
 {
-
+    private $userModel = null;
 
     public function __construct(){
         $this->userModel = new User();
@@ -29,6 +29,7 @@ class UserController extends Controller
 
     /* 회원가입 닉네임 중복 체크 */
     public function getUserName(Request $request){
+ 
         $name =  $this->userModel->getName($request->name);
 
         return 

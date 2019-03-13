@@ -22,6 +22,11 @@ use App\Admin_Notice_ip;
 
 class NoticeBoardController extends Controller
 {
+
+    private $noticeModel    = null;
+    private $hitsModel      = null;
+    private $ipsModel       = null;
+    private $translation    = null;
     
     public function __construct(){
         $this->noticeModel = new Admin_Notice();

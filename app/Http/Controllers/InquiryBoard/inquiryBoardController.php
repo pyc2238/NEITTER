@@ -19,6 +19,13 @@ use App\inquiryBoard_Comment;
 class inquiryBoardController extends Controller
 {
 
+    private $inquiryModel   = null;
+    private $commendsModel  = null;
+    private $hitsModel      = null;
+    private $ipsModel       = null;
+    private $commentModel   = null;
+    private $translation    = null;
+
     public function __construct(){
         $this->inquiryModel = new inquiryBoard();
         $this->commendsModel = new inquiryBoard_commends();
@@ -29,7 +36,6 @@ class inquiryBoardController extends Controller
         $this->middleware('loginCheck')->only(['edit','destroy']);
         
     }
-
 
 
     /**

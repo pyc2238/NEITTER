@@ -22,6 +22,14 @@ use Illuminate\Support\Facades\DB;
 
 class CommunityContoller extends Controller
 {
+
+    private $communityModel = null;
+    private $commendsModel  = null;
+    private $hitsModel      = null;
+    private $ipsModel       = null;
+    private $commentModel   = null;
+    private $translation    = null;
+    
     public function __construct(){
         $this->communityModel = new Community();
         $this->commendsModel = new Communities_commends();
@@ -306,8 +314,6 @@ class CommunityContoller extends Controller
 
         
         $this->commentModel->insertComment($request->comment,Auth::user()->country,$id,Auth::user()->id,$request->getClientIp());
-    
-      
         // return response()->json($comments, 200, [], JSON_PRETTY_PRINT);
         
         return redirect(route('community.show',['id'=>$id,'search'=>$search,'where'=>$where,'page'=>$page]));

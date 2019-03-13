@@ -11,7 +11,7 @@ use App\Events\CommunityPusher;
 |
 |
 */
-/**test */
+/**Pusher test */
 
 Route::get('/counter', function () {
     return view('counter');
@@ -25,8 +25,6 @@ Route::post('/sender', function () {
     event(new CommunityPusher($text));
     
 });
-
-
 
 
 /*언어 지역화*/
