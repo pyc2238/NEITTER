@@ -41,7 +41,8 @@ Route::get('/','Home\WelcomeController@index');
 Route::resource('home','Home\WelcomeController');
 Route::get('introduction','Home\WelcomeController@getIntroduction')->name('home.introduction');//사이트 소개
 Route::get('policy','Home\WelcomeController@getPolicy')->name('home.policy');//이용 약관
-Route::get('creator','Home\WelcomeController@getCreator')->name('home.creator');//개인정보 취급 방침
+Route::get('creator','Home\WelcomeController@getCreator')->name('home.creator');//크리에이터
+Route::get('development','Home\WelcomeController@getDevelopment')->name('home.development');//크리에이터
 /*로그인 및 회원가입*/
 Auth::routes();
 /*socialauth ouath*/

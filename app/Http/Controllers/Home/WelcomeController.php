@@ -95,10 +95,15 @@ class WelcomeController extends Controller
         return view('home.component.policy');
     }
 
-    //개인정보 취급 방침 URL
+    //크리에터 소개 URL
     public function getCreator(){
         return view('home.component.creator');
     }
 
+    //개발자 노트 URL
+    public function getDevelopment(){
+        return view('home.component.development');
+    }
+    
 
 }
