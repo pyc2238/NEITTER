@@ -82,8 +82,8 @@
                                 <div class="form-group col-md-6">
                                     <label>@lang('auth/register_form.country')</label>
                                     <select id="inputState" class="form-control" name="country" required>
-                                        <option selected value="한국">@lang('auth/register_form.korea')</option>
-                                        <option value="일본">@lang('auth/register_form.japan')</option>
+                                        <option selected value="ko">@lang('auth/register_form.korea')</option>
+                                        <option value="jp">@lang('auth/register_form.japan')</option>
                                     </select>
                                 </div> <!-- form-group end.// -->
                             </div> <!-- form-row.// -->

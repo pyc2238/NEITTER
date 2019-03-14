@@ -3,18 +3,27 @@
 namespace App\Traits;
 
 trait ModelScopes{
+    
+    // public function setCountryAttribute($value){
+    //     if($value == "한국"){
+    //         $this->attributes['country'] = asset("/data/ProjectImages/community/korea.png"); 
+    //     }else if($value == "일본"){
+    //         $this->attributes['country'] = asset("/data/ProjectImages/community/japan.png");
+    //     }
+    // }
 
+    // public function getCountryImageAttribute(){
+    //     if($this->country == "한국"){
+    //         return asset("/data/ProjectImages/community/korea.png"); 
+    //     } else if($this->country == "일본"){
+    //         return asset("/data/ProjectImages/community/japan.png");
+    //     }
+    // }
 
     public function scopeInsertMsg($query,$country,$title,$content,$id,$ip){
         
-        if($country == "한국"){
-            $countryImg = asset("/data/ProjectImages/community/korea.png"); 
-        }else if($country == "일본"){
-            $countryImg =  asset("/data/ProjectImages/community/japan.png");
-        }
-
         $query->create([
-            'country' => $countryImg,
+            'country' => $country,
             'title' => $title,
             'content' => $content,
             'user_id' => $id,

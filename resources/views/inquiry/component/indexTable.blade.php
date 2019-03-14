@@ -17,7 +17,12 @@
         @foreach($msgs as $msg)
         <tr>
             <td style="width:60px;"><b>{{$msg->num}}</b></td>
-            <td style="width:50px;"><img src="{{$msg->country}}" alt="국적"></td>
+            <td style="width:50px;">
+                @if($msg->country == 'ko')
+                    <img src="{{asset('/data/ProjectImages/community/korea.png')}}" alt="korea">
+                @else
+                    <img src="{{asset('/data/ProjectImages/community/japan.png')}}" alt="japan">
+                @endif    
             <td style="overflow:hidden;white-space:nowrap;text-overflow:ellipsis;"><a href="{{route('inquiry.show',['boardNum'=>$msg->num,'search'=>$search,'where'=>$where,'page'=>$page])}}"><b>{{$msg->title}}</b></a></td>
 
             @if($where == 'writer')
