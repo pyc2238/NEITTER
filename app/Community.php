@@ -36,8 +36,6 @@ class Community extends Model
         return $this->hasMany(Communities_Comment::class);
     }
 
-
-
     public function searchWriter($search){
         return
             User::select([

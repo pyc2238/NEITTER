@@ -120,41 +120,38 @@
         </div>
         <div class="w-100"></div>
         <div class="col" style='margin-top:40px'>
-            <h4 style='color:blue;font-family: "Nanum Gothic", sans-serif;'><b>技術スタック</b></h4><div class="row">
+            <h4 style='color:blue;font-family: "Nanum Gothic", sans-serif;'><b>技術スタック</b></h4>
+            <div class="row text-center">
                 <div class="col">
-                    <ul style='margin-left:35px'>
-                        <li><b>Development Environment</b></li>
-                        ✿ VSCODE<br>
-                        ✿ APACH<br>
+                    <img src="{{asset("data/ProjectImages/master/WebSide.png")}}" alt="WebSideLog">
+
+                    <br><b style="font-size:1.5rem;color:red">WebSide</b><br>
+                    <b>HTML</b><br>
+                    <b>CSS</b><br>
+                    <b>JavaScript</b><br>
+                    <b>Jquery</b><br>
+
+                </div>
+                <div class="col">
+                    <img src="{{asset("data/ProjectImages/master/ServerSide.png")}}" alt="WebSideLog">
+
+                    <br><b style="font-size:1.5rem;color:red">ServerSide</b><br>
+                    <b>PHP</b><br>
+                    <b>Laravel</b><br>
+                    <b>AWS</b><br>
+                    <b>APACH</b><br>
                     </ul>
                 </div>
                 <div class="col">
-                    <ul style='margin-left:35px'>
-                        <li><b>WebSide</b></li>
-                        ✿ HTML<br>
-                        ✿ CSS<br>
-                        ✿ JavaScript<br>
-                        ✿ Jquery<br>
-                    </ul>
-                </div>
-                <div class="col">
-                    <ul style='margin-left:35px'>
-                        <li><b>ServerSide</b></li>
-                        ✿ PHP<br>
-                        ✿ Laravel<br>
-                        ✿ AWS<br>
-                    </ul>
-                </div>
-                <div class="col">
-                    <ul style='margin-left:35px'>
-                        <li><b>OS&DATABASE</b></li>
-                        ✿ Ubuntu<br>
-                        ✿ MySql<br>
-                    </ul>
+                    <img src="{{asset("data/ProjectImages/master/DataBase.png")}}" alt="WebSideLog">
+
+                    <br><b style="font-size:1.5rem;color:red">OS&DATABASE</b><br>
+                    <b>Ubuntu</b><br>
+                    <b>MySql</b><br>
+
                 </div>
             </div>
         </div>
-        
         @else
 
         <div class="col" style='margin-top:40px'>
@@ -177,7 +174,7 @@
                 육성시킵니다.</p>
         </div>
 
-
+    
         <div class="w-100"></div>
         <div class="col" style='margin-top:40px'>
             <h4 style='color:blue;font-family: "Nanum Gothic", sans-serif;'><b>개발현황</b></h4>
@@ -268,37 +265,34 @@
         <div class="w-100"></div>
         <div class="col" style='margin-top:40px'>
             <h4 style='color:blue;font-family: "Nanum Gothic", sans-serif;'><b>기술스택</b></h4>
-            <div class="row">
+            <div class="row text-center">
                 <div class="col">
-                    <ul style='margin-left:35px'>
-                        <li><b>Development Environment</b></li>
-                        ✿ VSCODE<br>
-                        ✿ APACH<br>
+                    <img src="{{asset("data/ProjectImages/master/WebSide.png")}}" alt="WebSideLog">
+
+                    <br><b style="font-size:1.5rem;color:red">WebSide</b><br>
+                    <b>HTML</b><br>
+                    <b>CSS</b><br>
+                    <b>JavaScript</b><br>
+                    <b>Jquery</b><br>
+
+                </div>
+                <div class="col">
+                    <img src="{{asset("data/ProjectImages/master/ServerSide.png")}}" alt="WebSideLog">
+
+                    <br><b style="font-size:1.5rem;color:red">ServerSide</b><br>
+                    <b>PHP</b><br>
+                    <b>Laravel</b><br>
+                    <b>AWS</b><br>
+                    <b>APACH</b><br>
                     </ul>
                 </div>
                 <div class="col">
-                    <ul style='margin-left:35px'>
-                        <li><b>WebSide</b></li>
-                        ✿ HTML<br>
-                        ✿ CSS<br>
-                        ✿ JavaScript<br>
-                        ✿ Jquery<br>
-                    </ul>
-                </div>
-                <div class="col">
-                    <ul style='margin-left:35px'>
-                        <li><b>ServerSide</b></li>
-                        ✿ PHP<br>
-                        ✿ Laravel<br>
-                        ✿ AWS<br>
-                    </ul>
-                </div>
-                <div class="col">
-                    <ul style='margin-left:35px'>
-                        <li><b>OS&DATABASE</b></li>
-                        ✿ Ubuntu<br>
-                        ✿ MySql<br>
-                    </ul>
+                    <img src="{{asset("data/ProjectImages/master/DataBase.png")}}" alt="WebSideLog">
+
+                    <br><b style="font-size:1.5rem;color:red">OS&DATABASE</b><br>
+                    <b>Ubuntu</b><br>
+                    <b>MySql</b><br>
+
                 </div>
             </div>
         </div>
