@@ -118,6 +118,43 @@
                 ソフト削除された掲示物作成者の検索エラーを修正<br>
             </ul>
         </div>
+        <div class="w-100"></div>
+        <div class="col" style='margin-top:40px'>
+            <h4 style='color:blue;font-family: "Nanum Gothic", sans-serif;'><b>技術スタック</b></h4><div class="row">
+                <div class="col">
+                    <ul style='margin-left:35px'>
+                        <li><b>Development Environment</b></li>
+                        ✿ VSCODE<br>
+                        ✿ APACH<br>
+                    </ul>
+                </div>
+                <div class="col">
+                    <ul style='margin-left:35px'>
+                        <li><b>WebSide</b></li>
+                        ✿ HTML<br>
+                        ✿ CSS<br>
+                        ✿ JavaScript<br>
+                        ✿ Jquery<br>
+                    </ul>
+                </div>
+                <div class="col">
+                    <ul style='margin-left:35px'>
+                        <li><b>ServerSide</b></li>
+                        ✿ PHP<br>
+                        ✿ Laravel<br>
+                        ✿ AWS<br>
+                    </ul>
+                </div>
+                <div class="col">
+                    <ul style='margin-left:35px'>
+                        <li><b>OS&DATABASE</b></li>
+                        ✿ Ubuntu<br>
+                        ✿ MySql<br>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        
         @else
 
         <div class="col" style='margin-top:40px'>
@@ -201,10 +238,10 @@
                 <li><b>Notice 공지사항 추가</b></li>
                 -2018년1월 14일 공지사항 게시판 추가 및 파파고 번역 함수 모듈화,관리자 유저 추가<br>
                 -2018년1월 15일 Model 쿼리스코프Trait 및 회원 탈퇴 및 게시글 탈퇴시 여부 확인 추가 <br><br>
-                <li><b>버그 및 불편사항  게시판 추가</b></li>
+                <li><b>버그 및 불편사항 게시판 추가</b></li>
                 -2018년1월 16일 불편사항 게시판 추가 및 관리자 기능 부여<br>
                 <b style='color:red'>-2018년1월 23일 AWS S3 파일업로드 기능 추가</b><br>
-                
+
             </ul>
         </div>
         <div class="w-100"></div>
@@ -226,8 +263,44 @@
                 아이디 중복시 오류 수정<br>
                 <li><b>2018년1월 17일</b></li>
                 소프트 삭제된 게시물 작성자 검색 에러 수정<br>
-
             </ul>
+        </div>
+        <div class="w-100"></div>
+        <div class="col" style='margin-top:40px'>
+            <h4 style='color:blue;font-family: "Nanum Gothic", sans-serif;'><b>기술스택</b></h4>
+            <div class="row">
+                <div class="col">
+                    <ul style='margin-left:35px'>
+                        <li><b>Development Environment</b></li>
+                        ✿ VSCODE<br>
+                        ✿ APACH<br>
+                    </ul>
+                </div>
+                <div class="col">
+                    <ul style='margin-left:35px'>
+                        <li><b>WebSide</b></li>
+                        ✿ HTML<br>
+                        ✿ CSS<br>
+                        ✿ JavaScript<br>
+                        ✿ Jquery<br>
+                    </ul>
+                </div>
+                <div class="col">
+                    <ul style='margin-left:35px'>
+                        <li><b>ServerSide</b></li>
+                        ✿ PHP<br>
+                        ✿ Laravel<br>
+                        ✿ AWS<br>
+                    </ul>
+                </div>
+                <div class="col">
+                    <ul style='margin-left:35px'>
+                        <li><b>OS&DATABASE</b></li>
+                        ✿ Ubuntu<br>
+                        ✿ MySql<br>
+                    </ul>
+                </div>
+            </div>
         </div>
         @endif
     </div>

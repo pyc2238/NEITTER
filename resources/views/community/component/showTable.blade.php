@@ -2,7 +2,12 @@
     
     <div class="col">
         <br>
-        <h4><img src="{{$community->country}}" alt="국적">&nbsp;
+        <h4>
+            @if($community->country == 'ko')
+                <img src="{{asset('/data/ProjectImages/community/korea.png')}}" alt="korea">&nbsp;
+            @else
+                <img src="{{asset('/data/ProjectImages/community/japan.png')}}" alt="japan">&nbsp;
+            @endif
             <b>{{$community->title}}</b>
         </h4>
 

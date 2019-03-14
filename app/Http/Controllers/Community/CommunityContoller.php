@@ -68,6 +68,8 @@ class CommunityContoller extends Controller
                 case "writer":
                     $msgs = $this->communityModel->searchWriter($search); 
                     $count = $this->communityModel->searchWriterCount($search);
+                    // $msgs = $this->communityModel->searchWriter("communities",$search); 
+                    // $count = $this->communityModel->searchWriterCount("communities",$search);
                     break;
                 case "content":
                     $msgs = $this->communityModel->searchContent($search); 
@@ -79,9 +81,8 @@ class CommunityContoller extends Controller
                     break;    
             }
         }
-
         // $autoSearch = $this->communityModel->select('title')->get(); //테이블 자동 검색창
-      
+
         return 
             view('community.index')
             ->with('page',$page)

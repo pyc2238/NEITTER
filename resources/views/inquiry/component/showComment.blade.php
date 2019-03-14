@@ -8,7 +8,12 @@
         </div>
         <div class="col-12" style="margin-bottom:1%;">
             <div class="col commentBoxfirst" style='height:27px'>
-                <p style='font-size:15px; display:inline-block;'><img src="{{$comment->country}}" alt="country">
+                <p style='font-size:15px; display:inline-block;'>
+                    @if($comment->country == 'ko')
+                        <img src="{{asset('/data/ProjectImages/community/korea2.png')}}" alt="korea">
+                    @else
+                        <img src="{{asset('/data/ProjectImages/community/japan2.png')}}" alt="japan">
+                    @endif
                     {{$comment->user->name}}
                 </p>
                 <p class='float-right' style='font-size:15px; '>

@@ -4,22 +4,6 @@ namespace App\Traits;
 
 trait ModelScopes{
     
-    // public function setCountryAttribute($value){
-    //     if($value == "한국"){
-    //         $this->attributes['country'] = asset("/data/ProjectImages/community/korea.png"); 
-    //     }else if($value == "일본"){
-    //         $this->attributes['country'] = asset("/data/ProjectImages/community/japan.png");
-    //     }
-    // }
-
-    // public function getCountryImageAttribute(){
-    //     if($this->country == "한국"){
-    //         return asset("/data/ProjectImages/community/korea.png"); 
-    //     } else if($this->country == "일본"){
-    //         return asset("/data/ProjectImages/community/japan.png");
-    //     }
-    // }
-
     public function scopeInsertMsg($query,$country,$title,$content,$id,$ip){
         
         $query->create([
@@ -94,15 +78,9 @@ trait ModelScopes{
     }
 
     public function scopeInsertComment($query,$content,$country,$board_id,$user_id,$ip){
-        if($country == "한국"){
-            $countryImg = asset("/data/ProjectImages/community/korea2.png"); 
-        }else if($country == "일본"){
-            $countryImg =  asset("/data/ProjectImages/community/japan2.png");
-        }
-
         $param = [
             'content' => $content,
-            'country' => $countryImg,
+            'country' => $country,
             'board_id' => $board_id,
             'user_id' => $user_id,
             'ip' => $ip
@@ -122,6 +100,38 @@ trait ModelScopes{
     public function scopeDeleteComments($query,$id){
         $query->where('id',$id)->delete();
     }
+
+
+
+    // public function scopeSearchWriter($query,$name,$search){
+    //     return
+    //         $query->select([
+    //             'users.name',
+    //             $name.'.num',
+    //             $name.'.country',
+    //             $name.'.title',
+    //             $name.'.hits',
+    //             $name.'.commend',
+    //             $name.'.created_at',
+    //             $name.'.deleted_at'
+    //             ])
+    //         ->join($name, $name.'.user_id', '=', 'users.id')
+    //         ->whereNull($name.'.deleted_at') 
+    //         ->where('users.name', 'LIKE', "%$search%")
+    //         ->orderBy('num', 'desc')
+    //         ->paginate(10)
+    //         ->onEachSide(5);
+    // }
+  
+    // public function scopeSearchWriterCount($query,$name,$search){
+
+    //     return 
+    //         count($query->join($name, $name.'.user_id', '=', 'users.id')
+    //         ->whereNull($name.'.deleted_at')
+    //         ->where('users.name', 'LIKE', "%$search%")
+    //         ->get());
+             
+    // }
 }
 
 ?>
