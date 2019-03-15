@@ -13,7 +13,7 @@ use Event;
 use App\Events\ResetPwMail;
 
 use Auth;
-use App\User;
+use App\Models\User;
 
 
 

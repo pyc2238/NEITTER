@@ -13,10 +13,10 @@ use App\Http\Controllers\SubController\TranslationController;
 
 use Session; 
 use Auth;
-use App\User;
-use App\Admin_Notice;
-use App\Admin_Notice_hit;
-use App\Admin_Notice_ip;
+use App\Models\User;
+use App\Models\Admin_Notice;
+use App\Models\Admin_Notice_hit;
+use App\Models\Admin_Notice_ip;
 
 
 

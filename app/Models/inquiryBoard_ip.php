@@ -1,10 +1,10 @@
 <?php
 
-namespace App;
+namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Admin_Notice_ip extends Model
+class inquiryBoard_ip extends Model
 {
     protected $fillable = ['id','ip','boardNum'];
     public $timestamps = false;

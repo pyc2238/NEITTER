@@ -14,7 +14,7 @@ use Mail;
 use App\Events\SendMail;
 
 use Auth;
-use App\User;
+use App\Models\User;
 
 class RegisterController extends Controller
 {

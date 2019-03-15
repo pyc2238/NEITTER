@@ -9,12 +9,12 @@ use App\Http\Controllers\SubController\TranslationController;
 
 use Session; 
 use Auth;
-use App\User;
-use App\inquiryBoard;
-use App\inquiryBoard_commends;
-use App\inquiryBoard_hit;
-use App\inquiryBoard_ip;
-use App\inquiryBoard_Comment;
+use App\Models\User;
+use App\Models\inquiryBoard;
+use App\Models\inquiryBoard_commends;
+use App\Models\inquiryBoard_hit;
+use App\Models\inquiryBoard_ip;
+use App\Models\inquiryBoard_Comment;
 
 class inquiryBoardController extends Controller
 {

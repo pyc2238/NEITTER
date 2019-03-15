@@ -10,12 +10,12 @@ use App\Http\Controllers\SubController\TranslationController;
 use Session; 
 use Auth;
 
-use App\User;
-use App\Community;
-use App\Communities_commends;
-use App\Communities_hit;
-use App\Communities_ip;
-use App\Communities_Comment;
+use App\Models\User;
+use App\Models\Community;
+use App\Models\Communities_commends;
+use App\Models\Communities_hit;
+use App\Models\Communities_ip;
+use App\Models\Communities_Comment;
 
 use Illuminate\Support\Facades\DB;
 

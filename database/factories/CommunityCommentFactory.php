@@ -3,11 +3,11 @@
 use Faker\Generator as Faker;
 
 
-$factory->define(App\Communities_Comment::class, function (Faker $faker) {
-        $minId = App\User::min('id');
-        $maxId = App\User::max('id');
-        $communityminId = App\Community::min('num');
-        $communitymaxId = App\Community::max('num');
+$factory->define(App\Models\Communities_Comment::class, function (Faker $faker) {
+        $minId = App\Models\User::min('id');
+        $maxId = App\Models\User::max('id');
+        $communityminId = App\Models\Community::min('num');
+        $communitymaxId = App\Models\Community::max('num');
         $country = $faker->randomElement(['한국', '일본']);
         $ip = '192.58.44';
 

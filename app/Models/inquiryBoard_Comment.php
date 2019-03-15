@@ -1,11 +1,12 @@
 <?php
 
-namespace App;
+namespace App\Models;
 
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Database\Eloquent\Model;
 use App\Traits\ModelScopes;
-class Communities_Comment extends Model
+
+class inquiryBoard_Comment extends Model
 {
     use SoftDeletes;
     use ModelScopes;
@@ -27,8 +28,7 @@ class Communities_Comment extends Model
         return $this->belongsTo(User::class);
     }
 
-    public function communities(){
-        return $this->belongsTo(Community::class);
+    public function inquery_boards(){
+        return $this->belongsTo(inquiryBoard::class);
     }
-
 }
