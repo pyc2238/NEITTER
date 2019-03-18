@@ -7,6 +7,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Foundation\Auth\RegistersUsers;
+use App\Http\Requests\CreateUserRequest;
 
 use Session; 
 use Event;
@@ -59,7 +60,7 @@ class RegisterController extends Controller
      * @param  array  $data
      * @return \App\User
      */
-    public function register(Request $request)
+    public function register(CreateUserRequest $request)
     {
 
         
@@ -75,13 +76,6 @@ class RegisterController extends Controller
             }
             return back()->with('message',$message);
         }
-
-
-        $this->validate($request,[
-            'name' => 'required|string|max:255',
-            'email' => 'required|string|email|max:255|unique:users',
-            'password' => 'required|string|min:6|max:15|regex:/^.*(?=^.{8,15}$)(?=.*\d)(?=.*[a-zA-Z])(?=.*[!@#$%^&+=]).*$/|confirmed',
-        ]);
 
         $uname = $request->name;
         $uemail = $request->email;

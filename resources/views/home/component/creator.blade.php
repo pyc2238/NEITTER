@@ -37,6 +37,9 @@
                         <th>@lang('home/component/creator.skill')&nbsp;</th>
                         <td>PHP,Laravel,AWS</td>
                     </tr>
+                    <tr>
+                        <td><a href="https://github.com/pyc2238"><b>Github</b></a></td>
+                    </tr>
                 </table>
                 <br>
                 NEITTER サービス企画及びバックエンドサービス開発者として成長し続けている。
@@ -166,6 +169,9 @@
                     <tr>
                         <th>@lang('home/component/creator.skill')&nbsp;</th>
                         <td>PHP,Laravel,AWS</td>
+                    </tr>
+                    <tr>
+                        <td><a href="https://github.com/pyc2238"><b>Github</b></a></td>
                     </tr>
                 </table>
                 <br>
