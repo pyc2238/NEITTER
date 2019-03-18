@@ -53,7 +53,7 @@ class inquiryBoard extends Model
             ->join('inquiry_boards', 'inquiry_boards.user_id', '=', 'users.id')
             ->whereNull('inquiry_boards.deleted_at') 
             ->where('users.name', 'LIKE', "%$search%")
-            ->orderBy('num', 'desc')
+            ->latest('num')
             ->paginate(10)
             ->onEachSide(5);
     }

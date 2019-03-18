@@ -77,21 +77,22 @@ class RegisterController extends Controller
             return back()->with('message',$message);
         }
 
-        $uname = $request->name;
-        $uemail = $request->email;
-        $upassword = $request->password;
-        $ugender = $request->gender; 
-        $uage = $request->age;
-        $uaddress = $request->address;
-        $ucountry = $request->country;
+        // $uname = $request->name;
+        // $uemail = $request->email;
+        // $upassword = $request->password;
+        // $ugender = $request->gender; 
+        // $uage = $request->age;
+        // $uaddress = $request->address;
+        // $ucountry = $request->country;
 
-        Session::put('newUser',$uname);
+        Session::put('newUser',$request->name);
 
-        Event::fire(new SendMail($uemail,$uname));
+        Event::fire(new SendMail($request->email,$request->name));
         
         $request->session()->flush();
 
-        $this->user->createUser($uname,$uemail,$upassword,$ugender,$uage,$uaddress,$ucountry);
+        $this->user->create(request()->all());
+        // $this->user->createUser($uname,$uemail,$upassword,$ugender,$uage,$uaddress,$ucountry);
 
         return redirect('login')->with('result',$result);
         

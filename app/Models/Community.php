@@ -51,7 +51,7 @@ class Community extends Model
             ->join('communities', 'communities.user_id', '=', 'users.id')
             ->whereNull('communities.deleted_at') 
             ->where('users.name', 'LIKE', "%$search%")
-            ->orderBy('num', 'desc')
+            ->latest('num')
             ->paginate(10)
             ->onEachSide(5);
     }

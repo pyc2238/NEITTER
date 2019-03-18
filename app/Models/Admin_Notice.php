@@ -47,7 +47,7 @@ class Admin_Notice extends Model
             ->join('admin__notices', 'admin__notices.user_id', '=', 'users.id')
             ->whereNull('admin__notices.deleted_at') 
             ->where('users.name', 'LIKE', "%$search%")
-            ->orderBy('num', 'desc')
+            ->latest('num')
             ->paginate(10)
             ->onEachSide(5);
     }

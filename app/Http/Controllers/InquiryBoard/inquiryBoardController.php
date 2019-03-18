@@ -46,43 +46,38 @@ class inquiryBoardController extends Controller
 
     public function index(Request $request)
     {
-        $page = $request->page;
-        $search = $request->search;
-        $where = $request->where;
-
         $msgs =  $this->inquiryModel->getMsgs();
-        $count = count(inquiryBoard::all());
-
-        if($search){
+    
+        if($request->search){
             
-            switch($where){
+            switch($request->where){
 
                 case "title":
-                    $msgs = $this->inquiryModel->searchTitle($search);  
-                    $count = $this->inquiryModel->searchTitleCount($search);
+                    $msgs = $this->inquiryModel->searchTitle($request->search);  
+                    $count = $this->inquiryModel->searchTitleCount($request->search);
                     break;
                 case "writer":
-                    $msgs = $this->inquiryModel->searchWriter($search);             
-                    $count = $this->inquiryModel->searchWriterCount($search);
+                    $msgs = $this->inquiryModel->searchWriter($request->search);             
+                    $count = $this->inquiryModel->searchWriterCount($request->search);
                     break;
                 case "content":
-                    $msgs = $this->inquiryModel->searchContent($search); 
-                    $count = $this->inquiryModel->searchContentCount($search);
+                    $msgs = $this->inquiryModel->searchContent($request->search); 
+                    $count = $this->inquiryModel->searchContentCount($request->search);
                     break;
                 case "titleAndcotent":
-                    $msgs = $this->inquiryModel->searchTitleAndCotent($search); 
-                    $count = $this->inquiryModel->searchTitleAndCotentCount($search);
+                    $msgs = $this->inquiryModel->searchTitleAndCotent($request->search); 
+                    $count = $this->inquiryModel->searchTitleAndCotentCount($request->search);
                     break;    
             }
         }
         
         return
             view('inquiry.index')
-            ->with('page',$page)
-            ->with('search',$search)
-            ->with('where',$where)
+            ->with('page',$request->page)
+            ->with('search',$request->search)
+            ->with('where',$request->where)
             ->with('msgs',$msgs)
-            ->with('count',$count);
+            ->with('count',count(inquiryBoard::all()));
     }
 
     /**
@@ -93,15 +88,11 @@ class inquiryBoardController extends Controller
 
     public function create(Request $request)
     {
-        $page = $request->page;
-        $search = $request->search;
-        $where = $request->where;
-
         return 
             view('inquiry.create')
-            ->with('page',$page)
-            ->with('search',$search)
-            ->with('where',$where);
+            ->with('page',$request->page)
+            ->with('search',$request->search)
+            ->with('where',$request->where);
     }
 
     /**
@@ -113,11 +104,8 @@ class inquiryBoardController extends Controller
 
     public function store(Request $request)
     {
-        $search = $request->search;
-        $where = $request->where;
-       
+    
         $this->inquiryModel->insertMsg(Auth::user()->country,$request->title,$request->content,Auth::user()->id,$request->getClientIp());
-        
         
         if(Session::get('locale') == 'ja'){
             $message = 'お問い合わせ作成が完了しました。';
@@ -129,8 +117,8 @@ class inquiryBoardController extends Controller
             redirect()
             ->route('inquiry.index')
             ->with('message',$message)
-            ->with('search',$search)
-            ->with('where',$where);
+            ->with('search',$request->search)
+            ->with('where',$request->where);
     }
 
     /**
@@ -142,14 +130,15 @@ class inquiryBoardController extends Controller
 
     public function show(Request $request,$id)
     {
-        $user = $this->inquiryModel->getMsg($id);
-       
         if(Session::get('locale') == 'ja'){
             $message = '該当権限がありません';
         }else{
             $message = '글을 열람할 권한이 없습니다.';
         }
 
+
+        $user = $this->inquiryModel->getMsg($id);
+       
         //로그인 여부를 판단
         if(!Auth::check()){
             return back()->with('message',$message);
@@ -162,11 +151,7 @@ class inquiryBoardController extends Controller
         }
 
         
-        $page = $request->page;
-        $search = $request->search;
-        $where = $request->where;
         $comments = $this->commentModel->getComments($id);
-        $commentCount = count($comments);
         $ip = $this->ipsModel->getHitsIp($request->getClientIp(),$id); //사용자의 ip값으로 레코드를 받아온다.
         
         if(!Auth::check()){ //사용자의 로그인 여부 판단
@@ -191,11 +176,11 @@ class inquiryBoardController extends Controller
         return
             view('inquiry.show')
             ->with('inquiry',$inquiry)
-            ->with('page',$page)
-            ->with('search',$search)
-            ->with('where',$where)
+            ->with('page',$request->page)
+            ->with('search',$request->search)
+            ->with('where',$request->where)
             ->with('comments',$comments)
-            ->with('commentCount',$commentCount)
+            ->with('commentCount',count($comments))
             ->with('translationTitle',$translationTitle)
             ->with('translationContent',$translationContent);
     }
@@ -209,24 +194,21 @@ class inquiryBoardController extends Controller
 
     public function edit(Request $request,$id)
     {
-        $page = $request->page;
-        $search = $request->search;
-        $where = $request->where;
-        $user = $this->inquiryModel->getMsg($id);
-
+        
         if(Session::get('locale') == 'ja'){
             $message = '修正権限がありません。';
         }else{
             $message = '수정권한이 없습니다.';
         }
 
+        $user = $this->inquiryModel->getMsg($id);
 
         if(Auth::user()->id == $user->user_id ){
             return 
                 view('inquiry.edit')
-                ->with('page',$page)
-                ->with('search',$search)
-                ->with('where',$where)
+                ->with('page',$request->page)
+                ->with('search',$request->search)
+                ->with('where',$request->where)
                 ->with('id',$id)
                 ->with('title',$user->title)
                 ->with('content',$user->content);
@@ -245,10 +227,7 @@ class inquiryBoardController extends Controller
 
     public function update(Request $request, $id)
     {
-        $page = $request->page;
-        $search = $request->search;
-        $where = $request->where;
-
+    
         if(Session::get('locale') == 'ja'){
             $message = 'お問い合わせが修正されました。';
         }else{
@@ -257,7 +236,7 @@ class inquiryBoardController extends Controller
 
         
         $this->inquiryModel->updateMsg($id,$request->title,$request->content,$request->getClientIp());
-        return redirect(route('inquiry.index',['search'=>$search,'where'=>$where,'page'=>$page]))->with('message',$message);
+        return redirect(route('inquiry.index',['search'=>$request->search,'where'=>$request->where,'page'=>$request->page]))->with('message',$message);
     }
 
     /**
@@ -269,83 +248,66 @@ class inquiryBoardController extends Controller
 
     public function destroy(Request $request,$id)
     {
-        $page = $request->page;
-        $search = $request->search;
-        $where = $request->where;
-        $user = $this->inquiryModel->getMsg($id);
-
+    
         if(Session::get('locale') == 'ja'){
             $message = '削除権限がありません。';
         }else{
             $message = '삭제권한이 없습니다.';
         }
 
+        $user = $this->inquiryModel->getMsg($id);
+
         
          if(Auth::user()->id == $user->user_id || Auth::user()->admin == 1 ){
             $this->inquiryModel->deleteMsg($id);
-            return redirect(route('inquiry.index',['search'=>$search,'where'=>$where,'page'=>$page]));
+            return redirect(route('inquiry.index',['search'=>$request->search,'where'=>$request->where,'page'=>$request->page]));
         }else{
             return back()->with('message',$message);
         }      
     }
 
     public function putIncreaseCommend(Request $request,$id){
-        $page = $request->page;
-        $search = $request->search;
-        $where = $request->where;
        
         if(Session::get('locale') == 'ja'){
             $message = 'すでに推薦したスレッドです';
         }else{
             $message = '이미 추천을 누른 게시물입니다.';
         }
-
-
-        $userNum = Auth::user()->id;  
-        $result = $this->commendsModel->getCommendId($userNum,$id);
+  
+        $result = $this->commendsModel->getCommendId(Auth::user()->id,$id);
         
         if($result){
             return back()->with('message',$message);
         }else{
-            $this->commendsModel->insertCommendId($userNum,$id);
+            $this->commendsModel->insertCommendId(Auth::user()->id,$id);
             $this->inquiryModel->updateCommend($id);
           
-            return redirect(route('inquiry.show',['id'=>$id,'search'=>$search,'where'=>$where,'page'=>$page]));
+            return redirect(route('inquiry.show',['id'=>$id,'search'=>$request->search,'where'=>$request->where,'page'=>$request->page]));
         }
     }
 
 
     public function postInsertComment(Request $request,$id){
-        $page = $request->page;
-        $search = $request->search;
-        $where = $request->where; 
-
-        $this->commentModel->insertComment($request->comment,Auth::user()->country,$id,Auth::user()->id,$request->getClientIp());
-    
-      
-        // return response()->json($comments, 200, [], JSON_PRETTY_PRINT);
+       
+            $this->commentModel->insertComment($request->comment,Auth::user()->country,$id,Auth::user()->id,$request->getClientIp());
+            // return response()->json($comments, 200, [], JSON_PRETTY_PRINT);
         
-        return redirect(route('inquiry.show',['id'=>$id,'search'=>$search,'where'=>$where,'page'=>$page]));
+        return redirect(route('inquiry.show',['id'=>$id,'search'=>$request->search,'where'=>$request->where,'page'=>$request->page]));
     }
 
 
     public function putUpdateComment(Request $request,$id){
-        $page = $request->page;
-        $search = $request->search;
-        $where = $request->where;
         
-        $this->commentModel->updateComments($request->commentId,$request->comment,$request->getClientIp());
+            $this->commentModel->updateComments($request->commentId,$request->comment,$request->getClientIp());
         
-        return redirect(route('inquiry.show',['id'=>$id,'search'=>$search,'where'=>$where,'page'=>$page]));
+        return redirect(route('inquiry.show',['id'=>$id,'search'=>$request->search,'where'=>$request->where,'page'=>$request->page]));
     }
 
     public function getDeleteComment(Request $request,$id){
-        
-        $page = $request->page;
-        $search = $request->search;
-        $where = $request->where;
-        $this->commentModel->deleteComments($request->commentId);
-        return redirect(route('inquiry.show',['id'=>$id,'search'=>$search,'where'=>$where,'page'=>$page]));
+            
+            $this->commentModel->deleteComments($request->commentId);
+
+        return redirect(route('inquiry.show',['id'=>$id,'search'=>$request->search,'where'=>$request->where,'page'=>$request->page]));
     }
     
 }

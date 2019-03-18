@@ -56,23 +56,26 @@ class User extends Authenticatable
         return $this->hasMany(inquiryBoard::class);
     }
     
+    // public function createUser($uname,$uemail,$upassword,$ugender,$uage,$uaddress,$ucountry){
+
+    //     $param = [
+    //         'name' => $uname,
+    //         'email' => $uemail,
+    //         'password' =>Hash::make($upassword),
+    //         'gender' => $ugender,
+    //         'age' => $uage,
+    //         'address' => $uaddress,
+    //         'country' => $ucountry
+    //     ];
+
+    //     $this::create($param);
     
+    // }
 
 
-    public function createUser($uname,$uemail,$upassword,$ugender,$uage,$uaddress,$ucountry){
 
-        $param = [
-            'name' => $uname,
-            'email' => $uemail,
-            'password' =>Hash::make($upassword),
-            'gender' => $ugender,
-            'age' => $uage,
-            'address' => $uaddress,
-            'country' => $ucountry
-        ];
-
-        $this::create($param);
-    
+    public function setPasswordAttribute($value){
+        $this->attributes['password'] = Hash::make($value);
     }
 
     public function getName($name){

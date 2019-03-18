@@ -15,7 +15,6 @@ trait ModelScopes{
         ]);
     }
 
-    
     public function scopeUpdateMsg($query,$id,$title,$content,$ip){
         $param = [
             'title'=>$title,
@@ -27,7 +26,7 @@ trait ModelScopes{
 
 
     public function scopeGetMsgs($query){
-        return $query->with('user:id,name')->orderBy('created_at','desc')->paginate(10)->onEachSide(5);
+        return $query->with('user:id,name')->latest()->paginate(10)->onEachSide(5);
     }
 
 
@@ -40,7 +39,7 @@ trait ModelScopes{
     }
 
     public function scopeSearchTitle($query,$search){
-        return $query->where('title','LIKE',"%$search%")->orderBy('num', 'desc')->paginate(10)->onEachSide(5);
+        return $query->where('title','LIKE',"%$search%")->latest('num')->paginate(10)->onEachSide(5);
           
     }
 
@@ -50,7 +49,7 @@ trait ModelScopes{
      }
 
     public function scopeSearchContent($query,$search){
-        return $query->where('content','LIKE',"%$search%")->orderBy('num', 'desc')->paginate(10)->onEachSide(5);
+        return $query->where('content','LIKE',"%$search%")->latest('num')->paginate(10)->onEachSide(5);
     }
 
     public function scopeSearchContentCount($query,$search){
@@ -58,7 +57,7 @@ trait ModelScopes{
     }
 
     public function scopeSearchTitleAndCotent($query,$search){
-        return $query->where('title','LIKE',"%$search%")->orWhere('content','LIKE',"%$search%")->orderBy('num', 'desc')->paginate(10);
+        return $query->where('title','LIKE',"%$search%")->orWhere('content','LIKE',"%$search%")->latest('num')->paginate(10);
     }
 
     public function scopeSearchTitleAndCotentCount($query,$search){

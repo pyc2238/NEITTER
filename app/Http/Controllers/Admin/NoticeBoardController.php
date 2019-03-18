@@ -45,42 +45,38 @@ class NoticeBoardController extends Controller
      */
     public function index(Request $request)
     {
-        $page = $request->page;
-        $search = $request->search;
-        $where = $request->where;
 
-        $msgs =  $this->noticeModel->getMsgs();
-        $count = count(Admin_Notice::all());
+        $msgs = $this->noticeModel->getMsgs();
 
-        if($search){
-            switch($where){
+        if($request->search){
+            switch($request->where){
                     
                 case "title":
-                    $msgs = $this->noticeModel->searchTitle($search);  
-                    $count = $this->noticeModel->searchTitleCount($search);
+                    $msgs = $this->noticeModel->searchTitle($request->search);  
+                    $count = $this->noticeModel->searchTitleCount($request->search);
                     break;
                 case "writer":
-                    $msgs = $this->noticeModel->searchWriter($search); 
-                    $count = $this->noticeModel->searchWriterCount($search);
+                    $msgs = $this->noticeModel->searchWriter($request->search); 
+                    $count = $this->noticeModel->searchWriterCount($request->search);
                     break;
                 case "content":
-                    $msgs = $this->noticeModel->searchContent($search); 
-                    $count = $this->noticeModel->searchContentCount($search);
+                    $msgs = $this->noticeModel->searchContent($request->search); 
+                    $count = $this->noticeModel->searchContentCount($request->search);
                     break;
                 case "titleAndcotent":
-                    $msgs = $this->noticeModel->searchTitleAndCotent($search); 
-                    $count = $this->noticeModel->searchTitleAndCotentCount($search);
+                    $msgs = $this->noticeModel->searchTitleAndCotent($request->search); 
+                    $count = $this->noticeModel->searchTitleAndCotentCount($request->search);
                     break;    
             }
         }
 
         return
             view('notice.index')
-            ->with('page',$page)
-            ->with('search',$search)
-            ->with('where',$where)
+            ->with('page',$request->page)
+            ->with('search',$request->search)
+            ->with('where',$request->where)
             ->with('msgs',$msgs)
-            ->with('count',$count);
+            ->with('count',count(Admin_Notice::all()));
     }
 
     /**
@@ -99,15 +95,11 @@ class NoticeBoardController extends Controller
             }
         }
 
-        $page = $request->page;
-        $search = $request->search;
-        $where = $request->where;
-
         return 
             view('notice.create')
-            ->with('page',$page)
-            ->with('search',$search)
-            ->with('where',$where);
+            ->with('page',$request->page)
+            ->with('search',$request->search)
+            ->with('where',$request->where);
     }
 
     /**
@@ -119,24 +111,20 @@ class NoticeBoardController extends Controller
     
      public function store(Request $request)
     {
-        $search = $request->search;
-        $where = $request->where;
-        
-        $this->noticeModel->insertMsg(Auth::user()->country,$request->title,$request->content,Auth::user()->id,$request->getClientIp());
-        
-        
         if(Session::get('locale') == 'ja'){
             $message = 'お知らせ作成が完了しました。';
         }else{
             $message = '공지사항 작성이 완료되었습니다.';
         }
 
+        $this->noticeModel->insertMsg(Auth::user()->country,$request->title,$request->content,Auth::user()->id,$request->getClientIp());
+        
         return 
             redirect()
             ->route('notice.index')
             ->with('message',$message)
-            ->with('search',$search)
-            ->with('where',$where);
+            ->with('search',$request->search)
+            ->with('where',$request->where);
     }
     
 
@@ -149,10 +137,6 @@ class NoticeBoardController extends Controller
     public function show(Request $request,$id)
     {
          
-        $page = $request->page;
-        $search = $request->search;
-        $where = $request->where;
-       
         $ip = $this->ipsModel->getHitsIp($request->getClientIp(),$id); //사용자의 ip값으로 레코드를 받아온다.
         
         if(!Auth::check()){ //사용자의 로그인 여부 판단
@@ -178,9 +162,9 @@ class NoticeBoardController extends Controller
         return
             view('notice.show')
             ->with('notice',$notice)
-            ->with('page',$page)
-            ->with('search',$search)
-            ->with('where',$where)
+            ->with('page',$request->page)
+            ->with('search',$request->search)
+            ->with('where',$request->where)
             ->with('translationTitle',$translationTitle)
             ->with('translationContent',$translationContent);
     }
@@ -194,24 +178,21 @@ class NoticeBoardController extends Controller
 
     public function edit(Request $request,$id)
     {
-        $page = $request->page;
-        $search = $request->search;
-        $where = $request->where;
-        $user = $this->noticeModel->getMsg($id);
-
+        
         if(Session::get('locale') == 'ja'){
             $message = '修正権限がありません。';
         }else{
             $message = '수정권한이 없습니다.';
         }
 
+        $user = $this->noticeModel->getMsg($id);
 
         if(Auth::user()->id == $user->user_id ){
             return 
                 view('notice.edit')
-                ->with('page',$page)
-                ->with('search',$search)
-                ->with('where',$where)
+                ->with('page',$request->page)
+                ->with('search',$request->search)
+                ->with('where',$request->where)
                 ->with('id',$id)
                 ->with('title',$user->title)
                 ->with('content',$user->content);
@@ -230,10 +211,6 @@ class NoticeBoardController extends Controller
 
     public function update(Request $request, $id)
     {
-        $page = $request->page;
-        $search = $request->search;
-        $where = $request->where;
-
         if(Session::get('locale') == 'ja'){
             $message = 'お知らせを修正されました。';
         }else{
@@ -242,7 +219,7 @@ class NoticeBoardController extends Controller
 
         
         $this->noticeModel->updateMsg($id,$request->title,$request->content,$request->getClientIp());
-        return redirect(route('notice.index',['search'=>$search,'where'=>$where,'page'=>$page]))->with('message',$message);
+        return redirect(route('notice.index',['search'=>$request->search,'where'=>$request->where,'page'=>$request->page]))->with('message',$message);
     }
 
     /**
@@ -254,21 +231,17 @@ class NoticeBoardController extends Controller
     
     public function destroy(Request $request,$id)
     {
-        $page = $request->page;
-        $search = $request->search;
-        $where = $request->where;
-        $user = $this->noticeModel->getMsg($id);
-
         if(Session::get('locale') == 'ja'){
             $message = '削除権限がありません。';
         }else{
             $message = '삭제권한이 없습니다.';
         }
 
+        $user = $this->noticeModel->getMsg($id);
         
          if(Auth::user()->id == $user->user_id ){
             $this->noticeModel->deleteMsg($id);
-            return redirect(route('notice.index',['search'=>$search,'where'=>$where,'page'=>$page]));
+            return redirect(route('notice.index',['search'=>$request->search,'where'=>$request->where,'page'=>$request->page]));
         }else{
             return back()->with('message',$message);
         }      

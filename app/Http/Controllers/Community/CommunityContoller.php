@@ -50,34 +50,29 @@ class CommunityContoller extends Controller
     
     public function index(Request $request)
     {
-        
-        $page = $request->page;
-        $search = $request->search;
-        $where = $request->where;
-        
-        $msgs = $this->communityModel->getMsgs();
-        $count = count(Community::all());
        
-        if($search){
-            switch($where){
+        $msgs =  $this->communityModel->getMsgs();
+
+        if($request->search){
+            switch($request->where){
                     
                 case "title":
-                    $msgs = $this->communityModel->searchTitle($search);  
-                    $count = $this->communityModel->searchTitleCount($search);
+                    $msgs = $this->communityModel->searchTitle($request->search);  
+                    $count = $this->communityModel->searchTitleCount($request->search);
                     break;
                 case "writer":
-                    $msgs = $this->communityModel->searchWriter($search); 
-                    $count = $this->communityModel->searchWriterCount($search);
+                    $msgs = $this->communityModel->searchWriter($request->search); 
+                    $count = $this->communityModel->searchWriterCount($request->search);
                     // $msgs = $this->communityModel->searchWriter("communities",$search); 
                     // $count = $this->communityModel->searchWriterCount("communities",$search);
                     break;
                 case "content":
-                    $msgs = $this->communityModel->searchContent($search); 
-                    $count = $this->communityModel->searchContentCount($search);
+                    $msgs = $this->communityModel->searchContent($request->search); 
+                    $count = $this->communityModel->searchContentCount($request->search);
                     break;
                 case "titleAndcotent":
-                    $msgs = $this->communityModel->searchTitleAndCotent($search); 
-                    $count = $this->communityModel->searchTitleAndCotentCount($search);
+                    $msgs = $this->communityModel->searchTitleAndCotent($request->search); 
+                    $count = $this->communityModel->searchTitleAndCotentCount($request->search);
                     break;    
             }
         }
@@ -85,11 +80,11 @@ class CommunityContoller extends Controller
 
         return 
             view('community.index')
-            ->with('page',$page)
-            ->with('search',$search)
-            ->with('where',$where)
+            ->with('page',$request->page)
+            ->with('search',$request->search)
+            ->with('where',$request->where)
             ->with('msgs',$msgs)
-            ->with('count',$count);
+            ->with('count',count(Community::all()));
             // ->with('autoSearch',$autoSearch);
     }
 
@@ -101,15 +96,12 @@ class CommunityContoller extends Controller
     
     public function create(Request $request)
     {
-        $page = $request->page;
-        $search = $request->search;
-        $where = $request->where;
-
+        
         return 
             view('community.create')
-            ->with('page',$page)
-            ->with('search',$search)
-            ->with('where',$where);
+            ->with('page',$request->page)
+            ->with('search',$request->search)
+            ->with('where',$request->where);
     }
 
     /**
@@ -122,24 +114,20 @@ class CommunityContoller extends Controller
     
     public function store(Request $request)
     {
-        $search = $request->search;
-        $where = $request->where;
-        
-        $this->communityModel->insertMsg(Auth::user()->country,$request->title,$request->content,Auth::user()->id,$request->getClientIp());
-        
-        
         if(Session::get('locale') == 'ja'){
             $message = 'スレッド作成が完了しました。';
         }else{
             $message = '글 작성이 완료되었습니다.';
         }
-
+        
+        $this->communityModel->insertMsg(Auth::user()->country,$request->title,$request->content,Auth::user()->id,$request->getClientIp());
+        
         return 
             redirect()
             ->route('community.index')
             ->with('message',$message)
-            ->with('search',$search)
-            ->with('where',$where);
+            ->with('search',$request->search)
+            ->with('where',$request->where);
     }
 
     /**
@@ -153,12 +141,7 @@ class CommunityContoller extends Controller
     public function show(Request $request,$id)
     {
      
-       
-        $page = $request->page;
-        $search = $request->search;
-        $where = $request->where;
         $comments = $this->commentModel->getComments($id);
-        $commentCount = count($comments);
         $ip = $this->ipsModel->getHitsIp($request->getClientIp(),$id); //사용자의 ip값으로 레코드를 받아온다.
         
         if(!Auth::check()){ //사용자의 로그인 여부 판단
@@ -182,11 +165,11 @@ class CommunityContoller extends Controller
         return
             view('community.show')
             ->with('community',$community)
-            ->with('page',$page)
-            ->with('search',$search)
-            ->with('where',$where)
+            ->with('page',$request->page)
+            ->with('search',$request->search)
+            ->with('where',$request->where)
             ->with('comments',$comments)
-            ->with('commentCount',$commentCount)
+            ->with('commentCount',count($comments))
             ->with('translationTitle',$translationTitle)
             ->with('translationContent',$translationContent);
         }
@@ -201,24 +184,20 @@ class CommunityContoller extends Controller
     //해당 아이디의 수정 폼
     public function edit(Request $request,$id)
     {   
-        $page = $request->page;
-        $search = $request->search;
-        $where = $request->where;
-        $user = $this->communityModel->getMsg($id);
-
         if(Session::get('locale') == 'ja'){
             $message = '修正権限がありません。';
         }else{
             $message = '수정권한이 없습니다.';
         }
-
+        
+        $user = $this->communityModel->getMsg($id);
 
         if(Auth::user()->id == $user->user_id ){
             return 
                 view('community.edit')
-                ->with('page',$page)
-                ->with('search',$search)
-                ->with('where',$where)
+                ->with('page',$request->page)
+                ->with('search',$request->search)
+                ->with('where',$request->where)
                 ->with('id',$id)
                 ->with('title',$user->title)
                 ->with('content',$user->content);
@@ -237,19 +216,17 @@ class CommunityContoller extends Controller
     //해당 아이디 값 수정
     public function update(Request $request, $id)
     {
-        $page = $request->page;
-        $search = $request->search;
-        $where = $request->where;
-
-        if(Session::get('locale') == 'ja'){
-            $message = 'スレッドが修正されました。';
-        }else{
-            $message = '게시물이 수정되었습니다.';
-        }
+    
+            if(Session::get('locale') == 'ja'){
+                $message = 'スレッドが修正されました。';
+            }else{
+                $message = '게시물이 수정되었습니다.';
+            }
 
         
-        $this->communityModel->updateMsg($id,$request->title,$request->content,$request->getClientIp());
-        return redirect(route('community.index',['search'=>$search,'where'=>$where,'page'=>$page]))->with('message',$message);
+            $this->communityModel->updateMsg($id,$request->title,$request->content,$request->getClientIp());
+
+        return redirect(route('community.index',['search'=>$request->search,'where'=>$request->where,'page'=>$request->page]))->with('message',$message);
     }
 
     /**
@@ -261,21 +238,17 @@ class CommunityContoller extends Controller
     //해당 아이디 데이터 삭제
     public function destroy(Request $request,$id)
     {
-        $page = $request->page;
-        $search = $request->search;
-        $where = $request->where;
-        $user = $this->communityModel->getMsg($id);
-
         if(Session::get('locale') == 'ja'){
             $message = '削除権限がありません。';
         }else{
             $message = '삭제권한이 없습니다.';
         }
 
-        
+        $user = $this->communityModel->getMsg($id);
+
          if(Auth::user()->id == $user->user_id || Auth::user()->admin == 1 ){
-            $this->communityModel->deleteMsg($id);
-            return redirect(route('community.index',['search'=>$search,'where'=>$where,'page'=>$page]));
+                $this->communityModel->deleteMsg($id);
+            return redirect(route('community.index',['search'=>$request->search,'where'=>$request->where,'page'=>$request->page]));
         }else{
             return back()->with('message',$message);
         }      
@@ -283,9 +256,7 @@ class CommunityContoller extends Controller
 
 
     public function putIncreaseCommend(Request $request,$id){
-        $page = $request->page;
-        $search = $request->search;
-        $where = $request->where;
+
        
         if(Session::get('locale') == 'ja'){
             $message = 'すでに推薦したスレッドです';
@@ -293,50 +264,38 @@ class CommunityContoller extends Controller
             $message = '이미 추천을 누른 게시물입니다.';
         }
 
-
-        $userNum = Auth::user()->id;  
-        $result = $this->commendsModel->getCommendId($userNum,$id);
+          
+        $result = $this->commendsModel->getCommendId(Auth::user()->id,$id);
         
-        if($result){
+        if($this->commendsModel->getCommendId(Auth::user()->id,$id)){
             return back()->with('message',$message);
         }else{
-            $this->commendsModel->insertCommendId($userNum,$id);
-            $this->communityModel->updateCommend($id);
+                $this->commendsModel->insertCommendId(Auth::user()->id,$id);
+                $this->communityModel->updateCommend($id);
           
-            return redirect(route('community.show',['id'=>$id,'search'=>$search,'where'=>$where,'page'=>$page]));
+            return redirect(route('community.show',['id'=>$id,'search'=>$request->search,'where'=>$request->where,'page'=>$request->page]));
         }
     }
 
 
     public function postInsertComment(Request $request,$id){
-        $page = $request->page;
-        $search = $request->search;
-        $where = $request->where; 
-
-        
-        $this->commentModel->insertComment($request->comment,Auth::user()->country,$id,Auth::user()->id,$request->getClientIp());
-        // return response()->json($comments, 200, [], JSON_PRETTY_PRINT);
-        
-        return redirect(route('community.show',['id'=>$id,'search'=>$search,'where'=>$where,'page'=>$page]));
+            $this->commentModel->insertComment($request->comment,Auth::user()->country,$id,Auth::user()->id,$request->getClientIp());
+            // return response()->json($comments, 200, [], JSON_PRETTY_PRINT);
+        return redirect(route('community.show',['id'=>$id,'search'=>$request->search,'where'=>$request->where,'page'=>$request->page]));
     }
 
 
     public function putUpdateComment(Request $request,$id){
-        $page = $request->page;
-        $search = $request->search;
-        $where = $request->where;
+    
+            $this->commentModel->updateComments($request->commentId,$request->comment,$request->getClientIp());
         
-        $this->commentModel->updateComments($request->commentId,$request->comment,$request->getClientIp());
-        
-        return redirect(route('community.show',['id'=>$id,'search'=>$search,'where'=>$where,'page'=>$page]));
+        return redirect(route('community.show',['id'=>$id,'search'=>$request->search,'where'=>$request->where,'page'=>$request->page]));
     }
 
     public function getDeleteComment(Request $request,$id){
-        $page = $request->page;
-        $search = $request->search;
-        $where = $request->where;
-        $this->commentModel->deleteComments($request->commentId);
-        return redirect(route('community.show',['id'=>$id,'search'=>$search,'where'=>$where,'page'=>$page]));
+            $this->commentModel->deleteComments($request->commentId);
+        
+        return redirect(route('community.show',['id'=>$id,'search'=>$request->search,'where'=>$request->where,'page'=>$request->page]));
     }
 
 
