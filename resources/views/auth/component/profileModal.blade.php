@@ -39,7 +39,7 @@ aria-hidden="true">
                         <tr>
                             <th>@lang('auth/profile.model_gender') :&nbsp;</th>
 
-                            @if(Auth::user()->gender == '남자')
+                            @if(Auth::user()->gender == 'men')
 
                             <td><img src="{{asset("data/ProjectImages/master/men.png")}}" alt="men"></td>
                             @else

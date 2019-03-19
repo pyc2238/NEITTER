@@ -45,7 +45,8 @@ class User
 
                 return back()->with('message',$message);    
             }
-            return redirect(route('socialite.userInfo',Auth::user()->id));
+            return $next($request);    
+            // return redirect(route('socialite.userInfo',Auth::user()->id));
         }
     }
 }

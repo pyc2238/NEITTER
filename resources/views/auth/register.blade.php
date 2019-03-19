@@ -66,8 +66,8 @@
                                 <div class="form-group col-md-6">
                                     <label>@lang('auth/register_form.gender')</label>
                                     <select id="inputState" class="form-control" name="gender" required>
-                                        <option selected value="남자">@lang('auth/register_form.men')</option>
-                                        <option value="여자">@lang('auth/register_form.women')</option>
+                                        <option selected value="men">@lang('auth/register_form.men')</option>
+                                        <option value="women">@lang('auth/register_form.women')</option>
                                     </select>
                                 </div> <!-- form-group end.// -->
                             </div> <!-- form-row.// -->

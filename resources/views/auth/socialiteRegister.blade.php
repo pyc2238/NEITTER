@@ -41,8 +41,8 @@
                     <div class="form-group col-md-6">
                         <label>@lang('auth/socialiteRegister.gender')</label>
                         <select id="inputState" class="form-control" name="gender" required>
-                            <option selected value="남자">@lang('auth/socialiteRegister.men')</option>
-                            <option value="여자">@lang('auth/socialiteRegister.women')</option>
+                            <option selected value="men">@lang('auth/socialiteRegister.men')</option>
+                            <option value="women">@lang('auth/socialiteRegister.women')</option>
                         </select>
                     </div> <!-- form-group end.// -->
                 </div> <!-- form-row.// -->
@@ -59,8 +59,8 @@
                     <div class="form-group col-md-6">
                         <label>@lang('auth/socialiteRegister.country')</label>
                         <select id="inputState" class="form-control" name="country" required>
-                            <option selected value="한국">@lang('auth/socialiteRegister.korea')</option>
-                            <option value="일본">@lang('auth/socialiteRegister.japan')</option>
+                            <option selected value="ko">@lang('auth/socialiteRegister.korea')</option>
+                            <option value="jp">@lang('auth/socialiteRegister.japan')</option>
                         </select>
                     </div> <!-- form-group end.// -->
                 </div> <!-- form-row.// -->

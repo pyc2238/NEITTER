@@ -180,10 +180,6 @@ class UserController extends Controller
           return view('auth.socialiteRegister');
       }
 
-      /*소셜라이트 회원 내정보*/
-      public function getSocialiteUserInfo(){
-          return view('auth.socialiteProfile');
-      }
 
 }
 

@@ -22,12 +22,12 @@
                 <!--autocomplete 자동완성기능 off , autofocus , required-->
                 <br>
                 <br>
-
+                @if(Auth::user()->socialite != 1)
                 @lang('auth/profile.password') <a href="{{route('user.passwordFrom',Auth::user()->id)}}"><b>[
                         @lang('auth/profile.password_update') ]</b></a>
                 <br>
                 <br>
-
+                @endif
                 <i class="fa fa-exclamation-circle"><label for="inputNickname">@lang('auth/profile.nickname')</label></i>
                 <input style="color:blue;" type="text" name="name" class="form-control" value="{{Auth::user()->name}}"
                     readonly>
@@ -43,8 +43,8 @@
                     <div class="form-group col-md-6">
                         <label>@lang('auth/profile.gender')</label>
                         <select id="inputState" class="form-control" name="gender" required>
-                            <option selected value="남자">@lang('auth/profile.men')</option>
-                            <option value="여자">@lang('auth/profile.women')</option>
+                            <option selected value="men">@lang('auth/profile.men')</option>
+                            <option value="women">@lang('auth/profile.women')</option>
                         </select>
                     </div> <!-- form-group end.// -->
                 </div> <!-- form-row.// -->
@@ -60,8 +60,8 @@
                     <div class="form-group col-md-6">
                         <label>@lang('auth/profile.country')</label>
                         <select id="inputState" class="form-control" name="country" required>
-                            <option value="한국">@lang('auth/profile.korea')</option>
-                            <option value="일본">@lang('auth/profile.japan')</option>
+                            <option value="ko">@lang('auth/profile.korea')</option>
+                            <option value="jp">@lang('auth/profile.japan')</option>
                         </select>
                     </div> <!-- form-group end.// -->
                 </div> <!-- form-row.// -->

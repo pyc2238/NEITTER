@@ -12,7 +12,9 @@
             </div>
             <b class="text-center"> <a href="{{url('introduction')}}">@lang('home/component/welcomeModal.introduction')</a></b>
             <br>
-            <p class="text-center"><a href="{{route('socialite.userInfo')}}">@lang('home/component/welcomeModal.go_profile')</a>@lang('home/component/welcomeModal.notice')</p>
+            @if(Auth::user())
+                <p class="text-center"><a href="{{route('user.info',Auth::user()->id)}}">@lang('home/component/welcomeModal.go_profile')</a>@lang('home/component/welcomeModal.notice')</p>
+            @endif
             <div class="modal-footer">
                 <button type="button" class="btn btn-danger" data-dismiss="modal">@lang('home/component/welcomeModal.check')</button>
             </div>
