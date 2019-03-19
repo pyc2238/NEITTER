@@ -56,40 +56,26 @@ class User extends Authenticatable
         return $this->hasMany(inquiryBoard::class);
     }
     
-    // public function createUser($uname,$uemail,$upassword,$ugender,$uage,$uaddress,$ucountry){
-
-    //     $param = [
-    //         'name' => $uname,
-    //         'email' => $uemail,
-    //         'password' =>Hash::make($upassword),
-    //         'gender' => $ugender,
-    //         'age' => $uage,
-    //         'address' => $uaddress,
-    //         'country' => $ucountry
-    //     ];
-
-    //     $this::create($param);
     
-    // }
 
 
 
+
+    
     public function setPasswordAttribute($value){
         $this->attributes['password'] = Hash::make($value);
     }
 
-    public function getName($name){
-        return $this::where('name',$name)->first();  
-    }
-    
 
-    public function getEmail($email){
-        return $this::where('email',$email)->first();
+    public function getUser($col,$arg){
+        return $this->where($col,$arg)->first();
     }
 
-    public function changePassword($email,$newPw){
-        $this::where('email',$email)
-            ->update(['password' => Hash::make($newPw)]);
+
+    public function findPassword($email,$password){
+        $user = $this->where('email',$email)->first();
+        $user->password = $password;
+        $user->save();
     }
 
     public function updateProfile($gender,$age,$address,$country,$selfContext){
@@ -101,17 +87,17 @@ class User extends Authenticatable
             'selfContext' => $selfContext
         ];
 
-        $this::where('id',Auth::user()->id)
+        $this->where('id',Auth::user()->id)
             ->update($param);
     }
 
     public function updatePassword($password){
-        $this::where('id',Auth::user()->id)
-            ->update(['password' =>Hash::make($password)]);
+        Auth::user()->password = $password;
+        Auth::user()->save();
     }
 
     public function updateFile($file){
-        $this::where('id',Auth::user()->id)
+        $this->where('id',Auth::user()->id)
             ->update(['selfPhoto' => $file]);
     }
 

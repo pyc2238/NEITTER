@@ -30,41 +30,38 @@ class UserController extends Controller
     /* 회원가입 닉네임 중복 체크 */
     public function getUserName(Request $request){
  
-        $name =  $this->userModel->getName($request->name);
-
+        $user = $this->userModel->getUser('name',$request->name);
         return 
             view('auth.check_name')
             ->with('uname',$request->name)
-            ->with('name',$name);
+            ->with('name',$user['name']);
      }
 
 
     /* 이메일 비밀번호 변경  */
     public function postFindPassword(Request $request){
+    
         $randPw = array("@zxc123456", "!zxc123456", "#zxc123456", "&zxc123456");
         $selected = array_rand($randPw);
         $request->session()->put('newPw',$randPw[$selected]);
         
-        $uemail = $request->email;
-        $email = $this->userModel->getEmail($uemail);
-
         if(Session::get('locale') == 'ja'){
             $message = 'メール情報が存在しません';
         }else{
             $message = '해당 이메일 정보가 존재하지 않습니다.';
         }
 
-
-        if(!$email){return back()->with('message',$message);} 
-
-        $uname = $email->name; 
-         
-        if($uemail == $email->email){
+        
+        $user = $this->userModel->getUser('email',$request->email);
+        
+        if(!$user){return back()->with('message',$message);} 
+ 
+        if($request->email == $user->email){
             
-            Event::fire(new ResetPwMail($uemail,$uname));
+            Event::fire(new ResetPwMail($request->email,$user->name));
             
-            $this->userModel->changePassword($uemail,$randPw[$selected]);
-          
+            $this->userModel->findPassword($request->email,$randPw[$selected]);
+        
             return view('auth.passwords.reset');
          }
     }
@@ -122,6 +119,7 @@ class UserController extends Controller
 
         if(password_verify($upw,$pw)){
             if($new_pw == $new_pw_check){
+
                 $this->userModel->updatePassword($new_pw_check);
 
                     

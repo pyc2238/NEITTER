@@ -67,7 +67,7 @@ class RegisterController extends Controller
         $result = true;
         
 
-        if($this->user->getName($request->name)){
+        if($this->user->getUser('name',$request->name)){
 
             if(Session::get('locale') == 'ja'){
                 $message = 'このIDは使用できません';
