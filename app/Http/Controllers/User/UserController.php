@@ -6,7 +6,6 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 
-use Session; 
 use Mail;
 use Exception;
 use Event;
@@ -43,9 +42,9 @@ class UserController extends Controller
     
         $randPw = array("@zxc123456", "!zxc123456", "#zxc123456", "&zxc123456");
         $selected = array_rand($randPw);
-        $request->session()->put('newPw',$randPw[$selected]);
+        session(['newPw' => $randPw[$selected]]);
         
-        if(Session::get('locale') == 'ja'){
+        if(session('locale') == 'ja'){
             $message = 'メール情報が存在しません';
         }else{
             $message = '해당 이메일 정보가 존재하지 않습니다.';
@@ -76,7 +75,7 @@ class UserController extends Controller
     //회원정보 수정 자기소개글 삽입 및 대표사진
     public function putUpdateProfile(Request $request){
 
-        if(Session::get('locale') == 'ja'){
+        if(session('locale') == 'ja'){
             $message = '会員情報が修正されました';
         }else{
             $message = '회원정보가 수정되었습니다.';
@@ -123,7 +122,7 @@ class UserController extends Controller
                 $this->userModel->updatePassword($new_pw_check);
 
                     
-            if(Session::get('locale') == 'ja'){
+            if(session('locale') == 'ja'){
                 $message = 'パスワードの変更が完了しました。';
             }else{
                 $message = '비밀번호 변경이 완료되었습니다.';
@@ -132,7 +131,7 @@ class UserController extends Controller
                 return redirect('home')->with('message',$message)->with(Auth::logout());;
             }else{
                         
-                if(Session::get('locale') == 'ja'){
+                if(session('locale') == 'ja'){
                     $message = 'パスワードの確認が一致しません。';
                 }else{
                     $message = '비밀번호 확인이 일치하지 않습니다.';
@@ -142,7 +141,7 @@ class UserController extends Controller
             }
         }else{
 
-            if(Session::get('locale') == 'ja'){
+            if(session('locale') == 'ja'){
                 $message = '会員情報パスワードが一致しません';
             }else{
                 $message = '회원정보 비밀번호가 일치하지 않습니다.';
@@ -156,7 +155,7 @@ class UserController extends Controller
     //회원 탈퇴
     public function getDestroy(Request $request){
       
-        if(Session::get('locale') == 'ja'){
+        if(session('locale') == 'ja'){
             $message = '会員脱退が完了しました。';
         }else{
             $message = '회원탈퇴가 완료되었습니다.';

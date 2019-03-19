@@ -9,7 +9,7 @@ use Illuminate\Http\Request;
 use App\Events\SendMail;
 use Socialite;
 use Event;
-use Session;
+
 
 use Auth;
 use App\Models\User;
@@ -57,11 +57,11 @@ class LoginController extends Controller
      {
        
           
-         Session::put('name',$request->name);
-         Session::put('age',$request->age);
-         Session::put('gender',$request->gender);
-         Session::put('address',$request->address);
-         Session::put('country',$request->country);
+        session(['name' => $request->name]);
+        session(['age' => $request->age]);
+        session(['gender' => $request->gender]);
+        session(['address' => $request->address]);
+        session(['country' => $request->country]);
          
        
          return Socialite::driver($social)->redirect();
@@ -90,22 +90,22 @@ class LoginController extends Controller
                  return redirect()->to('/home');
              }
              else {
-                 if(!Session::get('age')){
-                    Session::put('social',$social);
+                 if(!session('age')){
+                    session(['social' => $social]);
                 
                      return redirect()->route('socialite.register');
                  }  
  
                  $user = new User;
-                 $user->name = Session::get('name');
-                 $user->email = $socialUser->email;
-                 $user->gender = Session::get('gender');
-                 $user->age = Session::get('age');
-                 $user->address = Session::get('address');
-                 $user->country = Session::get('country');
+                 $user->name      = session('name');
+                 $user->email     = $socialUser->email;
+                 $user->gender    = session('gender');
+                 $user->age       = session('age');
+                 $user->address   = session('address');
+                 $user->country   = session('country');
                  $user->socialite = 1;
                  $user->save();
-                 Session::put('newUser',$socialUser->name);
+                 session(['newUser' => $socialUser->name]);
                  if($socialUser->email && $socialUser->name){
                  Event::fire(new SendMail($socialUser->email,$socialUser->name));
                 }

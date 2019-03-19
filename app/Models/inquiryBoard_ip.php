@@ -13,12 +13,12 @@ class inquiryBoard_ip extends Model
 
     public function getHitsIp($ip,$boardNum){
         
-        return $this::where('ip',$ip)->where(function ($query) use($boardNum) { $query->where('boardNum',$boardNum);})->first();
+        return $this->where('ip',$ip)->where(function ($query) use($boardNum) { $query->where('boardNum',$boardNum);})->first();
         
     }
 
     public function insertHitIp($boardNum,$ip){
-        $this::create([
+        $this->create([
             'boardNum' => $boardNum,
             'ip' => $ip
         ]);

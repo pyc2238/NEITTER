@@ -23,8 +23,8 @@
             alt="Logo" ondragstart="return false"></div>
     <br>
     <br>
-    @if(Session::has('newPw'))
-    @lang('home/component/mail.notice1') "<b style="color:blue;">{{Session::get('newPw')}}</b>"@lang('home/component/mail.notice2')
+    @if(session()->has('newPw'))
+    @lang('home/component/mail.notice1') "<b style="color:blue;">{{session('newPw')}}</b>"@lang('home/component/mail.notice2')
     @endif
     <br>
     <a href="{{route('login')}}">@lang('home/component/mail.goLogin')</a>

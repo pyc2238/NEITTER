@@ -9,7 +9,6 @@ use Illuminate\Support\Facades\Validator;
 use Illuminate\Foundation\Auth\RegistersUsers;
 use App\Http\Requests\CreateUserRequest;
 
-use Session; 
 use Event;
 use Mail;
 use App\Events\SendMail;
@@ -69,7 +68,7 @@ class RegisterController extends Controller
 
         if($this->user->getUser('name',$request->name)){
 
-            if(Session::get('locale') == 'ja'){
+            if(session('locale') == 'ja'){
                 $message = 'このIDは使用できません';
             }else{
                 $message = '해당 아이디는 사용 할 수 없습니다.';
@@ -85,7 +84,7 @@ class RegisterController extends Controller
         // $uaddress = $request->address;
         // $ucountry = $request->country;
 
-        Session::put('newUser',$request->name);
+        session(['newUser' => $request->name]);
 
         Event::fire(new SendMail($request->email,$request->name));
         

@@ -25,8 +25,10 @@ class Community extends Model
         'ip'
     ];
 
+    
     protected $primaryKey = 'num'; //find() 를 사용하면 기본 키 열이 id 가 될 것이라고 자동으로 가정합니다. 모델에서 기본 키를 명시해야합니다.
     protected $dates = ['deleted_at'];
+    
     public function user(){
         return $this->belongsTo(User::class);
     }

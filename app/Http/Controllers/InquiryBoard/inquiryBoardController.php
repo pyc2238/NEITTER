@@ -7,7 +7,7 @@ use App\Http\Controllers\Controller;
 
 use App\Http\Controllers\SubController\TranslationController;
 
-use Session; 
+
 use Auth;
 use App\Models\User;
 use App\Models\inquiryBoard;
@@ -47,22 +47,23 @@ class inquiryBoardController extends Controller
     public function index(Request $request)
     {
         $msgs =  $this->inquiryModel->getMsgs();
-    
+        $count = count(inquiryBoard::all());
+
         if($request->search){
             
             switch($request->where){
 
                 case "title":
-                    $msgs = $this->inquiryModel->searchTitle($request->search);  
-                    $count = $this->inquiryModel->searchTitleCount($request->search);
+                    $msgs = $this->inquiryModel->search('title',$request->search);  
+                    $count = $this->inquiryModel->searchCount('title',$request->search);
                     break;
                 case "writer":
                     $msgs = $this->inquiryModel->searchWriter($request->search);             
                     $count = $this->inquiryModel->searchWriterCount($request->search);
                     break;
                 case "content":
-                    $msgs = $this->inquiryModel->searchContent($request->search); 
-                    $count = $this->inquiryModel->searchContentCount($request->search);
+                    $msgs = $this->inquiryModel->search('content',$request->search); 
+                    $count = $this->inquiryModel->searchCount('content',$request->search);
                     break;
                 case "titleAndcotent":
                     $msgs = $this->inquiryModel->searchTitleAndCotent($request->search); 
@@ -77,7 +78,7 @@ class inquiryBoardController extends Controller
             ->with('search',$request->search)
             ->with('where',$request->where)
             ->with('msgs',$msgs)
-            ->with('count',count(inquiryBoard::all()));
+            ->with('count',$count);
     }
 
     /**
@@ -107,7 +108,7 @@ class inquiryBoardController extends Controller
     
         $this->inquiryModel->insertMsg(Auth::user()->country,$request->title,$request->content,Auth::user()->id,$request->getClientIp());
         
-        if(Session::get('locale') == 'ja'){
+        if(session('locale') == 'ja'){
             $message = 'お問い合わせ作成が完了しました。';
         }else{
             $message = '문의 작성이 완료되었습니다.';
@@ -130,7 +131,7 @@ class inquiryBoardController extends Controller
 
     public function show(Request $request,$id)
     {
-        if(Session::get('locale') == 'ja'){
+        if(session('locale') == 'ja'){
             $message = '該当権限がありません';
         }else{
             $message = '글을 열람할 권한이 없습니다.';
@@ -195,7 +196,7 @@ class inquiryBoardController extends Controller
     public function edit(Request $request,$id)
     {
         
-        if(Session::get('locale') == 'ja'){
+        if(session('locale') == 'ja'){
             $message = '修正権限がありません。';
         }else{
             $message = '수정권한이 없습니다.';
@@ -228,7 +229,7 @@ class inquiryBoardController extends Controller
     public function update(Request $request, $id)
     {
     
-        if(Session::get('locale') == 'ja'){
+        if(session('locale') == 'ja'){
             $message = 'お問い合わせが修正されました。';
         }else{
             $message = '문의글이 수정되었습니다.';
@@ -249,7 +250,7 @@ class inquiryBoardController extends Controller
     public function destroy(Request $request,$id)
     {
     
-        if(Session::get('locale') == 'ja'){
+        if(session('locale') == 'ja'){
             $message = '削除権限がありません。';
         }else{
             $message = '삭제권한이 없습니다.';
@@ -259,7 +260,7 @@ class inquiryBoardController extends Controller
 
         
          if(Auth::user()->id == $user->user_id || Auth::user()->admin == 1 ){
-            $this->inquiryModel->deleteMsg($id);
+            $this->inquiryModel->deleteMsg('num',$id);
             return redirect(route('inquiry.index',['search'=>$request->search,'where'=>$request->where,'page'=>$request->page]));
         }else{
             return back()->with('message',$message);
@@ -268,7 +269,7 @@ class inquiryBoardController extends Controller
 
     public function putIncreaseCommend(Request $request,$id){
        
-        if(Session::get('locale') == 'ja'){
+        if(session('locale') == 'ja'){
             $message = 'すでに推薦したスレッドです';
         }else{
             $message = '이미 추천을 누른 게시물입니다.';
@@ -305,7 +306,7 @@ class inquiryBoardController extends Controller
 
     public function getDeleteComment(Request $request,$id){
             
-            $this->commentModel->deleteComments($request->commentId);
+            $this->commentModel->deleteMsg('id',$request->commentId);
 
         return redirect(route('inquiry.show',['id'=>$id,'search'=>$request->search,'where'=>$request->where,'page'=>$request->page]));
     }

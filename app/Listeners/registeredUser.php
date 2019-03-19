@@ -6,7 +6,7 @@ use App\Events\registeredUserMail;
 use Illuminate\Queue\InteractsWithQueue;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Mail;
-use Session;
+
 class registeredUser
 {
     /**
@@ -29,7 +29,7 @@ class registeredUser
     {
         
         $count = $event->userCount;
-        Session::put('userCount',$count);
+        session(['userCount' => $count]);
 
         Mail::send(['html'=>'component.registeredUserMail'],['name','Sathak'],function($message){
             $message->to('pyc2238@naver.com','보근님')->subject('안녕하세요 NEITTER입니다.');

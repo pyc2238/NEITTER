@@ -34,26 +34,19 @@ trait ModelScopes{
         return $query->with('user:id,name')->where('num',$id)->first();
     }
 
-    public function scopeDeleteMsg($query,$id){
-        $query->where('num',$id)->delete();
+    public function scopeDeleteMsg($query,$col,$id){
+        $query->where($col,$id)->delete();
     }
 
-    public function scopeSearchTitle($query,$search){
-        return $query->where('title','LIKE',"%$search%")->latest('num')->paginate(10)->onEachSide(5);
+
+    public function scopeSearch($query,$col,$search){
+        return $query->where($col,'LIKE',"%$search%")->latest('num')->paginate(10)->onEachSide(5);
           
     }
 
-    public function scopeSearchTitleCount($query,$search){
-        return count($query->where('title','LIKE',"%$search%")->get());
+    public function scopeSearchCount($query,$col,$search){
+        return count($query->where($col,'LIKE',"%$search%")->get());
         
-     }
-
-    public function scopeSearchContent($query,$search){
-        return $query->where('content','LIKE',"%$search%")->latest('num')->paginate(10)->onEachSide(5);
-    }
-
-    public function scopeSearchContentCount($query,$search){
-        return count($query->where('content','LIKE',"%$search%")->get());     
     }
 
     public function scopeSearchTitleAndCotent($query,$search){
@@ -96,9 +89,6 @@ trait ModelScopes{
         $query->where('id',$id)->update(['content'=>$content,'ip' => $ip]);
     }
 
-    public function scopeDeleteComments($query,$id){
-        $query->where('id',$id)->delete();
-    }
 
 
 

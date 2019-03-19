@@ -4,7 +4,7 @@ namespace App\Http\Middleware;
 
 use Closure;
 use Auth;
-use Session;
+
 class User
 {
     /**
@@ -23,7 +23,7 @@ class User
         //password_verify() : hash암호를 해석
         if($upw){
 
-            if(Session::get('locale') == 'ja'){
+            if(session('locale') == 'ja'){
                 $message = '会員情報とパスワードが一致しません';
             }else{
                 $message = '회원 정보와 비밀번호가 일치하지 않습니다.';
@@ -37,7 +37,7 @@ class User
         }else{
             if(Auth::user()->socialite == 0){
                 
-                if(Session::get('locale') == 'ja'){
+                if(session('locale') == 'ja'){
                     $message = '利用できないサービスです。';
                 }else{
                     $message = '이용할 수 없는 서비스입니다.';

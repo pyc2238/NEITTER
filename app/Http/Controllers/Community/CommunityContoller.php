@@ -7,7 +7,7 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\SubController\TranslationController;
 
 
-use Session; 
+
 use Auth;
 
 use App\Models\User;
@@ -52,13 +52,14 @@ class CommunityContoller extends Controller
     {
        
         $msgs =  $this->communityModel->getMsgs();
+        $count = count(Community::all());
 
         if($request->search){
             switch($request->where){
                     
                 case "title":
-                    $msgs = $this->communityModel->searchTitle($request->search);  
-                    $count = $this->communityModel->searchTitleCount($request->search);
+                    $msgs = $this->communityModel->search('title',$request->search);  
+                    $count = $this->communityModel->searchCount('title',$request->search);
                     break;
                 case "writer":
                     $msgs = $this->communityModel->searchWriter($request->search); 
@@ -67,8 +68,8 @@ class CommunityContoller extends Controller
                     // $count = $this->communityModel->searchWriterCount("communities",$search);
                     break;
                 case "content":
-                    $msgs = $this->communityModel->searchContent($request->search); 
-                    $count = $this->communityModel->searchContentCount($request->search);
+                    $msgs = $this->communityModel->search('content',$request->search);  
+                    $count = $this->communityModel->searchCount('content',$request->search);
                     break;
                 case "titleAndcotent":
                     $msgs = $this->communityModel->searchTitleAndCotent($request->search); 
@@ -84,7 +85,7 @@ class CommunityContoller extends Controller
             ->with('search',$request->search)
             ->with('where',$request->where)
             ->with('msgs',$msgs)
-            ->with('count',count(Community::all()));
+            ->with('count',$count);
             // ->with('autoSearch',$autoSearch);
     }
 
@@ -114,7 +115,7 @@ class CommunityContoller extends Controller
     
     public function store(Request $request)
     {
-        if(Session::get('locale') == 'ja'){
+        if(session('locale') == 'ja'){
             $message = 'スレッド作成が完了しました。';
         }else{
             $message = '글 작성이 완료되었습니다.';
@@ -184,7 +185,7 @@ class CommunityContoller extends Controller
     //해당 아이디의 수정 폼
     public function edit(Request $request,$id)
     {   
-        if(Session::get('locale') == 'ja'){
+        if(session('locale') == 'ja'){
             $message = '修正権限がありません。';
         }else{
             $message = '수정권한이 없습니다.';
@@ -217,7 +218,7 @@ class CommunityContoller extends Controller
     public function update(Request $request, $id)
     {
     
-            if(Session::get('locale') == 'ja'){
+            if(session('locale') == 'ja'){
                 $message = 'スレッドが修正されました。';
             }else{
                 $message = '게시물이 수정되었습니다.';
@@ -238,7 +239,7 @@ class CommunityContoller extends Controller
     //해당 아이디 데이터 삭제
     public function destroy(Request $request,$id)
     {
-        if(Session::get('locale') == 'ja'){
+        if(session('locale') == 'ja'){
             $message = '削除権限がありません。';
         }else{
             $message = '삭제권한이 없습니다.';
@@ -247,7 +248,7 @@ class CommunityContoller extends Controller
         $user = $this->communityModel->getMsg($id);
 
          if(Auth::user()->id == $user->user_id || Auth::user()->admin == 1 ){
-                $this->communityModel->deleteMsg($id);
+                $this->communityModel->deleteMsg('num',$id);
             return redirect(route('community.index',['search'=>$request->search,'where'=>$request->where,'page'=>$request->page]));
         }else{
             return back()->with('message',$message);
@@ -258,7 +259,7 @@ class CommunityContoller extends Controller
     public function putIncreaseCommend(Request $request,$id){
 
        
-        if(Session::get('locale') == 'ja'){
+        if(session('locale') == 'ja'){
             $message = 'すでに推薦したスレッドです';
         }else{
             $message = '이미 추천을 누른 게시물입니다.';
@@ -293,7 +294,7 @@ class CommunityContoller extends Controller
     }
 
     public function getDeleteComment(Request $request,$id){
-            $this->commentModel->deleteComments($request->commentId);
+            $this->commentModel->deleteMsg('id',$request->commentId);
         
         return redirect(route('community.show',['id'=>$id,'search'=>$request->search,'where'=>$request->where,'page'=>$request->page]));
     }

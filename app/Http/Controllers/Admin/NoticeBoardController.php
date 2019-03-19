@@ -11,7 +11,6 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Http\Controllers\SubController\TranslationController;
 
-use Session; 
 use Auth;
 use App\Models\User;
 use App\Models\Admin_Notice;
@@ -47,21 +46,22 @@ class NoticeBoardController extends Controller
     {
 
         $msgs = $this->noticeModel->getMsgs();
-
+        $count = count(Admin_Notice::all());
+        
         if($request->search){
             switch($request->where){
                     
                 case "title":
-                    $msgs = $this->noticeModel->searchTitle($request->search);  
-                    $count = $this->noticeModel->searchTitleCount($request->search);
+                    $msgs = $this->noticeModel->search('title',$request->search);  
+                    $count = $this->noticeModel->searchCount('title',$request->search);
                     break;
                 case "writer":
                     $msgs = $this->noticeModel->searchWriter($request->search); 
                     $count = $this->noticeModel->searchWriterCount($request->search);
                     break;
                 case "content":
-                    $msgs = $this->noticeModel->searchContent($request->search); 
-                    $count = $this->noticeModel->searchContentCount($request->search);
+                    $msgs = $this->noticeModel->search('content',$request->search); 
+                    $count = $this->noticeModel->searchCount('content',$request->search);
                     break;
                 case "titleAndcotent":
                     $msgs = $this->noticeModel->searchTitleAndCotent($request->search); 
@@ -76,7 +76,7 @@ class NoticeBoardController extends Controller
             ->with('search',$request->search)
             ->with('where',$request->where)
             ->with('msgs',$msgs)
-            ->with('count',count(Admin_Notice::all()));
+            ->with('count',$count);
     }
 
     /**
@@ -111,7 +111,7 @@ class NoticeBoardController extends Controller
     
      public function store(Request $request)
     {
-        if(Session::get('locale') == 'ja'){
+        if(session('locale') == 'ja'){
             $message = 'お知らせ作成が完了しました。';
         }else{
             $message = '공지사항 작성이 완료되었습니다.';
@@ -179,7 +179,7 @@ class NoticeBoardController extends Controller
     public function edit(Request $request,$id)
     {
         
-        if(Session::get('locale') == 'ja'){
+        if(session('locale') == 'ja'){
             $message = '修正権限がありません。';
         }else{
             $message = '수정권한이 없습니다.';
@@ -211,7 +211,7 @@ class NoticeBoardController extends Controller
 
     public function update(Request $request, $id)
     {
-        if(Session::get('locale') == 'ja'){
+        if(session('locale') == 'ja'){
             $message = 'お知らせを修正されました。';
         }else{
             $message = '공지사항이 수정되었습니다.';
@@ -231,7 +231,7 @@ class NoticeBoardController extends Controller
     
     public function destroy(Request $request,$id)
     {
-        if(Session::get('locale') == 'ja'){
+        if(session('locale') == 'ja'){
             $message = '削除権限がありません。';
         }else{
             $message = '삭제권한이 없습니다.';
@@ -240,7 +240,7 @@ class NoticeBoardController extends Controller
         $user = $this->noticeModel->getMsg($id);
         
          if(Auth::user()->id == $user->user_id ){
-            $this->noticeModel->deleteMsg($id);
+            $this->noticeModel->deleteMsg('num',$id);
             return redirect(route('notice.index',['search'=>$request->search,'where'=>$request->where,'page'=>$request->page]));
         }else{
             return back()->with('message',$message);
