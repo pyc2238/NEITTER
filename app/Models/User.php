@@ -35,7 +35,8 @@ class User extends Authenticatable
      * @var array
      */
     protected $hidden = [
-        'password', 'remember_token',
+        'password',
+         'remember_token',
     ];
 
     // protected $dates = ['deleted_at'];
@@ -58,10 +59,7 @@ class User extends Authenticatable
     
     
 
-
-
-
-    
+    //password Mutators
     public function setPasswordAttribute($value){
         $this->attributes['password'] = Hash::make($value);
     }
@@ -73,10 +71,15 @@ class User extends Authenticatable
 
 
     public function findPassword($email,$password){
+
+        // $this::where('email',$email)
+        //     ->update(['password' => $password]);
+
         $user = $this->where('email',$email)->first();
         $user->password = $password;
         $user->save();
     }
+
 
     public function updateProfile($gender,$age,$address,$country,$selfContext){
         $param = [
@@ -91,7 +94,13 @@ class User extends Authenticatable
             ->update($param);
     }
 
+    
+
     public function updatePassword($password){
+
+        // $this::where('id',Auth::user()->id)
+        // ->update(['password' => $password]);
+
         Auth::user()->password = $password;
         Auth::user()->save();
     }

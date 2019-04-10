@@ -11,7 +11,10 @@ class Admin_Notice_hit extends Model
 
     public function getHitsId($userNum,$boardNum){
       
-        return $this->where('userNum',$userNum)->where(function ($query) use($boardNum) { $query->where('boardNum',$boardNum);})->first();
+        return $this->where('userNum',$userNum)
+                    ->where(function ($query) use ($boardNum) {
+                         $query->where('boardNum',$boardNum);})
+                         ->first();
     }
 
     public function insertHitId($userNum,$boardNum){

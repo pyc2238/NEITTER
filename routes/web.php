@@ -60,9 +60,7 @@ Route::group(['middleware' => ['auth']], function () {
     /*유저 체크*/ 
     Route::get('user/check','User\UserController@getUser')->name('user.check');
     /*내정보 보기*/   
-    Route::any('user/{id}','User\UserController@getUserInfo')->name('user.info')->middleware('user'); 
-    /*소셜라이트 회원 정보 보기*/
-    Route::any('socialiteUser','User\UserController@getSocialiteUserInfo')->name('socialite.userInfo');     
+    Route::any('user/{id}','User\UserController@getUserInfo')->name('user.info')->middleware('user');    
     /*내정보 수정*/
     Route::put('update','User\UserController@putUpdateProfile')->name('user.update');
     /*회원 탈퇴 처리*/
@@ -94,7 +92,6 @@ Route::group(['middleware' => ['comment']], function () {
     /* 문의 게시판 댓글 삭제*/
     Route::get('inquiry/comment/{id}','inquiryBoard\inquiryBoardController@getDeleteComment')->name('inquiry.comment.delete');
 });
-
 
 /*공지사항 게시판 */
 Route::resource('notice','Admin\NoticeBoardController');
