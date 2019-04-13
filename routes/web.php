@@ -27,6 +27,10 @@ Route::post('/sender', function () {
 });
 
 
+///////////////////////////////////////////////////////
+
+
+
 /*언어 지역화*/
 Route::get('locale/{locale}',function($locale = 'ko'){
     Session::put('locale',$locale);
@@ -34,7 +38,7 @@ Route::get('locale/{locale}',function($locale = 'ko'){
 });
 
 /*CkEditor 파일업로드*/
-Route::post('/ckUpload','SubController\FileUploadController@fileUpload')->name('ckUpload');
+Route::post('/ckUpload','Helper\FileUploadController@fileUpload')->name('ckUpload');
 
 /*메인 페이지*/
 Route::get('/','Home\WelcomeController@index');

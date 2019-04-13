@@ -5,26 +5,26 @@ namespace App\Http\Controllers\InquiryBoard;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 
-use App\Http\Controllers\SubController\TranslationController;
+use App\Http\Controllers\Helper\Translation;
 
 
 use Auth;
-use App\Models\User;
-use App\Models\inquiryBoard;
-use App\Models\inquiryBoard_commends;
-use App\Models\inquiryBoard_hit;
-use App\Models\inquiryBoard_ip;
-use App\Models\inquiryBoard_Comment;
+use App\Models\Users\User;
+use App\Models\Inquiries\inquiryBoard;
+use App\Models\Inquiries\inquiryBoard_commends;
+use App\Models\Inquiries\inquiryBoard_hit;
+use App\Models\Inquiries\inquiryBoard_ip;
+use App\Models\Inquiries\inquiryBoard_Comment;
 
 class inquiryBoardController extends Controller
 {
+    use Translation;
 
     private $inquiryModel   = null;
     private $commendsModel  = null;
     private $hitsModel      = null;
     private $ipsModel       = null;
     private $commentModel   = null;
-    private $translation    = null;
 
     public function __construct(){
         $this->inquiryModel = new inquiryBoard();
@@ -32,7 +32,6 @@ class inquiryBoardController extends Controller
         $this->hitsModel = new inquiryBoard_hit();
         $this->ipsModel = new inquiryBoard_ip();
         $this->commentModel = new inquiryBoard_Comment();
-        $this->translation = new TranslationController();
         $this->middleware('loginCheck')->only(['edit','destroy']);
         
     }
@@ -170,8 +169,8 @@ class inquiryBoardController extends Controller
         
         $inquiry = $this->inquiryModel->getMsg($id);
         
-        $translationTitle = $this->translation->translation($inquiry->title,$this->translation->langCode($inquiry->title));
-        $translationContent = $this->translation->translation($inquiry->content,$this->translation->langCode($inquiry->title));
+        $translationTitle = $this->translation($inquiry->title,$this->langCode($inquiry->title));
+        $translationContent = $this->translation($inquiry->content,$this->langCode($inquiry->content));
          
         
         return

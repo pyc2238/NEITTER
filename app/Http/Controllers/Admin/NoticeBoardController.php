@@ -9,29 +9,29 @@ namespace App\Http\Controllers\Admin;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-use App\Http\Controllers\SubController\TranslationController;
+use App\Http\Controllers\Helper\Translation;
 
 use Auth;
-use App\Models\User;
-use App\Models\Admin_Notice;
-use App\Models\Admin_Notice_hit;
-use App\Models\Admin_Notice_ip;
+use App\Models\Users\User;
+use App\Models\Admins\Admin_Notice;
+use App\Models\Admins\Admin_Notice_hit;
+use App\Models\Admins\Admin_Notice_ip;
 
 
 
 class NoticeBoardController extends Controller
 {
+    use Translation;
 
     private $noticeModel    = null;
     private $hitsModel      = null;
     private $ipsModel       = null;
-    private $translation    = null;
+    
     
     public function __construct(){
         $this->noticeModel = new Admin_Notice();
         $this->hitsModel = new Admin_Notice_hit();
         $this->ipsModel = new Admin_Notice_ip();
-        $this->translation = new TranslationController();
         $this->middleware('loginCheck')->only(['edit','destroy']);
         
     }
@@ -155,8 +155,8 @@ class NoticeBoardController extends Controller
         
         $notice = $this->noticeModel->getMsg($id);
         
-        $translationTitle = $this->translation->translation($notice->title,$this->translation->langCode($notice->title));
-        $translationContent = $this->translation->translation($notice->content,$this->translation->langCode($notice->title));
+        $translationTitle = $this->translation($notice->title,$this->langCode($notice->title));
+        $translationContent = $this->translation($notice->content,$this->langCode($notice->content));
          
         
         return

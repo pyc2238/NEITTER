@@ -1,10 +1,11 @@
 <?php
 
-namespace App\Models;
+namespace App\Models\Inquiries;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Communities_hit extends Model
+
+class inquiryBoard_hit extends Model
 {
     protected $fillable = ['id','userNum','boardNum'];
     public $timestamps = false;
@@ -20,6 +21,4 @@ class Communities_hit extends Model
             'boardNum' =>$boardNum
         ]);
     }
-    
-
 }

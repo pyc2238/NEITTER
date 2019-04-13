@@ -1,5 +1,5 @@
 <?php
-namespace App\Http\Controllers\SubController;
+namespace App\Http\Controllers\Helper;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 class FileUploadController extends Controller

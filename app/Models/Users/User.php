@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Models;
+namespace App\Models\Users;
 
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
@@ -42,19 +42,19 @@ class User extends Authenticatable
     // protected $dates = ['deleted_at'];
 
     public function communities(){
-        return $this->hasMany(Community::class);
+        return $this->hasMany('App\Models\Communities\Community');
     }
 
     public function comments(){
-        return $this->hasMany(Communities_Comment::class);
+        return $this->hasMany('App\Models\Communities\Communities_Comment');
     }
 
     public function admin__notices(){
-        return $this->hasMany(Admin_Notice::class);
+        return $this->hasMany('App\Models\Admins\Admin_Notice');
     }
 
     public function inquiryBoards(){
-        return $this->hasMany(inquiryBoard::class);
+        return $this->hasMany('App\Models\inquiries\inquiryBoard');
     }
     
     

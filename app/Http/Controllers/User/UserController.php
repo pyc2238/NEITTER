@@ -4,15 +4,14 @@ namespace App\Http\Controllers\User;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Hash;
 
-use Mail;
+
 use Exception;
 use Event;
 use App\Events\ResetPwMail;
 
 use Auth;
-use App\Models\User;
+use App\Models\Users\User;
 
 
 

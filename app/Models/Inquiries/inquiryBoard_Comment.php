@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Models;
+namespace App\Models\Inquiries;
 
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Database\Eloquent\Model;
@@ -25,10 +25,10 @@ class inquiryBoard_Comment extends Model
 
 
     public function user(){
-        return $this->belongsTo(User::class);
+        return $this->belongsTo('App\Models\Users\User');
     }
 
     public function inquery_boards(){
-        return $this->belongsTo(inquiryBoard::class);
+        return $this->belongsTo('App\Models\Inquiries\inquiryBoard');
     }
 }

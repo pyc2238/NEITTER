@@ -1,11 +1,11 @@
 <?php
 
-namespace App\Http\Controllers\SubController;
+namespace App\Http\Controllers\Helper;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 
-class TranslationController extends Controller
+trait Translation 
 {
      //언어 감지 Papago
      public static function langCode($papago){

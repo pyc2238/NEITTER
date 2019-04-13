@@ -1,10 +1,10 @@
 <?php
 
-namespace App\Models;
+namespace App\Models\Communities;
 
 use Illuminate\Database\Eloquent\Model;
 
-class inquiryBoard_commends extends Model
+class Communities_commends extends Model
 {
     protected $fillable = ['id','userNum','boardNum'];
     public $timestamps = false;
@@ -18,4 +18,5 @@ class inquiryBoard_commends extends Model
     public function insertCommendId($userNum,$boardNum){
         $result = $this->create(['userNum'=>$userNum,'boardNum'=>$boardNum]);
     }
+
 }

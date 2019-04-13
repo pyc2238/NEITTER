@@ -12,7 +12,7 @@ use Event;
 
 
 use Auth;
-use App\Models\User;
+use App\Models\Users\User;
 
 
 class LoginController extends Controller

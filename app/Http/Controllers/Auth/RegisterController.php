@@ -14,7 +14,7 @@ use Mail;
 use App\Events\SendMail;
 
 use Auth;
-use App\Models\User;
+use App\Models\Users\User;
 
 class RegisterController extends Controller
 {
@@ -91,7 +91,7 @@ class RegisterController extends Controller
         $request->session()->flush();
 
         $this->user->create(request()->all());
-        // $this->user->createUser($uname,$uemail,$upassword,$ugender,$uage,$uaddress,$ucountry);
+        
 
         return redirect('login')->with('result',$result);
         

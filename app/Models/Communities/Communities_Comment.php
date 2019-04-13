@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Models;
+namespace App\Models\Communities;
 
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Database\Eloquent\Model;
@@ -24,11 +24,11 @@ class Communities_Comment extends Model
 
 
     public function user(){
-        return $this->belongsTo(User::class);
+        return $this->belongsTo('App\Models\Users\User');
     }
 
     public function communities(){
-        return $this->belongsTo(Community::class);
+        return $this->belongsTo('App\Models\Communities\Community');
     }
 
 }

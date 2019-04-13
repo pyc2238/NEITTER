@@ -4,31 +4,29 @@ namespace App\Http\Controllers\Community;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
-use App\Http\Controllers\SubController\TranslationController;
+use App\Http\Controllers\Helper\Translation;
 
 
 
 use Auth;
 
-use App\Models\User;
-use App\Models\Community;
-use App\Models\Communities_commends;
-use App\Models\Communities_hit;
-use App\Models\Communities_ip;
-use App\Models\Communities_Comment;
+use App\Models\Communities\Community;
+use App\Models\Communities\Communities_commends;
+use App\Models\Communities\Communities_hit;
+use App\Models\Communities\Communities_ip;
+use App\Models\Communities\Communities_Comment;
 
-use Illuminate\Support\Facades\DB;
 
 
 class CommunityContoller extends Controller
 {
+    use Translation;
 
     private $communityModel = null;
     private $commendsModel  = null;
     private $hitsModel      = null;
     private $ipsModel       = null;
     private $commentModel   = null;
-    private $translation    = null;
     
     public function __construct(){
         $this->communityModel = new Community();
@@ -36,7 +34,6 @@ class CommunityContoller extends Controller
         $this->hitsModel = new Communities_hit();
         $this->ipsModel = new Communities_ip();
         $this->commentModel = new Communities_Comment();
-        $this->translation = new TranslationController();
         $this->middleware('loginCheck')->only(['edit','destroy']);
         
     }
@@ -160,8 +157,8 @@ class CommunityContoller extends Controller
         
         $community = $this->communityModel->getMsg($id);
         
-        $translationTitle = $this->translation->translation($community->title,$this->translation->langCode($community->title));
-        $translationContent = $this->translation->translation($community->content,$this->translation->langCode($community->title));
+        $translationTitle = $this->translation($community->title,$this->langCode($community->title));
+        $translationContent = $this->translation($community->content,$this->langCode($community->content));
          
         return
             view('community.show')

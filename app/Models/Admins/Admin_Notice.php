@@ -1,11 +1,11 @@
 <?php
 
-namespace App\Models;
+namespace App\Models\Admins;
 
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
-use App\Models\User;
+use App\Models\Users\User;
 use App\Traits\ModelScopes;
 
 class Admin_Notice extends Model
@@ -29,7 +29,7 @@ class Admin_Notice extends Model
 
 
     public function user(){
-        return $this->belongsTo(User::class);
+        return $this->belongsTo('App\Models\Users\User');
     }
 
 

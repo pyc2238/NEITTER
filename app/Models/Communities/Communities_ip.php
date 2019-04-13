@@ -1,10 +1,10 @@
 <?php
 
-namespace App\Models;
+namespace App\Models\Communities;
 
 use Illuminate\Database\Eloquent\Model;
 
-class inquiryBoard_ip extends Model
+class Communities_ip extends Model
 {
     protected $fillable = ['id','ip','boardNum'];
     public $timestamps = false;
