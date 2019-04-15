@@ -2,9 +2,9 @@
 
 use Faker\Generator as Faker;
 
-$factory->define(App\Models\Admin_Notice::class, function (Faker $faker) {
-    $minId = App\Models\User::min('id');
-    $maxId = App\Models\User::max('id');
+$factory->define(App\Models\Admins\Admin_Notice::class, function (Faker $faker) {
+    $minId = App\Models\Users\User::min('id');
+    $maxId = App\Models\Users\User::max('id');
     $country = $faker->randomElement(['한국', '일본']);
     
 

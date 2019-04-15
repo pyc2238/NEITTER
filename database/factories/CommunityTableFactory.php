@@ -2,9 +2,9 @@
 
 use Faker\Generator as Faker;
 
-$factory->define(App\Models\Community::class, function (Faker $faker) {
-    $minId = App\Models\User::min('id');
-    $maxId = App\Models\User::max('id');
+$factory->define(App\Models\Communities\Community::class, function (Faker $faker) {
+    $minId = App\Models\Users\User::min('id');
+    $maxId = App\Models\Users\Communities\User::max('id');
     $country = $faker->randomElement(['한국', '일본']);
     $ip = '192.58.44';
 

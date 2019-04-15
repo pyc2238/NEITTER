@@ -2,7 +2,7 @@
 
 use Faker\Generator as Faker;
 
-$factory->define(App\Models\User::class, function (Faker $faker) {
+$factory->define(App\Models\Users\User::class, function (Faker $faker) {
     $gender = $faker->randomElement(['남자', '여자']);
     $address = $faker->randomElement(['seoul', 'fucuoka','tokyo','wonju','kyoto','busan','osaka']);
     $country = $faker->randomElement(['한국', '일본']);

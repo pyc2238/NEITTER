@@ -7,7 +7,7 @@ use App\Http\Controllers\Controller;
 
 trait Translation 
 {
-     //언어 감지 Papago
+     
      public static function langCode($papago){
    
         $client_id = "GsqdMHiH8jYipihfkH23";
@@ -40,7 +40,6 @@ trait Translation
         return $langCode;    
     }
 
-    //언어 변환 Papago SMT 
     public static function translation($papago,$langCode) {
 
           $client_id = "XhF4hpyBJquD0uxxiIT9";
