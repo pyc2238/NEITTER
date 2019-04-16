@@ -11,8 +11,7 @@ use App\Traits\ModelScopes;
 class inquiryBoard extends Model
 {
 
-    use SoftDeletes;
-    use ModelScopes;
+    use SoftDeletes,ModelScopes;
     
     protected $fillable = [
         'num',

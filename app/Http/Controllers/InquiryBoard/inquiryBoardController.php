@@ -107,16 +107,9 @@ class inquiryBoardController extends Controller
     
         $this->inquiryModel->insertMsg(Auth::user()->country,$request->title,$request->content,Auth::user()->id,$request->getClientIp());
         
-        if(session('locale') == 'ja'){
-            $message = 'お問い合わせ作成が完了しました。';
-        }else{
-            $message = '문의 작성이 완료되었습니다.';
-        }
-
         return 
             redirect()
             ->route('inquiry.index')
-            ->with('message',$message)
             ->with('search',$request->search)
             ->with('where',$request->where);
     }
@@ -227,16 +220,9 @@ class inquiryBoardController extends Controller
 
     public function update(Request $request, $id)
     {
-    
-        if(session('locale') == 'ja'){
-            $message = 'お問い合わせが修正されました。';
-        }else{
-            $message = '문의글이 수정되었습니다.';
-        }
-
         
         $this->inquiryModel->updateMsg($id,$request->title,$request->content,$request->getClientIp());
-        return redirect(route('inquiry.index',['search'=>$request->search,'where'=>$request->where,'page'=>$request->page]))->with('message',$message);
+        return redirect(route('inquiry.index',['search'=>$request->search,'where'=>$request->where,'page'=>$request->page]));
     }
 
     /**

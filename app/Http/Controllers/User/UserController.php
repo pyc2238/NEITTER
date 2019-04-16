@@ -10,14 +10,17 @@ use Exception;
 use Event;
 use App\Events\ResetPwMail;
 
+
+use App\Http\Controllers\Helper\StoreImage;
+use App\Http\Controllers\Helper\ConstantEnum;
+
 use Auth;
 use App\Models\Users\User;
 
-
-
-
 class UserController extends Controller 
 {
+    use StoreImage;
+
     private $userModel = null;
 
     public function __construct(){
@@ -81,17 +84,17 @@ class UserController extends Controller
         }
 
         
-      if($request->file){
-        $file_name = $request->file('file')->getClientOriginalName();
-        $request->file('file')->storeAs(
-            'users_profile_photo',
-            $file_name,
-            's3'
-        );
-        
-        $this->userModel->updateFile($file_name);  
-      }
+        if($request->file){
+            $file = $this->fileUpload($request,ConstantEnum::S3['profile']);
 
+            if($file == false){
+                return response()->json(['message'=>'false'],400);
+            }
+
+            $this->userModel->updateFile($file);  
+        }
+
+        
       $this->userModel->updateProfile($request->gender,$request->age,$request->address,$request->country,$request->selfContext);
       
 

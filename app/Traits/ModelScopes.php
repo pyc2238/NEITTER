@@ -89,38 +89,6 @@ trait ModelScopes{
         $query->where('id',$id)->update(['content'=>$content,'ip' => $ip]);
     }
 
-
-
-
-    // public function scopeSearchWriter($query,$name,$search){
-    //     return
-    //         $query->select([
-    //             'users.name',
-    //             $name.'.num',
-    //             $name.'.country',
-    //             $name.'.title',
-    //             $name.'.hits',
-    //             $name.'.commend',
-    //             $name.'.created_at',
-    //             $name.'.deleted_at'
-    //             ])
-    //         ->join($name, $name.'.user_id', '=', 'users.id')
-    //         ->whereNull($name.'.deleted_at') 
-    //         ->where('users.name', 'LIKE', "%$search%")
-    //         ->orderBy('num', 'desc')
-    //         ->paginate(10)
-    //         ->onEachSide(5);
-    // }
-  
-    // public function scopeSearchWriterCount($query,$name,$search){
-
-    //     return 
-    //         count($query->join($name, $name.'.user_id', '=', 'users.id')
-    //         ->whereNull($name.'.deleted_at')
-    //         ->where('users.name', 'LIKE', "%$search%")
-    //         ->get());
-             
-    // }
 }
 
 ?>

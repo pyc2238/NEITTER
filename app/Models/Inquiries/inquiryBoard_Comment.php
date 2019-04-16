@@ -8,8 +8,7 @@ use App\Traits\ModelScopes;
 
 class inquiryBoard_Comment extends Model
 {
-    use SoftDeletes;
-    use ModelScopes;
+    use SoftDeletes,ModelScopes;
 
     protected $fillable = [
         'id',

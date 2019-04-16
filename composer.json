@@ -17,7 +17,8 @@
         "socialiteproviders/line": "^2.1",
         "socialiteproviders/twitter": "^3.0",
         "socialiteproviders/yahoo": "^3.0",
-        "tightenco/ziggy": "^0.6.9"
+        "tightenco/ziggy": "^0.6.9",
+        "webpatser/laravel-uuid": "3.0"
     },
     "require-dev": {
         "beyondcode/laravel-dump-server": "^1.0",

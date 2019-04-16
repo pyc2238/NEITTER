@@ -111,18 +111,13 @@ class NoticeBoardController extends Controller
     
      public function store(Request $request)
     {
-        if(session('locale') == 'ja'){
-            $message = 'お知らせ作成が完了しました。';
-        }else{
-            $message = '공지사항 작성이 완료되었습니다.';
-        }
+      
 
         $this->noticeModel->insertMsg(Auth::user()->country,$request->title,$request->content,Auth::user()->id,$request->getClientIp());
         
         return 
             redirect()
             ->route('notice.index')
-            ->with('message',$message)
             ->with('search',$request->search)
             ->with('where',$request->where);
     }
@@ -211,15 +206,9 @@ class NoticeBoardController extends Controller
 
     public function update(Request $request, $id)
     {
-        if(session('locale') == 'ja'){
-            $message = 'お知らせを修正されました。';
-        }else{
-            $message = '공지사항이 수정되었습니다.';
-        }
-
         
         $this->noticeModel->updateMsg($id,$request->title,$request->content,$request->getClientIp());
-        return redirect(route('notice.index',['search'=>$request->search,'where'=>$request->where,'page'=>$request->page]))->with('message',$message);
+        return redirect(route('notice.index',['search'=>$request->search,'where'=>$request->where,'page'=>$request->page]));
     }
 
     /**

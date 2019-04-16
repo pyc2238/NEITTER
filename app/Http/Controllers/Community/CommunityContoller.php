@@ -61,8 +61,6 @@ class CommunityContoller extends Controller
                 case "writer":
                     $msgs = $this->communityModel->searchWriter($request->search); 
                     $count = $this->communityModel->searchWriterCount($request->search);
-                    // $msgs = $this->communityModel->searchWriter("communities",$search); 
-                    // $count = $this->communityModel->searchWriterCount("communities",$search);
                     break;
                 case "content":
                     $msgs = $this->communityModel->search('content',$request->search);  
@@ -112,18 +110,13 @@ class CommunityContoller extends Controller
     
     public function store(Request $request)
     {
-        if(session('locale') == 'ja'){
-            $message = 'スレッド作成が完了しました。';
-        }else{
-            $message = '글 작성이 완료되었습니다.';
-        }
+       
         
         $this->communityModel->insertMsg(Auth::user()->country,$request->title,$request->content,Auth::user()->id,$request->getClientIp());
         
         return 
             redirect()
             ->route('community.index')
-            ->with('message',$message)
             ->with('search',$request->search)
             ->with('where',$request->where);
     }
@@ -215,16 +208,10 @@ class CommunityContoller extends Controller
     public function update(Request $request, $id)
     {
     
-            if(session('locale') == 'ja'){
-                $message = 'スレッドが修正されました。';
-            }else{
-                $message = '게시물이 수정되었습니다.';
-            }
-
-        
+         
             $this->communityModel->updateMsg($id,$request->title,$request->content,$request->getClientIp());
 
-        return redirect(route('community.index',['search'=>$request->search,'where'=>$request->where,'page'=>$request->page]))->with('message',$message);
+        return redirect(route('community.index',['search'=>$request->search,'where'=>$request->where,'page'=>$request->page]));
     }
 
     /**

@@ -7,8 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 use App\Traits\ModelScopes;
 class Communities_Comment extends Model
 {
-    use SoftDeletes;
-    use ModelScopes;
+    use SoftDeletes,ModelScopes;
 
     protected $fillable = [
         'id',
