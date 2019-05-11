@@ -106,6 +106,7 @@
                     -2018年1月15日,ModelクエリスコフTrait,会員脱退および掲示文脱退時の実行可否確認を追加<br>
                     <b style='color:red'>-2018年1月23日 AWS S3 ファイルアップロード機能を追加</b><br>
                     -2019年3月18日,モデル階層化及びRequestクラスの有効性検査の適用<br>
+                    <b style='color:red'>-2019年5月11日AWS RDS転換</b><br>
 
                 </ul>
             </div>
@@ -228,6 +229,7 @@
                     -2018년1월 16일 불편사항 게시판 추가 및 관리자 기능 부여<br>
                     <b style='color:red'>-2018년1월 23일 AWS S3 파일업로드 기능 추가</b><br>
                     -2019년3월 18일 모델 계층화 및 Request클래스 유효성 검사 적용<br>
+                    <b style='color:red'>-2019년5월 11일 AWS RDS전환</b><br>
 
                 </ul>
             </div>
