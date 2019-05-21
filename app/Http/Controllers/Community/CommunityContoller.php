@@ -29,11 +29,11 @@ class CommunityContoller extends Controller
     private $commentModel   = null;
     
     public function __construct(){
-        $this->communityModel = new Community();
-        $this->commendsModel = new Communities_commends();
-        $this->hitsModel = new Communities_hit();
-        $this->ipsModel = new Communities_ip();
-        $this->commentModel = new Communities_Comment();
+        $this->communityModel   = new Community();
+        $this->commendsModel    = new Communities_commends();
+        $this->hitsModel        = new Communities_hit();
+        $this->ipsModel         = new Communities_ip();
+        $this->commentModel     = new Communities_Comment();
         $this->middleware('loginCheck')->only(['edit','destroy']);
         
     }
@@ -55,20 +55,20 @@ class CommunityContoller extends Controller
             switch($request->where){
                     
                 case "title":
-                    $msgs = $this->communityModel->search('title',$request->search);  
-                    $count = $this->communityModel->searchCount('title',$request->search);
+                    $msgs   = $this->communityModel->search('title',$request->search);  
+                    $count  = $this->communityModel->searchCount('title',$request->search);
                     break;
                 case "writer":
-                    $msgs = $this->communityModel->searchWriter($request->search); 
-                    $count = $this->communityModel->searchWriterCount($request->search);
+                    $msgs   = $this->communityModel->searchWriter($request->search); 
+                    $count  = $this->communityModel->searchWriterCount($request->search);
                     break;
                 case "content":
-                    $msgs = $this->communityModel->search('content',$request->search);  
-                    $count = $this->communityModel->searchCount('content',$request->search);
+                    $msgs   = $this->communityModel->search('content',$request->search);  
+                    $count  = $this->communityModel->searchCount('content',$request->search);
                     break;
                 case "titleAndcotent":
-                    $msgs = $this->communityModel->searchTitleAndCotent($request->search); 
-                    $count = $this->communityModel->searchTitleAndCotentCount($request->search);
+                    $msgs   = $this->communityModel->searchTitleAndCotent($request->search); 
+                    $count  = $this->communityModel->searchTitleAndCotentCount($request->search);
                     break;    
             }
         }
@@ -112,7 +112,13 @@ class CommunityContoller extends Controller
     {
        
         
-        $this->communityModel->insertMsg(Auth::user()->country,$request->title,$request->content,Auth::user()->id,$request->getClientIp());
+        $this->communityModel->insertMsg(
+                Auth::user()->country,
+                $request->title,
+                $request->content,
+                Auth::user()->id,
+                $request->getClientIp()
+            );
         
         return 
             redirect()
@@ -133,7 +139,7 @@ class CommunityContoller extends Controller
     {
      
         $comments = $this->commentModel->getComments($id);
-        $ip = $this->ipsModel->getHitsIp($request->getClientIp(),$id); //사용자의 ip값으로 레코드를 받아온다.
+        $ip       = $this->ipsModel->getHitsIp($request->getClientIp(),$id); //사용자의 ip값으로 레코드를 받아온다.
         
         if(!Auth::check()){ //사용자의 로그인 여부 판단
             if(!$ip){    //해당 ip로 저장된 레코드가 존재하지않다면
@@ -150,7 +156,7 @@ class CommunityContoller extends Controller
         
         $community = $this->communityModel->getMsg($id);
         
-        $translationTitle = $this->translation($community->title,$this->langCode($community->title));
+        $translationTitle   = $this->translation($community->title,$this->langCode($community->title));
         $translationContent = $this->translation($community->content,$this->langCode($community->content));
          
         return
@@ -209,9 +215,18 @@ class CommunityContoller extends Controller
     {
     
          
-            $this->communityModel->updateMsg($id,$request->title,$request->content,$request->getClientIp());
+            $this->communityModel->updateMsg(
+                $id,$request->title,
+                $request->content,
+                $request->getClientIp()
+            );
 
-        return redirect(route('community.index',['search'=>$request->search,'where'=>$request->where,'page'=>$request->page]));
+        return redirect(route('community.index',[
+            'search'   =>$request->search,
+            'where'    =>$request->where,
+            'page'     =>$request->page
+            ])
+        );
     }
 
     /**
@@ -233,7 +248,12 @@ class CommunityContoller extends Controller
 
          if(Auth::user()->id == $user->user_id || Auth::user()->admin == 1 ){
                 $this->communityModel->deleteMsg('num',$id);
-            return redirect(route('community.index',['search'=>$request->search,'where'=>$request->where,'page'=>$request->page]));
+            return redirect(route('community.index',[
+                'search'   =>$request->search,
+                'where'    =>$request->where,
+                'page'     =>$request->page
+                ])
+            );
         }else{
             return back()->with('message',$message);
         }      
@@ -258,29 +278,63 @@ class CommunityContoller extends Controller
                 $this->commendsModel->insertCommendId(Auth::user()->id,$id);
                 $this->communityModel->updateCommend($id);
           
-            return redirect(route('community.show',['id'=>$id,'search'=>$request->search,'where'=>$request->where,'page'=>$request->page]));
+            return redirect(route('community.show',[
+                'id'       =>$id,
+                'search'   =>$request->search,
+                'where'    =>$request->where,
+                'page'     =>$request->page
+                ])
+            );
         }
     }
 
 
     public function postInsertComment(Request $request,$id){
-            $this->commentModel->insertComment($request->comment,Auth::user()->country,$id,Auth::user()->id,$request->getClientIp());
-            // return response()->json($comments, 200, [], JSON_PRETTY_PRINT);
-        return redirect(route('community.show',['id'=>$id,'search'=>$request->search,'where'=>$request->where,'page'=>$request->page]));
+            $this->commentModel->insertComment(
+                $request->comment,
+                Auth::user()->country,
+                $id,
+                Auth::user()->id,
+                $request->getClientIp()
+            );
+
+        return redirect(route('community.show',[
+            'id'        =>$id,
+            'search'    =>$request->search,
+            'where'     =>$request->where,
+            'page'      =>$request->page
+            ])
+        );
     }
 
 
     public function putUpdateComment(Request $request,$id){
     
-            $this->commentModel->updateComments($request->commentId,$request->comment,$request->getClientIp());
+            $this->commentModel->updateComments(
+                $request->commentId,
+                $request->comment,
+                $request->getClientIp()
+            );
         
-        return redirect(route('community.show',['id'=>$id,'search'=>$request->search,'where'=>$request->where,'page'=>$request->page]));
+        return redirect(route('community.show',[
+            'id'        =>$id,
+            'search'    =>$request->search,
+            'where'     =>$request->where,
+            'page'      =>$request->page
+            ])
+        );
     }
 
     public function getDeleteComment(Request $request,$id){
             $this->commentModel->deleteMsg('id',$request->commentId);
         
-        return redirect(route('community.show',['id'=>$id,'search'=>$request->search,'where'=>$request->where,'page'=>$request->page]));
+        return redirect(route('community.show',[
+            'id'        =>$id,
+            'search'    =>$request->search,
+            'where'     =>$request->where,
+            'page'      =>$request->page
+            ])
+        );
     }
 
 

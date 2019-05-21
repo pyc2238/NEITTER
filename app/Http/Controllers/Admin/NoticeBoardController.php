@@ -1,17 +1,13 @@
 <?php
 
 namespace App\Http\Controllers\Admin;
-// namespace App\Traits;
-// namespace App\Http\Traits;
-
-
 
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Http\Controllers\Helper\Translation;
-
 use Auth;
+
 use App\Models\Users\User;
 use App\Models\Admins\Admin_Notice;
 use App\Models\Admins\Admin_Notice_hit;
@@ -29,9 +25,9 @@ class NoticeBoardController extends Controller
     
     
     public function __construct(){
-        $this->noticeModel = new Admin_Notice();
-        $this->hitsModel = new Admin_Notice_hit();
-        $this->ipsModel = new Admin_Notice_ip();
+        $this->noticeModel  = new Admin_Notice();
+        $this->hitsModel    = new Admin_Notice_hit();
+        $this->ipsModel     = new Admin_Notice_ip();
         $this->middleware('loginCheck')->only(['edit','destroy']);
         
     }
@@ -52,20 +48,20 @@ class NoticeBoardController extends Controller
             switch($request->where){
                     
                 case "title":
-                    $msgs = $this->noticeModel->search('title',$request->search);  
-                    $count = $this->noticeModel->searchCount('title',$request->search);
+                    $msgs   = $this->noticeModel->search('title',$request->search);  
+                    $count  = $this->noticeModel->searchCount('title',$request->search);
                     break;
                 case "writer":
-                    $msgs = $this->noticeModel->searchWriter($request->search); 
-                    $count = $this->noticeModel->searchWriterCount($request->search);
+                    $msgs   = $this->noticeModel->searchWriter($request->search); 
+                    $count  = $this->noticeModel->searchWriterCount($request->search);
                     break;
                 case "content":
-                    $msgs = $this->noticeModel->search('content',$request->search); 
-                    $count = $this->noticeModel->searchCount('content',$request->search);
+                    $msgs   = $this->noticeModel->search('content',$request->search); 
+                    $count  = $this->noticeModel->searchCount('content',$request->search);
                     break;
                 case "titleAndcotent":
-                    $msgs = $this->noticeModel->searchTitleAndCotent($request->search); 
-                    $count = $this->noticeModel->searchTitleAndCotentCount($request->search);
+                    $msgs   = $this->noticeModel->searchTitleAndCotent($request->search); 
+                    $count  = $this->noticeModel->searchTitleAndCotentCount($request->search);
                     break;    
             }
         }
@@ -113,7 +109,13 @@ class NoticeBoardController extends Controller
     {
       
 
-        $this->noticeModel->insertMsg(Auth::user()->country,$request->title,$request->content,Auth::user()->id,$request->getClientIp());
+        $this->noticeModel->insertMsg(
+            Auth::user()->country,
+            $request->title,
+            $request->content,
+            Auth::user()->id,
+            $request->getClientIp()
+        );
         
         return 
             redirect()
@@ -150,7 +152,7 @@ class NoticeBoardController extends Controller
         
         $notice = $this->noticeModel->getMsg($id);
         
-        $translationTitle = $this->translation($notice->title,$this->langCode($notice->title));
+        $translationTitle   = $this->translation($notice->title,$this->langCode($notice->title));
         $translationContent = $this->translation($notice->content,$this->langCode($notice->content));
          
         
@@ -207,8 +209,19 @@ class NoticeBoardController extends Controller
     public function update(Request $request, $id)
     {
         
-        $this->noticeModel->updateMsg($id,$request->title,$request->content,$request->getClientIp());
-        return redirect(route('notice.index',['search'=>$request->search,'where'=>$request->where,'page'=>$request->page]));
+        $this->noticeModel->updateMsg(
+            $id,
+            $request->title,
+            $request->content,
+            $request->getClientIp()
+        );
+
+        return redirect(route('notice.index',[
+            'search'    =>$request->search,
+            'where'     =>$request->where,
+            'page'      =>$request->page
+            ])
+        );
     }
 
     /**
@@ -230,7 +243,13 @@ class NoticeBoardController extends Controller
         
          if(Auth::user()->id == $user->user_id ){
             $this->noticeModel->deleteMsg('num',$id);
-            return redirect(route('notice.index',['search'=>$request->search,'where'=>$request->where,'page'=>$request->page]));
+            return redirect(route('notice.index',[
+                'search'    =>$request->search,
+                'where'     =>$request->where,
+                'page'      =>$request->page
+                ])
+            );
+            
         }else{
             return back()->with('message',$message);
         }      

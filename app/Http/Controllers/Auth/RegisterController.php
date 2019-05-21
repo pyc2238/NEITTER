@@ -46,10 +46,12 @@ class RegisterController extends Controller
      *
      * @return void
      */
+
+     private $userModel;
     public function __construct()
     {
         $this->middleware('guest');
-        $this->user = new User();
+        $this->userModel = new User();
     }
 
     
@@ -66,7 +68,7 @@ class RegisterController extends Controller
         $result = true;
         
 
-        if($this->user->getUser('name',$request->name)){
+        if($this->userModel->getUser('name',$request->name)){
 
             if(session('locale') == 'ja'){
                 $message = 'このIDは使用できません';
@@ -76,22 +78,13 @@ class RegisterController extends Controller
             return back()->with('message',$message);
         }
 
-        // $uname = $request->name;
-        // $uemail = $request->email;
-        // $upassword = $request->password;
-        // $ugender = $request->gender; 
-        // $uage = $request->age;
-        // $uaddress = $request->address;
-        // $ucountry = $request->country;
+        $user = $this->userModel->create(request()->all());
+        
+        session(['newUser' => $user->name]);
 
-        session(['newUser' => $request->name]);
-
-        Event::fire(new SendMail($request->email,$request->name));
+        Event::fire(new SendMail($user->email,$user->name));
         
         $request->session()->flush();
-
-        $this->user->create(request()->all());
-        
 
         return redirect('login')->with('result',$result);
         

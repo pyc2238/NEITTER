@@ -36,7 +36,7 @@ class User extends Authenticatable
      */
     protected $hidden = [
         'password',
-         'remember_token',
+        'remember_token',
     ];
 
     // protected $dates = ['deleted_at'];
@@ -83,11 +83,11 @@ class User extends Authenticatable
 
     public function updateProfile($gender,$age,$address,$country,$selfContext){
         $param = [
-            'gender' => $gender,
-            'age' => $age,
-            'address' => $address,
-            'country' => $country,
-            'selfContext' => $selfContext
+            'gender'        => $gender,
+            'age'           => $age,
+            'address'       => $address,
+            'country'       => $country,
+            'selfContext'   => $selfContext
         ];
 
         $this->where('id',Auth::user()->id)

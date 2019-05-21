@@ -8,6 +8,6 @@ use App\Http\Controllers\Controller;
 class ConstantEnum extends Controller
 {
     const S3 =  [
-        'profile'         =>'users_profile_photo',
+        'profile'         => 'users_profile_photo',
     ];
 }

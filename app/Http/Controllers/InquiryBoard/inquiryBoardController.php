@@ -4,11 +4,9 @@ namespace App\Http\Controllers\InquiryBoard;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-
 use App\Http\Controllers\Helper\Translation;
-
-
 use Auth;
+
 use App\Models\Users\User;
 use App\Models\Inquiries\inquiryBoard;
 use App\Models\Inquiries\inquiryBoard_commends;
@@ -27,11 +25,11 @@ class inquiryBoardController extends Controller
     private $commentModel   = null;
 
     public function __construct(){
-        $this->inquiryModel = new inquiryBoard();
-        $this->commendsModel = new inquiryBoard_commends();
-        $this->hitsModel = new inquiryBoard_hit();
-        $this->ipsModel = new inquiryBoard_ip();
-        $this->commentModel = new inquiryBoard_Comment();
+        $this->inquiryModel     = new inquiryBoard();
+        $this->commendsModel    = new inquiryBoard_commends();
+        $this->hitsModel        = new inquiryBoard_hit();
+        $this->ipsModel         = new inquiryBoard_ip();
+        $this->commentModel     = new inquiryBoard_Comment();
         $this->middleware('loginCheck')->only(['edit','destroy']);
         
     }
@@ -53,20 +51,20 @@ class inquiryBoardController extends Controller
             switch($request->where){
 
                 case "title":
-                    $msgs = $this->inquiryModel->search('title',$request->search);  
-                    $count = $this->inquiryModel->searchCount('title',$request->search);
+                    $msgs   = $this->inquiryModel->search('title',$request->search);  
+                    $count  = $this->inquiryModel->searchCount('title',$request->search);
                     break;
                 case "writer":
-                    $msgs = $this->inquiryModel->searchWriter($request->search);             
-                    $count = $this->inquiryModel->searchWriterCount($request->search);
+                    $msgs   = $this->inquiryModel->searchWriter($request->search);             
+                    $count  = $this->inquiryModel->searchWriterCount($request->search);
                     break;
                 case "content":
-                    $msgs = $this->inquiryModel->search('content',$request->search); 
-                    $count = $this->inquiryModel->searchCount('content',$request->search);
+                    $msgs   = $this->inquiryModel->search('content',$request->search); 
+                    $count  = $this->inquiryModel->searchCount('content',$request->search);
                     break;
                 case "titleAndcotent":
-                    $msgs = $this->inquiryModel->searchTitleAndCotent($request->search); 
-                    $count = $this->inquiryModel->searchTitleAndCotentCount($request->search);
+                    $msgs   = $this->inquiryModel->searchTitleAndCotent($request->search); 
+                    $count  = $this->inquiryModel->searchTitleAndCotentCount($request->search);
                     break;    
             }
         }
@@ -105,7 +103,13 @@ class inquiryBoardController extends Controller
     public function store(Request $request)
     {
     
-        $this->inquiryModel->insertMsg(Auth::user()->country,$request->title,$request->content,Auth::user()->id,$request->getClientIp());
+        $this->inquiryModel->insertMsg(
+            Auth::user()->country,
+            $request->title,
+            $request->content,
+            Auth::user()->id,
+            $request->getClientIp()
+        );
         
         return 
             redirect()
@@ -144,8 +148,8 @@ class inquiryBoardController extends Controller
         }
 
         
-        $comments = $this->commentModel->getComments($id);
-        $ip = $this->ipsModel->getHitsIp($request->getClientIp(),$id); //사용자의 ip값으로 레코드를 받아온다.
+        $comments   = $this->commentModel->getComments($id);
+        $ip         = $this->ipsModel->getHitsIp($request->getClientIp(),$id); //사용자의 ip값으로 레코드를 받아온다.
         
         if(!Auth::check()){ //사용자의 로그인 여부 판단
             if(!$ip){    //해당 ip로 저장된 레코드가 존재하지않다면
@@ -162,7 +166,7 @@ class inquiryBoardController extends Controller
         
         $inquiry = $this->inquiryModel->getMsg($id);
         
-        $translationTitle = $this->translation($inquiry->title,$this->langCode($inquiry->title));
+        $translationTitle   = $this->translation($inquiry->title,$this->langCode($inquiry->title));
         $translationContent = $this->translation($inquiry->content,$this->langCode($inquiry->content));
          
         
@@ -221,8 +225,18 @@ class inquiryBoardController extends Controller
     public function update(Request $request, $id)
     {
         
-        $this->inquiryModel->updateMsg($id,$request->title,$request->content,$request->getClientIp());
-        return redirect(route('inquiry.index',['search'=>$request->search,'where'=>$request->where,'page'=>$request->page]));
+        $this->inquiryModel->updateMsg(
+            $id,$request->title,
+            $request->content,
+            $request->getClientIp()
+        );
+
+        return redirect(route('inquiry.index',[
+            'search'    =>$request->search,
+            'where'     =>$request->where,
+            'page'      =>$request->page
+            ])
+        );
     }
 
     /**
@@ -246,7 +260,13 @@ class inquiryBoardController extends Controller
         
          if(Auth::user()->id == $user->user_id || Auth::user()->admin == 1 ){
             $this->inquiryModel->deleteMsg('num',$id);
-            return redirect(route('inquiry.index',['search'=>$request->search,'where'=>$request->where,'page'=>$request->page]));
+            return redirect(route('inquiry.index',[
+                'search'=>$request->search,
+                'where'=>$request->where,
+                'page'=>$request->page
+                ])
+            );
+
         }else{
             return back()->with('message',$message);
         }      
@@ -268,32 +288,65 @@ class inquiryBoardController extends Controller
             $this->commendsModel->insertCommendId(Auth::user()->id,$id);
             $this->inquiryModel->updateCommend($id);
           
-            return redirect(route('inquiry.show',['id'=>$id,'search'=>$request->search,'where'=>$request->where,'page'=>$request->page]));
+            return redirect(route('inquiry.show',[
+                'id'        =>$id,
+                'search'    =>$request->search,
+                'where'     =>$request->where,
+                'page'      =>$request->page
+                ])
+            );
         }
     }
 
 
     public function postInsertComment(Request $request,$id){
        
-            $this->commentModel->insertComment($request->comment,Auth::user()->country,$id,Auth::user()->id,$request->getClientIp());
-            // return response()->json($comments, 200, [], JSON_PRETTY_PRINT);
+            $this->commentModel->insertComment(
+                $request->comment,
+                Auth::user()->country,
+                $id,Auth::user()->id,
+                $request->getClientIp()
+            );
+           
         
-        return redirect(route('inquiry.show',['id'=>$id,'search'=>$request->search,'where'=>$request->where,'page'=>$request->page]));
+        return redirect(route('inquiry.show',[
+            'id'        =>$id,
+            'search'    =>$request->search,
+            'where'     =>$request->where,
+            'page'      =>$request->page
+            ])
+        );
     }
 
 
     public function putUpdateComment(Request $request,$id){
         
-            $this->commentModel->updateComments($request->commentId,$request->comment,$request->getClientIp());
+            $this->commentModel->updateComments(
+                $request->commentId,
+                $request->comment,
+                $request->getClientIp()
+            );
         
-        return redirect(route('inquiry.show',['id'=>$id,'search'=>$request->search,'where'=>$request->where,'page'=>$request->page]));
+        return redirect(route('inquiry.show',[
+            'id'        =>$id,
+            'search'    =>$request->search,
+            'where'     =>$request->where,
+            'page'      =>$request->page
+            ])
+        );
     }
 
     public function getDeleteComment(Request $request,$id){
             
             $this->commentModel->deleteMsg('id',$request->commentId);
 
-        return redirect(route('inquiry.show',['id'=>$id,'search'=>$request->search,'where'=>$request->where,'page'=>$request->page]));
+        return redirect(route('inquiry.show',[
+            'id'        =>$id,
+            'search'    =>$request->search,
+            'where'     =>$request->where,
+            'page'      =>$request->page
+            ])
+        );
     }
     
 }

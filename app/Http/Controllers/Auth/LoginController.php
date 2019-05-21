@@ -57,11 +57,11 @@ class LoginController extends Controller
      {
        
           
-        session(['name' => $request->name]);
-        session(['age' => $request->age]);
-        session(['gender' => $request->gender]);
-        session(['address' => $request->address]);
-        session(['country' => $request->country]);
+        session(['name'     => $request->name]);
+        session(['age'      => $request->age]);
+        session(['gender'   => $request->gender]);
+        session(['address'  => $request->address]);
+        session(['country'  => $request->country]);
          
        
          return Socialite::driver($social)->redirect();
