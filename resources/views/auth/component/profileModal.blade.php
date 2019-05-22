@@ -1,3 +1,20 @@
+<style>
+    .scrolltbody {
+        display: block;
+        width: 100%;
+        border-collapse: collapse;
+        border: 2px solid #000;
+    
+    }
+ 
+    .scrolltbody tbody {
+        display: block;
+        height: 350px;
+        overflow: auto;
+    }
+ 
+    </style>
+
 <!-- profile Modal -->
 <div class="modal fade" id="Modal-large-demo" tabindex="-1" role="dialog" aria-labelledby="Modal-large-demo-label"
 aria-hidden="true">
@@ -25,19 +42,19 @@ aria-hidden="true">
                     <h4 class="text-center" style="margin-top:3%"><b>@lang('auth/profile.model_photo')</b></h4>
                     @endif
                 </div>
-                <div class="col-7">
+                <div class="col-7" >
                     <h5 class="text-center" style="background-color:#ea314e;color:white;"><b>@lang('auth/profile.model_profile')</b></h5>
-                    <table class="table">
+                    <table class="table scrolltbody">
                         <tr>
-                            <th>@lang('auth/profile.model_nickname') :&nbsp;</th>
+                            <th>@lang('auth/profile.model_nickname')</th>
                             <td><b style="color:blue">{{Auth::user()->name}}<b></td>
                         </tr>
                         <tr>
-                            <th>@lang('auth/profile.model_age') :&nbsp;</th>
+                            <th>@lang('auth/profile.model_age')</th>
                             <td><b style="color:blue">{{Auth::user()->age}}<b></td>
                         </tr>
                         <tr>
-                            <th>@lang('auth/profile.model_gender') :&nbsp;</th>
+                            <th>@lang('auth/profile.model_gender')</th>
 
                             @if(Auth::user()->gender == 'men')
 
@@ -48,15 +65,24 @@ aria-hidden="true">
 
                         </tr>
                         <tr>
-                            <th>@lang('auth/profile.model_area') :&nbsp;</th>
+                            <th>@lang('auth/profile.model_area')</th>
                             <td><b style="color:blue">{{Auth::user()->address}}<b></td>
                         </tr>
                         <tr>
-                            <th>@lang('auth/profile.model_Date_of_entry') :&nbsp;</th>
+                            <th>@lang('auth/profile.model_Date_of_entry')</th>
                             <td><b style="color:blue">{{Auth::user()->created_at}}<b></td>
                         </tr>
                         <tr>
-                            <th>@lang('auth/profile.model_self_introduction') :&nbsp;</th>
+                                <th>@lang('auth/profile.model_is_penpal')</th>
+                                @if(Auth::user()->is_penpal == 1)
+                                <td><b style="color:blue">@lang('auth/profile.model_onPenpal')<b></td>
+                                @else
+                                <td><b style="color:blue">@lang('auth/profile.model_offpenpal')<b></td>
+                                @endif
+                                
+                        </tr>
+                        <tr>
+                            <th>@lang('auth/profile.model_self_introduction')</th>
                             <td><b style="color:blue">{{Auth::user()->selfContext}}<b></td>
                         </tr>
                     </table>

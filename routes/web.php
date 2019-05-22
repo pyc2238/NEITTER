@@ -100,5 +100,16 @@ Route::group(['middleware' => ['comment']], function () {
 /*공지사항 게시판 */
 Route::resource('notice', 'Admin\NoticeBoardController');
 
+
+/*펜팔 서비스*/
+Route::group(['prefix' => 'penpal'], function () {
+
+    Route::get('/index', 'Penpal\ViewController@index')->name('penpal.index');
+
+});
+
+
+
+
 /*포럼 게시판*/
 Route::resource('forum', 'Forum\ForumController');

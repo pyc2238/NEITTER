@@ -9,7 +9,7 @@
         <div class="collapse navbar-collapse " id="navbarSupportedContent">
             <ul class="navbar-nav ml-auto">
                 <li class="nav-item active">
-                    <a class="nav-link text-uppercase" href="index.html">@lang('home/header.penpal')<span class="sr-only">(current)</span></a>
+                    <a class="nav-link text-uppercase" href="{{ route('penpal.index') }}">@lang('home/header.penpal')</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link text-uppercase" href="{{route('community.index')}}">@lang('home/header.community')</a>

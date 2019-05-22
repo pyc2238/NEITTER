@@ -17,7 +17,6 @@ class CreateUsersTable extends Migration
             $table->Increments('id');
             $table->string('name',50)->unique();
             $table->string('email',255)->unique()->nullable();
-            // $table->timestamp('email_verified_at')->nullable();
             $table->string('password')->nullable();
             $table->string('gender')->nullable();
             $table->integer('age')->unsigned()->nullable();
@@ -27,6 +26,7 @@ class CreateUsersTable extends Migration
             $table->text('selfPhoto')->nullable();
             $table->integer('socialite')->default(0)->unsigned();
             $table->boolean('admin')->default(false);
+            $table->boolean('is_penpal')->default(false);
             $table->timestamps();
             // $table->softDeletes();
             $table->rememberToken();       
