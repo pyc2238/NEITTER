@@ -4,6 +4,9 @@ namespace App\Http\Controllers\Penpal;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use Auth;
+
+use App\Models\Users\User;
 
 class ViewController extends Controller
 {
@@ -18,6 +21,20 @@ class ViewController extends Controller
     public function introduction (){
 
         return view('penpal.introduction');
+
+    }
+
+    //펜팔 등록 페이지
+    public function timeline (){
+
+        return view('penpal.timeline');
+
+    }
+
+    //펜팔 등록 페이지
+    public function registration (){
+
+        return view('penpal.registration');
 
     }
 }

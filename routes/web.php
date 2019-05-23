@@ -26,6 +26,7 @@ Route::post('/sender', function () {
     
 });
 
+Route::get('test1','Penpal\RegisterController@test');
 
 ///////////////////////////////////////////////////////
 
@@ -107,6 +108,9 @@ Route::group(['prefix' => 'penpal'], function () {
 
     Route::get('/index', 'Penpal\ViewController@index')->name('penpal.index');
     Route::get('/introduction', 'Penpal\ViewController@introduction')->name('penpal.introduction');
+    Route::get('/timeline', 'Penpal\ViewController@timeline')->name('penpal.timeline');
+    Route::get('/registration', 'Penpal\ViewController@registration')->name('penpal.registration');
+    Route::post('/registration', 'Penpal\RegisterController@registration')->name('penpal.penpal-registration');
 
 });
 

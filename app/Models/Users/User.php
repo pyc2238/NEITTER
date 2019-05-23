@@ -108,9 +108,6 @@ class User extends Authenticatable
 
     public function updatePassword($password){
 
-        // $this::where('id',Auth::user()->id)
-        // ->update(['password' => $password]);
-
         Auth::user()->password = $password;
         Auth::user()->save();
     }

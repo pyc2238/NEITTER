@@ -68,22 +68,6 @@
                 <br>
                 <br>
 
-                {{-- <div class="form-row">
-                    
-                        <div class="custom-control custom-radio" style="margin-right:0.6rem">
-                            <input type="radio" name="penpal_check" id="jb-radio-1" class="custom-control-input" value="1">
-                            <label class="custom-control-label" for="jb-radio-1">@lang('auth/profile.onPenpal')</label>
-                        </div>
-                        <div class="custom-control custom-radio">
-                            <input type="radio" name="penpal_check" id="jb-radio-2" class="custom-control-input" value="0">
-                            <label class="custom-control-label" for="jb-radio-2">@lang('auth/profile.offPenpal')</label>
-                        </div>
-
-                </div> <!-- form-row.// -->
-                <br>
-                <br> --}}
-
-
                 <label for="exampleFormControlFile1">@lang('auth/profile.photo')</label>
                 <input type="file" name="file" class="form-control-file" id="exampleFormControlFile1">
                 <br>

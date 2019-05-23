@@ -26,8 +26,8 @@
                 </div>
             </div>
         </li>
-        {{-- </a> --}}
-        <a href="{{ route('penpal.introduction') }}">
+     
+        <a href="{{ route('penpal.timeline') }}">
             <li id="work">
 
                 <div class="work-icon">
@@ -38,7 +38,7 @@
                 </div>
             </li>
         </a>
-        <a href="{{ route('penpal.introduction') }}">
+        <a href="{{ route('penpal.registration') }}">
             <li id="mail">
                 <div class="mail-icon">
                     <div class="mail-base">

@@ -35,4 +35,10 @@ class Penpal extends Model
         return json_decode($value,true);
     }
 
+
+    public function updateFile($file){
+        $this->where('id',Auth::user()->id)
+            ->update(['image' => $file]);
+    }
+
 }
