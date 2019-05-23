@@ -20,29 +20,28 @@
                 <div class="col">
                     <img src="{{asset("data/ProjectImages/master/WebSide.png")}}" alt="WebSideLog">
 
-                    <br><b style="font-size:1.5rem;color:red">WebSide</b><br>
-                    <b>HTML</b><br>
-                    <b>CSS</b><br>
-                    <b>JavaScript</b><br>
-                    <b>Jquery</b><br>
-
+                    <br><b style="font-size:1.5rem;color:red">WebSide</b><br><hr>
+                    <img src="{{ asset("data/ProjectImages/master/stack/html_css_js.png") }}" alt="WebSideLog" width="30%"><br>
+                    <img src="{{ asset("data/ProjectImages/master/stack/jquery.png") }}" alt="WebSideLog" width="30%"><br>
+                    <img src="{{ asset("data/ProjectImages/master/stack/ajax.png") }}" alt="WebSideLog" width="30%"><br>
+                    <img src="{{ asset("data/ProjectImages/master/stack/bootstrap.png") }}" alt="WebSideLog" width="30%"><br><br>
                 </div>
                 <div class="col">
                     <img src="{{asset("data/ProjectImages/master/ServerSide.png")}}" alt="WebSideLog">
 
-                    <br><b style="font-size:1.5rem;color:red">ServerSide</b><br>
-                    <b>PHP</b><br>
-                    <b>Laravel</b><br>
-                    <b>AWS</b><br>
-                    <b>APACH</b><br>
+                    <br><b style="font-size:1.5rem;color:red">ServerSide</b><br><hr>
+                    <img src="{{ asset("data/ProjectImages/master/stack/php.png") }}" alt="WebSideLog" width="30%"><br>
+                    <img src="{{ asset("data/ProjectImages/master/stack/laravel.png") }}" alt="WebSideLog" width="30%"><br>
+                    <img src="{{ asset("data/ProjectImages/master/stack/AWS.png") }}" alt="WebSideLog" width="30%"><br>
+                    <img src="{{ asset("data/ProjectImages/master/stack/apache.png") }}" alt="WebSideLog" width="30%"><br>
                     </ul>
                 </div>
                 <div class="col">
                     <img src="{{asset("data/ProjectImages/master/DataBase.png")}}" alt="WebSideLog">
 
-                    <br><b style="font-size:1.5rem;color:red">OS&DATABASE</b><br>
-                    <b>Ubuntu</b><br>
-                    <b>MySql</b><br>
+                    <br><b style="font-size:1.5rem;color:red">OS&DATABASE</b><br><hr>
+                    <img src="{{ asset("data/ProjectImages/master/stack/ubuntu.png") }}" alt="WebSideLog" width="30%"><br>
+                    <img src="{{ asset("data/ProjectImages/master/stack/mariadb.png") }}" alt="WebSideLog" width="30%"><br>
 
                 </div>
             </div>
@@ -109,7 +108,10 @@
                     -2019년4월 10일: 開発者ノートページ追加<br>
                     -2019년4월 13일: 一般会員とソーシャルライト会員,ユーザープロフィール情報統合<br>
                     -2019년4월 26일: ファイルアップロード機能トラフィック転換<br>
-                    <b style='color:red'>-2019年5月11日AWS RDS転換</b><br>
+                    <b style='color:red'>-2019年5月11日AWS RDS転換</b><br><br>
+                    <li><b>ペンパルサービス開発開始</b></li>
+                    -2019年5月22日: データベース1次設計<br>
+                    -2019年5月23日: ペンパルページ設計<br>
 
                 </ul>
             </div>
@@ -143,29 +145,29 @@
                     <div class="col">
                         <img src="{{asset("data/ProjectImages/master/WebSide.png")}}" alt="WebSideLog">
 
-                        <br><b style="font-size:1.5rem;color:red">WebSide</b><br>
-                        <b>HTML</b><br>
-                        <b>CSS</b><br>
-                        <b>JavaScript</b><br>
-                        <b>Jquery</b><br>
+                        <br><b style="font-size:1.5rem;color:red">WebSide</b><br><hr>
+                        <img src="{{ asset("data/ProjectImages/master/stack/html_css_js.png") }}" alt="WebSideLog" width="30%"><br>
+                        <img src="{{ asset("data/ProjectImages/master/stack/jquery.png") }}" alt="WebSideLog" width="30%"><br>
+                        <img src="{{ asset("data/ProjectImages/master/stack/ajax.png") }}" alt="WebSideLog" width="30%"><br>
+                        <img src="{{ asset("data/ProjectImages/master/stack/bootstrap.png") }}" alt="WebSideLog" width="30%"><br>
 
                     </div>
                     <div class="col">
                         <img src="{{asset("data/ProjectImages/master/ServerSide.png")}}" alt="WebSideLog">
 
-                        <br><b style="font-size:1.5rem;color:red">ServerSide</b><br>
-                        <b>PHP</b><br>
-                        <b>Laravel</b><br>
-                        <b>AWS</b><br>
-                        <b>APACH</b><br>
+                        <br><b style="font-size:1.5rem;color:red">ServerSide</b><br><hr>
+                        <img src="{{ asset("data/ProjectImages/master/stack/php.png") }}" alt="WebSideLog" width="30%"><br>
+                        <img src="{{ asset("data/ProjectImages/master/stack/laravel.png") }}" alt="WebSideLog" width="30%"><br>
+                        <img src="{{ asset("data/ProjectImages/master/stack/AWS.png") }}" alt="WebSideLog" width="30%"><br>
+                        <img src="{{ asset("data/ProjectImages/master/stack/apache.png") }}" alt="WebSideLog" width="30%"><br>
                         </ul>
                     </div>
                     <div class="col">
                         <img src="{{asset("data/ProjectImages/master/DataBase.png")}}" alt="WebSideLog">
 
-                        <br><b style="font-size:1.5rem;color:red">OS&DATABASE</b><br>
-                        <b>Ubuntu</b><br>
-                        <b>MySql</b><br>
+                        <br><b style="font-size:1.5rem;color:red">OS&DATABASE</b><br><hr>
+                        <img src="{{ asset("data/ProjectImages/master/stack/ubuntu.png") }}" alt="WebSideLog" width="30%"><br>
+                        <img src="{{ asset("data/ProjectImages/master/stack/mariadb.png") }}" alt="WebSideLog" width="30%"><br>
 
                     </div>
                 </div>
@@ -235,8 +237,10 @@
                     -2019년4월 10일 개발자 노트 페이지 추가<br>
                     -2019년4월 13일 일반회원과 소셜라이트 회원 유저프로필 정보 통합<br>
                     -2019년4월 26일 파일업로드 기능 trait전환<br>
-                    <b style='color:red'>-2019년5월 11일 AWS RDS전환</b><br>
-
+                    <b style='color:red'>-2019년5월 11일 AWS RDS전환</b><br><br>
+                    <li><b>펜팔 서비스 개발 시작</b></li>
+                    -2019년5월 22일 데이터베이스 1차 설계<br>
+                    -2019년5월 23일 펜팔페이지 설계<br>
                 </ul>
             </div>
             <div class="w-100"></div>

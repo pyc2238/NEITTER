@@ -6,10 +6,11 @@ neitter
 <link rel="stylesheet" href="{{asset('/css/penpal.css')}}">
 @endsection
 @section('content')
+@include('penpal.component.menu')
 <div class="container">
+   
     <div class="row justify-content-center">
 
-        @include('penpal.component.menu')
         @include('penpal.component.indexTable')
 
     </div>

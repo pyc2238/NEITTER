@@ -106,6 +106,7 @@ Route::resource('notice', 'Admin\NoticeBoardController');
 Route::group(['prefix' => 'penpal'], function () {
 
     Route::get('/index', 'Penpal\ViewController@index')->name('penpal.index');
+    Route::get('/introduction', 'Penpal\ViewController@introduction')->name('penpal.introduction');
 
 });
 
