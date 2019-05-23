@@ -21,6 +21,7 @@ class inquiryBoard extends Model
         'hits',
         'commend',
         'user_id',
+        'comment_count',
         'ip'
     ];
 

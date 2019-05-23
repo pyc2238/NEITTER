@@ -22,6 +22,7 @@ class CreateInquiryBoardsTable extends Migration
             $table->integer('commend')->default(0)->unsigned();
             $table->integer('user_id')->unsigned();
             $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade')->onUpdate('cascade');
+            $table->integer('comment_count')->default(0);
             $table->string('ip',50);
             $table->softDeletes();
             $table->timestamps();

@@ -42,6 +42,7 @@ class CommunityContoller extends Controller
     {
        
         $msgs =  $this->communityModel->getMsgs();
+        $commentCount = $this->communityModel->with(['comments']);
         $count = count(Community::all());
 
         if($request->search){

@@ -56,7 +56,17 @@ class User extends Authenticatable
     public function inquiryBoards(){
         return $this->hasMany('App\Models\inquiries\inquiryBoard');
     }
+
+    public function penpal(){
+        return $this->hasMany('App\Models\Penpal\Penpal');
+    }
     
+    
+    public function timeline(){
+        return $this->hasMany('App\Models\Penpal\Timeline');
+    }
+    
+
     
 
     //password Mutators

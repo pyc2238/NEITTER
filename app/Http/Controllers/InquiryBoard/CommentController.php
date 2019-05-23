@@ -7,15 +7,17 @@ use App\Http\Controllers\Controller;
 use Auth;
 
 use App\Models\Inquiries\inquiryBoard_Comment;
+use App\Models\Inquiries\inquiryBoard;
 
 class CommentController extends Controller
 {
     private $commentModel   = null;
+    private $inquiryModel   = null;
 
     public function __construct(){
 
         $this->commentModel     = new inquiryBoard_Comment();
-    
+        $this->inquiryModel     = new inquiryBoard();
     }
 
     public function postInsertComment(Request $request,$id){
@@ -26,7 +28,8 @@ class CommentController extends Controller
             $id,Auth::user()->id,
             $request->getClientIp()
         );
-       
+
+        $this->inquiryModel->where('num', $id)->increment('comment_count');  
     
     return redirect(route('inquiry.show',[
         'id'        =>$id,
@@ -58,7 +61,7 @@ class CommentController extends Controller
     public function getDeleteComment(Request $request,$id){
             
             $this->commentModel->deleteMsg('id',$request->commentId);
-
+            $this->inquiryModel->where('num', $id)->decrement('comment_count');
         return redirect(route('inquiry.show',[
             'id'        =>$id,
             'search'    =>$request->search,

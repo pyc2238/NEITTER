@@ -21,6 +21,7 @@ class Community extends Model
         'hits',
         'commend',
         'user_id',
+        'comment_count',
         'ip'
     ];
 
@@ -38,6 +39,7 @@ class Community extends Model
     }
 
     public function searchWriter($search){
+
         return
             User::select([
                 'users.name',

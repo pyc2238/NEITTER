@@ -25,6 +25,8 @@ trait ModelScopes{
     }
 
 
+
+    
     public function scopeGetMsgs($query){
         return $query->with('user:id,name')->latest()->paginate(10)->onEachSide(5);
     }

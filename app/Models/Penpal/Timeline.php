@@ -12,4 +12,10 @@ class Timeline extends Model
         'content',
         'image',
     ];
+
+
+    public function user(){
+        return $this->belongsTo('App\Models\Users\User');
+    }
+
 }

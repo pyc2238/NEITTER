@@ -16,7 +16,7 @@
 
         @foreach($msgs as $msg)
         <tr>
-            <td style="width:60px;"><b>{{$msg->num}}</b></td>
+            <td style="width:60px;"><b>{{ $msg->num }}</b></td>
             <td style="width:50px;">
                 @if($msg->country == 'ko')
                     <img src="{{asset('/data/ProjectImages/community/korea.png')}}" alt="korea">
@@ -24,7 +24,16 @@
                     <img src="{{asset('/data/ProjectImages/community/japan.png')}}" alt="japan">
                 @endif    
             </td>
-            <td style="overflow:hidden;white-space:nowrap;text-overflow:ellipsis;"><a href="{{route('community.show',['boardNum'=>$msg->num,'search'=>$search,'where'=>$where,'page'=>$page])}}"><b>{{$msg->title}}</b></a></td>
+            <td style="overflow:hidden;white-space:nowrap;text-overflow:ellipsis;">
+                <a href="{{ route('community.show',['boardNum'=>$msg->num,'search'=>$search,'where'=>$where,'page'=>$page])}}">
+                    <b>{{ $msg->title}}</b>
+                </a>  
+                
+                @if($msg->comment_count != 0)
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(<b style="color:red;">{{ $msg->comment_count }}</b>)</b>
+                @endif
+                
+            </td>
 
             @if($where == 'writer')
             <td style="width:150px;"><b>{{$msg->name}}</b></td>
