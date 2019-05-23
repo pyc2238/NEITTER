@@ -68,7 +68,7 @@
                 <br>
                 <br>
 
-                <div class="form-row">
+                {{-- <div class="form-row">
                     
                         <div class="custom-control custom-radio" style="margin-right:0.6rem">
                             <input type="radio" name="penpal_check" id="jb-radio-1" class="custom-control-input" value="1">
@@ -81,7 +81,7 @@
 
                 </div> <!-- form-row.// -->
                 <br>
-                <br>
+                <br> --}}
 
 
                 <label for="exampleFormControlFile1">@lang('auth/profile.photo')</label>

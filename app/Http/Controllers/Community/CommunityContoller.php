@@ -6,31 +6,24 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Helper\Translation;
 
-
-
 use Auth;
 
 use App\Models\Communities\Community;
-use App\Models\Communities\Communities_commends;
 use App\Models\Communities\Communities_hit;
 use App\Models\Communities\Communities_ip;
 use App\Models\Communities\Communities_Comment;
-
-
 
 class CommunityContoller extends Controller
 {
     use Translation;
 
     private $communityModel = null;
-    private $commendsModel  = null;
     private $hitsModel      = null;
     private $ipsModel       = null;
     private $commentModel   = null;
     
     public function __construct(){
         $this->communityModel   = new Community();
-        $this->commendsModel    = new Communities_commends();
         $this->hitsModel        = new Communities_hit();
         $this->ipsModel         = new Communities_ip();
         $this->commentModel     = new Communities_Comment();
@@ -257,84 +250,6 @@ class CommunityContoller extends Controller
         }else{
             return back()->with('message',$message);
         }      
-    }
-
-
-    public function putIncreaseCommend(Request $request,$id){
-
-       
-        if(session('locale') == 'ja'){
-            $message = 'すでに推薦したスレッドです';
-        }else{
-            $message = '이미 추천을 누른 게시물입니다.';
-        }
-
-          
-        $result = $this->commendsModel->getCommendId(Auth::user()->id,$id);
-        
-        if($this->commendsModel->getCommendId(Auth::user()->id,$id)){
-            return back()->with('message',$message);
-        }else{
-                $this->commendsModel->insertCommendId(Auth::user()->id,$id);
-                $this->communityModel->updateCommend($id);
-          
-            return redirect(route('community.show',[
-                'id'       =>$id,
-                'search'   =>$request->search,
-                'where'    =>$request->where,
-                'page'     =>$request->page
-                ])
-            );
-        }
-    }
-
-
-    public function postInsertComment(Request $request,$id){
-            $this->commentModel->insertComment(
-                $request->comment,
-                Auth::user()->country,
-                $id,
-                Auth::user()->id,
-                $request->getClientIp()
-            );
-
-        return redirect(route('community.show',[
-            'id'        =>$id,
-            'search'    =>$request->search,
-            'where'     =>$request->where,
-            'page'      =>$request->page
-            ])
-        );
-    }
-
-
-    public function putUpdateComment(Request $request,$id){
-    
-            $this->commentModel->updateComments(
-                $request->commentId,
-                $request->comment,
-                $request->getClientIp()
-            );
-        
-        return redirect(route('community.show',[
-            'id'        =>$id,
-            'search'    =>$request->search,
-            'where'     =>$request->where,
-            'page'      =>$request->page
-            ])
-        );
-    }
-
-    public function getDeleteComment(Request $request,$id){
-            $this->commentModel->deleteMsg('id',$request->commentId);
-        
-        return redirect(route('community.show',[
-            'id'        =>$id,
-            'search'    =>$request->search,
-            'where'     =>$request->where,
-            'page'      =>$request->page
-            ])
-        );
     }
 
 

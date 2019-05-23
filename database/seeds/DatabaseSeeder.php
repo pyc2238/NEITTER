@@ -14,6 +14,7 @@ class DatabaseSeeder extends Seeder
         // $this->call(UserTableSeeder::class);
         // $this->call(CommunityTableSeeder::class);
         // $this->call(CommunityCommentTableSeeder::class);
-        $this->call(AdminNoticeTable::class);
+        // $this->call(AdminNoticeTable::class);
+        $this->call(CreateGoalTableSeed::class);
     }
 }

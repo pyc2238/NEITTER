@@ -80,21 +80,22 @@ Route::resource('community', 'Community\CommunityContoller');
 Route::resource('inquiry', 'inquiryBoard\inquiryBoardController');
 Route::group(['middleware' => ['comment']], function () { 
     /*지식교류 게시판 추천*/
-    Route::put('community/increaseCommend/{id}', 'Community\CommunityContoller@putIncreaseCommend')->name('community.increaseCommend');
+    Route::put('community/increaseCommend/{id}', 'Community\CommendController@putIncreaseCommend')->name('community.increaseCommend');
     /*지식 교류 댓글 작성*/
-    Route::post('community/comment/{id}', 'Community\CommunityContoller@postInsertComment')->name('community.comment'); 
+    Route::post('community/comment/{id}', 'Community\CommentController@postInsertComment')->name('community.comment'); 
     /* 지식 교류 댓글 수정*/
-    Route::put('community/comment/{id}', 'Community\CommunityContoller@putUpdateComment')->name('community.comment.update');
+    Route::put('community/comment/{id}', 'Community\CommentController@putUpdateComment')->name('community.comment.update');
     /*지식 교류 댓글 삭제*/
-    Route::get('community/comment/{id}', 'Community\CommunityContoller@getDeleteComment')->name('community.comment.delete');
+    Route::get('community/comment/{id}', 'Community\CommentController@getDeleteComment')->name('community.comment.delete');
    
     /*문의 게시판 추천*/
-    Route::put('inquiry/increaseCommend/{id}', 'inquiryBoard\inquiryBoardController@putIncreaseCommend')->name('inquiry.increaseCommend');/*댓글 작성*/
-    Route::post('inquiry/comment/{id}', 'inquiryBoard\inquiryBoardController@postInsertComment')->name('inquiry.comment'); 
+    Route::put('inquiry/increaseCommend/{id}', 'inquiryBoard\CommendController@putIncreaseCommend')->name('inquiry.increaseCommend');/*댓글 작성*/
+    /* 문의 게시판 댓글 작성*/
+    Route::post('inquiry/comment/{id}', 'inquiryBoard\CommentController@postInsertComment')->name('inquiry.comment'); 
     /* 문의 게시판 댓글 수정*/
-    Route::put('inquiry/comment/{id}', 'inquiryBoard\inquiryBoardController@putUpdateComment')->name('inquiry.comment.update');
+    Route::put('inquiry/comment/{id}', 'inquiryBoard\CommentController@putUpdateComment')->name('inquiry.comment.update');
     /* 문의 게시판 댓글 삭제*/
-    Route::get('inquiry/comment/{id}', 'inquiryBoard\inquiryBoardController@getDeleteComment')->name('inquiry.comment.delete');
+    Route::get('inquiry/comment/{id}', 'inquiryBoard\CommentController@getDeleteComment')->name('inquiry.comment.delete');
 });
 
 /*공지사항 게시판 */

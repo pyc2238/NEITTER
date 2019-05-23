@@ -75,21 +75,11 @@ class ProfileController extends Controller
             $this->userModel->updateFile($file);  
         }
 
-        
-    if(!$request->penpal_check){
-        $user = $this->userModel->where('id',Auth::id())->first();
-        $userPenpalCheck = $user->is_penpal;    
-    }else{
-        $userPenpalCheck = $request->penpal_check;
-    }   
-
-
     $this->userModel->updateProfile(
         $request->gender,
         $request->age,
         $request->address,
         $request->country,
-        $userPenpalCheck,
         $request->selfContext
     );
     

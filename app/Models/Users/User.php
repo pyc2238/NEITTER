@@ -81,13 +81,12 @@ class User extends Authenticatable
     }
 
 
-    public function updateProfile($gender,$age,$address,$country,$penpalCheck,$selfContext){
+    public function updateProfile($gender,$age,$address,$country,$selfContext){
         $param = [
             'gender'        => $gender,
             'age'           => $age,
             'address'       => $address,
             'country'       => $country,
-            'is_penpal'     => $penpalCheck,
             'selfContext'   => $selfContext
         ];
 

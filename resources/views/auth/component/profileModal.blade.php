@@ -13,7 +13,7 @@
         overflow: auto;
     }
  
-    </style>
+</style>
 
 <!-- profile Modal -->
 <div class="modal fade" id="Modal-large-demo" tabindex="-1" role="dialog" aria-labelledby="Modal-large-demo-label"

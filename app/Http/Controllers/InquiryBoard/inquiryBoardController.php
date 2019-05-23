@@ -9,7 +9,6 @@ use Auth;
 
 use App\Models\Users\User;
 use App\Models\Inquiries\inquiryBoard;
-use App\Models\Inquiries\inquiryBoard_commends;
 use App\Models\Inquiries\inquiryBoard_hit;
 use App\Models\Inquiries\inquiryBoard_ip;
 use App\Models\Inquiries\inquiryBoard_Comment;
@@ -19,14 +18,12 @@ class inquiryBoardController extends Controller
     use Translation;
 
     private $inquiryModel   = null;
-    private $commendsModel  = null;
     private $hitsModel      = null;
     private $ipsModel       = null;
     private $commentModel   = null;
 
     public function __construct(){
         $this->inquiryModel     = new inquiryBoard();
-        $this->commendsModel    = new inquiryBoard_commends();
         $this->hitsModel        = new inquiryBoard_hit();
         $this->ipsModel         = new inquiryBoard_ip();
         $this->commentModel     = new inquiryBoard_Comment();
@@ -271,82 +268,5 @@ class inquiryBoardController extends Controller
             return back()->with('message',$message);
         }      
     }
-
-    public function putIncreaseCommend(Request $request,$id){
-       
-        if(session('locale') == 'ja'){
-            $message = 'すでに推薦したスレッドです';
-        }else{
-            $message = '이미 추천을 누른 게시물입니다.';
-        }
   
-        $result = $this->commendsModel->getCommendId(Auth::user()->id,$id);
-        
-        if($result){
-            return back()->with('message',$message);
-        }else{
-            $this->commendsModel->insertCommendId(Auth::user()->id,$id);
-            $this->inquiryModel->updateCommend($id);
-          
-            return redirect(route('inquiry.show',[
-                'id'        =>$id,
-                'search'    =>$request->search,
-                'where'     =>$request->where,
-                'page'      =>$request->page
-                ])
-            );
-        }
-    }
-
-
-    public function postInsertComment(Request $request,$id){
-       
-            $this->commentModel->insertComment(
-                $request->comment,
-                Auth::user()->country,
-                $id,Auth::user()->id,
-                $request->getClientIp()
-            );
-           
-        
-        return redirect(route('inquiry.show',[
-            'id'        =>$id,
-            'search'    =>$request->search,
-            'where'     =>$request->where,
-            'page'      =>$request->page
-            ])
-        );
-    }
-
-
-    public function putUpdateComment(Request $request,$id){
-        
-            $this->commentModel->updateComments(
-                $request->commentId,
-                $request->comment,
-                $request->getClientIp()
-            );
-        
-        return redirect(route('inquiry.show',[
-            'id'        =>$id,
-            'search'    =>$request->search,
-            'where'     =>$request->where,
-            'page'      =>$request->page
-            ])
-        );
-    }
-
-    public function getDeleteComment(Request $request,$id){
-            
-            $this->commentModel->deleteMsg('id',$request->commentId);
-
-        return redirect(route('inquiry.show',[
-            'id'        =>$id,
-            'search'    =>$request->search,
-            'where'     =>$request->where,
-            'page'      =>$request->page
-            ])
-        );
-    }
-    
 }

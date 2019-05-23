@@ -26,6 +26,8 @@
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
     {{-- boards js/css --}}
     @yield('boards')
+    {{-- penpal js/css --}}
+    @yield('penpal')
 
     {{-- member.js --}}
     <script src="{{asset('/js/member.js')}}"></script>
@@ -40,6 +42,9 @@
 
     {{-- font-awesome --}}
     <link rel="stylesheet" href="{{asset('data/icon/css/font-awesome.min.css')}}">
+
+  
+
 
     {{-- ckeditor --}}
     @yield('ckeditor')

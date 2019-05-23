@@ -1,0 +1,19 @@
+.penpal-main-container{
+    
+    height: 900px;
+    /* height: auto; */
+    margin: 0px auto;
+    margin-top: 5px;
+    margin-bottom: 5px;
+    padding: 20px;
+    border: 1px solid #bcbcbc;
+    background-color: white;
+}
+
+.penpal-menu-card{
+    height:20rem;
+    margin-top: 5px;
+    background-color: white;
+    box-shadow: 0 4px 0.5px -4px #4D89FC;
+    border: 1px solid hsl(0, 0%, 74%);
+}
