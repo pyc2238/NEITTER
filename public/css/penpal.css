@@ -10,3 +10,14 @@
     background-color: white;
 }
 
+
+.timeline_tools{
+    padding-top:1%;
+    border: 1px solid hsl(0, 0%, 74%);
+    box-shadow: 0 4px 0.5px -4px gray;
+}
+
+#timebutton{
+    width: 100%;
+    height: 100%;
+}
