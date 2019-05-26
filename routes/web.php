@@ -116,7 +116,10 @@ Route::group(['prefix' => 'penpal'], function () {
 });
 
 
-
+// test
+Route::get('/test',function(){
+    return view('test');
+});
 
 /*포럼 게시판*/
 Route::resource('forum', 'Forum\ForumController');

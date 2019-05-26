@@ -72,15 +72,7 @@ aria-hidden="true">
                             <th>@lang('auth/profile.model_Date_of_entry')</th>
                             <td><b style="color:blue">{{Auth::user()->created_at}}<b></td>
                         </tr>
-                        <tr>
-                                <th>@lang('auth/profile.model_is_penpal')</th>
-                                @if(Auth::user()->is_penpal == 1)
-                                <td><b style="color:blue">@lang('auth/profile.model_onPenpal')<b></td>
-                                @else
-                                <td><b style="color:blue">@lang('auth/profile.model_offpenpal')<b></td>
-                                @endif
-                                
-                        </tr>
+                        
                         <tr>
                             <th>@lang('auth/profile.model_self_introduction')</th>
                             <td><b style="color:blue">{{Auth::user()->selfContext}}<b></td>

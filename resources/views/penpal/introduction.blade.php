@@ -2,7 +2,7 @@
 @section('title')
     @lang('penpal/component/introduction.title')
 @endsection
-@section('boards')
+@section('penpal')
 <link rel="stylesheet" href="{{asset('/css/penpal.css')}}">
 @endsection
 @section('content')

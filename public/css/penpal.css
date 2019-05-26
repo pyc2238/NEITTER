@@ -47,7 +47,7 @@
 }
 
 .timeline-card{
-    margin-top: 5px;
+    margin-top: 20px;
     border: 1px solid hsl(0, 0%, 74%);
     box-shadow: 0 4px 0.5px -4px gray;
 }
@@ -85,3 +85,8 @@
     -khtml-border-radius: 7px;
     -webkit-border-radius: 7px;
 }
+
+#View_area{
+    display: inline-block;
+}
+

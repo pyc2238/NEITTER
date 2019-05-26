@@ -2,11 +2,13 @@
 @section('title')
 @lang('penpal/component/timeline.title')
 @endsection
-@section('boards')
-<link rel="stylesheet" href="{{asset('/css/penpal.css')}}">
+@section('penpal')
+<link rel="stylesheet" href="{{ asset('/css/penpal.css') }}">
+<script src="{{ asset('/js/penpal.js') }}"></script>
 @endsection
 @section('content')
 @include('penpal.component.menu')
+
 
 
 <div class="container">
@@ -34,14 +36,18 @@
                                             placeholder="@lang('penpal/component/timeline.placeholder')"></textarea>
                                     </div>
                                     <div class="col-2">
-                                        <input id="timebutton" type="submit" class="btn btn-success" value='@lang('penpal/component/timeline.registration')'> </div> </div> <label
-                                            for="file-input">
-                                        <img src="{{ asset('/data/ProjectImages/penpal/img_input.jpg') }}" width="50"
-                                            alt="imag_input_icon" style="cursor:pointer" title="add image" />
+                                        <input id="timebutton" type="submit" class="btn btn-success" value='@lang('penpal/component/timeline.registration')'/>
+                                     </div>
+                                </div> 
+                                        <label for="file-input">
+                                            <img src="{{ asset('/data/ProjectImages/penpal/img_input.jpg') }}" width="50"
+                                                alt="imag_input_icon" style="cursor:pointer" title="add image" />
                                         </label>
 
-                                        <input id="file-input" type="file" name="file" style="display:none;">
-
+                                        <input id="file-input" type="file" name="file" style="display:none;"
+                                            onchange="previewImage(this,'View_area')" />
+                                        <br>
+                                        <div id='View_area' onclick="deleteImg()"></div>
                             </form>
 
                         </div>
@@ -59,16 +65,18 @@
                                     @if($timeline->is_system == 1)
                                     <b style="color:blue">SYSTEM</b>
                                     @else
-                                        @if( $timeline->user->selfPhoto != null )
-                                        <img class="timeline-card-selfPhoto" src="{{ $timeline->user->selfPhoto }}" alt="selfPhoto"
-                                             width="27%">
-                                        @endif
+                                    @if( $timeline->user->selfPhoto != null )
+                                    <img class="timeline-card-selfPhoto" src="{{ $timeline->user->selfPhoto }}"
+                                        alt="selfPhoto" width="17%">
+                                    @endif
                                     <b style="color:blue">{{ $timeline->user->name }}</b>
-                                        @if($timeline->user->country == 'ko')
-                                            <img src="{{ asset('/data/ProjectImages/community/korea.png') }}" width="13%" alt="korea">
-                                        @else
-                                            <img src="{{ asset('/data/ProjectImages/community/japan.png') }}"width="13%" alt="japan">
-                                        @endif
+                                    @if($timeline->user->country == 'ko')
+                                    <img src="{{ asset('/data/ProjectImages/community/korea.png') }}" width="13%"
+                                        alt="korea">
+                                    @else
+                                    <img src="{{ asset('/data/ProjectImages/community/japan.png') }}" width="13%"
+                                        alt="japan">
+                                    @endif
                                     @endif
                                 </div>
                                 <div class="col-6 timeline-card-date">
@@ -115,17 +123,16 @@
 
                     <div class="row timeline-pageBox">
                         <div class="col">
-                            
+
                         </div>
                         <div class="col">
                             {{ $timelines->onEachSide(5)->links() }}
                         </div>
                         <div class="col">
-                            
+
                         </div>
 
                     </div>
-
 
                 </div>
 
@@ -136,8 +143,6 @@
     </div>
 
 </div>
-
-
 
 
 @endsection
