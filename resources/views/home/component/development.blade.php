@@ -25,6 +25,7 @@
                     <img src="{{ asset("data/ProjectImages/master/stack/jquery.png") }}" alt="WebSideLog" width="30%"><br>
                     <img src="{{ asset("data/ProjectImages/master/stack/ajax.png") }}" alt="WebSideLog" width="30%"><br>
                     <img src="{{ asset("data/ProjectImages/master/stack/bootstrap.png") }}" alt="WebSideLog" width="30%"><br><br>
+                    <img src="{{ asset("data/ProjectImages/master/stack/papago.jpg") }}" alt="WebSideLog" width="30%"><br>
                 </div>
                 <div class="col">
                     <img src="{{asset("data/ProjectImages/master/ServerSide.png")}}" alt="WebSideLog">
@@ -112,6 +113,9 @@
                     <li><b>ペンパルサービス開発開始</b></li>
                     -2019年5月22日: データベース1次設計<br>
                     -2019年5月23日: ペンパルページ設計<br>
+                    -2019年5月24日: ペンパルページや紹介ページ追加<br>
+                    -2019年5月25日: タイムラインページの追加及びマイグレーション<br>
+                    -2019年5月26日: タイムライン機能追加コミュニティページネーション修正<br>
 
                 </ul>
             </div>
@@ -150,6 +154,7 @@
                         <img src="{{ asset("data/ProjectImages/master/stack/jquery.png") }}" alt="WebSideLog" width="30%"><br>
                         <img src="{{ asset("data/ProjectImages/master/stack/ajax.png") }}" alt="WebSideLog" width="30%"><br>
                         <img src="{{ asset("data/ProjectImages/master/stack/bootstrap.png") }}" alt="WebSideLog" width="30%"><br>
+                        <img src="{{ asset("data/ProjectImages/master/stack/papago.jpg") }}" alt="WebSideLog" width="30%"><br>
 
                     </div>
                     <div class="col">
@@ -241,6 +246,9 @@
                     <li><b>펜팔 서비스 개발 시작</b></li>
                     -2019년5월 22일 데이터베이스 1차 설계<br>
                     -2019년5월 23일 펜팔페이지 설계<br>
+                    -2019년5월 24일 펜팔페이지 및 소개페이지 추가<br>
+                    -2019년5월 25일 타임라인 페이지 추가 및 마이그레이션<br>
+                    -2019년5월 26일 타임라인 기능 추가 커뮤니티 페이지네이션 수정<br>
                 </ul>
             </div>
             <div class="w-100"></div>

@@ -109,6 +109,7 @@ Route::group(['prefix' => 'penpal'], function () {
     Route::get('/index', 'Penpal\ViewController@index')->name('penpal.index');
     Route::get('/introduction', 'Penpal\ViewController@introduction')->name('penpal.introduction');
     Route::get('/timeline', 'Penpal\ViewController@timeline')->name('penpal.timeline');
+    Route::get('/timeline/delete', 'Penpal\TimelineController@delete')->name('penpal.timeline.delete');
     Route::get('/registration', 'Penpal\ViewController@registration')->name('penpal.registration');
     Route::post('/registration', 'Penpal\RegisterController@registration')->name('penpal.penpal.registration');
     Route::post('/timeline', 'Penpal\TimelineController@create')->name('penpal.timeline.create');

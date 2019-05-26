@@ -19,4 +19,8 @@ class Timeline extends Model
         return $this->belongsTo('App\Models\Users\User');
     }
 
+
+    public function getUser(){
+        return $this->with(['user:id,name,gender,country,selfPhoto']);
+    }
 }

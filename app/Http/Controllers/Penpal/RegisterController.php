@@ -68,9 +68,7 @@ class RegisterController extends Controller
 
         $this->goalPenpalModel->create($goalPenpalData);
        
-        $timelineMsg  = Auth::user()->name.'님이 펜팔을 등록했습니다.';
         $timelineData = array(
-            'content'       => $timelineMsg,
             'user_id'       => Auth::id(),
             'is_system'     => 1, 
         );

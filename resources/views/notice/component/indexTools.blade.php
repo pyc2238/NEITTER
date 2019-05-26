@@ -12,7 +12,7 @@
 </div>
 <div class="Custompagination " style='margin-top:5%;margin-bottom:3%;'>
     @if($msgs->hasPages())
-    {{$msgs->appends(['search'=>$search,'where'=>$where])->links()}}
+    {{$msgs->appends(['search'=>$search,'where'=>$where])->onEachSide(5)->links()}}
     @endif
 </div>
 <div class="col-4" style='margin-top:4%'>

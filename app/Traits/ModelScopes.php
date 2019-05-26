@@ -28,7 +28,7 @@ trait ModelScopes{
 
     
     public function scopeGetMsgs($query){
-        return $query->with('user:id,name')->latest()->paginate(10)->onEachSide(5);
+        return $query->with('user:id,name')->latest()->paginate(10);
     }
 
 
@@ -42,7 +42,7 @@ trait ModelScopes{
 
 
     public function scopeSearch($query,$col,$search){
-        return $query->where($col,'LIKE',"%$search%")->latest('num')->paginate(10)->onEachSide(5);
+        return $query->where($col,'LIKE',"%$search%")->latest('num')->paginate(10);
           
     }
 
