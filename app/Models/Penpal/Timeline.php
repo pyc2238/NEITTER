@@ -11,6 +11,7 @@ class Timeline extends Model
         'user_id',
         'content',
         'image',
+        'is_system',
     ];
 
 

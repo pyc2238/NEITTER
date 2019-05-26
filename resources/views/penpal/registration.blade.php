@@ -12,7 +12,7 @@
     <div class="row justify-content-center">
 
         <div class="col-10">
-            <div class="row justify-content-center penpal-main-container">
+            <div class="row justify-content-center penpal-registration-container">
                 <div class="col">
                     <img src="{{asset("data/ProjectImages/master/logoImage/12.png")}}" width="72" alt="thumbnail">
                     <h2 style='display:inline-block;'>@lang('penpal/component/registration.subject')</h2>
@@ -24,7 +24,7 @@
                         </div>
 
                         <div class="col-6">
-                            <form action="{{ route('penpal.penpal-registration') }}" method="post"
+                            <form action="{{ route('penpal.penpal.registration') }}" method="post"
                                 style="margin-top:8%;margin-bottom:8%" enctype="multipart/form-data">
 
                                 @csrf
@@ -57,7 +57,7 @@
                                 <br>
                                 <div class="form-check form-check-inline">
 
-                                    <input selected class="form-check-input" type="checkbox" name="language[]" id="inlineCheckbox1" value="1">
+                                    <input checked class="form-check-input" type="checkbox" name="language[]" id="inlineCheckbox1" value="1">
                                     <label class="form-check-label"
                                         for="inlineCheckbox1">@lang('penpal/component/registration.kor')</label>
                                 </div>

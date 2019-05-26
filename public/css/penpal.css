@@ -10,6 +10,18 @@
     background-color: white;
 }
 
+.penpal-registration-container{
+
+    height: auto;
+    margin: 0px auto;
+    margin-top: 5px;
+    margin-bottom: 5px;
+    padding: 20px;
+    border: 1px solid #bcbcbc;
+    background-color: white;
+}
+
+
 
 .timeline_tools{
     padding-top:1%;

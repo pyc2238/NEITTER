@@ -22,11 +22,11 @@
                     <div class="row">
                         <div class="col"></div>
                         <div class="col-10 timeline_tools">
-                            <form class="form-group" action="" method="post">
+                            <form class="form-group" action="{{ route('penpal.timeline.create') }}" method="post" enctype="multipart/form-data">
                                 @csrf
                                 <div class="row">
                                     <div class="col-10">
-                                        <textarea name="timeline" id="" rows="4" name="comment" class='form-control'
+                                        <textarea  id="" rows="4" name="content" class='form-control'
                                             style='resize: none;'
                                             placeholder="@lang('penpal/component/timeline.placeholder')"></textarea>
                                     </div>
@@ -40,7 +40,7 @@
                                         alt="imag_input_icon" style="cursor:pointer" title="add image" />
                                 </label>
 
-                                <input id="file-input" type="file" style="display:none;">
+                                <input id="file-input" type="file" name="file" style="display:none;">
 
                             </form>
 

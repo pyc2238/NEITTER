@@ -10,5 +10,6 @@ class ConstantEnum extends Controller
     const S3 =  [
         'profile'         => 'users_profile_photo',
         'penpal'          => 'users_penpal_photo',
+        'timeline'        => 'users_penpal_timeline_photo',
     ];
 }

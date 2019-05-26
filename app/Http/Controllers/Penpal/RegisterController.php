@@ -32,7 +32,6 @@ class RegisterController extends Controller
 
     //펜팔 등록
     public function registration(Request $request){
-     
 
         if($request->file){
             $file = $this->fileUpload($request,ConstantEnum::S3['penpal']);
@@ -43,9 +42,17 @@ class RegisterController extends Controller
 
         }
 
+
+        //checkbox에 아무런 체크를 하지 않았을 경우
+        if(!$request->language){
+            $language = ["1"];
+        }else{
+            $language = $request->language;
+        }
+
         $penpalData = array(
             'self_context'  => $request->selfContext,
-            'language'      => $request->language,
+            'language'      => $language,
             'user_id'       => Auth::id(),
             'image'         => $file,
         );
@@ -61,6 +68,15 @@ class RegisterController extends Controller
 
         $this->goalPenpalModel->create($goalPenpalData);
        
+        $timelineMsg  = Auth::user()->name.'님이 펜팔을 등록했습니다.';
+        $timelineData = array(
+            'content'       => $timelineMsg,
+            'user_id'       => Auth::id(),
+            'is_system'     => 1, 
+        );
+
+        $this->timelineModel->create($timelineData);
+    
         
         if(session('locale') == 'ja'){
             $message = 'ペンパル登録が完了しました。';

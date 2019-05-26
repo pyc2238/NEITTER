@@ -4,17 +4,15 @@ namespace App\Http\Controllers\User;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-
-use Exception;
-use Event;
-use App\Events\ResetPwMail;
-
-
 use App\Http\Controllers\Helper\StoreImage;
 use App\Http\Controllers\Helper\ConstantEnum;
-
+use App\Events\ResetPwMail;
+use Exception;
+use Event;
 use Auth;
+
 use App\Models\Users\User;
+
 class ProfileController extends Controller
 {
     use StoreImage;
