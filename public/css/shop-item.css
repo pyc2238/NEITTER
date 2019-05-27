@@ -1,0 +1,225 @@
+/*!
+ * Start Bootstrap - Shop Item (https://startbootstrap.com/template-overviews/shop-item)
+ * Copyright 2013-2019 Start Bootstrap
+ * Licensed under MIT (https://github.com/BlackrockDigital/startbootstrap-shop-item/blob/master/LICENSE)
+ */
+ * {
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+ }
+  
+ label{
+     display: inline-block !important; 
+     max-width: 100%;
+     margin-bottom: 5px;
+     font-weight: 700;
+     cursor: default;	
+ }
+ 
+ @media (min-width: 992px){
+     .col-lg-9 {
+         width: 75%;
+     }
+ }
+ @media (min-width: 768px){
+     .form-inline .form-group {
+         display: inline-block;
+         margin-bottom: 0;
+         vertical-align: middle;
+         width: auto;
+     }
+ }
+ @media (min-width: 1200px){
+     .container {
+         width: 1170px;
+     }
+ }
+ @media (min-width: 992px){
+     .col-md-8 {
+         width: 66.66666667% !important;
+     }
+ }
+ 
+ @media (min-width: 992px){
+ .col-md-1, .col-md-10, .col-md-11, .col-md-12, .col-md-2, .col-md-3, .col-md-4, .col-md-5, .col-md-6, .col-md-7, .col-md-8, .col-md-9 {
+     float: left;
+ }
+ }
+ 
+ .container {
+     padding-right: 15px;
+     padding-left: 15px;
+     margin-right: auto;
+     margin-left: auto;
+ }
+ 
+ 
+ /* body {
+   padding-top: 56px;
+   line-height: 1.42857143;
+ } */
+ 
+ body a{
+     color: #666666;
+     text-decoration: none !important;
+     cursor: pointer;
+ }
+ 
+ div{
+     display: block;
+ }
+ 
+ .main-heading-container { 
+     font-size: large; 
+     text-align: center; 
+     padding: 34px 0; 
+     text-align: center; 
+     background-color: #004c9a !important;
+     color: #fff !important;
+ }
+ 
+ strong{
+     font-weight: bold;
+ }
+ 
+ .list-group{
+     padding-left: 0;
+     margin-bottom: 20px;
+ }
+ 
+ 
+ .list-group-item {
+     position: relative;
+     display: block;
+     padding: 10px 15px;
+     margin-bottom: -1px;
+     background-color: #fff;
+     border: 1px solid #ddd;
+     
+ }
+ 
+ .list-group.list-search-form {
+     border-top: 3px solid #004c9a;
+     width: 100%;
+ }
+ 
+ .list-search-form > .list-group-item > .row >.form-group {
+     margin-bottom: 0 !important;
+ }
+ 
+ .list-group-item.active, .list-group-item.active:hover, .list-group-item.active:visited {
+     background-color: #004c9a;
+ }
+ 
+ .list-group-item.active, .list-group-item.active:focus, .list-group-item.active:hover {
+     z-index: 2;
+     color: #fff;
+     background-color: #337ab7;
+     border-color: #337ab7;
+ }
+ .row{
+     margin-right: -5px;
+     margin-left: -5px;
+ }
+ 
+ 
+ .main-heading-container {
+     font-size: large;
+     text-align: center;
+     padding: 34px 0;
+     text-align: center;
+     background-color: #004c9a !important;
+     color: #fff !important;
+ }
+ 
+ .wrap_content {
+     padding: 10px;
+     margin-bottom: 10px;
+     background-color: #fff;
+     border: 1px solid #d6d6d6;
+     min-height: 200px;
+ }
+ 
+ legend {
+     display: block;
+     width: 100%;
+     padding: 0;
+     margin-bottom: 20px;
+     font-size: 21px;
+     line-height: inherit;
+     color: #333;
+     border: 0;
+     border-bottom: 1px solid #e5e5e5;
+ }
+ 
+ form {
+     display: block;
+     margin-top: 0em;
+ }
+ 
+ 
+ .pdr3 {
+     padding-right: 15px;
+ }
+ 
+ .noUi-origin{
+     border-radius: 2px;
+     position: absolute;
+     right: 0;
+     top: 0;
+     bottom: 0;
+     left: 0;
+ }
+ 
+ .noUi-horizontal{
+     height: 18px;
+ }
+ 
+ /* .noUi-base, .noUi-handle {
+     -webkit-transform: translate3d(0,0,0);
+     transform: translate3d(0,0,0);
+ } */
+ 
+ /* .noUi-horizontal .noUi-handle{
+     width: 34px;
+     height: 28px;
+     left: -17px;
+     top: -6px;
+ } */
+ 
+ .noUi-handle{
+     position: relative;
+     z-index: 1;
+ }
+ 
+ .noUi-target{
+     min-width: 200px;
+     border-radius: 4px;
+     border:1px solid #d3d3d3;
+ }
+ 
+ .noUi-background {
+     background: #FAFAFA;
+     box-shadow: inset 0 1px 1px #f0f0f0;
+ }
+ 
+ /* .noUi-handle:before, .noUi-handle:after{
+     content: "";
+     display: block;
+     position: absolute;
+     height: 14px;
+     width: 1px;
+     left: 14px;
+     top: 6px;
+ } */
+ 
+ .friend-list-record {
+     border: 1px solid #e2e2e2;
+     margin-bottom: 10px;
+ }
+ 
+ .friend-list-content-photo {
+     width: 140px;
+     padding: 5px 5px 5px 10px;
+ }

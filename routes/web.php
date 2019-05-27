@@ -105,7 +105,7 @@ Route::resource('notice', 'Admin\NoticeBoardController');
 
 /*펜팔 서비스*/
 Route::group(['prefix' => 'penpal'], function () {
-
+    Route::post('/index', 'Penpal\ViewController@index')->name('penpal.index.search');
     Route::get('/index', 'Penpal\ViewController@index')->name('penpal.index');
     Route::get('/introduction', 'Penpal\ViewController@introduction')->name('penpal.introduction');
     Route::get('/timeline', 'Penpal\ViewController@timeline')->name('penpal.timeline');
@@ -118,10 +118,6 @@ Route::group(['prefix' => 'penpal'], function () {
 });
 
 
-// test
-Route::get('/test',function(){
-    return view('test');
-});
 
 /*포럼 게시판*/
 Route::resource('forum', 'Forum\ForumController');

@@ -3,6 +3,7 @@
 namespace App\Models\Penpal;
 
 use Illuminate\Database\Eloquent\Model;
+use App\Models\Users\User;
 
 class Penpal extends Model
 {
@@ -40,5 +41,13 @@ class Penpal extends Model
         $this->where('id',Auth::user()->id)
             ->update(['image' => $file]);
     }
+
+    public function getUsers(){
+        return $this->with(['user:id,name,gender,country,age']);
+    }
+
+   
+
+
 
 }
