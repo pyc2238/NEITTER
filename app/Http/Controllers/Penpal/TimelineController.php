@@ -49,6 +49,15 @@ class TimelineController extends Controller
         return redirect(route('penpal.timeline'));
     }
 
+
+    public function update(Request $request){
+        
+        $this->timelineModel->where('id',$request->id)
+            ->update(['content' => $request->comment]);
+
+        return redirect(route('penpal.timeline'));
+    }
+
     
     public function delete(Request $request){
 

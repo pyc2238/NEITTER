@@ -70,8 +70,9 @@
     border: 1px solid #80A4F3;
 }
 
-.timeline-deleteBtn{
+.timeline-menuBtn{
     margin-top:5px;
+    margin-left:5px;
 }
 
 .timeline-pageBox{
@@ -89,4 +90,10 @@
 #View_area{
     display: inline-block;
 }
+
+/* div>.commentBoxsecound {
+    background-color: white;
+    border: 1px solid #bcbcbc;
+
+} */
 

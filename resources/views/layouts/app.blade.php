@@ -84,15 +84,15 @@
 
 @include('home.component.footer')
 
-<script type="text/javascript">
+{{-- <script type="text/javascript">
     $(window).load(function () {
         $('#loading').hide();
     });
 
 </script>
 
-<div id="loading"><img id="loading-image" src="{{ asset('data/ProjectImages/master/loading.gif') }}" alt="Loading..." />
-</div>
+<div id="loading"><img id="loading-image" src="{{ asset('data/ProjectImages/master/loading.gif') }}" alt="Loading..." /> --}}
+{{-- </div> --}}
 
 
 </html>
