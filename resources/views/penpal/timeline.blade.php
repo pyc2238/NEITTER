@@ -81,6 +81,7 @@
                                     {{ $timeline->created_at }}
                                 </div>
                                 <div class="col timeline-card-menu">
+                                   
                                     @if(Auth::check() && Auth::id() == $timeline->user->id && $timeline->is_system == 0)
                                     <i class="fa fa-trash float-right timeline-menuBtn"
                                         style='color:red;cursor:pointer;' title='delete'
@@ -88,6 +89,9 @@
                                                                 route('penpal.timeline.delete',['id' => $timeline->id])}}'">
                                     </i>
                                     <i class="fa fa-edit updateBtn float-right timeline-menuBtn" style='color:blue; cursor:pointer;' title='update ' id="updateBtn{{ $timeline->id }}"></i>
+                                    @endif
+                                    @if($timeline->is_system != 1)
+                                        <i class="fa fa-exchange float-right timeline-menuBtn" style='color:#06f890; cursor:pointer;' title='translation' id='translation{{ $timeline->id }}'></i>
                                     @endif
                                 </div>
                                 <div class="w-100 timeline-card-center"></div>
@@ -103,9 +107,9 @@
 
                                     <br>
                                     @if($timeline->is_system == 1)
-                                    {{ $timeline->user->name }}様がペンパルを登録しました。
-                                    @else
-                                    {{ $timeline->translation }}
+                                    
+                                        {{ $timeline->user->name }}様がペンパルを登録しました。
+                                    
                                     @endif
 
                                     @if( $timeline->image != null)
