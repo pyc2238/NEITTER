@@ -152,6 +152,16 @@ class CommunityContoller extends Controller
         
         $translationTitle   = $this->translation($community->title,$this->langCode($community->title));
         $translationContent = $this->translation($community->content,$this->langCode($community->content));
+
+
+        //댓글 내용 번역
+        foreach($comments as $comment){
+                $translationTimeline = $this->translation($comment->content,$this->langCode($comment->content));
+                $comment->translation = $translationTimeline;
+            }
+          
+          
+            
          
         return
             view('community.show')

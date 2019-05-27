@@ -30,3 +30,32 @@
             
     })();
 </script>
+   <script>    
+    (function () {
+    var updateTextArea = "";
+    updateTextArea = "<div class='row'>"
+    +"<div class='col' id='translationComments{{$comment->id}}'>"
+            +"<div class='form-group'>" 
+                +"<div class='row'>"
+                    +"<div class='col-11'>"
+                        +"<textarea name='comment' class='form-control' style='resize: none; background-color:#f6faf8;' id='commentText' rows='1' readonly required> {{$comment->translation}}</textarea>"
+                    +"</div>"
+                    + "<div class='col-1'>"
+                    +"<i id='translationCloseBtn{{$comment->id}}' title='닫기' class='pnt'>x</i>"
+                +"</div>"
+            +"</div>"            
+        +"</div>"
+    +"</div>";
+    $("#translation{{ $comment->id }}").on('click',function(){   //updateBtn클릭시
+        if($('#translationComments{{ $comment->id }}').length == 0){  //comments가 생성되지않았다면
+            $("#comment{{ $comment->id }}").append(updateTextArea);    //comment라는 id를 가진 dom의 안에 생성
+            $("#translationCloseBtn{{ $comment->id }}").on('click',function(){    // closeBtn클릭시 
+            $('#translationComments{{ $comment->id }}').remove(); //comments 취소
+            });
+        }else {
+            return ;
+        } 
+    });
+        
+})();
+</script>

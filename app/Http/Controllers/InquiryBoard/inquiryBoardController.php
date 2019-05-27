@@ -166,6 +166,12 @@ class inquiryBoardController extends Controller
         $translationTitle   = $this->translation($inquiry->title,$this->langCode($inquiry->title));
         $translationContent = $this->translation($inquiry->content,$this->langCode($inquiry->content));
          
+
+          //댓글 내용 번역
+          foreach($comments as $comment){
+            $translationTimeline = $this->translation($comment->content,$this->langCode($comment->content));
+            $comment->translation = $translationTimeline;
+        }
         
         return
             view('inquiry.show')
