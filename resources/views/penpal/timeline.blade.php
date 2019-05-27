@@ -9,8 +9,6 @@
 @section('content')
 @include('penpal.component.menu')
 
-
-
 <div class="container">
 
     <div class="row justify-content-center">

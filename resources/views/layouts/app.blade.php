@@ -36,19 +36,19 @@
 
     <script src="{{asset('/js/home.js')}}"></script>
 
-    
+
     {{-- master.css --}}
     <link rel="stylesheet" href="{{asset('/css/master.css')}}">
 
     {{-- font-awesome --}}
-    <link rel="stylesheet" href="{{asset('data/icon/css/font-awesome.min.css')}}">
+    <link rel="stylesheet" href="{{ asset('data/icon/css/font-awesome.min.css') }}">
 
-  
+
 
 
     {{-- ckeditor --}}
     @yield('ckeditor')
-    
+
 
     {{-- member css --}}
     <link rel="stylesheet" href="{{asset('/css/member.css')}}">
@@ -83,5 +83,16 @@
 
 
 @include('home.component.footer')
+
+<script type="text/javascript">
+    $(window).load(function () {
+        $('#loading').hide();
+    });
+
+</script>
+
+<div id="loading"><img id="loading-image" src="{{ asset('data/ProjectImages/master/loading.gif') }}" alt="Loading..." />
+</div>
+
 
 </html>
