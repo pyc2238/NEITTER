@@ -30,76 +30,69 @@ class ViewController extends Controller
     //펜팔 메인 페이지
     public function index (Request $request){
 
+        //default value
         $penpals =  $this->penpalModel->getUsers()->latest()->paginate(12);
-        $penpalsCount = count($penpals);
+        
+     
          
         //닉네임 검색시 
         if($request->name){
+         
             $user = $this->userModel->where('name',$request->name)->first();
 
-        if(!$user){
+            //검색 결과가 없을 시 
+            if(!$user){
                 return back()->with('message','해당 닉네임의 검색결과가 없습니다.');
             }
 
             foreach($penpals as $penpal){
-
                 $penpals = $penpal->where('user_id',$user->id)->latest()->paginate(12);
                 $penpalsCount = count($penpals);
             }          
          }
 
 
-            // //  성별 검색 
-            // if($request->gender != 'all'){
-            // $users = $this->userModel->where('gender',$request->gender)->with('penpal_user')->get();
-            
-            
-            // $penpals =  $users->pluck('penpal_user')->filter(function ($value, $key) {
-            //         return !$value->isEmpty();
-            //     });
-
-                // return json_encode($penpals,JSON_UNESCAPED_UNICODE);
-                // $i = 0;
-                // foreach($penpals as $penpal){
-                //   $i++; 
-                // }
-                // return $i;
-                // $penpalsCount = count($penpals);  
-            
-            // }
+            //성별 검색 
+            if($request->gender != null){
+                if($request->gender != 'all'){
     
+                    $penpals = $this->penpalModel->leftJoin('users', 'penpals.user_id', '=', 'users.id')
+                    ->select('penpals.*', 'users.gender')
+                    ->where('users.gender', $request->gender)
+                    ->orderBy('penpals.created_at','desc')
+                    ->paginate(12);
+                }
+            }
+            
 
+            //   국적 검색 
+            if($request->country != null){
+                if($request->country != 'all'){
+                    $penpals = $this->penpalModel->leftJoin('users', 'penpals.user_id', '=', 'users.id')
+                    ->select('penpals.*', 'users.country')
+                    ->where('users.country', $request->country)
+                    ->orderBy('penpals.created_at','desc')
+                    ->paginate(12);
+                }
+             }
 
-        //  if($request->ageMin && $request->ageMax){
-        //     $ageMin = floor($request->ageMin);
-        //     $ageMax = floor($request->ageMax);
-    
-        //     $users = $this->userModel->whereBetween('age', [$ageMin, $ageMax])->get();
-           
-        //     foreach($users as $user){
-                
-        //         foreach($penpals as $penpal){
-                    
-        //             $penpals = $penpal->where('user_id',$user->id)->latest()->paginate(12);
-        //             $penpalsCount = count($penpals);
-        //         } 
-        //     }
+             //목적 검색
+             if($request->country){
 
-            // return $penpals;
-                
-    
-        //    }
+             }
+            
 
-        
          //내용 번역
          foreach($penpals as $penpal){
 
             $translationTimeline = $this->translation($penpal->self_context,$this->langCode($penpal->self_context));
             $penpal->translation = $translationTimeline;
          
-    }
+        }
         
- 
+
+        $penpalsCount = count($penpals);        //검색 조회 펜팔 결과 수
+
         return view('penpal.index')->with([
             'penpals'       => $penpals,
             'penpalsCount'  => $penpalsCount

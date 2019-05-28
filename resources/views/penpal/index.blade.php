@@ -25,7 +25,10 @@
                     
                     </div>
                     <div class="col">
-                            {{ $penpals->onEachSide(5)->links() }}
+                            @if ($penpals->hasPages())
+                                 {{ $penpals->onEachSide(5)->links() }} 
+                            @endif 
+                            
                     </div>
 
                 </div>

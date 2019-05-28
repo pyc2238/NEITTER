@@ -12,6 +12,7 @@ class Penpal extends Model
         'self_context',
         'image',
         'language',
+        'created_at'
     ];
 
 
