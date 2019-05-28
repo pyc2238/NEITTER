@@ -20,6 +20,8 @@ class CreatePenpalsTable extends Migration
             $table->json('language');
             $table->integer('user_id')->unsigned();
             $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
+            $table->integer('goal_id')->unsigned();
+            $table->foreign('goal_id')->references('id')->on('goals')->onDelete('cascade');
             $table->timestamps();
         });
     }

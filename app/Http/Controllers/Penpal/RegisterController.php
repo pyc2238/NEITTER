@@ -11,7 +11,6 @@ use Auth;
 use App\Models\Penpal\Penpal;
 use App\Models\Penpal\Timeline;
 use App\Models\Penpal\PenpalUser;
-use App\Models\Penpal\GoalPenpal;
 
 class RegisterController extends Controller
 {
@@ -20,18 +19,15 @@ class RegisterController extends Controller
 
     private $penpalModel        = null;
     private $timelineModel      = null;
-    private $goalPenpalModel    = null;
     private $penpalUserModel    = null;
 
     public function __construct(){
 
         $this->penpalModel          = new Penpal();
         $this->timelineModel        = new Timeline();
-        $this->goalPenpalModel      = new GoalPenpal();
         $this->penpalUserModel      = new PenpalUser();
       
     }
-
 
     //펜팔 등록
     public function registration(Request $request){
@@ -58,19 +54,12 @@ class RegisterController extends Controller
             'language'      => $language,
             'user_id'       => Auth::id(),
             'image'         => $file,
+            'goal_id'       => $request->goal,
         );
 
        
         $penpal = $this->penpalModel->create($penpalData);
-     
-        $goalPenpalData = array(
-            'penpal_id'     => $penpal->id,
-            'goal_id'       => $request->goal,
-        );
-
-
-        $this->goalPenpalModel->create($goalPenpalData);
-       
+            
 
         $penpalData = array(
             'user_id'       => Auth::id(),

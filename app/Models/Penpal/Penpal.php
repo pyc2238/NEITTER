@@ -12,6 +12,7 @@ class Penpal extends Model
         'self_context',
         'image',
         'language',
+        'goal_id',
         'created_at'
     ];
 
@@ -20,9 +21,9 @@ class Penpal extends Model
         return $this->belongsTo('App\Models\Users\User');
     }
 
-    //penpals테이블 goals테이블 N-N (중간테이블 goal_penpal)
-    public function goal(){
-        return $this->belongsToMany('App\Models\Penpal\Goal','goal_penpal');
+    public function goal()
+    {
+        return $this->hasOne('App\Models\Penpal\Penapl');
     }
 
      //penpals테이블 user테이블 N-N (중간테이블 penpal_user)

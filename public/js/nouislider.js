@@ -2462,7 +2462,7 @@
 // 슬라이더 바 
 var snapSlider = document.getElementById('slider-snap');
 noUiSlider.create(snapSlider,{
-  start: [10 , 90],
+  start: [1 , 100],
   connect: true,
   step: 1,
   range: {

@@ -48,7 +48,7 @@
                                         for="comment"><b>@lang('penpal/component/registration.selfContext')</b></label>
                                     <textarea class="form-control" rows="5" style="resize: none;" name="selfContext"
                                         autocomplete=off
-                                        placeholder="@lang('auth/profile.self_introduction_notice')">{{Auth::user()->selfContext}}</textarea>
+                                        placeholder="@lang('auth/profile.self_introduction_notice')" required>{{Auth::user()->selfContext}}</textarea>
                                 </div>
                                 <br>
                                 <br>

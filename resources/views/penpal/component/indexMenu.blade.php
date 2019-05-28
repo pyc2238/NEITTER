@@ -57,8 +57,8 @@
             <div class="list-group-item">
                 <div class="row">
                     <div class="form-group col-md-12">
-                        <label for="purpose">@lang('penpal/component/indexMenu.goal'):</label>
-                        <select name="purpose" class="form-control input-sm" id="">
+                        <label for="goal">@lang('penpal/component/indexMenu.goal'):</label>
+                        <select name="goal" class="form-control input-sm" id="goal">
                             <option value="all">@lang('penpal/component/indexMenu.goal_all')</option>
                             <option value="1">@lang('penpal/component/indexMenu.e-mail_friend')</option>
                             <option value="2">@lang('penpal/component/indexMenu.heterosexual_friend')</option>
