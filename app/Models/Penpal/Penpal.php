@@ -24,6 +24,11 @@ class Penpal extends Model
         return $this->belongsToMany('App\Models\Penpal\Goal','goal_penpal');
     }
 
+     //penpals테이블 user테이블 N-N (중간테이블 penpal_user)
+     public function penpal_user(){
+        return $this->belongsToMany('App\Models\Users\User','penpal_user');
+    }
+
 
     //사용가능 언어  저장시 json속성 포맷 변환
     public function setLanguageAttribute($value) {

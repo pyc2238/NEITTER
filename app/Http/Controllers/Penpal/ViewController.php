@@ -20,14 +20,12 @@ class ViewController extends Controller
     private $userModel      = null;
 
     public function __construct(){
-        $this->timelineModel = new Timeline();
-        $this->penpalModel  = new Penpal();
-        $this->userModel  = new User();
+        $this->timelineModel    = new Timeline();
+        $this->penpalModel      = new Penpal();
+        $this->userModel        = new User();
     }
 
-    public function test(Request $request){
-        return $request;
-    }
+    
 
     //펜팔 메인 페이지
     public function index (Request $request){
@@ -38,12 +36,39 @@ class ViewController extends Controller
         //닉네임 검색시 
         if($request->name){
             $user = $this->userModel->where('name',$request->name)->first();
+
+        if(!$user){
+                return back()->with('message','해당 닉네임의 검색결과가 없습니다.');
+            }
+
             foreach($penpals as $penpal){
 
                 $penpals = $penpal->where('user_id',$user->id)->latest()->paginate(12);
                 $penpalsCount = count($penpals);
             }          
          }
+
+
+            // //  성별 검색 
+            // if($request->gender != 'all'){
+            // $users = $this->userModel->where('gender',$request->gender)->with('penpal_user')->get();
+            
+            
+            // $penpals =  $users->pluck('penpal_user')->filter(function ($value, $key) {
+            //         return !$value->isEmpty();
+            //     });
+
+                // return json_encode($penpals,JSON_UNESCAPED_UNICODE);
+                // $i = 0;
+                // foreach($penpals as $penpal){
+                //   $i++; 
+                // }
+                // return $i;
+                // $penpalsCount = count($penpals);  
+            
+            // }
+    
+
 
         //  if($request->ageMin && $request->ageMax){
         //     $ageMin = floor($request->ageMin);
@@ -65,6 +90,7 @@ class ViewController extends Controller
     
         //    }
 
+        
          //내용 번역
          foreach($penpals as $penpal){
 
@@ -80,6 +106,7 @@ class ViewController extends Controller
             ]);
 
     }
+
 
     //펜팔 소개 페이지
     public function introduction (){

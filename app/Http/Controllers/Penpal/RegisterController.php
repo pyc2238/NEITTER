@@ -10,6 +10,7 @@ use Auth;
 
 use App\Models\Penpal\Penpal;
 use App\Models\Penpal\Timeline;
+use App\Models\Penpal\PenpalUser;
 use App\Models\Penpal\GoalPenpal;
 
 class RegisterController extends Controller
@@ -20,12 +21,14 @@ class RegisterController extends Controller
     private $penpalModel        = null;
     private $timelineModel      = null;
     private $goalPenpalModel    = null;
+    private $penpalUserModel    = null;
 
     public function __construct(){
 
         $this->penpalModel          = new Penpal();
         $this->timelineModel        = new Timeline();
         $this->goalPenpalModel      = new GoalPenpal();
+        $this->penpalUserModel      = new PenpalUser();
       
     }
 
@@ -68,11 +71,21 @@ class RegisterController extends Controller
 
         $this->goalPenpalModel->create($goalPenpalData);
        
+
+        $penpalData = array(
+            'user_id'       => Auth::id(),
+            'penpal_id'     => $penpal->id, 
+        );
+
+        $this->penpalUserModel->create($penpalData);
+
+
         $timelineData = array(
             'user_id'       => Auth::id(),
             'is_system'     => 1, 
         );
 
+    
         $this->timelineModel->create($timelineData);
     
         
@@ -86,9 +99,5 @@ class RegisterController extends Controller
     
     }
 
-    public function test(){
-      
-      $rs = $this->penpalModel->find(1)->first();
-      return $rs->language;
-    }
+  
 }

@@ -13,8 +13,8 @@
                 <div class="row">
                     <div class="form-group col-md-4">
                         <label for="gender">@lang('penpal/component/indexMenu.gender'):</label>
-                        <select id="gender" name="s_gender" class="form-control input-sm">
-                            <option value="all" selected="selected">
+                        <select id="gender" name="gender" class="form-control input-sm">
+                            <option value="all" selected>
                                 @lang('penpal/component/indexMenu.gender_all')</option>
                             <option value="men">@lang('penpal/component/indexMenu.men')</option>
                             <option value="women">@lang('penpal/component/indexMenu.women')</option>
@@ -70,7 +70,7 @@
                     </div>
                     <div class="form-group col-md-5">
                         <label for="name">@lang('penpal/component/indexMenu.nickname'):</label>
-                        <input name="name" id="name" class="form-control input-sm" maxlength="50">
+                        <input name="name" id="name" class="form-control input-sm" maxlength="50" autocomplete=off>
                     </div>
                     <div class="form-group col-md=3 pdt1">
                         <button class="btn btn-info" type="submit"><i
