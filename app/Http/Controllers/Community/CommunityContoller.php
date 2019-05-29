@@ -156,8 +156,8 @@ class CommunityContoller extends Controller
 
         //댓글 내용 번역
         foreach($comments as $comment){
-                $translationTimeline = $this->translation($comment->content,$this->langCode($comment->content));
-                $comment->translation = $translationTimeline;
+                $translationComment = $this->translation($comment->content,$this->langCode($comment->content));
+                $comment->translation = $translationComment;
             }
           
           

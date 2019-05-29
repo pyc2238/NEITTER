@@ -120,6 +120,4 @@ class User extends Authenticatable
         $this->where('id',Auth::user()->id)
             ->update(['selfPhoto' => $file]);
     }
-
-  
 }

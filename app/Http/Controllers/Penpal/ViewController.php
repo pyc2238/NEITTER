@@ -29,8 +29,6 @@ class ViewController extends Controller
    
     }
 
-    
-
     //펜팔 메인 페이지
     public function index (Request $request){
         
@@ -45,7 +43,7 @@ class ViewController extends Controller
             ($request->gender && $request->gender !== 'all') ||
             ($request->country && $request->country !== 'all')
         ){
-            $query->whereHas('user', function($query) use ($request){
+            $query->whereHas('user', function($query) use ($request){           //관계의 존재 여부에 따라 쿼리를 질의한다.
                 if($request->name){
                     $query->where('name', 'like', '%' . $request->name . '%');
                 }
@@ -79,16 +77,17 @@ class ViewController extends Controller
             ->latest()
             ->paginate(12);
 
-            //내용 번역
+        //Content translation
          foreach($penpals as $penpal){
-            $translationTimeline = $this->translation($penpal->self_context,$this->langCode($penpal->self_context));
-            $penpal->translation = $translationTimeline;
+            $translationPenpal = $this->translation($penpal->self_context,$this->langCode($penpal->self_context));
+            $penpal->translation = $translationPenpal;
          
         }
 
         return view('penpal.index')->with([
             'penpals'       => $penpals,
             'penpalsCount'  => $penpals->count(),   //db에 포함된 모든 결과의 수를 가져옴
+            'nickname'      => $request->name,          
         ]);
     }
 

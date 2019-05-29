@@ -38,7 +38,7 @@
                         <td>PHP,Laravel,AWS</td>
                     </tr>
                     <tr>
-                        <td><a href="https://github.com/pyc2238"><b>Github</b></a></td>
+                        <td><a href="https://github.com/pyc2238" target="_blank"><b>Github</b></a></td>
                     </tr>
                 </table>
                 <br>
@@ -171,7 +171,7 @@
                         <td>PHP,Laravel,AWS</td>
                     </tr>
                     <tr>
-                        <td><a href="https://github.com/pyc2238"><b>Github</b></a></td>
+                        <td><a href="https://github.com/pyc2238" target="_blank"><b>Github</b></a></td>
                     </tr>
                 </table>
                 <br>
