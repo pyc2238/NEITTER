@@ -10,8 +10,8 @@ trait Translation
      
      public static function langCode($papago){
    
-        $client_id = "GsqdMHiH8jYipihfkH23";
-        $client_secret = "49rHFbtM4x";
+        $client_id      =  config('papago.client_sening_id');
+        $client_secret  =  config('papago.client_sening_secret');
         $encQuery = urlencode($papago);
         $postvars = "query=".$encQuery;
         $url = "https://openapi.naver.com/v1/papago/detectLangs";
@@ -42,8 +42,8 @@ trait Translation
 
     public static function translation($papago,$langCode) {
 
-          $client_id = "XhF4hpyBJquD0uxxiIT9";
-          $client_secret = "v15ft5DNeN";
+          $client_id      = config('papago.client_language_translation_id');
+          $client_secret  = config('papago.client_language_translation_secret');
           $encText = urlencode($papago);
           
 
