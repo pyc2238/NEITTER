@@ -34,7 +34,7 @@ class ViewController extends Controller
     //펜팔 메인 페이지
     public function index (Request $request){
         
-          //query builder
+        //query builder
         $query =  $this->penpalModel->query();
 
         //user fields
@@ -73,14 +73,22 @@ class ViewController extends Controller
             $query->where('goal_id', $request->goal);
         }
 
+        //search result
         $penpals = $query
             ->with(['user:id,name,gender,country,age'])
             ->latest()
             ->paginate(12);
 
+            //내용 번역
+         foreach($penpals as $penpal){
+            $translationTimeline = $this->translation($penpal->self_context,$this->langCode($penpal->self_context));
+            $penpal->translation = $translationTimeline;
+         
+        }
+
         return view('penpal.index')->with([
             'penpals'       => $penpals,
-            'penpalsCount'  => $penpals->count() //use $query->count() to get count of all results in db, not only in paginator collection
+            'penpalsCount'  => $penpals->count(),   //db에 포함된 모든 결과의 수를 가져옴
         ]);
     }
 
