@@ -33,76 +33,55 @@ class ViewController extends Controller
 
     //펜팔 메인 페이지
     public function index (Request $request){
-      
-        //base Object
-        $penpals =  $this->penpalModel->getUsers();
         
+          //query builder
+        $query =  $this->penpalModel->query();
 
-        //닉네임 검색
-        if (!empty($request->name)) {
-            $users = $this->userModel->where('name', 'like', '%' . $request->name . '%')->get();
-            if (!empty($users)) {
+        //user fields
+        if(
+            $request->name || 
+            $request->ageMin ||
+            $request->ageMax ||
+            ($request->gender && $request->gender !== 'all') ||
+            ($request->country && $request->country !== 'all')
+        ){
+            $query->whereHas('user', function($query) use ($request){
+                if($request->name){
+                    $query->where('name', 'like', '%' . $request->name . '%');
+                }
 
-                $penpals->whereIn('user_id', $users);
-            }        
+                if($request->gender && $request->gender !== 'all'){
+                    $query->where('gender', $request->gender);
+                }
+
+                if($request->country && $request->country !== 'all'){
+                    $query->where('country', $request->country);
+                }
+
+                if($request->ageMin){
+                    $query->where('age', '>', floor($request->ageMin));
+                }
+
+                if($request->ageMax){
+                    $query->where('age', '<', floor($request->ageMax));
+                }
+            });
         }
 
-
-        //성별 검색
-        if (!empty($request->gender) && $request->gender !== 'all') { 
-            $penpals->leftJoin('users', 'penpals.user_id', '=', 'users.id')
-            ->select('penpals.*', 'users.gender')
-            ->where('users.gender', $request->gender); 
+        //goal search
+        if ($request->goal && $request->goal !== 'all') {
+            $query->where('goal_id', $request->goal);
         }
 
-
-        // 국적 검색 
-        if (!empty($request->country) && $request->country !== 'all') { 
-        $penpals->leftJoin('users', 'penpals.user_id', '=', 'users.id')
-        ->select('penpals.*', 'users.country')
-        ->where('users.country', $request->country); 
-        }
-
-
-         // 목적 검색
-         if (!empty($request->goal) && $request->goal !== 'all') {
- 
-            $penpals = $this->penpalModel->where('goal_id',$request->goal)->latest();
-         }
-
-
-        //나이로 검색
-        if($request->ageMin != 1 || $request->ageMax != 100 ){
-
-            $ageMin = floor($request->ageMin);
-            $ageMax = floor($request->ageMax);
-
-            $penpals = $this->penpalModel->leftJoin('users', 'penpals.user_id', '=', 'users.id')
-            ->select('penpals.*', 'users.age')
-            ->whereBetween('users.age', [$ageMin, $ageMax])
-            ->orderBy('penpals.created_at','desc');
-
-        }
-
-        
-        //search result
-        $penpalsData = $penpals->orderBy('penpals.created_at','desc')->paginate(12); 
-         
-        //내용 번역
-         foreach($penpalsData as $penpal){
-
-            $translationTimeline = $this->translation($penpal->self_context,$this->langCode($penpal->self_context));
-            $penpal->translation = $translationTimeline;
-         
-        }
-        
-        $penpalsCount = count($penpalsData);
+        $penpals = $query
+            ->with(['user:id,name,gender,country,age'])
+            ->latest()
+            ->paginate(12);
 
         return view('penpal.index')->with([
-            'penpals'       => $penpalsData,
-            'penpalsCount'  => $penpalsCount
-            ]);
-
+            'penpals'       => $penpals,
+            'penpalsCount'  => $penpals->count() //use $query->count() to get count of all results in db, not only in paginator collection
+        ]);
     }
 
 
