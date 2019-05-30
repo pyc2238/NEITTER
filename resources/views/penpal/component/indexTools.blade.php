@@ -2,7 +2,10 @@
     <div class="col">
             <i class="fa fa-exclamation-circle"></i>TOTAL : {{ $penpalsCount }}
     </div>
-    <div class="col"></div>
+    <div class="col">
+            <span id="penpal-image-view" class="fa fa-th float-right" style="font-size: 25px;"></span> 
+            <span id="penpal-list-view" class="fa fa-list float-right" style="font-size: 25px;padding-right:7px;"></span> 
+    </div>
     <div class="col">
         <div class="col">
             
@@ -13,9 +16,13 @@
                         <option value="24">@lang('penpal/component/indexMenu.twenty_four')</option>
                         <option value="36">@lang('penpal/component/indexMenu.thirty_six')</option>
                     </select>
-            </form>        
+                </form>
+                      
+          
         </div>
-        <div class="col"></div>
+        <div class="col">
+              
+        </div>
             
     </div>
 </div>

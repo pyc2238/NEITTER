@@ -9,7 +9,7 @@
     background-color: white;
 }
 
-
+/* penpal main page */
 .penpal-list-table{
     border-left:1px solid  #bcbcbc;
     border-right:1px solid  #bcbcbc;
@@ -64,6 +64,21 @@
      -webkit-box-orient: vertical;
 }
 
+#penpal-image-view{
+    cursor:pointer;
+}
+#penpal-image-view:hover{
+    color:#F97124;
+}
+
+#penpal-list-view{
+    cursor:pointer;
+}
+#penpal-list-view:hover{
+    color:#F97124;
+}
+
+/* registration */
 .penpal-registration-container{
 
     height: auto;
@@ -76,7 +91,7 @@
 }
 
 
-
+/* timeline */
 .timeline-main-container{
     
     height: auto;
@@ -150,4 +165,7 @@
     border: 1px solid #bcbcbc;
 
 } */
+
+
+
 

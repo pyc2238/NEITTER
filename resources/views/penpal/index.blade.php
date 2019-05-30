@@ -46,7 +46,7 @@
             <div class="row">
                 <div class="col"></div>
                 <div class="col"> 
-                    @include('penpal.component.indexTable')
+                    @include('penpal.component.indexTableList')
                  </div>
                 <div class="col"></div>
             </div>

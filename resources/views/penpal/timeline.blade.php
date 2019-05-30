@@ -132,10 +132,12 @@
 
                         </div>
                         <div class="col">
-                            {{ $timelines->onEachSide(5)->links() }}
+                            
                         </div>
                         <div class="col">
-
+                            @if ($timelines->hasPages())
+                                {{ $timelines->onEachSide(5)->links() }}
+                            @endif
                         </div>
 
                     </div>
