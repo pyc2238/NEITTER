@@ -31,7 +31,7 @@ class ViewController extends Controller
 
     //펜팔 메인 페이지
     public function index (Request $request){
-             
+        
         if($request->list){
             $list = $request->list;
         }else{
@@ -76,6 +76,11 @@ class ViewController extends Controller
         //goal search
         if ($request->goal && $request->goal !== 'all') {
             $query->where('goal_id', $request->goal);
+        }
+
+        //is has photo
+        if($request->cehck_photo){
+            $query->whereNotNull('image');
         }
 
         //search result

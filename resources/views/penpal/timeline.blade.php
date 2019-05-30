@@ -16,7 +16,7 @@
         <div class="col-10">
             <div class="row justify-content-center timeline-main-container">
                 <div class="col timeline-card-box">
-                    <img src="{{asset("data/ProjectImages/master/logoImage/23.png")}}" width="72" alt="thumbnail">
+                    <img src="{{ asset("data/ProjectImages/master/logoImage/23.png") }}" width="72" alt="thumbnail">
                     <h2 style='display:inline-block;'>@lang('penpal/component/timeline.subject')</h2>
                     <p class="float-right" style="color:blue;font-size:10px">@lang('penpal/component/timeline.intro')
                     </p>

@@ -50,6 +50,7 @@
                             <option value="ko">@lang('penpal/component/indexMenu.korea')</option>
                             <option value="jp">@lang('penpal/component/indexMenu.japan')</option>
                         </select>
+                    
                     </div>
                 </div>
             </div>
@@ -73,7 +74,10 @@
                         <input name="name" id="name" class="form-control input-sm" maxlength="50" autocomplete=off>
                     </div>
                     <div class="form-group col-md=3 pdt1">
-                        <button class="btn btn-info" type="submit"><i
+                            
+                        <input style="margin-left: 30px" type="checkbox" name="cehck_photo" value="photo" id="check_photo" />
+                        <label  id="check_photo_label" for="check_photo">@lang('penpal/component/indexMenu.photo')</label>
+                        <button class="btn btn-info" style="margin-left:40px" type="submit"><i
                                 class="fa fa-search">@lang('penpal/component/indexMenu.search')</i></button>
                     </div>
                 </div>

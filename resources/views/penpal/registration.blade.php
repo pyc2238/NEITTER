@@ -91,7 +91,7 @@
 
                                 <label
                                     for="exampleFormControlFile1">@lang('penpal/component/registration.photo')</label>
-                                <input type="file" name="file" class="form-control-file" id="exampleFormControlFile1" required>
+                                <input type="file" name="file" class="form-control-file" id="exampleFormControlFile1">
 
                                 <br>
                                 <br>

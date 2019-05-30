@@ -4,9 +4,15 @@
     <tr>
 
         <td rowspan=3>
-            <a href="#"><img src="{{ $penpal->image }}" alt="No Image"
+            @if($penpal->image != null)
+                <a href="#"><img src="{{ $penpal->image }}" alt="No Image"
+                        style="max-width: none; height: 100px; display: inline; " height="80px" width="125px"
+                        class="img-thumbnail"></a>
+            @else
+                <a href="#"><img src="{{ asset("data/ProjectImages/master/logoImage/6.png") }}" alt="No Image"
                     style="max-width: none; height: 100px; display: inline; " height="80px" width="125px"
                     class="img-thumbnail"></a>
+            @endif
         </td>
 
         <td class="penpal-list-title">
@@ -38,8 +44,7 @@
     <tr>
 
         <td class="penpal-list-translation" colspan=3>
-            {{-- {{ $penpal->translation  }} --}}
-            {{ $penpal->self_context  }}
+            {{ $penpal->translation  }}
         </td>
 
     </tr>

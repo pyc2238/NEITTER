@@ -223,3 +223,35 @@
      width: 140px;
      padding: 5px 5px 5px 10px;
  }
+
+
+ /* penpal check photo check box */
+ #check_photo{
+    width:1px; 
+    height:1px; 
+    padding:0; 
+    border:0 none; 
+    margin:0; 
+    position:absolute; 
+    left:0; 
+    top:0; 
+    overflow:hidden;
+    clip:rect(0 0 0 0);
+    padding-left:70px;
+  }
+  
+  #check_photo_label{
+      padding-left:70px;
+    height:15px; 
+    line-height:15px; 
+    padding-left:20px; 
+    display:inline-block; 
+    background:url(http://hcs1105.com/wp/wp-content/themes/hcs1105/images/checkbox1.png) no-repeat 0 0; 
+    font-size:15px; 
+    vertical-align:middle; 
+    cursor:pointer;
+  }
+  
+  #check_photo:checked + label{
+    background-position: 0 -15px;
+  }

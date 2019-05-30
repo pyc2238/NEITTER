@@ -23,5 +23,6 @@
         'twelve' => '12개씩 보기',
         'twenty_four' => '24개씩 보기',
         'thirty_six' => '36개씩 보기',
+        'photo' => '사진'
     ];
 ?>
