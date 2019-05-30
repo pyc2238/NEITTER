@@ -20,14 +20,14 @@
                         <div class="col"></div>
                     </div>
                     <div class="row">
-                        <div class="col-7">
-                                @include('penpal.component.indexTools')
+                            <div class="col"></div>
+                            <div class="col-10">
+                                    @include('penpal.component.indexTools')
+                            </div>
+                            <div class="col"></div>
                         </div>
-                        <div class="col">
-                           
-                        </div>
-                        <div class="col"></div>
-                    </div>
+               
+                  
             <hr>
             @if($penpalsCount == 0)
             <div class="text-center" style="margin-top:15%">
@@ -62,7 +62,7 @@
                 </div>
                 <div class="col">
                     @if ($penpals->hasPages())
-                        {{ $penpals->onEachSide(5)->links() }}
+                        {{ $penpals->appends(['list'=>$list,'page'=>$page])->onEachSide(5)->links() }}
                     @endif
 
                 </div>

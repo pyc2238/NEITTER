@@ -31,7 +31,14 @@ class ViewController extends Controller
 
     //펜팔 메인 페이지
     public function index (Request $request){
-        
+             
+        if($request->list){
+            $list = $request->list;
+        }else{
+            $list = 12;
+        };
+
+
         //query builder
         $query =  $this->penpalModel->query();
 
@@ -75,7 +82,7 @@ class ViewController extends Controller
         $penpals = $query
             ->with(['user:id,name,gender,country,age'])
             ->latest()
-            ->paginate(12);
+            ->paginate($list);
 
         //Content translation
          foreach($penpals as $penpal){
@@ -87,7 +94,9 @@ class ViewController extends Controller
         return view('penpal.index')->with([
             'penpals'       => $penpals,
             'penpalsCount'  => $penpals->count(),   //db에 포함된 모든 결과의 수를 가져옴
-            'nickname'      => $request->name,          
+            'nickname'      => $request->name,
+            'list'          => $list, 
+            'page'          => $request->page,   
         ]);
     }
 

@@ -20,5 +20,9 @@
         'other' =>'その他',
         'nickname' =>'ネーム',
         'search' =>'検索',
+        'twelve' => '12個ずつ見る',
+        'twenty_four' => '24個ずつ見る',
+        'thirty_six' => '36個ずつ見る',
+
     ];
 ?>

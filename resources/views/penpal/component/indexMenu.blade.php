@@ -2,8 +2,8 @@
 
 <div style="height:auto;">
 
-    <form method="get" action="{{ route('penpal.index.search') }}" class="form-inline" id="fsearch">
-        {{-- @csrf --}}
+    <form method="post" action="{{ route('penpal.index.search',['list'=>$list,'page' => $page]) }}" class="form-inline" id="fsearch">
+        @csrf
         <input type="hidden" name="ageMin" value="" id="ageMin-input">
         <input type="hidden" name="ageMax" value="" id="ageMax-input">
 

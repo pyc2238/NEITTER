@@ -105,8 +105,9 @@ Route::resource('notice', 'Admin\NoticeBoardController');
 
 /*펜팔 서비스*/
 Route::group(['prefix' => 'penpal'], function () {
-    Route::get('/search', 'Penpal\ViewController@index')->name('penpal.index.search');
-    Route::get('/index', 'Penpal\ViewController@index')->name('penpal.index');
+
+    Route::match(['get','post'],'/search', 'Penpal\ViewController@index')->name('penpal.index.search');
+    Route::match(['get','post'],'/index', 'Penpal\ViewController@index')->name('penpal.index');
     Route::get('/introduction', 'Penpal\ViewController@introduction')->name('penpal.introduction');
     Route::get('/timeline', 'Penpal\ViewController@timeline')->name('penpal.timeline');
     Route::get('/timeline/delete', 'Penpal\TimelineController@delete')->name('penpal.timeline.delete')->middleware('auth');;
