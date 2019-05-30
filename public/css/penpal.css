@@ -10,75 +10,50 @@
 }
 
 
-.penpal-list-box{
-    margin-top:3%;
-    border-top: 1px solid hsl(0, 0%, 74%);
-    border-bottom: 1px solid hsl(0, 0%, 74%);
+.penpal-list-table{
+    border-left:1px solid  #bcbcbc;
+    border-right:1px solid  #bcbcbc;
+    border-bottom:1px solid  #bcbcbc;
+    border-top:1px solid  #bcbcbc;
     box-shadow: 0 4px 0.5px -4px gray;
+    margin-top:10px;
 }
-
-.penpal-list-image{
-   
-    border-top: 1px solid hsl(0, 0%, 74%);
-    border-bottom: 1px solid hsl(0, 0%, 74%);
-    box-shadow: 0 4px 0.5px -4px gray;  
-    
-}
-
-.penpal-list-card{
-    border-top: 1px solid hsl(0, 0%, 74%);
-    border-bottom: 1px solid hsl(0, 0%, 74%);
-    box-shadow: 0 4px 0.5px -4px gray;
-}
-
-.penpal-list-card-body{
-    height:100%;
-    border: 1px solid #bcbcbc;
-}
-
-.penpal-list-card-border{
-    border: 1px solid #bcbcbc;
-    background-color:#CADCF7;
-    border: 1px solid hsl(0, 0%, 74%);
-}
-
-.penpal-list-center{
-    border: 1px solid hsl(0, 0%, 74%);
-    background-color:#C5D1E4;
-    
-}
-
 .penpal-list-title{
-    border-left: 1px solid hsl(0, 0%, 74%);
+    width: 220px;
+    height: 20px;
     background-color:#EDEEF2;
+    border-left:1px solid  #bcbcbc;
+    border-bottom:1px solid  #bcbcbc;
+    box-shadow: 0 4px 0.5px -5px gray;
+    padding-left: 10px;
+    padding-top:5px;
+  
 }
-
-.penpal-list-menu{
-    /* border-right: 1px solid hsl(0, 0%, 74%); */
+.penpal-list-blank{
     background-color:#EDEEF2;
+    box-shadow: 0 4px 0.5px -5px gray;
+    width:320px;
+    height:20px;
 }
 
 .penpal-list-date{
-    border-right: 1px solid hsl(0, 0%, 74%);
     background-color:#EDEEF2;
+    box-shadow: 0 4px 0.5px -5px gray;
+    width:220px;
+    height:20px;
+    padding-left:65px;
 }
 
-.penpal-list-body{
- 
+.penpal-list-content{
+    border-left:1px solid  #bcbcbc;
+    font-size: 11px;
 }
 
-#self_context{
-    width:100%;
-    text-overflow:ellipsis;
-    overflow:hidden;
-    white-space:nowrap;  
-}
-
-#translation{
-    width:100%;
-    text-overflow:ellipsis;
-    overflow:hidden;
-    white-space:nowrap;  
+.penpal-list-translation{
+    border-left:1px solid  #bcbcbc;
+    border-bottom:1px solid  #bcbcbc;
+    box-shadow: 0 4px 0.5px -4px gray;
+    font-size: 11px;
 }
 
 .penpal-registration-container{
