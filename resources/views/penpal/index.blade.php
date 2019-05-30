@@ -42,15 +42,17 @@
                 @endif
             </div>
             @else
-
-            <div class="row">
-                <div class="col"></div>
-                <div class="col"> 
-                    @include('penpal.component.indexTableList')
-                 </div>
-                <div class="col"></div>
-            </div>
-
+                @if( 1 == 2 )
+                    <div class="row">
+                        <div class="col"></div>
+                        <div class="col"> 
+                                @include('penpal.component.indexTableList')
+                        </div>
+                        <div class="col"></div>
+                    </div>
+                @else
+                    @include('penpal.component.indexImageList')
+                @endif
             @endif
 
             <div class="row timeline-pageBox">
