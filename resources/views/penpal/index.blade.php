@@ -63,7 +63,7 @@
                 
             @endif
 
-            <div class="row timeline-pageBox">
+            <div class="row penpal-pageBox">
                 <div class="col">
 
                 </div>

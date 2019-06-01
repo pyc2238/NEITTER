@@ -83,11 +83,10 @@
     border:1px solid  #bcbcbc;
     box-shadow: 0 4px 0.5px -4px gray;
 }
+.image-list:hover{
 
-.image-list:hover+ .image-iist-info{
-    color:orange;
+    border:1.1px ridge #3979F4;
 }
-
 
 /* registration */
 .penpal-registration-container{
@@ -101,8 +100,9 @@
     background-color: white;
 }
 
-
-
+.penpal-pageBox{
+    margin-top:10%;
+}
 /* div>.commentBoxsecound {
     background-color: white;
     border: 1px solid #bcbcbc;

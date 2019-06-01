@@ -8,11 +8,11 @@
             @if($penpal->image != null)
                 <a href="#"><img src="{{ $penpal->image }}" alt="No Image"
                         style="max-width: none; height: 100px; display: inline; " height="80px" width="125px"
-                        class="img-thumbnail"></a>
+                        class="img-thumbnail image-list"></a>
             @else
                 <a href="#"><img src="{{ asset("data/ProjectImages/master/logoImage/6.png") }}" alt="No Image"
                     style="max-width: none; height: 100px; display: inline; " height="80px" width="125px"
-                    class="img-thumbnail"></a>
+                    class="img-thumbnail image-list"></a>
             @endif
         </td>
 

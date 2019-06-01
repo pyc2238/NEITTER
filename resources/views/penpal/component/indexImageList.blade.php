@@ -24,8 +24,8 @@
                             @endif
                         </td>
                     </tr>
-                    <tr class="text-center image-iist-info">
-                        <td>
+                    <tr class="text-center">
+                        <td class="image-iist-info">
                             {{ $penpal->user->name  }}
 
                             @if($penpal->user->gender == 'men')
