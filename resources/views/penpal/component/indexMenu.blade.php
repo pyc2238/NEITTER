@@ -2,7 +2,7 @@
 
 <div style="height:auto;">
 
-    <form method="post" action="{{ route('penpal.index.search',['list'=>$list,'page' => $page]) }}" class="form-inline" id="fsearch">
+    <form method="post" action="{{ route('penpal.index.search',['list'=>$list]) }}" class="form-inline" id="fsearch">
         @csrf
         <input type="hidden" name="ageMin" value="" id="ageMin-input">
         <input type="hidden" name="ageMax" value="" id="ageMax-input">
@@ -87,7 +87,6 @@
         
     </form>
 </div>
-{{-- <div class="col" style="border:1px solid green;"></div> --}}
 
 <link rel="stylesheet" href="{{asset('/css/nouislider.css')}}">
 <script src="{{asset('/js/nouislider.js')}}"></script>
