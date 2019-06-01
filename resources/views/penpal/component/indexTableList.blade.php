@@ -1,4 +1,5 @@
 @foreach($penpals as $penpal)
+
 <table class="penpal-list-table">
 
     <tr>
@@ -35,7 +36,7 @@
 
     <tr>
 
-        <td class="penpal-list-content" colspan=3>
+        <td class="penpal-list-content" id="list-content" colspan=3>
             {{ $penpal->self_context  }}
         </td>
 

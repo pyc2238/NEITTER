@@ -3,7 +3,8 @@
 @lang('penpal/index.title')
 @endsection
 @section('penpal')
-<link rel="stylesheet" href="{{asset('/css/penpal.css')}}">
+    <link rel="stylesheet" href="{{asset('/css/penpal.css')}}">
+    <script src="{{ asset('/js/penpal.js') }}"></script>
 @endsection
 @section('content')
 
@@ -42,17 +43,24 @@
                 @endif
             </div>
             @else
-                @if( 1 == 2 )
-                    <div class="row">
+                
+                    <div class="row" id="penpal-list-box">
                         <div class="col"></div>
                         <div class="col"> 
                                 @include('penpal.component.indexTableList')
                         </div>
                         <div class="col"></div>
                     </div>
-                @else
-                    @include('penpal.component.indexImageList')
-                @endif
+                
+                <div class="row" id="penpal-image-box" style="display:none">
+                    <div class="col"></div>
+                    <div class="col-10">
+                        @include('penpal.component.indexImageList')            
+                    </div>
+                    <div class="col"></div>
+                    
+                </div>    
+                
             @endif
 
             <div class="row timeline-pageBox">
@@ -74,8 +82,5 @@
     </div>
 
 </div>
-
-
-
 
 @endsection

@@ -1,0 +1,78 @@
+.penpal-main-container{
+    
+    height: auto;
+    margin: 0px auto;
+    margin-top: 5px;
+    margin-bottom: 5px;
+    padding: 20px;
+    border: 1px solid #bcbcbc;
+    background-color: white;
+}
+/* timeline */
+.timeline-main-container{
+    
+    height: auto;
+    margin: 0px auto;
+    margin-top: 5px;
+    margin-bottom: 5px;
+    padding: 20px;
+    border: 1px solid #bcbcbc;
+    background-color: white;
+}
+
+
+.timeline_tools{
+    padding-top:1%;
+    border: 1px solid hsl(0, 0%, 74%);
+    box-shadow: 0 4px 0.5px -4px gray;
+}
+
+#timebutton{
+    width: 100%;
+    height: 100%;
+}
+
+.timeline-card{
+    margin-top: 20px;
+    border: 1px solid hsl(0, 0%, 74%);
+    box-shadow: 0 4px 0.5px -4px gray;
+}
+
+
+
+.timeline-card-title{
+
+    border-right: 1px solid hsl(0, 0%, 74%);
+    background-color:#EDEEF2;
+}
+.timeline-card-date{
+    border-left: 1px solid hsl(0, 0%, 74%);
+    background-color:#F8F9FD;
+}
+.timeline-card-menu{
+    background-color:#F8F9FD;
+}
+.timeline-card-center{
+    border: 1px solid #80A4F3;
+}
+
+.timeline-menuBtn{
+    margin-top:5px;
+    margin-left:5px;
+}
+
+.timeline-pageBox{
+    margin-top:10%;
+}
+
+/* 타임라인 자기사진 둥글게 */
+.timeline-card-selfPhoto{
+    border-radius: 7px;
+    -moz-border-radius: 7px;
+    -khtml-border-radius: 7px;
+    -webkit-border-radius: 7px;
+}
+
+#View_area{
+    display: inline-block;
+}

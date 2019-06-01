@@ -3,8 +3,8 @@
 @lang('penpal/component/timeline.title')
 @endsection
 @section('penpal')
-<link rel="stylesheet" href="{{ asset('/css/penpal.css') }}">
-<script src="{{ asset('/js/penpal.js') }}"></script>
+<link rel="stylesheet" href="{{ asset('/css/timeline.css') }}">
+<script src="{{ asset('/js/timeline.js') }}"></script>
 @endsection
 @section('content')
 @include('penpal.component.menu')
