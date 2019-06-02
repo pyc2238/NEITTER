@@ -14,13 +14,26 @@
                                         class="img-thumbnail image-list" />
                                 </a>
                             @else
-                                <a href="#">
-                                    <img 
-                                        src="{{ asset("data/ProjectImages/master/logoImage/6.png") }}" 
-                                        alt="No Image"
-                                        style="max-width: none; height: 170px; width: 180px; display: inline;" 
-                                        class="img-thumbnail image-list" />
-                                </a>
+                                @if($penpal->user->selfPhoto != null)
+                                    <a href="#">
+                                        <img 
+                                            src="{{ $penpal->user->selfPhoto }}" 
+                                            alt="No Image"
+                                            style="max-width: none; height: 170px; width: 180px; display: inline;" 
+                                            class="img-thumbnail image-list" />
+                                    </a>
+                            
+                                @else
+                                    <a href="#">
+                                        <img 
+                                            src="{{ asset("data/ProjectImages/master/logoImage/6.png") }}" 
+                                            alt="No Image"
+                                            style="max-width: none; height: 170px; width: 180px; display: inline;" 
+                                            class="img-thumbnail image-list" />
+                                    </a>
+    
+                                @endif
+                                
                             @endif
                         </td>
                     </tr>

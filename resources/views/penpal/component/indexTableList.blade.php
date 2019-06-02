@@ -7,12 +7,20 @@
         <td rowspan=3>
             @if($penpal->image != null)
                 <a href="#"><img src="{{ $penpal->image }}" alt="No Image"
-                        style="max-width: none; height: 100px; display: inline; " height="80px" width="125px"
+                        style="max-width: none; height: 130px; display: inline; " height="80px" width="135px"
                         class="img-thumbnail image-list"></a>
             @else
-                <a href="#"><img src="{{ asset("data/ProjectImages/master/logoImage/6.png") }}" alt="No Image"
-                    style="max-width: none; height: 100px; display: inline; " height="80px" width="125px"
+                @if($penpal->user->selfPhoto != null)
+                    <a href="#"><img src="{{ $penpal->user->selfPhoto }}" alt="No Image"
+                        style="max-width: none; height: 130px; display: inline; " height="80px" width="135px"
+                        class="img-thumbnail image-list"></a>
+
+                @else
+                    <a href="#"><img src="{{ asset("data/ProjectImages/master/logoImage/6.png") }}" alt="No Image"
+                    style="max-width: none; height: 130px; display: inline; " height="80px" width="135px"
                     class="img-thumbnail image-list"></a>
+                @endif
+                
             @endif
         </td>
 

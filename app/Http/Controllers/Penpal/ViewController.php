@@ -90,7 +90,7 @@ class ViewController extends Controller
 
         //search result
         $penpals = $query
-            ->with(['user:id,name,gender,country,age'])
+            ->with(['user:id,name,gender,country,age,selfPhoto'])
             ->latest()
             ->paginate($list);
 
