@@ -19,9 +19,11 @@
                 <p class='float-right' style='font-size:15px; '>
                     {{$comment->created_at}}
                     @if(Auth::check() && Auth::user()->name == $comment->user->name)
-                    <i class="fa fa-edit updateBtn pnt" style='color:blue' title='update' id="updateBtn{{$comment->id}}"></i>
-                    <i class="fa fa-exchange  pnt" style='color:#06f890' title='translation' id='translation{{ $comment->id }}'></i>
-                    <i class="fa fa-trash pnt" style='color:red' title='delete' onclick="location.href='{{route('inquiry.comment.delete',['boardNum'=>$inquiry->num,'search'=>$search,'where'=>$where,'page'=>$page,'commentId'=>$comment->id])}}'"></i>
+                        <i class="fa fa-edit updateBtn pnt" style='color:blue' title='update' id="updateBtn{{$comment->id}}"></i>
+                        <i class="fa fa-exchange  pnt" style='color:#06f890' title='translation' id='translation{{ $comment->id }}'></i>
+                        <i class="fa fa-trash pnt" style='color:red' title='delete' onclick="location.href='{{route('inquiry.comment.delete',['boardNum'=>$inquiry->num,'search'=>$search,'where'=>$where,'page'=>$page,'commentId'=>$comment->id])}}'"></i>
+                    @else
+                        <i class="fa fa-exchange  pnt" style='color:#06f890' title='translation' id='translation{{ $comment->id }}'></i>
                     @endif
                 </p>
             </div>
