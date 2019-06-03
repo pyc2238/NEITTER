@@ -12,6 +12,7 @@
         'translation_content'   => '▶한일(번역)보기',
         'timeline_subject' => '펜팔 - 타임라인',
         'edit' => '편집',
+        'delete' => '삭제',
         'mail'  => '쪽지',
         'friends'  => '친구등록',
         'wink'  => 'WINK',

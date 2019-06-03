@@ -1,8 +1,8 @@
 <?php
     return [
 
-        'title' => 'メール友サービス登録',
-        'subject' =>'メール友サービス登録',
+        'title' => 'メル友  情報修正',
+        'subject' =>'メル友 - 情報修正',
         'nickname' =>'ニックネーム',
         'country' =>'国籍',
         'selfContext' =>'自己紹介',
@@ -18,7 +18,7 @@
         'reason5' => '韓国/日本が知りたいです',
         'reason6' => 'その他',
         'photo' => '自分の写真',
-        'registration' => '登録',
+        'update' => '修正',
         'cancellation' => 'キャンセル',
 
     ];

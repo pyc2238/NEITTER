@@ -85,8 +85,7 @@
                                     @if(Auth::check() && Auth::id() == $timeline->user->id && $timeline->is_system == 0)
                                     <i class="fa fa-trash float-right timeline-menuBtn"
                                         style='color:red;cursor:pointer;' title='delete'
-                                        onclick="location.href='{{ 
-                                                                route('penpal.timeline.delete',['id' => $timeline->id])}}'">
+                                        onclick="location.href='{{ route('penpal.timeline.delete',['id' => $timeline->id])}}'">
                                     </i>
                                     <i class="fa fa-edit updateBtn float-right timeline-menuBtn" style='color:blue; cursor:pointer;' title='update ' id="updateBtn{{ $timeline->id }}"></i>
                                     @endif
@@ -108,7 +107,7 @@
                                     <br>
                                     @if($timeline->is_system == 1)
                                     
-                                        {{ $timeline->user->name }}様がペンパルを登録しました。
+                                        {{ $timeline->user->name }}様がメール友サービスに登録しました。
                                     
                                     @endif
 

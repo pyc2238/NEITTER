@@ -1,4 +1,4 @@
-<h2 style='display:inline-block;margin-top:4%;'>@lang('penpal/component/showIntroBox.timeline_subject')</h2>
+<h2 style='display:inline-block;margin-top:4%;'>@lang('penpal/show.timeline_subject')</h2>
                   
 <hr>
 <div class="row">

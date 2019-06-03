@@ -71,6 +71,13 @@ class ShowPenpalController extends Controller
         return redirect(route('penpal.index'));
     }
 
+    public function penpalDelete(Request $request){
+        
+        $this->penpalModel->where('id',$request->id)->delete();
+
+        return redirect(route('penpal.index'));
+    }
+
     public function showTimelineUpdate(Request $request){
         $this->timelineModel->where('id',$request->id)
         ->update(['content' => $request->comment]);

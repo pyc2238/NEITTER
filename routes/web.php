@@ -119,6 +119,7 @@ Route::group(['prefix' => 'penpal'], function () {
     Route::group(['prefix' => 'show'], function () {
         Route::get('/edit', 'Penpal\ViewController@edit')->name('penpal.show.edit');
         Route::post('/update', 'Penpal\ShowPenpalController@penpalUpdate')->name('penpal.show.update');
+        Route::get('/delete', 'Penpal\ShowPenpalController@penpalDelete')->name('penpal.show.delete');
         Route::get('/timeline/delete', 'Penpal\ShowPenpalController@showTimelineDelete')->name('penpal.show.timeline.delete');
         Route::post('/timeline/update', 'Penpal\ShowPenpalController@showTimelineUpdate')->name('penpal.show.timeline.update');
     });
