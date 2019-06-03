@@ -150,6 +150,11 @@
     box-shadow: 0 4px 0.5px -4px gray;
 }
 
+.visitorName:hover{
+    color:orange;
+    text-decoration:none;
+}
+
 
 
 

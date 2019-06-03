@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreatePenpalsTable extends Migration
+class CreateWinksTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,16 +13,11 @@ class CreatePenpalsTable extends Migration
      */
     public function up()
     {
-        Schema::create('penpals', function (Blueprint $table) {
-            $table->increments('id');
-            $table->text('self_context')->nullable();
-            $table->text('image')->nullable();
-            $table->json('language');
-            $table->integer('visitors_count')->default(0);
+        Schema::create('winks', function (Blueprint $table) {
             $table->integer('user_id')->unsigned();
             $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
-            $table->integer('goal_id')->unsigned();
-            $table->foreign('goal_id')->references('id')->on('goals')->onDelete('cascade');
+            $table->integer('penpal_id')->unsigned();
+            $table->foreign('penpal_id')->references('id')->on('penpals')->onDelete('cascade');
             $table->timestamps();
         });
     }
@@ -34,6 +29,6 @@ class CreatePenpalsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('penpals');
+        Schema::dropIfExists('winks');
     }
 }

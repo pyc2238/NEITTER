@@ -17,6 +17,8 @@
         'mail'  => 'メッセージ',
         'friends'  => '友達登録',
         'wink'  => 'WINK',
-        'future'  => '見込み',  
+        'visitors'  => '見込み', 
+        'nickname' => 'ニックネーム',
+        'date'     => '日時' 
     ];
 ?>

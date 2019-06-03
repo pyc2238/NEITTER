@@ -10,6 +10,7 @@ use Auth;
 use App\Models\Users\User;
 use App\Models\Penpal\Timeline;
 use App\Models\Penpal\Penpal;
+use App\Models\Penpal\Visitor;
 
 
 class ViewController extends Controller
@@ -19,6 +20,7 @@ class ViewController extends Controller
     private $timelineModel      = null;
     private $penpalModel        = null;
     private $userModel          = null;
+    private $visitorModel       = null;
   
 
     public function __construct(){
@@ -26,6 +28,7 @@ class ViewController extends Controller
         $this->timelineModel    = new Timeline();
         $this->penpalModel      = new Penpal();
         $this->userModel        = new User();
+        $this->visitorModel     = new Visitor();
    
     }
 
@@ -116,7 +119,22 @@ class ViewController extends Controller
 
     public function show($id){
 
+
         $friend = $this->penpalModel->getUser()->where('id',$id)->first();
+        
+
+        if($friend->user->id != Auth::id()){
+            $friend->visitors_count++;
+            $friend->save();
+            $this->visitorModel->create([
+                    'user_id'   => Auth::id(),
+                    'penpal_id' => $friend->id,
+                ]);
+        }
+
+        // 해당 펜팔의 방문자 구하기
+        $visitors = $this->penpalModel->find($friend->id)->visitor_user()->get();
+        
 
         $friendTimeline = $this->timelineModel->
                 where('user_id',$friend->user_id)
@@ -144,8 +162,9 @@ class ViewController extends Controller
         }
 
         return view('penpal.show')->with([
-            'friend'    => $friend,
-            'timelines'  => $friendTimeline,
+            'friend'        => $friend,
+            'timelines'     => $friendTimeline,
+            'visitors'      => $visitors,
         ]);
     }
     

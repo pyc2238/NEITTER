@@ -16,6 +16,8 @@
         'mail'  => '쪽지',
         'friends'  => '친구등록',
         'wink'  => 'WINK',
-        'future'  => '전망',
+        'visitors'  => '방문자',
+        'nickname' => '닉네임',
+        'date'     => '일시'
     ];
 ?>

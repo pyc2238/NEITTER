@@ -71,6 +71,11 @@ class User extends Authenticatable
         return $this->belongsToMany('App\Models\Penpal\Penpal','penpal_user');
     }
 
+       //penpals테이블 user테이블 N-N (중간테이블 visitors)
+       public function visitor_penapl(){
+        return $this->belongsToMany('App\Models\Users\User','visitors');
+    }
+
     
 
     //password Mutators
