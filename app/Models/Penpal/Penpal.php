@@ -23,7 +23,7 @@ class Penpal extends Model
 
     public function goal()
     {
-        return $this->hasOne('App\Models\Penpal\Penapl');
+        return $this->hasOne('App\Models\Penpal\Penapl','goal_id');
     }
 
      //penpals테이블 user테이블 N-N (중간테이블 penpal_user)
@@ -49,8 +49,8 @@ class Penpal extends Model
             ->update(['image' => $file]);
     }
 
-    public function getUsers(){
-        return $this->with(['user:id,name,gender,country,age']);
+    public function getUser(){
+        return $this->with(['user:id,name,gender,country,age,selfPhoto']);
     }
 
    

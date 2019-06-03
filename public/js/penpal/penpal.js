@@ -19,3 +19,12 @@ $(function () {
     });
 
 });
+
+// show 번역 div
+$(document).on("click", ".show-table-self_context > span", function() {
+    if ($(this).next().css("display") == "none") {
+      $(this).next().show();
+    } else {
+      $(this).next().hide();
+    }
+  });

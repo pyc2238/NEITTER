@@ -3,8 +3,8 @@
 @lang('penpal/index.title')
 @endsection
 @section('penpal')
-    <link rel="stylesheet" href="{{asset('/css/penpal.css')}}">
-    <script src="{{ asset('/js/penpal.js') }}"></script>
+    <link rel="stylesheet" href="{{asset('/css/penpal/penpal.css')}}">
+    <script src="{{ asset('/js/penpal/penpal.js') }}"></script>
 @endsection
 @section('content')
 

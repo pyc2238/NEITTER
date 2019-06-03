@@ -96,7 +96,11 @@ class ViewController extends Controller
 
         //Content translation
          foreach($penpals as $penpal){
-            $translationPenpal = $this->translation($penpal->self_context,$this->langCode($penpal->self_context));
+            $translationPenpal = $this->translation(
+                    $penpal->self_context,
+                    $this->langCode($penpal->self_context)
+                );
+
             $penpal->translation = $translationPenpal;
          
         }
@@ -109,6 +113,23 @@ class ViewController extends Controller
             'page'          => $request->page,   
         ]);
     }
+
+    public function show($id){
+
+        $friend = $this->penpalModel->getUser()->where('id',$id)->first();
+
+        
+        $translationPenpal = $this->translation(
+                $friend->self_context,
+                $this->langCode($friend->self_context)
+            );
+
+        $friend->translation = $translationPenpal;
+
+        return view('penpal.show')->with([
+            'friend' => $friend, 
+        ]);
+    }   
 
 
     //펜팔 소개 페이지
@@ -141,5 +162,9 @@ class ViewController extends Controller
 
         return view('penpal.registration');
 
+    }
+
+    public function test(){
+        return view('penpal.show');
     }
 }

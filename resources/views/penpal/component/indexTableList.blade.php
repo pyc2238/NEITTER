@@ -5,23 +5,25 @@
     <tr>
 
         <td rowspan=3>
-            @if($penpal->image != null)
-                <a href="#"><img src="{{ $penpal->image }}" alt="No Image"
-                        style="max-width: none; height: 130px; display: inline; " height="80px" width="135px"
-                        class="img-thumbnail image-list"></a>
-            @else
-                @if($penpal->user->selfPhoto != null)
-                    <a href="#"><img src="{{ $penpal->user->selfPhoto }}" alt="No Image"
-                        style="max-width: none; height: 130px; display: inline; " height="80px" width="135px"
-                        class="img-thumbnail image-list"></a>
-
+                <a href="{{ route('penpal.friends',['id' => $penpal->id]) }}">
+                @if($penpal->image != null)
+                    <img src="{{ $penpal->image }}" alt="No Image"
+                            style="max-width: none; height: 130px; display: inline; " height="80px" width="135px"
+                            class="img-thumbnail image-list">
                 @else
-                    <a href="#"><img src="{{ asset("data/ProjectImages/master/logoImage/6.png") }}" alt="No Image"
-                    style="max-width: none; height: 130px; display: inline; " height="80px" width="135px"
-                    class="img-thumbnail image-list"></a>
+                    @if($penpal->user->selfPhoto != null)
+                        <img src="{{ $penpal->user->selfPhoto }}" alt="No Image"
+                            style="max-width: none; height: 130px; display: inline; " height="80px" width="135px"
+                            class="img-thumbnail image-list">
+
+                    @else
+                        <img src="{{ asset("data/ProjectImages/master/logoImage/6.png") }}" alt="No Image"
+                        style="max-width: none; height: 130px; display: inline; " height="80px" width="135px"
+                        class="img-thumbnail image-list">
+                    @endif
+                    
                 @endif
-                
-            @endif
+            </a>
         </td>
 
         <td class="penpal-list-title">

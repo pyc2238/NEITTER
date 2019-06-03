@@ -109,6 +109,47 @@
 
 } */
 
+.show-table{
+    border:1px solid #C8CACA;
+}
+.show-table-self_context{
+    border-left:1px solid #C8CACA;
+}
+.show-table-bottom{
+    border-left:1px solid #C8CACA;
+    border-bottom:1px solid #C8CACA;
+    box-shadow: 0 4px 0.5px -4px gray;
+}
+
+#translation_content{
+    color: #B6B6B6;
+}
+#translation_content:hover{
+    cursor:pointer;
+    color: orange;
+}
+
+.penpal-show-container{
+    height: 900px;
+    margin: 0px auto;
+    margin-top: 5px;
+    margin-bottom: 5px;
+    padding: 20px;
+    border: 1px solid #bcbcbc;
+    background-color: white;
+}
+
+.show-goal-box{
+    background-color:#E4E7E9;
+    border-bottom:1px solid  #bcbcbc;
+    box-shadow: 0 4px 0.5px -4px gray;
+}
+
+.show-language-box{
+    background-color:#E4E7E9;
+    box-shadow: 0 4px 0.5px -4px gray;
+}
+
 
 
 

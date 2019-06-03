@@ -3,7 +3,7 @@
     @lang('penpal/component/introduction.title')
 @endsection
 @section('penpal')
-<link rel="stylesheet" href="{{asset('/css/penpal.css')}}">
+<link rel="stylesheet" href="{{asset('/css/penpal/penpal.css')}}">
 @endsection
 @section('content')
 @include('penpal.component.menu')

@@ -5,36 +5,34 @@
                 <table class="penpal-image-list">
                     <tr>
                         <td>
-                            @if($penpal->image)
-                                <a href="#">
-                                    <img 
-                                        src="{{ $penpal->image }}" 
-                                        alt="No Image"
-                                        style="max-width: none; height: 170px; width: 180px; display: inline; " 
-                                        class="img-thumbnail image-list" />
-                                </a>
-                            @else
-                                @if($penpal->user->selfPhoto != null)
-                                    <a href="#">
+                            <a href="{{ route('penpal.friends',['id' => $penpal->id]) }}">
+                                @if($penpal->image)
                                         <img 
-                                            src="{{ $penpal->user->selfPhoto }}" 
+                                            src="{{ $penpal->image }}" 
                                             alt="No Image"
-                                            style="max-width: none; height: 170px; width: 180px; display: inline;" 
+                                            style="max-width: none; height: 170px; width: 180px; display: inline; " 
                                             class="img-thumbnail image-list" />
-                                    </a>
-                            
+                                    
                                 @else
-                                    <a href="#">
-                                        <img 
-                                            src="{{ asset("data/ProjectImages/master/logoImage/6.png") }}" 
-                                            alt="No Image"
-                                            style="max-width: none; height: 170px; width: 180px; display: inline;" 
-                                            class="img-thumbnail image-list" />
-                                    </a>
-    
+                                    @if($penpal->user->selfPhoto != null)
+                                        
+                                            <img 
+                                                src="{{ $penpal->user->selfPhoto }}" 
+                                                alt="No Image"
+                                                style="max-width: none; height: 170px; width: 180px; display: inline;" 
+                                                class="img-thumbnail image-list" />
+                                    @else
+                                        
+                                            <img 
+                                                src="{{ asset("data/ProjectImages/master/logoImage/6.png") }}" 
+                                                alt="No Image"
+                                                style="max-width: none; height: 170px; width: 180px; display: inline;" 
+                                                class="img-thumbnail image-list" />
+        
+                                    @endif
+                                    
                                 @endif
-                                
-                            @endif
+                            </a>
                         </td>
                     </tr>
                     <tr class="text-center">
@@ -50,9 +48,9 @@
                             {{ $penpal->user->age  }}
 
                             @if($penpal->user->country == 'ko')
-                                <img src="{{ asset("data/ProjectImages/master/korea.png") }}" alt="men">
+                                <img src="{{ asset("data/ProjectImages/master/korea.png") }}" alt="korea">
                             @else
-                                <img src="{{ asset("data/ProjectImages/master/japan.png") }}" alt="women">
+                                <img src="{{ asset("data/ProjectImages/master/japan.png") }}" alt="japan">
                             @endif
                         </td>
                     </tr>

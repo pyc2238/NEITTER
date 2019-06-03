@@ -1,4 +1,4 @@
-<link rel="stylesheet" href="{{asset('/css/penpalMenu.css')}}">
+<link rel="stylesheet" href="{{asset('/css/penpal/penpalMenu.css')}}">
 
 <nav class="penpal_nav">
     <ul>

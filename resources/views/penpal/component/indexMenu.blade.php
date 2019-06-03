@@ -1,4 +1,4 @@
-<link rel="stylesheet" href="{{ asset('/css/shop-item.css') }}">
+<link rel="stylesheet" href="{{ asset('/css/penpal/shop-item.css') }}">
 
 <div style="height:auto;">
 
@@ -88,6 +88,6 @@
     </form>
 </div>
 
-<link rel="stylesheet" href="{{asset('/css/nouislider.css')}}">
-<script src="{{asset('/js/nouislider.js')}}"></script>
+<link rel="stylesheet" href="{{asset('/css/penpal/nouislider.css')}}">
+<script src="{{asset('/js/penpal/nouislider.js')}}"></script>
 
