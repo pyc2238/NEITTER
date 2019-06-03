@@ -39,7 +39,7 @@
             @else
                 <img src="{{ asset("data/ProjectImages/master/japan.png") }}" alt="women">
             @endif
-            <span class="float-right">{{ $penpal->created_at  }}</span>
+            <span class="float-right" style="padding-right:2%">{{ $penpal->created_at  }}</span>
         </td>
 
     </tr>

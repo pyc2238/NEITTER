@@ -149,21 +149,7 @@ class ViewController extends Controller
         ]);
     }
     
-    public function showTimelineUpdate(Request $request){
-        $this->timelineModel->where('id',$request->id)
-        ->update(['content' => $request->comment]);
-
-        return back();
-    }
-
-    public function showTimelineDelete(Request $request){
-        
-        $this->timelineModel->where('id',$request->id)->delete();
-
-        return back();
-    }
-
-
+   
     //펜팔 소개 페이지
     public function introduction (){
 
@@ -197,6 +183,13 @@ class ViewController extends Controller
 
         return view('penpal.registration');
     
+    }
+
+    public function edit(Request $request){
+
+        $penpal_id = $this->penpalModel->where('id',$request->id)->first();
+
+        return view('penpal.edit')->with('penpal_id',$penpal_id);
     }
 
 }

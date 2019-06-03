@@ -1,7 +1,7 @@
 <div class="row" style="margin-top:2%;padding-left:4%;">
         <div class="col">
           @if(Auth::id() == $friend->user->id)
-          <a  class="btn btn-warning"><i class="fa fa-edit" style="color:white">&nbsp;@lang('penpal/component/showIntroBox.edit')</i></a>  
+          <a  class="btn btn-warning" href="{{ route('penpal.show.edit',['id' => $friend->id]) }}"><i class="fa fa-edit" style="color:white">&nbsp;@lang('penpal/component/showIntroBox.edit')</i></a>  
           @endif
           <a  class="btn btn-info"><i class="fa fa-envelope" style="color:white">&nbsp;@lang('penpal/component/showIntroBox.mail')</i></a>
           <a  class="btn btn-success"><i class="fa fa-user-plus" style="color:white">&nbsp;@lang('penpal/component/showIntroBox.friends')</i></a>

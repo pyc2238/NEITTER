@@ -10,6 +10,7 @@
         'reason6' => '기타',
         'available_language' => '사용가능언어',
         'translation_content'   => '▶한일(번역)보기',
+        'timeline_subject' => '펜팔 - 타임라인',
         'edit' => '편집',
         'mail'  => '쪽지',
         'friends'  => '친구등록',
