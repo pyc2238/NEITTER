@@ -110,14 +110,14 @@
 } */
 
 .show-table{
-    border:1px solid #C8CACA;
+    border:1px solid #BEBABA;
 }
 .show-table-self_context{
-    border-left:1px solid #C8CACA;
+    border-left:1px solid #BEBABA;
 }
 .show-table-bottom{
-    border-left:1px solid #C8CACA;
-    border-bottom:1px solid #C8CACA;
+    border-left:1px solid #BEBABA;
+    border-bottom:1px solid #BEBABA;
     box-shadow: 0 4px 0.5px -4px gray;
 }
 
@@ -130,7 +130,7 @@
 }
 
 .penpal-show-container{
-    height: 900px;
+    height: auto;
     margin: 0px auto;
     margin-top: 5px;
     margin-bottom: 5px;

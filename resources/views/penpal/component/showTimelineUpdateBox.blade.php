@@ -3,7 +3,7 @@
             var updateTextArea = "";
             updateTextArea = "<div class='row'>"
                 +"<div class='col' id='comments{{ $timeline->id }}'>"
-                    +"<form class='form-group' action='{{ route('penpal.timeline.update',['id' => $timeline->id]) }}' method='post'>"
+                    +"<form class='form-group' action='{{ route('penpal.show.timeline.update',['id' => $timeline->id]) }}' method='post'>"
                         +'@csrf'
                         +"<input type='hidden' name='id' value='{{ $timeline->id }}'>"
                         +"<div class='row'>"

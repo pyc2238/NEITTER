@@ -65,7 +65,7 @@
                                     @else
                                     @if( $timeline->user->selfPhoto != null )
                                     <img class="timeline-card-selfPhoto" src="{{ $timeline->user->selfPhoto }}"
-                                        alt="selfPhoto" width="17%">
+                                        alt="selfPhoto" width="20%" style="height:30px">
                                     @endif
                                     <b style="color:blue">{{ $timeline->user->name }}</b>
                                     @if($timeline->user->country == 'ko')

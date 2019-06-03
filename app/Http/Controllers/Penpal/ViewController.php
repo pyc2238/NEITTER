@@ -118,7 +118,13 @@ class ViewController extends Controller
 
         $friend = $this->penpalModel->getUser()->where('id',$id)->first();
 
+        $friendTimeline = $this->timelineModel->
+                where('user_id',$friend->user_id)
+                ->where('is_system',0)
+                ->latest()
+                ->paginate(5);
         
+        //펜팔 내용 번역
         $translationPenpal = $this->translation(
                 $friend->self_context,
                 $this->langCode($friend->self_context)
@@ -126,10 +132,36 @@ class ViewController extends Controller
 
         $friend->translation = $translationPenpal;
 
+        //타임라인 내용 번역
+        foreach($friendTimeline as $timeline){
+            if($timeline->content != null){
+                $translationTimeline = $this->translation(
+                    $timeline->content,
+                    $this->langCode($timeline->content)
+                );
+                $timeline->translation = $translationTimeline;
+            } 
+        }
+
         return view('penpal.show')->with([
-            'friend' => $friend, 
+            'friend'    => $friend,
+            'timelines'  => $friendTimeline,
         ]);
-    }   
+    }
+    
+    public function showTimelineUpdate(Request $request){
+        $this->timelineModel->where('id',$request->id)
+        ->update(['content' => $request->comment]);
+
+        return back();
+    }
+
+    public function showTimelineDelete(Request $request){
+        
+        $this->timelineModel->where('id',$request->id)->delete();
+
+        return back();
+    }
 
 
     //펜팔 소개 페이지
@@ -147,7 +179,10 @@ class ViewController extends Controller
         //내용 번역
         foreach($timelines as $timeline){
             if($timeline->content != null){
-                $translationTimeline = $this->translation($timeline->content,$this->langCode($timeline->content));
+                $translationTimeline = $this->translation(
+                    $timeline->content,
+                    $this->langCode($timeline->content)
+                );
                 $timeline->translation = $translationTimeline;
             } 
             
@@ -161,10 +196,7 @@ class ViewController extends Controller
     public function registration (){
 
         return view('penpal.registration');
-
+    
     }
 
-    public function test(){
-        return view('penpal.show');
-    }
 }

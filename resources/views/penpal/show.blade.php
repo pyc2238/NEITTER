@@ -4,7 +4,10 @@
 @endsection
 @section('penpal')
 <link rel="stylesheet" href="{{asset('/css/penpal/penpal.css')}}">
+<link rel="stylesheet" href="{{ asset('/css/penpal/timeline.css') }}">
 <script src="{{ asset('/js/penpal/penpal.js') }}"></script>
+<script src="{{ asset('/js/penpal/timeline.js') }}"></script>
+
 @endsection
 @section('content')
 
@@ -34,6 +37,8 @@
                 </div>
                 <hr>
                 @include('penpal.component.showIntroBox')
+                @include('penpal.component.showTools')
+                @include('penpal.component.showTimeline')
             </div>
        
     </div>

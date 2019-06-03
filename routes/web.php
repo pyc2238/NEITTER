@@ -113,14 +113,13 @@ Route::group(['prefix' => 'penpal'], function () {
     Route::get('/timeline/delete', 'Penpal\TimelineController@delete')->name('penpal.timeline.delete')->middleware('auth');;
     Route::get('/registration', 'Penpal\ViewController@registration')->name('penpal.registration')->middleware('auth');
     Route::get('/friends/{id}', 'Penpal\ViewController@show')->name('penpal.friends');
+    Route::get('/show/timeline/delete', 'Penpal\ViewController@showTimelineDelete')->name('penpal.show.timeline.delete');
+    Route::post('/show/timeline/update', 'Penpal\ViewController@showTimelineUpdate')->name('penpal.show.timeline.update');
     Route::post('/registration', 'Penpal\RegisterController@registration')->name('penpal.penpal.registration')->middleware('auth');
     Route::post('/timeline', 'Penpal\TimelineController@create')->name('penpal.timeline.create')->middleware('auth');
     Route::post('/timeline/update', 'Penpal\TimelineController@update')->name('penpal.timeline.update')->middleware('auth');
 
 });
-
-Route::get('/test', 'Penpal\ViewController@test');
-
 
 
 /*포럼 게시판*/
