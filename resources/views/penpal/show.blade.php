@@ -1,6 +1,6 @@
 @extends('layouts.app')
 @section('title')  
-    친구들    
+@lang('penpal/component/showIntroBox.subject')
 @endsection
 @section('penpal')
 <link rel="stylesheet" href="{{asset('/css/penpal/penpal.css')}}">

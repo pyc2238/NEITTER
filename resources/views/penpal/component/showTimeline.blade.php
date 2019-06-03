@@ -1,4 +1,8 @@
+<h2 style='display:inline-block;margin-top:4%;'>@lang('penpal/component/showIntroBox.timeline_subject')</h2>
+                  
+<hr>
 <div class="row">
+
         <div class="col"></div>
         <div class="col-9">
             @foreach($timelines as $timeline)

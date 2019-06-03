@@ -1,5 +1,6 @@
 <?php
     return [
+        'subject' => '펜팔 - 친구',
         'goal'    => '목적',
         'reason1' => '이메일 친구 찾아요',
         'reason2' => '이성 친구 찾아요',
@@ -9,5 +10,10 @@
         'reason6' => '기타',
         'available_language' => '사용가능언어',
         'translation_content'   => '▶한일(번역)보기',
+        'edit' => '편집',
+        'mail'  => '쪽지',
+        'friends'  => '친구등록',
+        'wink'  => 'WINK',
+        'future'  => '전망',
     ];
 ?>
