@@ -123,9 +123,8 @@ class ViewController extends Controller
         $friend = $this->penpalModel->getUser()->where('id',$id)->first();
         
 
-        if($friend->user->id != Auth::id()){
-            $friend->visitors_count++;
-            $friend->save();
+        if(Auth::check() && $friend->user->id != Auth::id()){
+            $friend->increment('visitors_count');
             $this->visitorModel->create([
                     'user_id'   => Auth::id(),
                     'penpal_id' => $friend->id,
@@ -135,7 +134,9 @@ class ViewController extends Controller
         // 해당 펜팔의 방문자 구하기
         $visitors = $this->penpalModel->find($friend->id)->visitor_user()->get();
         
-
+        // 해당 펜팔의 호감을 보인 유저 구하기
+        $winks = $this->penpalModel->find($friend->id)->wink_user()->get();
+      
         $friendTimeline = $this->timelineModel->
                 where('user_id',$friend->user_id)
                 ->where('is_system',0)
@@ -165,6 +166,7 @@ class ViewController extends Controller
             'friend'        => $friend,
             'timelines'     => $friendTimeline,
             'visitors'      => $visitors,
+            'winks'         => $winks,
         ]);
     }
     

@@ -112,18 +112,21 @@ Route::group(['prefix' => 'penpal'], function () {
     Route::get('/timeline', 'Penpal\ViewController@timeline')->name('penpal.timeline');
     Route::get('/timeline/delete', 'Penpal\TimelineController@delete')->name('penpal.timeline.delete')->middleware('auth');;
     Route::get('/registration', 'Penpal\ViewController@registration')->name('penpal.registration')->middleware('auth');
-    Route::get('/friends/{id}', 'Penpal\ViewController@show')->name('penpal.friends');
+    Route::get('/friends/{id}', 'Penpal\ViewController@show')->name('penpal.friends')->middleware('auth');
     Route::post('/registration', 'Penpal\RegisterController@registration')->name('penpal.penpal.registration')->middleware('auth');
     Route::post('/timeline', 'Penpal\TimelineController@create')->name('penpal.timeline.create')->middleware('auth');
     Route::post('/timeline/update', 'Penpal\TimelineController@update')->name('penpal.timeline.update')->middleware('auth');
-    Route::group(['prefix' => 'show'], function () {
+    Route::group(['prefix' => 'show','middleware' => 'auth'], function () {
         Route::get('/edit', 'Penpal\ViewController@edit')->name('penpal.show.edit');
         Route::post('/update', 'Penpal\ShowPenpalController@penpalUpdate')->name('penpal.show.update');
         Route::get('/delete', 'Penpal\ShowPenpalController@penpalDelete')->name('penpal.show.delete');
         Route::get('/timeline/delete', 'Penpal\ShowPenpalController@showTimelineDelete')->name('penpal.show.timeline.delete');
         Route::post('/timeline/update', 'Penpal\ShowPenpalController@showTimelineUpdate')->name('penpal.show.timeline.update');
+        Route::post('/wink', 'Penpal\ShowPenpalController@wink')->name('penpal.show.wink');
     });
 });
+
+
 
 
 /*포럼 게시판*/

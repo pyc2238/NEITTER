@@ -19,6 +19,8 @@
         'wink'  => 'WINK',
         'visitors'  => '見込み', 
         'nickname' => 'ニックネーム',
-        'date'     => '日時' 
+        'date'     => '日時',
+        'country'   => '国籍',
+        'gender'   => '性別',
     ];
 ?>

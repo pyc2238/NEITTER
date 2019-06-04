@@ -76,7 +76,10 @@ class User extends Authenticatable
         return $this->belongsToMany('App\Models\Users\User','visitors');
     }
 
-    
+      //penpals테이블 user테이블 N-N (중간테이블 winks)
+      public function wink_penpal(){
+        return $this->belongsToMany('App\Models\Users\User','winks')->withPivot('created_at');
+    }
 
     //password Mutators
     public function setPasswordAttribute($value){

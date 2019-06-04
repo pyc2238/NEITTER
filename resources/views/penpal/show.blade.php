@@ -44,5 +44,6 @@
     </div>
 
 </div>
+@include('penpal.component.winksModal')
 @include('penpal.component.visitorsModal')
 @endsection

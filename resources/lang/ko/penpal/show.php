@@ -18,6 +18,8 @@
         'wink'  => 'WINK',
         'visitors'  => '방문자',
         'nickname' => '닉네임',
-        'date'     => '일시'
+        'date'     => '일시',
+        'country'   => '국적',
+        'gender'   => '성별',
     ];
 ?>

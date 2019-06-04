@@ -1,12 +1,12 @@
 
-<!-- profile Modal -->
-<div class="modal fade" id="Modal-large-demo" tabindex="-1" role="dialog" aria-labelledby="Modal-large-demo-label"
+<!-- visitors Modal -->
+<div class="modal fade" id="Modal-visitors" tabindex="-1" role="dialog" aria-labelledby="Modal-large-demo-label"
 aria-hidden="true">
 <div class="modal-dialog modal-lg" role="document">
     <div class="modal-content">
         <div class="modal-header">
             <img src="{{ asset('data/ProjectImages/master/userInfo.png') }}" alt="user">
-            <h5 class="modal-title" id="Modal-large-demo-label">ViSITORS</h5>
+            <h5 class="modal-title" id="Modal-large-demo-label" style="padding-left:10px;">VISITORS</h5>
             <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                 <span aria-hidden="true">×</span>
             </button>
@@ -17,6 +17,8 @@ aria-hidden="true">
                 <thead class="thead-dark">
                   <tr>
                     <th scope="col">@lang('penpal/show.nickname')</th>
+                    <th scope="col">@lang('penpal/show.country')</th>
+                    <th scope="col">@lang('penpal/show.gender')</th>
                     <th scope="col">@lang('penpal/show.date')</th>
                   </tr>
                 </thead>
@@ -25,6 +27,20 @@ aria-hidden="true">
                   <tr>
                     <td>
                         <a class="visitorName" href="{{ route('penpal.index',['name' =>  $visitor->name]) }}">{{ $visitor->name }}</a>
+                    </td>
+                    <td>
+                        @if($visitor->country == 'ko')
+                          <img src="{{ asset("data/ProjectImages/master/korea.png") }}" alt="korea">
+                        @else
+                          <img src="{{ asset("data/ProjectImages/master/japan.png") }}" alt="japan">
+                        @endif
+                    </td>
+                    <td>
+                        @if($visitor->gender == 'men')
+                          <img src="{{ asset("data/ProjectImages/master/men.png") }}" alt="men">
+                        @else
+                          <img src="{{ asset("data/ProjectImages/master/women.png") }}" alt="women">
+                        @endif
                     </td>   
                     <td>{{ $visitor->pivot->created_at }}</td>
                   </tr>

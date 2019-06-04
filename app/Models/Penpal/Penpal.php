@@ -13,6 +13,8 @@ class Penpal extends Model
         'image',
         'language',
         'goal_id',
+        'visitors_count',
+        'winks_count',
         'created_at'
     ];
 
@@ -35,6 +37,12 @@ class Penpal extends Model
       public function visitor_user(){
         return $this->belongsToMany('App\Models\Users\User','visitors')->withPivot('created_at');
     }
+
+     //penpals테이블 user테이블 N-N (중간테이블 winks)
+     public function wink_user(){
+        return $this->belongsToMany('App\Models\Users\User','winks')->withPivot('created_at');
+    }
+
 
 
     //사용가능 언어  저장시 json속성 포맷 변환
