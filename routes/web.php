@@ -1,5 +1,4 @@
 <?php
-use App\Events\CommunityPusher;
 /*
 |--------------------------------------------------------------------------
 | REST API 설계 규칙
@@ -11,26 +10,6 @@ use App\Events\CommunityPusher;
 |
 |
 */
-/**Pusher test */
-
-Route::get('/counter', function () {
-    return view('counter');
-});
-Route::get('/sender', function () {
-    return view('sender');
-});
-Route::post('/sender', function () {
-    $text = request()->text;
-    
-    event(new CommunityPusher($text));
-    
-});
-
-
-
-///////////////////////////////////////////////////////
-
-
 
 /*언어 지역화*/
 Route::get('locale/{locale}',function($locale = 'ko'){
@@ -125,8 +104,6 @@ Route::group(['prefix' => 'penpal'], function () {
         Route::post('/wink', 'Penpal\ShowPenpalController@wink')->name('penpal.show.wink');
     });
 });
-
-
 
 
 /*포럼 게시판*/
