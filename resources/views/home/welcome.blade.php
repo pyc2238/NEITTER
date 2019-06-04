@@ -1,35 +1,28 @@
 @extends('layouts.app')
 @section('title')
-neitter
+@lang('home/main.title')
 @endsection
 @section('content')
-<div class="container">
+<div class="container mainPage">
     <div class="row justify-content-center">
-        <div class="col-md-8">
-            <div class="card">
-                <div class="card-header">Dashboard</div>
-
-                <div class="card-body">
-                    @if (session('status'))
-                    <div class="alert alert-success" role="alert">
-                        {{ session('status') }}
-                    </div>
-                    @endif
-
-                    <div style="height:900px">
-                        준비중
-
-                    </div>
-
-                </div>
-            </div>
+        <div class="col">
+            1 of 2
+        </div>
+        <div class="col-7">
+                @include('home.component.main.slider')
+                @include('home.component.main.newFriends')
+                @include('home.component.main.boards')
+            
         </div>
     </div>
 </div>
 
 
+
+
+
 <script>
-    var socialite = '{{Session::has('socialiteLogin')}}'
+    var socialite = '{{Session::has(' socialiteLogin ')}}'
     $(window).load(function () {
         if (socialite) {
             $('#Modal-small').modal('show');

@@ -6,8 +6,29 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Session;
 
+use App\Models\Communities\Community;
+use App\Models\Admins\Admin_Notice;
+use App\Models\Penpal\Penpal;
+
+
 class WelcomeController extends Controller
 {
+
+
+    private $penpalModel    = null;
+    private $communityModel = null;
+    private $noticeModel    = null;
+  
+
+    public function __construct(){
+
+        $this->communityModel   = new Community();
+        $this->noticeModel      = new Admin_Notice();
+        $this->penpalModel      = new Penpal();
+  
+    }
+
+
     /**
      * Display a listing of the resource.
      *
@@ -17,7 +38,15 @@ class WelcomeController extends Controller
     {
 
 
-        return view('home.welcome');
+        $penpals        = $this->penpalModel->with(['user:id,name,gender,country,age,selfPhoto'])->take(8)->get();
+        $communities    = $this->communityModel->latest()->take(8)->get();
+        $notices        = $this->noticeModel->latest()->take(8)->get();
+       
+        return view('home.welcome')->with([
+            'penpals'       => $penpals,
+            'communities'   => $communities,
+            'notices'       => $notices,
+        ]);
     }
 
     /**

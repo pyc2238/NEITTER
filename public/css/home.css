@@ -1,0 +1,54 @@
+.mainPage{
+    height: 1200px;
+    width: 100%;
+    border : 1px solid #bcbcbc;
+    /* background-color: white; */
+    margin-top:1%;
+}
+ .main-slider{
+        margin-top:2%;
+    }
+    .mySlides {
+  display: none;
+  height: 265px;
+  width: 100%;
+}
+
+.w3-left,
+.w3-right,
+.w3-badge {
+  cursor: pointer;
+}
+
+.w3-badge {
+  height: 13px;
+  width: 13px;
+  padding: 0;
+}
+
+.newFriendsBox{
+    background-color: white;
+    border:1px solid  #bcbcbc;
+    box-shadow: 0 4px 0.5px -4px gray;
+}
+.image-list:hover{
+
+    border:1.1px ridge #3979F4;
+}
+
+.boardsBox{
+    background-color: white;
+    border:1px solid  #bcbcbc;
+    padding-bottom:4%;
+    box-shadow: 0 4px 0.5px -4px gray;
+}
+
+.boardsFont{
+    font-size:13px;
+    text-decoration:none;
+}
+
+.boardsFont:hover{
+    color:orange;
+    text-decoration:none;
+}

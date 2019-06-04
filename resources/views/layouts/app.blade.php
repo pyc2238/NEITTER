@@ -24,18 +24,25 @@
 
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+    
     {{-- boards js/css --}}
     @yield('boards')
     {{-- penpal js/css --}}
     @yield('penpal')
+
+    {{-- main_slider js/css --}}
+    @yield('main_slider');
 
     {{-- member.js --}}
     <script src="{{asset('/js/member.js')}}"></script>
 
     {{-- home.js --}}
 
-    <script src="{{asset('/js/home.js')}}"></script>
-
+    <script src="{{ asset('/js/home.js') }}"></script>
+    
+    {{-- home.css --}}
+    <link href="{{ asset('css/home.css') }}" rel="stylesheet">
+    
 
     {{-- master.css --}}
     <link rel="stylesheet" href="{{asset('/css/master.css')}}">
