@@ -28,3 +28,6 @@ $(document).on("click", ".show-table-self_context > span", function() {
       $(this).next().hide();
     }
   });
+
+
+  

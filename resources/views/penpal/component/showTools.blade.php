@@ -16,7 +16,7 @@
                 </i></a>
           @else
               <a  class="btn btn-secondary" id="winkBtn"><i class="fa fa-grin-wink" style="color:white">&nbsp;@lang('penpal/show.wink')
-                    <span style="background-color:white; border-radius: 80px / 40px; color:#98989A">{{ $friend->winks_count }}</span>
+                    <span id="winkSpan" style="background-color:white; border-radius: 80px / 40px; color:#98989A">{{ $friend->winks_count }}</span>
                 </i></a>
               <a  class="btn btn-primary"><i class="fa fa-eye" style="color:white">&nbsp;@lang('penpal/show.visitors')
                   <span style="background-color:white; border-radius: 80px / 40px; color:#5874EC">{{ $friend->visitors_count }}</span>
@@ -27,27 +27,28 @@
         
       </div>
 
-     <script>
-     $("#winkBtn").click(function(){
-    $.ajax({
-        url: '{{route('penpal.show.wink')}}',
-        type: 'post',
-        data: {_token: "{{ csrf_token() }}",
-               'user_id': '{{ Auth::id() }}',
-               'penpal_id': '{{ $friend->id }}',
-               },
-        success: function (data) {
-            if(!data){
-                console.log('success!!');
-            }else{
-                alert(data);
+<script>
+// wink ajax
+    $("#winkBtn").click(function(){
+        $.ajax({
+            url: '{{route('penpal.show.wink')}}',
+            type: 'post',
+            data: {_token: "{{ csrf_token() }}",
+                'user_id': '{{ Auth::id() }}',
+                'penpal_id': '{{ $friend->id }}',
+                },
+            success: function (data) {
+                if(!data){
+                var winks_count =  $('#winkSpan').html();
+                    console.log('success!!');
+                    $('#winkSpan').html(Number(winks_count) + 1);
+                }else{
+                    alert(data);
+                }
+                
+            }, error: function () {
+                alert("error!!!!");
             }
-            
-        }, error: function () {
-            alert("error!!!!");
-        }
+        });
     });
-
-});
-
-     </script>
+</script>

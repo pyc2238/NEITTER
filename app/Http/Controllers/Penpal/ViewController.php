@@ -206,9 +206,9 @@ class ViewController extends Controller
     
     }
 
-    public function edit(Request $request){
+    public function edit(Request $request,$id){
 
-        $penpal_id = $this->penpalModel->where('id',$request->id)->first();
+        $penpal_id = $this->penpalModel->where('id',$id)->first();
 
         return view('penpal.edit')->with('penpal_id',$penpal_id);
     }
