@@ -31,7 +31,7 @@
     @yield('penpal')
 
     {{-- main_slider js/css --}}
-    @yield('main_slider');
+    @yield('main_slider')
 
     {{-- member.js --}}
     <script src="{{asset('/js/member.js')}}"></script>

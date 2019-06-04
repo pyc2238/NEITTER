@@ -2,7 +2,7 @@
     height: 1200px;
     width: 100%;
     border : 1px solid #bcbcbc;
-    /* background-color: white; */
+    background-color: white;
     margin-top:1%;
 }
  .main-slider{
@@ -51,4 +51,12 @@
 .boardsFont:hover{
     color:orange;
     text-decoration:none;
+}
+
+.boardsTd{
+    padding-top: 0.5%;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    max-width: 200px
 }

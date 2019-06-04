@@ -36,9 +36,14 @@ class WelcomeController extends Controller
      */
     public function index()
     {
+        $now            = date('Y-m-d');
+        $penpals        = $this->penpalModel->
+                            with(['user:id,name,gender,country,age,selfPhoto'])
+                            ->whereDate('created_at',$now)
+                            ->latest()
+                            ->take(8)
+                            ->get();
 
-
-        $penpals        = $this->penpalModel->with(['user:id,name,gender,country,age,selfPhoto'])->take(8)->get();
         $communities    = $this->communityModel->latest()->take(8)->get();
         $notices        = $this->noticeModel->latest()->take(8)->get();
        
