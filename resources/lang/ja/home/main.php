@@ -7,6 +7,7 @@
         'not_friends' => '今日メール友を登録したユーザーがいません。',
         'translator' => '翻訳機',
         'translation' => '翻訳',
+        'translationRecord' => '翻訳機',
     ];
 
 ?>

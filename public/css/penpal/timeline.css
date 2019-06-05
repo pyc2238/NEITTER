@@ -76,3 +76,9 @@
 #View_area{
     display: inline-block;
 }
+
+#friendsName:hover{
+    color:orange;
+    text-decoration: none;
+    
+}

@@ -42,7 +42,7 @@
                     <button style="display:inline-block;margin-left:2%;" id="translationBtn" type="button"
                         class="btn btn-primary">@lang('home/main.translation')</button>
                     <button style="display:inline-block" id="translationRecodeBtn" type="button"
-                        class="btn btn-success">번역기록</button>
+                        class="btn btn-success">@lang('home/main.translationRecord')</button>
                     <button style="display:inline-block; margin-bottom:2%;margin-right:2%;" id="closeBtn" type="button"
                         class="btn btn-danger float-right"
                         data-dismiss="modal">@lang('auth/profile.model_check')</button>

@@ -7,6 +7,7 @@
         'not_friends' => '오늘 펜팔을 등록한 유저가 없습니다.',
         'translator' => '번역기',
         'translation' => '번역',
+        'translationRecord' => '번역기록',
 
     ];
 

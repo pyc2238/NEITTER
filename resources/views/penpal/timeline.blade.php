@@ -67,7 +67,7 @@
                                     <img class="timeline-card-selfPhoto" src="{{ $timeline->user->selfPhoto }}"
                                         alt="selfPhoto" width="20%" style="height:30px">
                                     @endif
-                                    <b style="color:blue">{{ $timeline->user->name }}</b>
+                                        <a id="friendsName" href="{{ route('penpal.index',['name' => $timeline->user->name]) }}"><b>{{ $timeline->user->name }}</b></a>
                                     @if($timeline->user->country == 'ko')
                                     <img src="{{ asset('/data/ProjectImages/community/korea.png') }}" width="13%"
                                         alt="korea">
