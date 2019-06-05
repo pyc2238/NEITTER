@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Home;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use Auth;
 use Session;
 
 use App\Models\Communities\Community;
@@ -15,17 +16,16 @@ class WelcomeController extends Controller
 {
 
 
-    private $penpalModel    = null;
-    private $communityModel = null;
-    private $noticeModel    = null;
-  
+    private $penpalModel            = null;
+    private $communityModel         = null;
+    private $noticeModel            = null;
 
     public function __construct(){
 
-        $this->communityModel   = new Community();
-        $this->noticeModel      = new Admin_Notice();
-        $this->penpalModel      = new Penpal();
-  
+        $this->communityModel           = new Community();
+        $this->noticeModel              = new Admin_Notice();
+        $this->penpalModel              = new Penpal();
+
     }
 
 
@@ -44,14 +44,16 @@ class WelcomeController extends Controller
                             ->take(8)
                             ->get();
 
-        $communities    = $this->communityModel->latest()->take(8)->get();
-        $notices        = $this->noticeModel->latest()->take(8)->get();
-       
+        $communities        = $this->communityModel->latest()->take(8)->get();
+        $notices            = $this->noticeModel->latest()->take(8)->get();
+        
+
         return view('home.welcome')->with([
             'penpals'       => $penpals,
             'communities'   => $communities,
             'notices'       => $notices,
         ]);
+        
     }
 
     /**

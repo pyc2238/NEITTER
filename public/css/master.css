@@ -68,10 +68,11 @@ body {
     font-size:21px;
     color: black;
 }
-#search{
+#translation{
     font-size:20px;
     color: black;
     margin-left:2%;
+    cursor:pointer;
 }
 
 #bullhorn{
@@ -86,8 +87,8 @@ body {
     text-decoration: none;
 
 }
-#search:hover,
-#search:active {
+#translation:hover,
+#translation:active {
     color:#ea314e;
     text-decoration: none;
     

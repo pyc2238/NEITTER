@@ -2,6 +2,9 @@
 <div class="col newFriendsBox" style="margin-top:2%; padding-bottom:3%;">
         <h5 style="padding-top:2%"><i class="fa fa-users" style="color:blue"></i>&nbsp;@lang('home/main.new_friends')</h5> 
     <hr>
+    @if(count($penpals) === 0)
+        <h3 class="text-center"><i class="fa fa-bell-slash"></i>@lang('home/main.not_friends')</h3>
+    @else
         @foreach($penpals->chunk(8) as $penpalsGroup)
         <div class="row">
             @foreach($penpalsGroup as $penpal)
@@ -63,4 +66,5 @@
             @endforeach
         </div>
     @endforeach
+    @endif
 </div>

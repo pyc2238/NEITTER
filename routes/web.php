@@ -20,6 +20,10 @@ Route::get('locale/{locale}',function($locale = 'ko'){
 /*CkEditor 파일업로드*/
 Route::post('/ckUpload', 'Helper\FileUploadController@fileUpload')->name('ckUpload');
 
+Route::post('translation', 'Home\TranslationController@languageTranslation')->name('translation')->middleware('auth');
+Route::post('translation/recodes', 'Home\TranslationController@getRecodes')->name('translation.recodes')->middleware('auth');
+Route::post('translation/delete', 'Home\TranslationController@recodeDelete')->name('translation.recode.delete')->middleware('auth');
+
 /*메인 페이지*/
 Route::get('/', 'Home\WelcomeController@index');
 Route::resource('home', 'Home\WelcomeController');

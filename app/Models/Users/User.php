@@ -66,6 +66,10 @@ class User extends Authenticatable
         return $this->hasMany('App\Models\Penpal\Timeline');
     }
     
+    public function translationRecord(){
+        return $this->hasMany('App\Models\Users\TranslationRecord');
+    }
+
     //penpals테이블 user테이블 N-N (중간테이블 penpal_user)
     public function penpal_user(){
         return $this->belongsToMany('App\Models\Penpal\Penpal','penpal_user');
