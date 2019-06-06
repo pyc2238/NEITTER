@@ -30,7 +30,7 @@
                             <thead>
                             </thead>
                             <tbody id="transRecords">
-
+                                    
                             </tbody>
                         </table>
                     </div>
@@ -59,10 +59,11 @@
 
 <script>
     $(document).ready(function () {
-
+        //윈도우 로드시 번역 div를 보여주고 번역기록 div를 숨긴다.
         $('#translationDiv').show();
         $('#recodeDiv').hide();
 
+        //번역기록 클릭 시 번역 기록 데이터를 불러온다.
         $('#translationRecodeBtn').click(function () {
             if($(".traRecods").length){
                 $(".traRecods").remove();
@@ -81,7 +82,7 @@
                     <td id="recodeValue-${rec.id}" style="display:none">${rec.id}</td>
                     <td>${rec.korean}</td>
                     <td>${rec.japanese}</td>
-                    <td><button id="recodeRemoveBtn-${rec.id}" type="button" class="btn btn-danger float-right">삭제</button></td>
+                    <td><button id="recodeRemoveBtn-${rec.id}" onclick="sendData(${rec.id})" type="button" class="btn btn-danger float-right">삭제</button></td>
                 </tr>
 
                 `
@@ -99,7 +100,28 @@
         });
 
     });
+    
+    //번역기록 삭제
+    function sendData(id) {
+        $.ajax({
+            url: '{{route('translation.recode.delete')}}',
+            type: 'post',
+            data: {
+                _token: "{{ csrf_token() }}",
+                'id': id,
+            },
+            success: function (data) {
+                alert('d');
 
+            },
+            error: function () {
+                alert("error!!!!");
+            }
+        });
+    }
+
+
+    //번역 div가 hide일 때 번역 버튼 클릭시 번역기록 div를 숨기고 변역 div를 보여준다.
     if ($('#translationDiv').hide()) {
         $('#translationBtn').click(function () {
             $('#recodeDiv').hide();
@@ -108,7 +130,7 @@
     }
 
 
-    // translation ajax
+    // 번역 버튼 translation ajax 
     $("#translationBtn").click(function () {
         $.ajax({
             url: '{{route('translation')}}',
@@ -128,6 +150,7 @@
         });
     });
 
+    //취소 버튼 클릭시
     $("#closeBtn").click(function () {
         $("#translationBox").val('');
         $("#translationResBox").val('');
@@ -135,6 +158,6 @@
         $('#recodeDiv').hide();
     });
 
-
+ 
 
 </script>

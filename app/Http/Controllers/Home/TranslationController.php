@@ -71,9 +71,9 @@ class TranslationController extends Controller
     }
 
     public function recodeDelete(Request $request){
-        return 'asd';
+
         $this->translationRecordModel->where('id',$request->id)->delete();
         
-        return response()->json('ok');
+        return response()->json('true');
     }
 }
