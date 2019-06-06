@@ -37,7 +37,6 @@
     <script src="{{asset('/js/member.js')}}"></script>
 
     {{-- home.js --}}
-
     <script src="{{ asset('/js/home.js') }}"></script>
     
     {{-- home.css --}}
@@ -49,9 +48,6 @@
 
     {{-- font-awesome --}}
     <link rel="stylesheet" href="{{ asset('data/icon/css/font-awesome.min.css') }}">
-
-
-
 
     {{-- ckeditor --}}
     @yield('ckeditor')

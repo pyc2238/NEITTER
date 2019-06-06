@@ -112,6 +112,10 @@ Route::group(['prefix' => 'penpal'], function () {
     });
 });
 
+Route::group(['prefix' => 'mail'], function () {
+    Route::get('/inbox','Mail\ViewController@inbox')->name('mail.inbox');
+});
+
 
 /*포럼 게시판*/
 Route::resource('forum', 'Forum\ForumController');

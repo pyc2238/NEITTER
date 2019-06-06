@@ -64,7 +64,7 @@
                     document.getElementById('logout-form').submit();"
             class=""><i class="fa fa-sign-out">@lang('home/header.logout')</i></a>
         <a href="{{route('user.check')}}"><i class="fa fa-cogs">@lang('home/header.profile')</i></a>
-        <a href=""><i class="fa fa-envelope">@lang('home/header.mailbox')</i></a>
+        <a id="inboxBtn" onclick="openInbox()"><i class="fa fa-envelope">@lang('home/header.mailbox')</i></a>
         <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
             @csrf
         </form>
@@ -83,3 +83,14 @@
 </div>
 
 @include('home.component.translationModal')
+
+
+
+<script>
+    function openInbox(){  
+        window.open('{{ route('mail.inbox') }}',
+         "inbox",
+         "width=710, height=665, toolbar=no, menubar=no, scrollbars=no, resizable=yes"
+         );  
+    }  
+</script>

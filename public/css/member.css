@@ -104,3 +104,12 @@
     margin-top: 19%;
     height: 30rem;
 }
+
+/* 메일함 */
+#inboxBtn{
+    cursor:pointer;
+}
+
+#inboxBtn:hover{
+    color:blue
+}
