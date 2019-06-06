@@ -7,7 +7,10 @@
         'not_friends' => '今日メール友を登録したユーザーがいません。',
         'translator' => '翻訳機',
         'translation' => '翻訳',
-        'translationRecord' => '翻訳機',
+        'translationRecord' => '翻訳記録',
+        'recode_delete' => '削除',
+        'recode_all_delete' => ' 全体削除',
+        'recode_notice' => '最近の20個の翻訳記録を照会します。',
     ];
 
 ?>

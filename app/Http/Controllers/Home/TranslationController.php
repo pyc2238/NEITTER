@@ -76,4 +76,10 @@ class TranslationController extends Controller
         
         return response()->json('true');
     }
+
+    public function recodeAllDelete(){
+        $this->translationRecordModel->where('user_id',Auth::id())->delete();
+
+        return response()->json('true');
+    }
 }

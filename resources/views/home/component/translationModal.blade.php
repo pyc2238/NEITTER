@@ -12,6 +12,12 @@
                 </button>
             </div>
             <div class="modal-body">
+                <div class="row" style="margin-bottom:2%;">
+                    <div class="col" id="removeAllBox">
+                        <span style="color:blue">@lang('home/main.recode_notice')</span>
+                        <button id="recodeAllRemoveBtn" onclick="sendAllData()" style="display:inline-block;cursor:pointer; margin-right:2%;" class="float-right"  type="button">@lang('home/main.recode_all_delete')</button>
+                    </div>
+                </div>
                 <div id="translationDiv" class="row">
                     <div class="col">
                         <textarea class="form-control" id="translationBox" rows="10" style="resize: none;"
@@ -30,7 +36,7 @@
                             <thead>
                             </thead>
                             <tbody id="transRecords">
-                                    
+                                
                             </tbody>
                         </table>
                     </div>
@@ -62,7 +68,8 @@
         //윈도우 로드시 번역 div를 보여주고 번역기록 div를 숨긴다.
         $('#translationDiv').show();
         $('#recodeDiv').hide();
-
+        $('#removeAllBox').hide();
+        
         //번역기록 클릭 시 번역 기록 데이터를 불러온다.
         $('#translationRecodeBtn').click(function () {
             if($(".traRecods").length){
@@ -82,7 +89,7 @@
                     <td class="recode${rec.id}" id="recodeValue-${rec.id}" style="display:none">${rec.id}</td>
                     <td class="recode${rec.id}">${rec.korean}</td>
                     <td class="recode${rec.id}">${rec.japanese}</td>
-                    <td class="recode${rec.id}"><button id="recodeRemoveBtn-${rec.id}" onclick="sendData(${rec.id})" type="button" class="btn btn-danger float-right">삭제</button></td>
+                    <td class="recode${rec.id}"><button id="recodeRemoveBtn-${rec.id}" onclick="sendData(${rec.id})" type="button" class="float-right" style="padding-left:3%;padding-right:3%;cursor:pointer;">@lang('home/main.recode_delete')</button></td>
                 </tr>
 
                 `
@@ -97,6 +104,7 @@
             $("#translationResBox").val('');
             $('#translationDiv').hide();
             $('#recodeDiv').show();
+            $('#removeAllBox').show();
         });
 
     });
@@ -122,10 +130,31 @@
     }
 
 
+    //전체 번역기록 삭제
+    function sendAllData() {
+        $.ajax({
+            url: '{{route('translation.recode.allDelete')}}',
+            type: 'post',
+            data: {
+                _token: "{{ csrf_token() }}",
+                },
+            success: function (data) {
+                //삭제된 엘리먼트 제거
+                $(".traRecods").remove();
+
+            },
+            error: function () {
+                alert("error!!!!");
+            }
+        });
+    }
+
+
     //번역 div가 hide일 때 번역 버튼 클릭시 번역기록 div를 숨기고 변역 div를 보여준다.
     if ($('#translationDiv').hide()) {
         $('#translationBtn').click(function () {
             $('#recodeDiv').hide();
+            $('#removeAllBox').hide();
             $('#translationDiv').show();
         });
     }

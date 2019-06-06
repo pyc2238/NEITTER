@@ -8,6 +8,9 @@
         'translator' => '번역기',
         'translation' => '번역',
         'translationRecord' => '번역기록',
+        'recode_delete' => '삭제',
+        'recode_all_delete' => ' 전체삭제',
+        'recode_notice' => '최근 20개의 번역기록을 조회합니다.',
 
     ];
 
