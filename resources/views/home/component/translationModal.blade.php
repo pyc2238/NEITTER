@@ -79,10 +79,10 @@
                         document.querySelector('#transRecords').innerHTML +=
                             `
                 <tr class="traRecods">
-                    <td id="recodeValue-${rec.id}" style="display:none">${rec.id}</td>
-                    <td>${rec.korean}</td>
-                    <td>${rec.japanese}</td>
-                    <td><button id="recodeRemoveBtn-${rec.id}" onclick="sendData(${rec.id})" type="button" class="btn btn-danger float-right">삭제</button></td>
+                    <td class="recode${rec.id}" id="recodeValue-${rec.id}" style="display:none">${rec.id}</td>
+                    <td class="recode${rec.id}">${rec.korean}</td>
+                    <td class="recode${rec.id}">${rec.japanese}</td>
+                    <td class="recode${rec.id}"><button id="recodeRemoveBtn-${rec.id}" onclick="sendData(${rec.id})" type="button" class="btn btn-danger float-right">삭제</button></td>
                 </tr>
 
                 `
@@ -111,7 +111,8 @@
                 'id': id,
             },
             success: function (data) {
-                alert('d');
+                //삭제된 엘리먼트 제거
+                $(".recode"+id).remove();
 
             },
             error: function () {
