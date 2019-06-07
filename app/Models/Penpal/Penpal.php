@@ -28,10 +28,6 @@ class Penpal extends Model
         return $this->hasOne('App\Models\Penpal\Penapl','goal_id');
     }
 
-     //penpals테이블 user테이블 N-N (중간테이블 penpal_user)
-     public function penpal_user(){
-        return $this->belongsToMany('App\Models\Users\User','penpal_user');
-    }
 
       //penpals테이블 user테이블 N-N (중간테이블 visitors)
       public function visitor_user(){

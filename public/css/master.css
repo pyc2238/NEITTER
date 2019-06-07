@@ -218,6 +218,25 @@ div>.copyright>a {
     height:auto;
 }
 
+
+.badge {
+    display: inline-block;
+    min-width: 10px;
+    padding: 3px 7px;
+    font-size: 10px;
+    font-weight: 700;
+    line-height: 1;
+    color: #fff;
+    text-align: center;
+    white-space: nowrap;
+    vertical-align: middle;
+    background-color: #777;
+    border-radius: 10px;
+}
+
+
+
+
 /* 사이트간 로딩 이미지 */
 #loading {
     width: 100%;  

@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreatePenpalUserTable extends Migration
+class CreateSendersTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,11 +13,15 @@ class CreatePenpalUserTable extends Migration
      */
     public function up()
     {
-        Schema::create('penpal_user', function (Blueprint $table) {
+        Schema::create('senders', function (Blueprint $table) {
+            $table->increments('id');
+            $table->string('recipient_name',50);
+            $table->text('content');
+            $table->text('image')->nullable();
+            $table->boolean('is_read')->default(false);
             $table->integer('user_id')->unsigned();
             $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
-            $table->integer('penpal_id')->unsigned();
-            $table->foreign('penpal_id')->references('id')->on('penpals')->onDelete('cascade');
+            $table->timestamps();
         });
     }
 
@@ -28,6 +32,6 @@ class CreatePenpalUserTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('penpal_user');
+        Schema::dropIfExists('senders');
     }
 }

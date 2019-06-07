@@ -3,3 +3,35 @@
     margin-top:20px;
     font-size:20px;
 }
+
+#userInfo:hover{
+    color:orange;
+    cursor:pointer
+}
+
+.contentBox{
+    font-size: 15px;
+    border:1px solid  #bcbcbc;
+    box-shadow: 0 4px 0.5px -4px gray;
+    height:auto;
+    padding:3%;
+    background-color:#D9D9E5;
+}
+
+
+#translation_content{
+    font-size: 15px;
+    color: #B6B6B6;
+}
+#translation_content:hover{
+    cursor:pointer;
+    color: orange;
+}
+
+.mailsTd{
+    padding-top: 0.5%;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    max-width: 200px
+}

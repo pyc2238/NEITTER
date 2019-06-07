@@ -11,5 +11,6 @@ class ConstantEnum extends Controller
         'profile'         => 'users_profile_photo',
         'penpal'          => 'users_penpal_photo',
         'timeline'        => 'users_penpal_timeline_photo',
+        'penpal_user'     => 'users_penpal_mail_photo',
     ];
 }

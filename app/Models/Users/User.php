@@ -65,15 +65,15 @@ class User extends Authenticatable
     public function timeline(){
         return $this->hasMany('App\Models\Penpal\Timeline');
     }
+
+    public function sender(){
+        return $this->hasMany('App\Models\Penpal\Sender');
+    }
     
     public function translationRecord(){
         return $this->hasMany('App\Models\Users\TranslationRecord');
     }
 
-    //penpals테이블 user테이블 N-N (중간테이블 penpal_user)
-    public function penpal_user(){
-        return $this->belongsToMany('App\Models\Penpal\Penpal','penpal_user');
-    }
 
        //penpals테이블 user테이블 N-N (중간테이블 visitors)
        public function visitor_penapl(){
