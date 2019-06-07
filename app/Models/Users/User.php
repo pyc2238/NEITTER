@@ -65,9 +65,13 @@ class User extends Authenticatable
     public function timeline(){
         return $this->hasMany('App\Models\Penpal\Timeline');
     }
-
+   
     public function sender(){
         return $this->hasMany('App\Models\Penpal\Sender');
+    }
+
+    public function  transmit(){
+        return $this->hasMany('App\Models\Penpal\Transmit');
     }
     
     public function translationRecord(){

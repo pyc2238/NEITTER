@@ -11,7 +11,9 @@
         'contact' => 'Contact',
         'logout' => '로그아웃',
         'profile' => '내정보',
-        'mailbox' => '쪽지'
+        'mailbox' => '쪽지',
+        'mailCount1' => '읽지 않은 쪽지',
+        'mailCount2' => '개',
 ];
 
 ?>

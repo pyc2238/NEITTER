@@ -114,11 +114,14 @@ Route::group(['prefix' => 'penpal'], function () {
 });
 
 Route::group(['prefix' => 'mail','middleware' => 'auth'], function () {
-    Route::get('/inbox','Mail\ViewController@inbox')->name('mail.inbox');
-    Route::get('/send','Mail\ViewController@sendMail')->name('mail.sendMail');
-    Route::get('/show/{id}','Mail\ViewController@show')->name('mail.show');
-    Route::get('/delete','Penpal\PenpalController@deleteMail')->name('mail.delete');
-    Route::get('/count','Penpal\PenpalController@mailCount')->name('mail.count');
+    Route::get('/inbox', 'Mail\ViewController@inbox')->name('mail.inbox');
+    Route::get('/transmit', 'Mail\ViewController@transmit')->name('mail.transmit');
+    Route::get('/send', 'Mail\ViewController@sendMail')->name('mail.sendMail');
+    Route::get('/show/{id}', 'Mail\ViewController@show')->name('mail.show');
+    Route::get('transmit/show/{id}', 'Mail\ViewController@transmitShow')->name('mail.transmit.show');
+    Route::get('/delete', 'Penpal\PenpalController@deleteMail')->name('mail.delete');
+    Route::get('transmit/delete', 'Penpal\PenpalController@transmitDeleteMail')->name('mail.transmit.delete');
+    Route::get('/count', 'Penpal\PenpalController@mailCount')->name('mail.count');
 });
 
 

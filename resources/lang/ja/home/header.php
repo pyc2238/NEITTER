@@ -11,7 +11,9 @@
         'contact' => '出会い',
         'logout' => 'ログアウト',
         'profile' => 'プロフィール',
-        'mailbox' => 'メール'
+        'mailbox' => 'メール',
+        'mailCount1' => '読まないメール',
+        'mailCount2' => '個',
 ];
 
 ?>

@@ -65,7 +65,7 @@
             class=""><i class="fa fa-sign-out">@lang('home/header.logout')</i></a>
         <a href="{{route('user.check')}}"><i class="fa fa-cogs">@lang('home/header.profile')</i></a>
         <a id="inboxBtn" onclick="openInbox()"><i class="fa fa-envelope">@lang('home/header.mailbox')
-             <span class="badge" id="mailCount"></span></i>
+             <span class="badge" id="mailCount" title=""></span></i>
             </a>
         <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
             @csrf
@@ -95,7 +95,9 @@
          "width=710, height=665, toolbar=no, menubar=no, scrollbars=no, resizable=yes"
          );  
     }
-    $(function () {
+    
+    if({!! Auth::check() !!}){
+        $(function () {
         $.ajax({
             url: '{{route('mail.count')}}',
             type: 'get',
@@ -103,16 +105,20 @@
                 
                 },
             success: function (data) {
+                if(data > 0){
+                    $('#mailCount').css('background-color','red').css('color','white');
+                }
                 $('#mailCount').text(data);
+                $('#mailCount').attr('title','@lang('home/header.mailCount1') '+data+' @lang('home/header.mailCount2')');
                 console.log('ok');
                 
             }, error: function () {
                 alert("error!!!!");
             }
         });
- 
-
-    });
+    });    
+    }
+    
     
 </script>
 

@@ -33,11 +33,11 @@
                 <div class="row">
                     <div class="col">
                         @if($sender->user->selfPhoto == null)
-                        <img src="{{ asset('data/ProjectImages/master/basics.jpg') }}" alt="selfPhoto" class="img-thumbnail"
+                        <img style="height:250px;" src="{{ asset('data/ProjectImages/master/basics.jpg') }}" alt="selfPhoto" class="img-thumbnail"
                             width="100%">
                         <h4 class="text-center" style="margin-top:3%"><b>@lang('auth/profile.model_notice')</b></h4>
                         @else
-                        <img src="{{ $sender->user->selfPhoto }}" alt="selfPhoto" class="img-thumbnail"
+                        <img style="height:250px;" src="{{ $sender->user->selfPhoto }}" alt="selfPhoto" class="img-thumbnail"
                             width="100%">
                         <h4 class="text-center" style="margin-top:3%"><b>@lang('auth/profile.model_photo')</b></h4>
                         @endif

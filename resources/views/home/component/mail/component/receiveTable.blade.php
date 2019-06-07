@@ -5,7 +5,7 @@
     @include('home.component.mail.component.mailNav')
 
 
-
+    <span style="font-size:14px">@lang('home/mail/receiveTable.sendersCount1')[ <b>{{ $sendersCount }}</b> ]@lang('home/mail/receiveTable.sendersCount2') / @lang('home/mail/receiveTable.sendersCount3')</span>
     <div class="row">
         <div class="col">
             <table class="table">

@@ -8,6 +8,7 @@ use App\Http\Controllers\Helper\Translation;
 use Auth;
 
 use App\Models\Penpal\Sender;
+use App\Models\Penpal\Transmit;
 
 class ViewController extends Controller
 {
@@ -15,9 +16,11 @@ class ViewController extends Controller
     use Translation;
 
     private $penpalUserModel = null;
+    private $transmitModel = null;
 
     public function __construct(){
-        $this->senderModel  = new Sender();
+        $this->senderModel      = new Sender();
+        $this->transmitModel    = new Transmit();
     }
 
 
@@ -31,12 +34,35 @@ class ViewController extends Controller
     //    return json_encode($senders,JSON_UNESCAPED_UNICODE);
        
         return view('home.component.mail.component.receiveTable')->with([
-            'name'      => null,
-            'senders'   => $senders,
-            'page'      => $request->page,   
+            'name'          => null,
+            'senders'       => $senders,
+            'sendersCount'  => $senders->count(),
+            'page'          => $request->page,   
         ]);;
     }
 
+
+
+//보낸 메일함
+public function transmit(Request $request){
+        
+    $transmits = $this->transmitModel->where('user_id',Auth::id())
+            ->with(['user'])->latest()
+            ->paginate(8);
+
+        return view('home.component.mail.component.transmitTable')->with([
+            'name'              => null,
+            'transmits'         => $transmits,
+            'transmitsCount'    => $transmits ->count(),
+            'page'              => $request->page,   
+        ]);;
+}
+
+
+
+
+
+    //받은 메일함
     public function sendMail(Request $request){
         
         $senders = $this->senderModel->where('recipient_name',Auth::user()->name)->get();
@@ -46,6 +72,8 @@ class ViewController extends Controller
             'senders'       => $senders,
         ]);
     }
+
+
 
     public function show(Request $request){
        
@@ -69,4 +97,27 @@ class ViewController extends Controller
             'page'         => $request->page,   
         ]);
     }
+
+    public function transmitShow(Request $request){
+        $transmit = $this->transmitModel->where('user_id',Auth::id())
+        ->with(['user'])
+        ->first();
+
+        
+         //메일 내용 번역
+        $translationMail = $this->translation(
+            $transmit->content,
+            $this->langCode($transmit->content)
+        );
+        $transmit->translation = $translationMail;
+        
+    return view('home.component.mail.component.transmitShow')->with([
+        'transmit'     => $transmit,
+        'page'         => $request->page,   
+    ]);
+    }
+
+
+
+
 }

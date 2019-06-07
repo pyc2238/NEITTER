@@ -9,7 +9,7 @@ use App\Http\Controllers\Helper\StoreImage;
 use Auth;
 
 use App\Models\Penpal\Sender;
-
+use App\Models\Penpal\Transmit;
 
 
 
@@ -19,10 +19,12 @@ class PenpalController extends Controller
  
     use StoreImage;
 
-    private $penpalUserModel = null;
-
+    private $senderModel = null;
+    private $transmitModel = null;
+    
     public function __construct(){
-        $this->senderModel  = new Sender();
+        $this->senderModel      = new Sender();
+        $this->transmitModel    = new Transmit();
     }
 
 
@@ -36,7 +38,16 @@ class PenpalController extends Controller
                 return response()->json(['message'=>'false'],400);
             }
 
+        
             $senderModelData = array(
+                'recipient_name'    => $request->recipient_name,
+                'content'           => $request->content,
+                'image'             => $file,
+                'user_id'           => Auth::id(),
+            );
+
+
+            $transmitModelData = array(
                 'recipient_name'    => $request->recipient_name,
                 'content'           => $request->content,
                 'image'             => $file,
@@ -49,9 +60,16 @@ class PenpalController extends Controller
                 'content'           => $request->content,
                 'user_id'           => Auth::id(),
             );
+
+            $transmitModelData = array(
+                'recipient_name'    => $request->recipient_name,
+                'content'           => $request->content,
+                'user_id'           => Auth::id(),
+            );
         }
 
         $this->senderModel->create($senderModelData);
+        $this->transmitModel->create($transmitModelData);
 
         if(session('locale') == 'ja'){
             $message = $request->recipient_name.'様にメールをお届けしました。';
@@ -73,6 +91,15 @@ class PenpalController extends Controller
 
     }
 
+    public function transmitDeleteMail(Request $request){
+        
+        $this->transmitModel->where('id',$request->id)->delete();
+        
+    return back();
+
+}
+
+
     public function mailCount(){
         
        if(Auth::check()){
@@ -87,6 +114,9 @@ class PenpalController extends Controller
 
       return $mailCount;   
     }
+
+
+
 
 
 }
