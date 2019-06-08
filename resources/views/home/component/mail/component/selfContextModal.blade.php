@@ -37,8 +37,8 @@
                             width="100%">
                         <h4 class="text-center" style="margin-top:3%"><b>@lang('auth/profile.model_notice')</b></h4>
                         @else
-                        <img style="height:250px;" src="{{ $sender->user->selfPhoto }}" alt="selfPhoto" class="img-thumbnail"
-                            width="100%">
+                        <a href="{{ route('image.view',['image' => $sender->user->selfPhoto]) }}" target = "_blank"><img style="height:250px;" src="{{ $sender->user->selfPhoto }}" alt="selfPhoto" class="img-thumbnail"
+                            width="100%"></a>
                         <h4 class="text-center" style="margin-top:3%"><b>@lang('auth/profile.model_photo')</b></h4>
                         @endif
                     </div>

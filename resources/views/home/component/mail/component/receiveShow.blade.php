@@ -43,8 +43,8 @@
             <div class="col"></div>
             <div class="col-11">
                 <span>
-                        <img src="{{ $sender->image }}" alt="No Image" style="max-width: none; height: 450px; display: inline; "
-                        height="450px" width="480px" class="img-thumbnail">
+                        <a href="{{ route('image.view',['image' => $sender->image]) }}" target = "_blank"><img src="{{ $sender->image }}" alt="No Image" style="max-width: none; height: 450px; display: inline; "
+                        height="450px" width="480px" class="img-thumbnail"></a>
                 </span>
             </div>
             <div class="col"></div>

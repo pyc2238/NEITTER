@@ -140,6 +140,13 @@ class WelcomeController extends Controller
     public function getDevelopment(){
         return view('home.component.development');
     }
+
+    public function viewImage(Request $request){
+        
+            return view('home.imageView')->with([
+                'image' => $request->image,
+            ]);
+    }
     
 
 }

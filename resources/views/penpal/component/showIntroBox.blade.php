@@ -10,13 +10,13 @@
                             <td rowspan=3>
                     
                                 @if($friend->image != null)
-                                    <img src="{{ $friend->image }}" alt="No Image" style="max-width: none; height: 345px; display: inline; "
-                                        height="345px" width="300px" class="img-thumbnail">
+                                    <a href="{{ route('image.view',['image' => $friend->image]) }}" target = "_blank"><img src="{{ $friend->image }}" alt="No Image" style="max-width: none; height: 345px; display: inline; "
+                                        height="345px" width="300px" class="img-thumbnail"></a>
                                 @else
                                     @if($friend->user->selfPhoto != null)
-                                        <img src="{{ $friend->user->selfPhoto }}" alt="No Image"
+                                    <a href="{{ route('image.view',['image' => $friend->image]) }}" target = "_blank"><img src="{{ $friend->user->selfPhoto }}" alt="No Image"
                                             style="max-width: none; height: 345px; display: inline; " height="345px" width="300px"
-                                            class="img-thumbnail">
+                                            class="img-thumbnail"></a>
                     
                                      @else
                                         <img src="{{ asset("data/ProjectImages/master/logoImage/6.png") }}" alt="No Image"

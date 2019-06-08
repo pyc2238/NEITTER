@@ -19,6 +19,9 @@ Route::get('locale/{locale}',function($locale = 'ko'){
 
 /*CkEditor 파일업로드*/
 Route::post('/ckUpload', 'Helper\FileUploadController@fileUpload')->name('ckUpload');
+// 이미지 새창
+Route::get('/image', 'Home\WelcomeController@viewImage')->name('image.view');
+
 
 // papago 번역기
 Route::post('translation', 'Home\TranslationController@languageTranslation')->name('translation')->middleware('auth');
