@@ -20,7 +20,7 @@
             <h4 style='color:blue;font-family: "Nanum Gothic", sans-serif;'><b>クリエーター紹介</b></h4>
             <br>
             <div style="margin-bottom:10%">
-                <img width="30%" class="img-thumbnail" src="{{asset("data/ProjectImages/master/creators/bogeun.jpg")}}"
+                <img width="30%" class="img-thumbnail" src="{{ asset("data/ProjectImages/master/creators/bogeun.jpg") }}"
                     alt="Bogeun">
                 <br><br><br>
                 <table>

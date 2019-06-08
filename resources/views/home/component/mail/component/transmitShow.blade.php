@@ -39,14 +39,14 @@
             <div class="col"></div>
             <div class="col-11" style="border:1px solid red">
                 <span>
-                        <img src="{{ $transmit->image }}" alt="No Image" style="max-width: none; height: 380px; display: inline; "
-                        height="380px" width="320px" class="img-thumbnail">
+                        <img src="{{ $transmit->image }}" alt="No Image" style="max-width: none; height: 450px; display: inline; "
+                        height="450px" width="480px" class="img-thumbnail">
                 </span>
             </div>
             <div class="col"></div>
         </div>
     @endif
-    <div class="row" style="margin-top:150px;">
+    <div class="row" style="margin-top:150px;margin-bottom:5%;">
         <div class="col"></div>
         <div class="col-7 text-center">    
             <button class="btn btn-success" type="button" onclick="location.href='{{route('mail.transmit',['page'=>$page])}}'">@lang('home/mail/transmitShow.list')</button>

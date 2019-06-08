@@ -35,3 +35,18 @@
     text-overflow: ellipsis;
     max-width: 200px
 }
+
+.mailMenuBtn{
+    width: 80px;
+    height: 37px;
+    background-color: #f8585b;
+    border: none;
+    color: #fff;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    cursor: pointer;
+}
+.mailMenuBtn:hover{
+    color:blue
+}

@@ -1,8 +1,8 @@
 <footer class="footer" style='margin-top:1%'>
     <div class="col Internationalization">
 
-        <a href="{{url('locale/ko')}}"><img src="{{asset('data\ProjectImages\master/korea.png')}}" alt="Korea">&nbsp;&nbsp;Korean&nbsp;&nbsp;</a>
-        <a href="{{url('locale/ja')}}"><img src="{{asset('data\ProjectImages\master/japan.png')}}" alt="Japan">&nbsp;&nbsp;Japanese&nbsp;&nbsp;</a>
+        <a href="{{url('locale/ko')}}"><img src="{{ asset('data\ProjectImages\master/korea.png') }}" alt="Korea">&nbsp;&nbsp;Korean&nbsp;&nbsp;</a>
+        <a href="{{url('locale/ja')}}"><img src="{{ asset('data\ProjectImages\master/japan.png') }}" alt="Japan">&nbsp;&nbsp;Japanese&nbsp;&nbsp;</a>
         <a href="#" id="MOVE_TOP" class="float-right" title="MOVE_TOP"><img src="{{asset('data\ProjectImages\master/back to the top.png')}}"
                 alt="back to the top"></a>
     </div>
