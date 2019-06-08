@@ -8,6 +8,7 @@
         'transmitsCount1' => '全送信箱',
         'transmitsCount2' => '通',
         'transmitsCount3' => '保管日数は最長365日です。',
-        
+        'selectDelet'   => '選択削除',
+        'confirm'       => '該当メールを削除しますか?'
     ];
 ?>

@@ -84,15 +84,37 @@ class PenpalController extends Controller
     }
 
     public function deleteMail(Request $request){
-        
+      
+            if($request->deleteAll){
+               
+                $mails = collect();
+                $mails = $request->deleteAll;
+                $this->senderModel->destroy($mails);
+                return $this->senderModel->where('recipient_name',Auth::user()->name)->get()->count();  
+    
+            }
+
+
             $this->senderModel->where('id',$request->id)->delete();
             
         return back();
+        
 
     }
 
     public function transmitDeleteMail(Request $request){
         
+        
+        if($request->deleteAll){
+               
+            $mails = collect();
+            $mails = $request->deleteAll;
+            $this->transmitModel->destroy($mails);
+            return $this->transmitModel->where('user_id',Auth::id())->get()->count();  
+
+        }
+
+
         $this->transmitModel->where('id',$request->id)->delete();
         
     return back();

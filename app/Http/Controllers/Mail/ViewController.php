@@ -37,7 +37,7 @@ class ViewController extends Controller
         return view('home.component.mail.component.receiveTable')->with([
             'name'          => null,
             'senders'       => $senders,
-            'sendersCount'  => $senders->count(),
+            'sendersCount'  => $this->senderModel->where('recipient_name',Auth::user()->name)->get()->count(),
             'page'          => $request->page,   
         ]);;
     }
@@ -45,27 +45,27 @@ class ViewController extends Controller
 
 
 //보낸 메일함
-public function transmit(Request $request){
-        
-    $transmits = $this->transmitModel->where('user_id',Auth::id())
-            ->with(['user'])->latest()
-            ->paginate(8);
-
-
-            //받은 사용자의 국적을 찾는다.
-            foreach($transmits as $transmit){
-                $country = $this->userModel->where('name',$transmit->recipient_name)->value('country');
-                $transmit->country = $country;
-            }
-        
+    public function transmit(Request $request){
             
-        return view('home.component.mail.component.transmitTable')->with([
-            'name'              => null,
-            'transmits'         => $transmits,
-            'transmitsCount'    => $transmits ->count(),
-            'page'              => $request->page,   
-        ]);;
-}
+        $transmits = $this->transmitModel->where('user_id',Auth::id())
+                ->with(['user'])->latest()
+                ->paginate(8);
+
+
+                //받은 사용자의 국적을 찾는다.
+                foreach($transmits as $transmit){
+                    $country = $this->userModel->where('name',$transmit->recipient_name)->value('country');
+                    $transmit->country = $country;
+                }
+            
+                
+            return view('home.component.mail.component.transmitTable')->with([
+                'name'              => null,
+                'transmits'         => $transmits,
+                'transmitsCount'    => $this->transmitModel->where('user_id',Auth::id())->get()->count(),
+                'page'              => $request->page,   
+            ]);;
+    }
 
 
 

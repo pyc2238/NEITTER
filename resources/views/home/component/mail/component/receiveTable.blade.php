@@ -5,7 +5,8 @@
     @include('home.component.mail.component.mailNav')
 
 
-    <span style="font-size:14px">@lang('home/mail/receiveTable.sendersCount1')[ <b>{{ $sendersCount }}</b> ]@lang('home/mail/receiveTable.sendersCount2') / @lang('home/mail/receiveTable.sendersCount3')</span>
+    <span style="font-size:14px">@lang('home/mail/receiveTable.sendersCount1')[ <b id="sendCount">{{ $sendersCount }}</b>
+        ]@lang('home/mail/receiveTable.sendersCount2') / @lang('home/mail/receiveTable.sendersCount3')</span>
     <div class="row">
         <div class="col">
             <table class="table">
@@ -21,13 +22,13 @@
                 <tbody>
                     @if($senders != null)
                     @foreach($senders as $sender)
-                    <tr>
+                    <tr data-tr_value="{{ $sender->id }}">
                         <th scope="row"><input type="checkbox" name="chk" value="{{ $sender->id }}" /></th>
                         <td>
                             @if($sender->user->country == 'ko')
-                                <img src="{{ asset("data/ProjectImages/master/korea.png") }}" alt="korean">
+                            <img src="{{ asset("data/ProjectImages/master/korea.png") }}" alt="korean">
                             @else
-                                <img src="{{ asset("data/ProjectImages/master/japan.png") }}" alt="japan">
+                            <img src="{{ asset("data/ProjectImages/master/japan.png") }}" alt="japan">
                             @endif
                             <span id="userInfo" data-toggle="modal"
                                 data-target="#Modal-large-demo{{ $sender->user->id }}">{{ $sender->user->name }}</span>
@@ -54,9 +55,9 @@
         </div>
     </div>
     <div class="col">
-        <button class="btn btn-danger" type="button">선택삭제</button>
+        <button class="btn btn-danger" id="allDelete" type="button">@lang('home/mail/receiveTable.selectDelet')</button>
     </div>
-    <div class="col" style="margin-top:2%">
+    <div class="col" id="refresh" style="margin-top:2%">
         @if ($senders->hasPages())
         {{ $senders->appends(['page'=>$page])->onEachSide(5)->links() }}
         @endif
@@ -71,6 +72,7 @@
 
 <script>
     $(document).ready(function () {
+       
         //최상단 체크박스 클릭
         $("#checkall").click(function () {
             //클릭되었으면
@@ -84,8 +86,39 @@
             }
         })
 
+        $('#allDelete').click(function () {
+            if (confirm('@lang('home/mail/receiveTable.confirm')')) {
+                $("input[name=chk]:checked").each(function () {
+                    var tr_value = $(this).val();
+                    var tr = $("tr[data-tr_value='" + tr_value + "']");
+                    tr.remove();
+                    
+                    $.ajax({
+                        url: '{{ route('mail.delete') }}',
+                        type: 'get',
+                        data: {
+                            _token: "{{ csrf_token() }}",
+                            'deleteAll': $(this).val(),
+
+                        },
+                        success: function (data) {
+                            $('#sendCount').text(data);
+                            
+                        },
+                        error: function () {
+                            alert("error!!!!");
+                        }
+                    });
+
+                });
+            } else {
+                return false;
+            }
+        });
     })
 
+
+    
 </script>
 
 </html>
