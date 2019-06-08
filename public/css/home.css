@@ -67,19 +67,31 @@
     background-color: white;
     border: 1px solid #bcbcbc;
     box-shadow: 0 4px 0.5px -4px gray;
-     margin-top: 3%;
+    margin-top: 3%;
+    
 }
 
 .penpal-count-head{
-    background-color:#9EFC37;
-    border:1px solid #8FD83F;
+    color:white;
+    background-color:#ea314e;
+    border:1px solid #F96D6D;
     padding-top:2%;
     padding-bottom:2.5%;
     box-shadow: 0 4px 0.5px -4px gray;
 }
 
 .penpal-count-body{
-    background-color: #E9E9E9;
+    background-color: #FFF7F7;
     border: 1px solid #C8C7C6;
     box-shadow: 0 4px 0.5px -4px gray;
+}
+
+#chartSpan{
+    color:blue;
+
+}
+#chartSpan:hover{
+    cursor:pointer;
+    color:orange;
+    
 }

@@ -13,6 +13,8 @@
         'recode_notice' => '最近の20個の翻訳記録を照会します。',
         'penpal_count' => '今日のNEITTERメール友状況',
         'penpal' => 'メール友',
+        'korea' => '韓国',
+        'japan' => '日本',
     ];
 
 ?>

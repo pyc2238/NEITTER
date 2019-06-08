@@ -53,8 +53,9 @@ class WelcomeController extends Controller
         // //오늘 펜팔을 주고 받은 횟수
         $koreaSenderCount = $this->senderModel->whereDate('created_at',$now)->where('country','ko')->get()->count();
         $japanSenderCount = $this->senderModel->whereDate('created_at',$now)->where('country','ja')->get()->count();
-        
-
+        $koreaPercent   = (double)sprintf("%2.2f",($koreaSenderCount / $this->senderModel->whereDate('created_at',$now)->get()->count()) * 100);
+        $japanPercent   = (double)sprintf("%2.2f",($japanSenderCount / $this->senderModel->whereDate('created_at',$now)->get()->count()) * 100);
+    
         //최근 게시물과 공지사항
         $communities        = $this->communityModel->latest()->take(8)->get();
         $notices            = $this->noticeModel->latest()->take(8)->get();
@@ -66,6 +67,8 @@ class WelcomeController extends Controller
             'notices'           => $notices,
             'koreaSenderCount'  => $koreaSenderCount,
             'japanSenderCount'  => $japanSenderCount,
+            'koreaPercent'      => $koreaPercent,
+            'japanPercent'      => $japanPercent,
         ]);
         
     }

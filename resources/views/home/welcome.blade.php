@@ -18,9 +18,6 @@
 </div>
 
 
-
-
-
 <script>
     var socialite = '{{Session::has(' socialiteLogin ')}}'
     $(window).load(function () {

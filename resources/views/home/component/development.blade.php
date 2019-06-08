@@ -21,11 +21,12 @@
                     <img src="{{asset("data/ProjectImages/master/WebSide.png")}}" alt="WebSideLog">
 
                     <br><b style="font-size:1.5rem;color:red">WebSide</b><br><hr>
-                    <img src="{{ asset("data/ProjectImages/master/stack/html_css_js.png") }}" alt="WebSideLog" width="30%"><br>
-                    <img src="{{ asset("data/ProjectImages/master/stack/jquery.png") }}" alt="WebSideLog" width="30%"><br>
-                    <img src="{{ asset("data/ProjectImages/master/stack/ajax.png") }}" alt="WebSideLog" width="30%"><br>
-                    <img src="{{ asset("data/ProjectImages/master/stack/bootstrap.png") }}" alt="WebSideLog" width="30%"><br><br>
-                    <img src="{{ asset("data/ProjectImages/master/stack/papago.jpg") }}" alt="WebSideLog" width="30%"><br>
+                    <img src="{{ asset("data/ProjectImages/master/stack/html_css_js.png") }}" alt="WebSideLog" width="30%"><br><br><br>
+                    <img src="{{ asset("data/ProjectImages/master/stack/jquery.png") }}" alt="WebSideLog" width="30%"><br><br>
+                    <img src="{{ asset("data/ProjectImages/master/stack/ajax.png") }}" alt="WebSideLog" width="30%"><br><br>
+                    <img src="{{ asset("data/ProjectImages/master/stack/bootstrap.png") }}" alt="WebSideLog" width="30%"><br><br><br>
+                    <img src="{{ asset("data/ProjectImages/master/stack/chartjs.png") }}" alt="WebSideLog" width="30%"><br><br>
+    
                 </div>
                 <div class="col">
                     <img src="{{asset("data/ProjectImages/master/ServerSide.png")}}" alt="WebSideLog">
@@ -35,6 +36,7 @@
                     <img src="{{ asset("data/ProjectImages/master/stack/laravel.png") }}" alt="WebSideLog" width="30%"><br>
                     <img src="{{ asset("data/ProjectImages/master/stack/AWS.png") }}" alt="WebSideLog" width="30%"><br>
                     <img src="{{ asset("data/ProjectImages/master/stack/apache.png") }}" alt="WebSideLog" width="30%"><br>
+                    <img src="{{ asset("data/ProjectImages/master/stack/papago.jpg") }}" alt="WebSideLog" width="30%"><br>
                     </ul>
                 </div>
                 <div class="col">
@@ -158,12 +160,12 @@
                         <img src="{{asset("data/ProjectImages/master/WebSide.png")}}" alt="WebSideLog">
 
                         <br><b style="font-size:1.5rem;color:red">WebSide</b><br><hr>
-                        <img src="{{ asset("data/ProjectImages/master/stack/html_css_js.png") }}" alt="WebSideLog" width="30%"><br>
-                        <img src="{{ asset("data/ProjectImages/master/stack/jquery.png") }}" alt="WebSideLog" width="30%"><br>
-                        <img src="{{ asset("data/ProjectImages/master/stack/ajax.png") }}" alt="WebSideLog" width="30%"><br>
-                        <img src="{{ asset("data/ProjectImages/master/stack/bootstrap.png") }}" alt="WebSideLog" width="30%"><br>
-                        <img src="{{ asset("data/ProjectImages/master/stack/papago.jpg") }}" alt="WebSideLog" width="30%"><br>
-
+                        <img src="{{ asset("data/ProjectImages/master/stack/html_css_js.png") }}" alt="WebSideLog" width="30%"><br><br><br>
+                        <img src="{{ asset("data/ProjectImages/master/stack/jquery.png") }}" alt="WebSideLog" width="30%"><br><br>
+                        <img src="{{ asset("data/ProjectImages/master/stack/ajax.png") }}" alt="WebSideLog" width="30%"><br><br>
+                        <img src="{{ asset("data/ProjectImages/master/stack/bootstrap.png") }}" alt="WebSideLog" width="30%"><br><br><br>
+                        <img src="{{ asset("data/ProjectImages/master/stack/chartjs.png") }}" alt="WebSideLog" width="30%"><br><br>
+                        
                     </div>
                     <div class="col">
                         <img src="{{asset("data/ProjectImages/master/ServerSide.png")}}" alt="WebSideLog">
@@ -173,6 +175,7 @@
                         <img src="{{ asset("data/ProjectImages/master/stack/laravel.png") }}" alt="WebSideLog" width="30%"><br>
                         <img src="{{ asset("data/ProjectImages/master/stack/AWS.png") }}" alt="WebSideLog" width="30%"><br>
                         <img src="{{ asset("data/ProjectImages/master/stack/apache.png") }}" alt="WebSideLog" width="30%"><br>
+                        <img src="{{ asset("data/ProjectImages/master/stack/papago.jpg") }}" alt="WebSideLog" width="30%"><br>
                         </ul>
                     </div>
                     <div class="col">
