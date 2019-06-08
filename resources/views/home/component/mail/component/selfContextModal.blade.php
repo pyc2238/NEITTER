@@ -56,7 +56,7 @@
                             <tr>
                                 <th>@lang('auth/profile.model_gender')</th>
     
-                                @if($sender->user->gender == 'men')
+                                @if($sender->gender == 'men')
     
                                 <td><img src="{{asset("data/ProjectImages/master/men.png")}}" alt="men"></td>
                                 @else

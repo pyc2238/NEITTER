@@ -25,18 +25,18 @@
                         <th scope="row"><input type="checkbox" name="chk" value="{{ $sender->id }}" /></th>
                         <td>
                             @if($sender->user->country == 'ko')
-                            <img src="{{ asset("data/ProjectImages/master/korea.png") }}" alt="men">
+                                <img src="{{ asset("data/ProjectImages/master/korea.png") }}" alt="korean">
                             @else
-                            <img src="{{ asset("data/ProjectImages/master/japan.png") }}" alt="women">
+                                <img src="{{ asset("data/ProjectImages/master/japan.png") }}" alt="japan">
                             @endif
                             <span id="userInfo" data-toggle="modal"
                                 data-target="#Modal-large-demo{{ $sender->user->id }}">{{ $sender->user->name }}</span>
                         </td>
                         <td class="mailsTd">
                             @if($sender->is_read == 0)
-                            <img src="{{ asset("data/ProjectImages/penpal/no_read.png") }}" alt="men">
+                            <img src="{{ asset("data/ProjectImages/penpal/no_read.png") }}" alt="no_read">
                             @else
-                            <img src="{{ asset("data/ProjectImages/penpal/ok_read.png") }}" alt="women">
+                            <img src="{{ asset("data/ProjectImages/penpal/ok_read.png") }}" alt="ok_read">
                             @endif
                             <a
                                 href="{{ route('mail.show',['id' => $sender->id,'page' => $page]) }}">{{ $sender->content }}</a>

@@ -7,7 +7,11 @@
     <div class="row" style="margin-top:5%;">
         <div class="col">
             <span class="float-right">
-                  
+                    @if($transmit->country == 'ko')
+                        <img src="{{ asset("data/ProjectImages/master/korea.png") }}" alt="korean">
+                    @else
+                        <img src="{{ asset("data/ProjectImages/master/japan.png") }}" alt="japan">
+                    @endif
                     {{ $transmit->recipient_name }}@lang('home/mail/transmitShow.intro1') {{ $transmit->created_at }} @lang('home/mail/transmitShow.intro2')</span>
         </div>
     </div>

@@ -8,9 +8,9 @@
         <div class="col">
             <span class="float-right">
                     @if($sender->user->country == 'ko')
-                        <img src="{{ asset("data/ProjectImages/master/korea.png") }}" alt="men">
+                        <img src="{{ asset("data/ProjectImages/master/korea.png") }}" alt="korea">
                     @else
-                        <img src="{{ asset("data/ProjectImages/master/japan.png") }}" alt="women">
+                        <img src="{{ asset("data/ProjectImages/master/japan.png") }}" alt="japan">
                     @endif
                     {{ $sender->user->name }}@lang('home/mail/receiveShow.intro1') {{ $sender->created_at }} @lang('home/mail/receiveShow.intro2')</span>
         </div>

@@ -24,7 +24,12 @@
                     <tr>
                         <th scope="row"><input type="checkbox" name="chk" value="{{ $transmit->id }}" /></th>
                         <td>
-                            <span id="userInfo">{{ $transmit->recipient_name }}</span>
+                            @if($transmit->country == 'ko')
+                                <img src="{{ asset("data/ProjectImages/master/korea.png") }}" alt="korea">
+                            @else
+                                <img src="{{ asset("data/ProjectImages/master/japan.png") }}" alt="japan">
+                            @endif
+                            <a id="userInfo">{{ $transmit->recipient_name }}</a>
                         </td>
                         <td class="mailsTd">
                            
@@ -54,8 +59,9 @@
         @endif
     </div>
 
-
+    
     @include('home.component.mail.component.mailFooter')
+
 </body>
 
 <script>

@@ -7,6 +7,7 @@ use App\Http\Controllers\Controller;
 use App\Http\Controllers\Helper\Translation;
 use Auth;
 
+use App\Models\Users\User;
 use App\Models\Penpal\Sender;
 use App\Models\Penpal\Transmit;
 
@@ -15,12 +16,14 @@ class ViewController extends Controller
 
     use Translation;
 
-    private $penpalUserModel = null;
-    private $transmitModel = null;
+    private $penpalUserModel    = null;
+    private $transmitModel      = null;
+    private $userModel          = null;
 
     public function __construct(){
         $this->senderModel      = new Sender();
         $this->transmitModel    = new Transmit();
+        $this->userModel        = new User();
     }
 
 
@@ -30,8 +33,6 @@ class ViewController extends Controller
             ->with(['user'])->latest()
             ->paginate(8);
 
-        
-    //    return json_encode($senders,JSON_UNESCAPED_UNICODE);
        
         return view('home.component.mail.component.receiveTable')->with([
             'name'          => null,
@@ -50,6 +51,14 @@ public function transmit(Request $request){
             ->with(['user'])->latest()
             ->paginate(8);
 
+
+            //받은 사용자의 국적을 찾는다.
+            foreach($transmits as $transmit){
+                $country = $this->userModel->where('name',$transmit->recipient_name)->value('country');
+                $transmit->country = $country;
+            }
+        
+            
         return view('home.component.mail.component.transmitTable')->with([
             'name'              => null,
             'transmits'         => $transmits,
@@ -103,7 +112,12 @@ public function transmit(Request $request){
         ->with(['user'])
         ->first();
 
-        
+
+        //국적 추가
+        $country = $this->userModel->where('name',$transmit->recipient_name)->value('country');
+        $transmit->country = $country;
+
+
          //메일 내용 번역
         $translationMail = $this->translation(
             $transmit->content,
