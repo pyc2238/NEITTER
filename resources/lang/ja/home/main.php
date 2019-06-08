@@ -11,6 +11,8 @@
         'recode_delete' => '削除',
         'recode_all_delete' => ' 全体削除',
         'recode_notice' => '最近の20個の翻訳記録を照会します。',
+        'penpal_count' => '今日のNEITTERメール友状況',
+        'penpal' => 'メール友',
     ];
 
 ?>

@@ -11,7 +11,8 @@
         'recode_delete' => '삭제',
         'recode_all_delete' => ' 전체삭제',
         'recode_notice' => '최근 20개의 번역기록을 조회합니다.',
-
+        'penpal_count' => '오늘의NEITTER펜팔 상황',
+        'penpal' => '펜팔',
     ];
 
 ?>

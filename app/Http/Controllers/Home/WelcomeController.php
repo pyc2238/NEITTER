@@ -10,6 +10,7 @@ use Session;
 use App\Models\Communities\Community;
 use App\Models\Admins\Admin_Notice;
 use App\Models\Penpal\Penpal;
+use App\Models\Penpal\Sender;
 
 
 class WelcomeController extends Controller
@@ -19,12 +20,14 @@ class WelcomeController extends Controller
     private $penpalModel            = null;
     private $communityModel         = null;
     private $noticeModel            = null;
+    private $senderModel            = null;
 
     public function __construct(){
 
         $this->communityModel           = new Community();
         $this->noticeModel              = new Admin_Notice();
         $this->penpalModel              = new Penpal();
+        $this->senderModel              = new Sender();
 
     }
 
@@ -37,6 +40,8 @@ class WelcomeController extends Controller
     public function index()
     {
         $now            = date('Y-m-d');
+        
+        //오늘 만들어진 펜팔
         $penpals        = $this->penpalModel->
                             with(['user:id,name,gender,country,age,selfPhoto'])
                             ->whereDate('created_at',$now)
@@ -44,14 +49,23 @@ class WelcomeController extends Controller
                             ->take(8)
                             ->get();
 
+
+        // //오늘 펜팔을 주고 받은 횟수
+        $koreaSenderCount = $this->senderModel->whereDate('created_at',$now)->where('country','ko')->get()->count();
+        $japanSenderCount = $this->senderModel->whereDate('created_at',$now)->where('country','ja')->get()->count();
+        
+
+        //최근 게시물과 공지사항
         $communities        = $this->communityModel->latest()->take(8)->get();
         $notices            = $this->noticeModel->latest()->take(8)->get();
         
 
         return view('home.welcome')->with([
-            'penpals'       => $penpals,
-            'communities'   => $communities,
-            'notices'       => $notices,
+            'penpals'           => $penpals,
+            'communities'       => $communities,
+            'notices'           => $notices,
+            'koreaSenderCount'  => $koreaSenderCount,
+            'japanSenderCount'  => $japanSenderCount,
         ]);
         
     }

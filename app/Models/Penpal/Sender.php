@@ -11,6 +11,7 @@ class Sender extends Model
         'content',
         'image',
         'recipient_name',
+        'country',
     ];
 
     public function user(){

@@ -16,7 +16,7 @@ class ViewController extends Controller
 
     use Translation;
 
-    private $penpalUserModel    = null;
+    private $senderModel        = null;
     private $transmitModel      = null;
     private $userModel          = null;
 

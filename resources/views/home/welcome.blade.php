@@ -6,7 +6,7 @@
 <div class="container mainPage">
     <div class="row justify-content-center">
         <div class="col">
-            1 of 2
+                @include('home.component.main.penpalCountBoard')
         </div>
         <div class="col-7">
                 @include('home.component.main.slider')

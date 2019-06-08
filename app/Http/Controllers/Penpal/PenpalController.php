@@ -43,6 +43,7 @@ class PenpalController extends Controller
                 'recipient_name'    => $request->recipient_name,
                 'content'           => $request->content,
                 'image'             => $file,
+                'country'           => Auth::user()->country,
                 'user_id'           => Auth::id(),
             );
 
@@ -58,6 +59,7 @@ class PenpalController extends Controller
             $senderModelData = array(
                 'recipient_name'    => $request->recipient_name,
                 'content'           => $request->content,
+                'country'           => Auth::user()->country,
                 'user_id'           => Auth::id(),
             );
 
