@@ -5,7 +5,11 @@
           <a  class="btn btn-danger" onclick="location.href='{{ route('penpal.show.delete',['id' => $friend->id])}}'"><i class="fa fa-trash" style="color:white">&nbsp;@lang('penpal/show.delete')</i></a>  
           
           @endif
-          <a  class="btn btn-info"><i class="fa fa-envelope" style="color:white" onclick="sendMailBox()">&nbsp;@lang('penpal/show.mail')</i></a>
+          @if(Auth::id() === $friend->user->id)
+            <a  class="btn btn-info"><i class="fa fa-envelope" style="color:white" onclick="receiveMailBox()">&nbsp;@lang('penpal/show.my_mail')</i><span id="my_mailCount" style="background-color:white; border-radius: 80px / 40px; color:#98989A"></span></a>
+          @else
+            <a  class="btn btn-info"><i class="fa fa-envelope" style="color:white" onclick="sendMailBox()">&nbsp;@lang('penpal/show.mail')</i></a>
+          @endif
           <a  class="btn btn-success"><i class="fa fa-user-plus" style="color:white">&nbsp;@lang('penpal/show.friends')</i></a>
           @if( Auth::check() && Auth::id() === $friend->user->id)
               <a  class="btn btn-secondary"  data-toggle="modal" data-target="#Modal-winks"><i class="fa fa-grin-wink" style="color:white">&nbsp;@lang('penpal/show.wink')
@@ -55,8 +59,14 @@
 
     function sendMailBox(){  
         window.open('{!! route('mail.sendMail',['penpal_id' => $friend->id,'name' => $friend->user->name]) !!}',
-         "inbox",
+         "sendMail",
          "width=710, height=665, toolbar=no, menubar=no, scrollbars=no, resizable=yes"
          );  
+    }
+    function receiveMailBox(){  
+        window.open('{!! route('mail.inbox') !!}',
+        "inbox",
+        "width=710, height=665, toolbar=no, menubar=no, scrollbars=no, resizable=yes"
+        );       
     }  
 </script>

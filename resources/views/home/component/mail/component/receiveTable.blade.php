@@ -1,4 +1,5 @@
 <html>
+
 @include('home.component.mail.component.mailHeader')
 
 <body>

@@ -1,4 +1,6 @@
 <head>
+
+
     {{-- bootstrap4 --}}
     <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
     <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
@@ -12,6 +14,8 @@
     <script src="{{ asset('/js/mail.js') }}"></script>
     {{-- mail.css --}}
     <link href="{{ asset('css/mail.css') }}" rel="stylesheet">
+
+    <title>@lang('home/mail/mail.subject')</title>
 
     <div class="row">
         <div class="col" style="background-color:#ea314e; height:50px;">

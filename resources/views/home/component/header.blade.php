@@ -109,6 +109,7 @@
                     $('#mailCount').css('background-color','red').css('color','white');
                 }
                 $('#mailCount').text(data);
+                $('#my_mailCount').text(data);
                 $('#mailCount').attr('title','@lang('home/header.mailCount1') '+data+' @lang('home/header.mailCount2')');
                 console.log('ok');
                 
