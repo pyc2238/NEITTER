@@ -17,31 +17,38 @@
         </div>
     </div>
 </div>
-{{-- {!! $koreaSenderCount !!}  --}}
-{{-- {!! $japanSenderCount !!}  --}}
+  
 <script>
-        var ctx = document.getElementById('myChart').getContext('2d');
-        var myChart = new Chart(ctx, {
-            type: 'pie',
-            data: {
-                labels: ['@lang('home/main.korea')', '@lang('home/main.japan')'],
-                datasets: [{
-                    label: [
-                
-                    ],
-                    data: [
-                        {!! $koreaPercent !!} ,
-                        {!! $japanPercent !!} ,
-                    ],
-                    backgroundColor: [
-                        'red',
-                        'blue',
-                    ],
-                }]
-            },
-            options: {
-            }
-        });
+var ctx = document.getElementById("myChart").getContext('2d');
+var myChart = new Chart(ctx, {
+  type: 'pie',
+  data: {
+    labels: ['@lang('home/main.korea'){!! $koreaSenderCount !!}', '@lang('home/main.japan'){!! $japanSenderCount !!}'],
+    datasets: [{
+      backgroundColor: [
+        "red",
+        "blue",
+        
+      ],
+      data: [
+        {!! $koreaPercent !!} ,
+        {!! $japanPercent !!} ,
+      ]
+    }]
+  },
+  options: {
+      tooltips : {
+
+      callbacks : { 
+        label : function(tooltipItem, data) {
+          var dataset = data.datasets[tooltipItem.datasetIndex];
+                  return  dataset.data[tooltipItem.index] + ' %';
+                },
+        },
+      },
+  }
+});
+
     
     </script>
     

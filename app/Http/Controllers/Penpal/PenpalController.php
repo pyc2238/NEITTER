@@ -131,11 +131,8 @@ class PenpalController extends Controller
             ['recipient_name',Auth::user()->name],
             ['is_read',0], 
             ])->get()->count();
-       }else{
-            return back()->with(['message' => 'no count']);
        } 
       
-
       return $mailCount;   
     }
 

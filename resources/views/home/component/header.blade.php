@@ -89,6 +89,7 @@
 
 
 <script>
+    
     function openInbox(){  
         window.open('{{ route('mail.inbox') }}',
          "inbox",
@@ -96,7 +97,7 @@
          );  
     }
     
-    if({!! Auth::check() !!}){
+    if('{!! Auth::check() !!}'){
         $(function () {
         $.ajax({
             url: '{{route('mail.count')}}',
