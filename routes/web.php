@@ -63,6 +63,8 @@ Route::group(['middleware' => ['auth']], function () {
     Route::get('password/{id}', 'User\ViewController@getChanegePasswordFrom')->name('user.passwordFrom');
     /*회원 비밀번호 변경*/
     Route::put('update/{id}', 'User\ProfileController@putUpdatePasswords')->name('user.updatePassword');
+    /*회원 친구 추가*/
+    Route::post('create/friend', 'User\FriendController@addFriend')->name('user.create.friend');
 });
 /*지식교류 게시판*/
 Route::resource('community', 'Community\CommunityContoller');

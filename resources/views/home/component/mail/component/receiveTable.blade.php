@@ -31,6 +31,7 @@
                             @else
                             <img src="{{ asset("data/ProjectImages/master/japan.png") }}" alt="japan">
                             @endif
+                        
                             <span id="userInfo" data-toggle="modal"
                                 data-target="#Modal-large-demo{{ $sender->user->id }}">{{ $sender->user->name }}</span>
                         </td>
@@ -40,6 +41,15 @@
                             @else
                             <img src="{{ asset("data/ProjectImages/penpal/ok_read.png") }}" alt="ok_read">
                             @endif
+
+                            @if($sender->friend_status === 1)
+                                <img src="{{ asset("data/ProjectImages/penpal/friends.png") }}" alt="friend_request">
+                            @else
+                                @if($sender->is_friend == 1)
+                                    <img src="{{ asset("data/ProjectImages/penpal/friend.png") }}" alt="friend_request">
+                                @endif
+                            @endif
+                                
                             <a
                                 href="{{ route('mail.show',['id' => $sender->id,'page' => $page]) }}">{{ $sender->content }}</a>
                         </td>

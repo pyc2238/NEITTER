@@ -19,6 +19,7 @@ class CreateSendersTable extends Migration
             $table->text('content');
             $table->text('image')->nullable();
             $table->string('country',50);
+            $table->boolean('is_friend')->default(false);
             $table->boolean('is_read')->default(false);
             $table->integer('user_id')->unsigned();
             $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');

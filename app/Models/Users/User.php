@@ -78,6 +78,10 @@ class User extends Authenticatable
         return $this->hasMany('App\Models\Users\TranslationRecord');
     }
 
+    public function friend(){
+        return $this->hasMany('App\Models\Users\Friend');
+    }
+
 
        //penpals테이블 user테이블 N-N (중간테이블 visitors)
        public function visitor_penapl(){

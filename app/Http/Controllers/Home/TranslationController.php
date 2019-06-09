@@ -25,19 +25,20 @@ class TranslationController extends Controller
 
     public function languageTranslation(Request $request){
     
-        if(Auth::check() && $request->material){
-
-            $lang = $this->langCode($request->material);
-           
-            $translationRes =  $this->translation($request->material,$lang);
     
+        if(Auth::check() && $request->material){
+           
+            $lang = $this->langCode($request->material);
+            
+            $translationRes =  $this->translation($request->material,$lang);
+            
             if($lang == "ko"){
                 $translationData = array(
                     'korean'        => $request->material,
                     'japanese'      => $translationRes,
                     'user_id'       => Auth::id(),
                 );
-
+                
             }else{
                 $translationData = array(
                     'korean'        => $translationRes,
@@ -45,7 +46,7 @@ class TranslationController extends Controller
                     'user_id'       => Auth::id(),
                 );
             }
-
+            
             $this->translationRecordModel->create($translationData);
 
             return $translationRes;

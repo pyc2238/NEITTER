@@ -15,6 +15,16 @@
                     {{ $sender->user->name }}@lang('home/mail/receiveShow.intro1') {{ $sender->created_at }} @lang('home/mail/receiveShow.intro2')</span>
         </div>
     </div>
+    
+    <span id="friendNotice" style="margin-left:2%;color:blue;display:none;" ><i class="fa fa-user"></i>@lang('home/mail/receiveShow.is_friend')</span>
+    @if($sender->is_friend === 1)
+        @if($sender->user->id === $sender->friend && $sender->friend_status === 1)
+            <span style="margin-left:2%;color:blue" ><i class="fa fa-user"></i>@lang('home/mail/receiveShow.is_friend')</span>
+        @else
+            <button style="margin-left:2%" type="button" id="addFriend"><i class="fa fa-user-plus"></i>@lang('home/mail/receiveShow.friend_acceptance')</button>
+        @endif
+    @endif
+    
     <div class="row" style="margin-top:5%;">
         <div class="col"></div>
         <div class="col-11 contentBox">
@@ -62,3 +72,27 @@
 </body>
 
 </html>
+
+<script>
+// 친구추가 ajax
+$("#addFriend").click(function(){
+        $.ajax({
+            url: '{{route('user.create.friend')}}',
+            type: 'post',
+            data: {_token: "{{ csrf_token() }}",
+                'friend_id': '{{ $sender->user->id }}',
+                },
+            success: function (data) {
+                $('#addFriend').hide();
+                $('#friendNotice').show();
+    
+               console.log('add friend');
+                
+            }, error: function () {
+                alert("error!!!!");
+            }
+        });
+    });
+
+
+</script>

@@ -28,8 +28,13 @@
 
                 <div class="form-group">
                     <label for="comment"><b>@lang('home/mail/sendMail.content')</b></label>
-                    <textarea class="form-control" rows="5" style="resize: none;" name="content" autocomplete=off
+                    @if($is_friend != null)
+                        <textarea class="form-control" rows="5" style="resize: none;" name="content" autocomplete=off
+                            required>@lang('home/mail/sendMail.friend_textarea')</textarea>
+                    @else
+                        <textarea class="form-control" rows="5" style="resize: none;" name="content" autocomplete=off
                         required></textarea>
+                    @endif    
                 </div>
                 <br>
                 <br>
@@ -41,8 +46,19 @@
 
                 <br>
                 <br>
+                
+                <div class="col">
+                        <i class="fa fa-user" style="font-size:22px"></i>
+                        @if($is_friend != null)
+                            <input style="margin-left:3%" type="checkbox" value="1" id="friendChk" name="friendChk" checked>
+                        @else
+                            <input style="margin-left:3%" type="checkbox" value="1" id="friendChk" name="friendChk">
+                        @endif
+                        <label for="friendChk">@lang('home/mail/sendMail.friend_request')</label>
+                </div>
+                
                 <br>
-
+                <br>
                 <button style="padding-left:50%;padding-right:50%;" class="btn btn-primary " type="submit"><i
                         class="fa fa-pencil">@lang('home/mail/sendMail.send')</i></button>
             </form>
@@ -58,3 +74,4 @@
 </body>
 
 </html>
+

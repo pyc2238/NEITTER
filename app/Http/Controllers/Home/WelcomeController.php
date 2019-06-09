@@ -40,6 +40,8 @@ class WelcomeController extends Controller
     public function index()
     {
         $now            = date('Y-m-d');
+        $koreaPercent   = 0;
+        $japanPercent   = 0;
         
         //오늘 만들어진 펜팔
         $penpals        = $this->penpalModel->
@@ -50,11 +52,26 @@ class WelcomeController extends Controller
                             ->get();
 
 
-        // //오늘 펜팔을 주고 받은 횟수
-        $koreaSenderCount = $this->senderModel->whereDate('created_at',$now)->where('country','ko')->get()->count();
-        $japanSenderCount = $this->senderModel->whereDate('created_at',$now)->where('country','ja')->get()->count();
-        $koreaPercent   = (double)sprintf("%2.2f",($koreaSenderCount / $this->senderModel->whereDate('created_at',$now)->get()->count()) * 100);
-        $japanPercent   = (double)sprintf("%2.2f",($japanSenderCount / $this->senderModel->whereDate('created_at',$now)->get()->count()) * 100);
+        // 오늘의 펜팔 수치를 구한다.
+        $penpalCounts = $this->penpalModel->whereDate('created_at',$now)->get();
+
+        $japanPenpalCount   = 0;
+        $koreaPenpalCount   = 0;
+        foreach($penpalCounts as $penpalCounts ){
+           if($penpalCounts->user->country == 'jp'){
+                $japanPenpalCount += 1;
+           }else{
+                $koreaPenpalCount += 1;
+           }
+        }
+        
+        if($koreaPenpalCount || $japanPenpalCount ){
+            $koreaPercent   = (double)sprintf("%2.2f",($koreaPenpalCount / $penpalCounts->count()) * 100);
+            $japanPercent   = (double)sprintf("%2.2f",($japanPenpalCount / $penpalCounts->count()) * 100);
+        }
+        
+
+        
     
         //최근 게시물과 공지사항
         $communities        = $this->communityModel->latest()->take(8)->get();
@@ -65,8 +82,8 @@ class WelcomeController extends Controller
             'penpals'           => $penpals,
             'communities'       => $communities,
             'notices'           => $notices,
-            'koreaSenderCount'  => $koreaSenderCount,
-            'japanSenderCount'  => $japanSenderCount,
+            'koreaPenpalCount'  => $koreaPenpalCount,
+            'japanPenpalCount'  => $japanPenpalCount,
             'koreaPercent'      => $koreaPercent,
             'japanPercent'      => $japanPercent,
         ]);

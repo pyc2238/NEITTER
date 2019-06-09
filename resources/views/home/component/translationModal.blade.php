@@ -170,6 +170,7 @@
                 'material': $('#translationBox').val(),
             },
             success: function (data) {
+
                 $("#translationBox").val('');
                 $("#translationResBox").val(data);
 

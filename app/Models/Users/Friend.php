@@ -1,17 +1,15 @@
 <?php
 
-namespace App\Models\Penpal;
+namespace App\Models\Users;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Sender extends Model
+class Friend extends Model
 {
+    
     protected $fillable = [
         'user_id',
-        'content',
-        'image',
-        'recipient_name',
-        'country',
+        'friend_id',
         'is_friend',
     ];
 

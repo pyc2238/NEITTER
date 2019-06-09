@@ -19,8 +19,8 @@
                                 src="{{ asset("data/ProjectImages/master/japanCount.png") }}" alt="korea"></span>
                     </div>
                     <div class="text-center" style="padding-top:5%;margin-bottom:5%">
-                        <span style="margin-right:12.8%">{{ $koreaSenderCount }}</span>
-                        <span style="margin-left:13%">{{ $japanSenderCount }}</span>
+                        <span style="margin-right:12.8%">{{ $koreaPenpalCount }}</span>
+                        <span style="margin-left:13%">{{ $japanPenpalCount }}</span>
                     </div>
                 </div>
             </div>

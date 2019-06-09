@@ -6,6 +6,8 @@
         'reply'  => '답장',
         'list'  => '목록',
         'close'  => '창닫기',
+        'is_friend' => '친구인 회원입니다.',
+        'friend_acceptance' => '친구수락',
         
     ];
 ?>

@@ -10,7 +10,8 @@ use Auth;
 
 use App\Models\Penpal\Sender;
 use App\Models\Penpal\Transmit;
-
+use App\Models\Users\Friend;
+use App\Models\Users\User;
 
 
 
@@ -19,17 +20,21 @@ class PenpalController extends Controller
  
     use StoreImage;
 
-    private $senderModel = null;
-    private $transmitModel = null;
-    
+    private $senderModel    = null;
+    private $transmitModel  = null;
+    private $friendModel    = null;
+    private $userModel      = null;
+
     public function __construct(){
         $this->senderModel      = new Sender();
         $this->transmitModel    = new Transmit();
+        $this->friendModel      = new Friend();
+        $this->userModel        = new User();
     }
 
 
     public function penpal(Request $request){
-        
+       
 
         if($request->file){
             $file = $this->fileUpload($request,ConstantEnum::S3['penpal_user']);
@@ -38,7 +43,6 @@ class PenpalController extends Controller
                 return response()->json(['message'=>'false'],400);
             }
 
-        
             $senderModelData = array(
                 'recipient_name'    => $request->recipient_name,
                 'content'           => $request->content,
@@ -70,13 +74,42 @@ class PenpalController extends Controller
             );
         }
 
+        //친구 추가 요청을 할 경우
+        if($request->friendChk){
+            $senderModelData["is_friend"] = $request->friendChk;
+            
+            //이미 친구인지 검증
+            $user_id = $this->userModel->where('name',$request->recipient_name)->value('id');
+
+            $userFriend = $this->friendModel->where([
+                ['user_id', Auth::id()],
+                ['friend_id', $user_id],
+                ])->first();
+
+                if($userFriend->count() > 0){
+
+                    if(session('locale') == 'ko'){
+                        $message = $request->recipient_name.'님은 이미 회원님의 친구입니다.';
+            
+                    }else{
+                        $message = $request->recipient_name.'様はもう会員様の友達です。';
+                    }
+
+                    return back()->with([
+                        'message'   => $message, 
+                    ]);
+                }
+        }
+
+
         $this->senderModel->create($senderModelData);
         $this->transmitModel->create($transmitModelData);
 
-        if(session('locale') == 'ja'){
-            $message = $request->recipient_name.'様にメールをお届けしました。';
-        }else{
+        if(session('locale') == 'ko'){
             $message = $request->recipient_name.'님께 쪽지를 전달하였습니다.';
+
+        }else{
+            $message = $request->recipient_name.'様にメールをお届けしました。';
         }
 
         return redirect(route('mail.inbox'))->with([

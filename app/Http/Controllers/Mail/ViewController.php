@@ -8,6 +8,7 @@ use App\Http\Controllers\Helper\Translation;
 use Auth;
 
 use App\Models\Users\User;
+use App\Models\Users\Friend;
 use App\Models\Penpal\Sender;
 use App\Models\Penpal\Transmit;
 
@@ -19,11 +20,13 @@ class ViewController extends Controller
     private $senderModel        = null;
     private $transmitModel      = null;
     private $userModel          = null;
+    private $friendModel        = null;
 
     public function __construct(){
         $this->senderModel      = new Sender();
         $this->transmitModel    = new Transmit();
         $this->userModel        = new User();
+        $this->friendModel      = new Friend();
     }
 
 
@@ -33,7 +36,21 @@ class ViewController extends Controller
             ->with(['user'])->latest()
             ->paginate(8);
 
-       
+            //친구여부
+            $friends = $this->friendModel->where('user_id',Auth::id())->get();
+
+            foreach($senders as $sender){
+                    foreach($friends as $friend){
+                        if($sender->user_id === $friend->friend_id && $friend->is_friend === 1){
+                            $sender->friend = $friend->friend_id;
+                            $sender->friend_status = $friend->is_friend;
+                        }   
+                    }
+            }
+
+
+            // return json_encode($senders,JSON_UNESCAPED_UNICODE);
+         
         return view('home.component.mail.component.receiveTable')->with([
             'name'          => null,
             'senders'       => $senders,
@@ -74,11 +91,18 @@ class ViewController extends Controller
     //받은 메일함
     public function sendMail(Request $request){
         
+        $is_friend = null;
+
+        if($request->is_friend){
+            $is_friend = $request->is_friend;
+         }
+
         $senders = $this->senderModel->where('recipient_name',Auth::user()->name)->get();
 
         return view('home.component.mail.component.sendMail')->with([
             'name'          => $request->name,
             'senders'       => $senders,
+            'is_friend'     => $is_friend,
         ]);
     }
 
@@ -100,7 +124,15 @@ class ViewController extends Controller
                 $this->langCode($sender->content)
             );
             $sender->translation = $translationMail;
-            
+
+            //친구 여부 
+            $friends = $this->friendModel->where('user_id',Auth::id())->get();
+            foreach($friends as $friend){
+                $sender->friend = $friend->friend_id;
+                $sender->friend_status = $friend->is_friend;
+            }
+
+            // return $sender;
         return view('home.component.mail.component.receiveShow')->with([
             'sender'       => $sender,
             'page'         => $request->page,   

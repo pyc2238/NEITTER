@@ -23,7 +23,7 @@ var ctx = document.getElementById("myChart").getContext('2d');
 var myChart = new Chart(ctx, {
   type: 'pie',
   data: {
-    labels: ['@lang('home/main.korea'){!! $koreaSenderCount !!}', '@lang('home/main.japan'){!! $japanSenderCount !!}'],
+    labels: ['@lang('home/main.korea'){!! $koreaPenpalCount !!}', '@lang('home/main.japan'){!! $japanPenpalCount !!}'],
     datasets: [{
       backgroundColor: [
         "red",
