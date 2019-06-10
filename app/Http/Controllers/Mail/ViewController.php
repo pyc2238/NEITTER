@@ -114,10 +114,18 @@ class ViewController extends Controller
             ->with(['user'])
             ->first();
 
+            if($sender != null){
+                $transmit = $this->transmitModel->where('id',$sender->id)->first();
+                //메일 열람
+                $transmit->is_read = 1;
+                $transmit->save();
+            }
+
             //메일 열람
             $sender->is_read = 1;
             $sender->save();
 
+        
              //메일 내용 번역
             $translationMail = $this->translation(
                 $sender->content,

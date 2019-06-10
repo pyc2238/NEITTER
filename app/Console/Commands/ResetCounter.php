@@ -1,30 +1,26 @@
 <?php
 
 namespace App\Console\Commands;
-use Mail;
-use Event;
-use App\Events\registeredUserMail;
 
-use App\Models\Users\User;
 use Illuminate\Console\Command;
 
-class RunRegisteredUsers extends Command
+use App\Models\Users\User;
+
+class ResetCounter extends Command
 {
     /**
      * The name and signature of the console command.
      *
      * @var string
      */
-    protected $signature =  'registered:users';
-
+    protected $signature = 'reset:counter';
 
     /**
      * The console command description.
      *
      * @var string
      */
-    protected $description = 'Send an email of registered users';
-
+    protected $description = 'Scheduling the users penpal counter to zero at midnight';
 
     /**
      * Create a new command instance.
@@ -43,8 +39,11 @@ class RunRegisteredUsers extends Command
      */
     public function handle()
     {
-        $totalUsers = User::whereRaw('Date(created_at) = CURDATE()')->count();   
-        Event::fire(new registeredUserMail($totalUsers));             
-        
+        $users = User::all();
+        foreach($users as $user)
+        {
+            $data['penpal_count'] = 0;
+            $user->update($data);      
+        }
     }
 }

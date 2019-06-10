@@ -13,7 +13,8 @@ class Kernel extends ConsoleKernel
      * @var array
      */
     protected $commands = [
-        //
+        'App\Console\Commands\RunRegisteredUsers',
+        'App\Console\Commands\ResetCounter',
     ];
 
     /**
@@ -26,6 +27,8 @@ class Kernel extends ConsoleKernel
     {
         $schedule->command('registered:users')
                  ->everyMinute();
+                
+        $schedule->command('reset:counter')->daily();
     }
 
     /**

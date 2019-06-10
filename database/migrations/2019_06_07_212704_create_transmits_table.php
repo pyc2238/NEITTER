@@ -18,6 +18,7 @@ class CreateTransmitsTable extends Migration
             $table->string('recipient_name',50);
             $table->text('content');
             $table->text('image')->nullable();
+            $table->boolean('is_read')->default(false);
             $table->integer('user_id')->unsigned();
             $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
             $table->timestamps();

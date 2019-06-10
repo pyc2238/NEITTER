@@ -27,6 +27,7 @@ class User extends Authenticatable
         'country',
         'email',
         'socialite',
+        'penpal_count',
     ];
    
     /**

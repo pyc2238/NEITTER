@@ -11,6 +11,7 @@ class Transmit extends Model
         'content',
         'image',
         'recipient_name',
+        'is_read',
     ];
 
     public function user(){
