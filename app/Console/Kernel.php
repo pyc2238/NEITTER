@@ -15,8 +15,9 @@ class Kernel extends ConsoleKernel
     protected $commands = [
         'App\Console\Commands\RunRegisteredUsers',
         'App\Console\Commands\ResetCounter',
+        'App\Console\Commands\ResetPoint',
     ];
-
+    
     /**
      * Define the application's command schedule.
      *
@@ -29,6 +30,7 @@ class Kernel extends ConsoleKernel
                  ->everyMinute();
                 
         $schedule->command('reset:counter')->daily();
+        $schedule->command('reset:point')->daily();
     }
 
     /**

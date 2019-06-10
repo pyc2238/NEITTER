@@ -11,7 +11,7 @@ class Point extends Model
         'penpal_point',
         'community_point',
         'timeline_point',
-        'letter_ponit',
+        'letter_point',
         'login_point',
     ];
 
