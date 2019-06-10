@@ -122,6 +122,7 @@ Route::group(['prefix' => 'mail','middleware' => 'auth'], function () {
     Route::get('/inbox', 'Mail\ViewController@inbox')->name('mail.inbox');
     Route::get('/transmit', 'Mail\ViewController@transmit')->name('mail.transmit');
     Route::get('/send', 'Mail\ViewController@sendMail')->name('mail.sendMail');
+    Route::get('/friend', 'Mail\ViewController@friend')->name('mail.friend');
     Route::get('/show/{id}', 'Mail\ViewController@show')->name('mail.show');
     Route::get('transmit/show/{id}', 'Mail\ViewController@transmitShow')->name('mail.transmit.show');
     Route::get('/delete', 'Penpal\PenpalController@deleteMail')->name('mail.delete');

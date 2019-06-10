@@ -32,11 +32,13 @@
                             <a id="userInfo">{{ $transmit->recipient_name }}</a>
                         </td>
                         <td class="mailsTd">
-                        @if($transmit->is_read == 0)
-                            <img src="{{ asset("data/ProjectImages/penpal/transmit.png") }}" alt="transmit">
-                        @else
-                            <img src="{{ asset("data/ProjectImages/penpal/ok_read.png") }}" alt="ok_read">           
-                        @endif    
+                           
+                            @if($transmit->is_read == 0)
+                                <img src="{{ asset("data/ProjectImages/penpal/transmit.png") }}" alt="transmit">
+                             @else
+                                <img src="{{ asset("data/ProjectImages/penpal/ok_read.png") }}" alt="ok_read">           
+                            @endif 
+                                       
                             <a
                                 href="{{ route('mail.transmit.show',['id' => $transmit->id,'page' => $page]) }}">{{ $transmit->content }}</a>
                         </td>

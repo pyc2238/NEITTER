@@ -38,4 +38,6 @@ class FriendController extends Controller
         $this->friendModel->create($friendModelData2);
     
     }
+
+
 }

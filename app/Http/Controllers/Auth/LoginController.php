@@ -42,10 +42,23 @@ class LoginController extends Controller
      *
      * @return void
      */
+
+
     public function __construct()
     {
         $this->middleware('guest')->except('logout');
     }
+
+    //로그인 한 시간 저장
+    protected function authenticated(Request $request,User $user)
+    {
+        $user = auth()->user();
+        $user->login_date = now();
+        $user->save();
+    
+    }
+
+
 
     public function logout(Request $request) {
          $this->performLogout($request); 

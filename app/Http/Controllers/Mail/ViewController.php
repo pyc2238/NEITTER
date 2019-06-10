@@ -48,8 +48,6 @@ class ViewController extends Controller
                     }
             }
 
-
-            // return json_encode($senders,JSON_UNESCAPED_UNICODE);
          
         return view('home.component.mail.component.receiveTable')->with([
             'name'          => null,
@@ -172,6 +170,18 @@ class ViewController extends Controller
     }
 
 
+    public function friend(Request $request){
+        
+        $friends = $this->friendModel->where('user_id',Auth::id())->with(['user'])->latest()->paginate(8);
 
+        
+        return view('home.component.mail.component.friendTable')->with([
+
+            'friends'       => $friends,
+            'friendsCount'  => $this->friendModel->where('user_id',Auth::id())->get()->count(),
+            'page'          => $request->page,   
+        ]);;
+
+    }
 
 }

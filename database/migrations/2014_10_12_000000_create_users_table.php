@@ -27,6 +27,7 @@ class CreateUsersTable extends Migration
             $table->integer('socialite')->default(0)->unsigned();
             $table->boolean('admin')->default(false);
             $table->integer('penpal_count')->default(0)->unsigned();
+            $table->timestamp('login_date')->nullable();
             $table->timestamps();
             // $table->softDeletes();
             $table->rememberToken();       
