@@ -26,6 +26,7 @@ class CreateUsersTable extends Migration
             $table->text('selfPhoto')->nullable();
             $table->integer('socialite')->default(0)->unsigned();
             $table->boolean('admin')->default(false);
+            $table->integer('penpal_count')->default(0)->unsigned();
             $table->timestamps();
             // $table->softDeletes();
             $table->rememberToken();       

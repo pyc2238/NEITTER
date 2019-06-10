@@ -17,13 +17,15 @@
     </div>
     
     <span id="friendNotice" style="margin-left:2%;color:blue;display:none;" ><i class="fa fa-user"></i>@lang('home/mail/receiveShow.is_friend')</span>
-    @if($sender->is_friend === 1)
+   
         @if($sender->user->id === $sender->friend && $sender->friend_status === 1)
             <span style="margin-left:2%;color:blue" ><i class="fa fa-user"></i>@lang('home/mail/receiveShow.is_friend')</span>
         @else
-            <button style="margin-left:2%" type="button" id="addFriend"><i class="fa fa-user-plus"></i>@lang('home/mail/receiveShow.friend_acceptance')</button>
+            @if($sender->is_friend === 1)
+                <button style="margin-left:2%" type="button" id="addFriend"><i class="fa fa-user-plus"></i>@lang('home/mail/receiveShow.friend_acceptance')</button>
+            @endif
         @endif
-    @endif
+   
     
     <div class="row" style="margin-top:5%;">
         <div class="col"></div>

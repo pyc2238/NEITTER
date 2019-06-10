@@ -20,13 +20,22 @@ class FriendController extends Controller
     
     public function addFriend(Request $request){
     
+        //수신자의 친구목록에 송신자를 추가
         $friendModelData = array(
             'user_id'   => Auth::id(),
             'friend_id' => $request->friend_id,
             'is_friend' => 1,
         );
+        
+        //송신자의 친구목록에 수신자를 추가
+        $friendModelData2 = array(
+            'user_id'   => $request->friend_id,
+            'friend_id' => Auth::id(),
+            'is_friend' => 1,
+        );
 
         $this->friendModel->create($friendModelData);
+        $this->friendModel->create($friendModelData2);
     
     }
 }
