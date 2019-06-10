@@ -12,7 +12,7 @@ use App\Models\Penpal\Sender;
 use App\Models\Penpal\Transmit;
 use App\Models\Users\Friend;
 use App\Models\Users\User;
-
+use App\Models\Users\Point;
 
 
 class PenpalController extends Controller
@@ -24,12 +24,14 @@ class PenpalController extends Controller
     private $transmitModel  = null;
     private $friendModel    = null;
     private $userModel      = null;
+    private $pointModel         = null;
 
     public function __construct(){
         $this->senderModel      = new Sender();
         $this->transmitModel    = new Transmit();
         $this->friendModel      = new Friend();
         $this->userModel        = new User();
+        $this->pointModel       = new Point();
     }
 
 
@@ -124,7 +126,18 @@ class PenpalController extends Controller
                 $user = $this->userModel->where('id',Auth::id())->first();
         
                     if($user->penpal_count === 10){
-        
+                        
+                        $userPoint = $this->pointModel->where('user_id',Auth::id())->first();
+                        
+                         //당일 펜팔 10회시 최대 7포인트 지급
+                         if($userPoint->letter_point != 7){ 
+                            $userPoint->letter_point += 7;
+                            $userPoint->save();
+                            $user->point += $userPoint->letter_point;
+                            $user->save();
+                        }
+
+
                         if(session('locale') == 'ko'){
                             $message = '금일의 펜팔 횟수를 초과하였습니다.';
                 

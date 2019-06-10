@@ -12,6 +12,9 @@ use App\Models\Communities\Community;
 use App\Models\Communities\Communities_hit;
 use App\Models\Communities\Communities_ip;
 use App\Models\Communities\Communities_Comment;
+use App\Models\Users\Point;
+use App\Models\Users\User;
+
 
 class CommunityContoller extends Controller
 {
@@ -21,12 +24,16 @@ class CommunityContoller extends Controller
     private $hitsModel      = null;
     private $ipsModel       = null;
     private $commentModel   = null;
+    private $pointModel     = null;
+    private $userModel      = null;
     
     public function __construct(){
         $this->communityModel   = new Community();
         $this->hitsModel        = new Communities_hit();
         $this->ipsModel         = new Communities_ip();
         $this->commentModel     = new Communities_Comment();
+        $this->pointModel       = new Point();
+        $this->userModel        = new User();
         $this->middleware('loginCheck')->only(['edit','destroy']);
         
     }
@@ -113,7 +120,20 @@ class CommunityContoller extends Controller
                 Auth::user()->id,
                 $request->getClientIp()
             );
-        
+
+
+        $userPoint = $this->pointModel->where('user_id',Auth::id())->first();
+        $user = $this->userModel->where('id',Auth::id())->first();
+
+        //당일 최초로그인시 2포인트 지급
+        if($userPoint->community_point != 5){
+            $userPoint->community_point += 1;
+            $userPoint->save();
+
+            $user->point += $userPoint->community_point;
+            $user->save();
+        }
+            
         return 
             redirect()
             ->route('community.index')

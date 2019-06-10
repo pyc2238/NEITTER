@@ -15,6 +15,7 @@ use App\Events\SendMail;
 
 use Auth;
 use App\Models\Users\User;
+use App\Models\Users\Point;
 
 class RegisterController extends Controller
 {
@@ -47,11 +48,14 @@ class RegisterController extends Controller
      * @return void
      */
 
-     private $userModel;
+    private $userModel  = null;
+    private $pointModel = null;
+
     public function __construct()
     {
         $this->middleware('guest');
-        $this->userModel = new User();
+        $this->userModel    = new User();
+        $this->pointModel   = new Point();
     }
 
     
@@ -80,6 +84,10 @@ class RegisterController extends Controller
 
         $user = $this->userModel->create(request()->all());
         
+        $this->pointModel->insert([
+               'user_id' => $user->id,
+            ]);
+
         session(['newUser' => $user->name]);
 
         Event::fire(new SendMail($user->email,$user->name));

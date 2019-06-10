@@ -13,6 +13,7 @@ use Event;
 
 use Auth;
 use App\Models\Users\User;
+use App\Models\Users\Point;
 
 
 class LoginController extends Controller
@@ -43,10 +44,12 @@ class LoginController extends Controller
      * @return void
      */
 
+    private $pointModel = null;
 
     public function __construct()
     {
         $this->middleware('guest')->except('logout');
+        $this->pointModel   = new Point();
     }
 
     //로그인 한 시간 저장
@@ -55,7 +58,18 @@ class LoginController extends Controller
         $user = auth()->user();
         $user->login_date = now();
         $user->save();
-    
+
+        $userPoint = $this->pointModel->where('user_id',Auth::id())->first();
+
+         //당일 게시판 글등록 최대 5포인트 지급
+         if($userPoint->login_point != 2){
+            $userPoint->login_point += 2;
+            $userPoint->save();
+            $user->point += $userPoint->login_point;
+            $user->save();
+        }
+
+        
     }
 
 

@@ -8,17 +8,24 @@ use App\Http\Controllers\Helper\ConstantEnum;
 use App\Http\Controllers\Helper\StoreImage;
 use Auth;
 
+
+use App\Models\Users\User;
+use App\Models\Users\Point;
 use App\Models\Penpal\Timeline;
 class TimelineController extends Controller
 {
 
     use StoreImage;
 
-    private $timelineModel = null;
+    private $timelineModel  = null;
+    private $userModel      = null;
+    private $pointModel     = null;
 
 
     public function __construct(){
-        $this->timelineModel = new Timeline();
+        $this->timelineModel    = new Timeline();
+        $this->userModel        = new User();
+        $this->pointModel       = new Point();
     }
 
 
@@ -44,7 +51,21 @@ class TimelineController extends Controller
             );
         }
 
+    
+
         $this->timelineModel->create($timelineData);
+
+        $userPoint = $this->pointModel->where('user_id',Auth::id())->first();
+        $user = $this->userModel->where('id',Auth::id())->first();
+
+         //당일 타임라인 글등록 최대 3포인트 지급
+         if($userPoint->timeline_point != 3){
+            $userPoint->timeline_point += 1;
+            $userPoint->save();
+            $user->point += $userPoint->timeline_point;
+            $user->save();
+        }
+
 
         return redirect(route('penpal.timeline'));
     }

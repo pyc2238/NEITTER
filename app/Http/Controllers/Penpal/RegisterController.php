@@ -8,6 +8,9 @@ use App\Http\Controllers\Helper\ConstantEnum;
 use App\Http\Controllers\Helper\StoreImage;
 use Auth;
 
+
+use App\Models\Users\User;
+use App\Models\Users\Point;
 use App\Models\Penpal\Penpal;
 use App\Models\Penpal\Timeline;
 
@@ -16,11 +19,15 @@ class RegisterController extends Controller
 
     use StoreImage;
 
+    private $userModel          = null;
+    private $pointModel         = null;
     private $penpalModel        = null;
     private $timelineModel      = null;
 
     public function __construct(){
 
+        $this->userModel            = new User();
+        $this->pointModel           = new Point();
         $this->penpalModel          = new Penpal();
         $this->timelineModel        = new Timeline();
 
@@ -65,6 +72,19 @@ class RegisterController extends Controller
 
         $penpal = $this->penpalModel->create($penpalData);
             
+        $userPoint = $this->pointModel->where('user_id',Auth::id())->first();
+        $user = $this->userModel->where('id',Auth::id())->first();
+
+         //당일 펜팔 등록 최대 5포인트 지급
+         if($userPoint->penpal_point != 5){
+            $userPoint->penpal_point += 1;
+            $userPoint->save();
+            $user->point += $userPoint->penpal_point;
+            $user->save();
+        }
+        
+
+
         $timelineData = array(
             'user_id'       => Auth::id(),
             'is_system'     => 1, 
