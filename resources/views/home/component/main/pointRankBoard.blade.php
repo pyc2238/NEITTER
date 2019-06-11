@@ -14,7 +14,7 @@
                     <td scope="row"><span class="badge">{{ $i++ }}</span></td>
                     <td style="width:300px">{{ $winner->name }}</td>
                     <td></td>
-                    <td style="width:50px">{{ $winner->point }}</td>
+                    <td style="width:50px"><span style="color:blue">{{ $winner->point }}</span><span>P</span></td>
                 </tr>
                 @endforeach
             </tbody>
