@@ -1,9 +1,9 @@
 
-<div class="col newFriendsBox" style="margin-top:2%; padding-bottom:3%;">
+<div class="col newFriendsBox">
         <h5 style="padding-top:2%"><i class="fa fa-users" style="color:blue"></i>&nbsp;@lang('home/main.new_friends')</h5> 
     <hr>
     @if(count($penpals) === 0)
-        <h3 class="text-center"><i class="fa fa-bell-slash"></i>@lang('home/main.not_friends')</h3>
+        <h3 class="text-center" style="padding-top:7%"><i class="fa fa-bell-slash"></i>@lang('home/main.not_friends')</h3>
     @else
         @foreach($penpals->chunk(8) as $penpalsGroup)
         <div class="row">
@@ -17,7 +17,7 @@
                                             <img 
                                                 src="{{ $penpal->image }}" 
                                                 alt="No Image"
-                                                style="max-width: none; height: 125px; width: 125px; display: inline; " 
+                                                style="max-width: 100%; height: 125px; width: 125px; display: inline; " 
                                                 class="img-thumbnail image-list" />
                                         
                                     @else
@@ -26,14 +26,14 @@
                                                 <img 
                                                     src="{{ $penpal->user->selfPhoto }}" 
                                                     alt="No Image"
-                                                    style="max-width: none; height: 125px; width: 125px; display: inline;" 
+                                                    style="max-width: 100%; height: 125px; width: 125px; display: inline;" 
                                                     class="img-thumbnail image-list" />
                                         @else
                                             
                                                 <img 
                                                     src="{{ asset("data/ProjectImages/master/logoImage/6.png") }}" 
                                                     alt="No Image"
-                                                    style="max-width: none; height: 125px; width: 125px; display: inline;" 
+                                                    style="max-width: 100%; height: 125px; width: 125px; display: inline;" 
                                                     class="img-thumbnail image-list" />
             
                                         @endif

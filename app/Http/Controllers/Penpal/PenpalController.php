@@ -24,7 +24,7 @@ class PenpalController extends Controller
     private $transmitModel  = null;
     private $friendModel    = null;
     private $userModel      = null;
-    private $pointModel         = null;
+    private $pointModel     = null;
 
     public function __construct(){
         $this->senderModel      = new Sender();

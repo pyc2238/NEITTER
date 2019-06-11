@@ -11,6 +11,7 @@ use App\Models\Communities\Community;
 use App\Models\Admins\Admin_Notice;
 use App\Models\Penpal\Penpal;
 use App\Models\Penpal\Sender;
+use App\Models\Users\User;
 
 
 class WelcomeController extends Controller
@@ -21,6 +22,7 @@ class WelcomeController extends Controller
     private $communityModel         = null;
     private $noticeModel            = null;
     private $senderModel            = null;
+    private $userModel              = null;
 
     public function __construct(){
 
@@ -28,6 +30,7 @@ class WelcomeController extends Controller
         $this->noticeModel              = new Admin_Notice();
         $this->penpalModel              = new Penpal();
         $this->senderModel              = new Sender();
+        $this->userModel                = new User();
 
     }
 
@@ -43,12 +46,19 @@ class WelcomeController extends Controller
         $koreaPercent   = 0;
         $japanPercent   = 0;
         
+        //포인트 상위 유저 5명
+        $winners       = $this->userModel
+        ->latest('point')
+        ->take(5)
+        ->get();
+
+
         //오늘 만들어진 펜팔
         $penpals        = $this->penpalModel->
                             with(['user:id,name,gender,country,age,selfPhoto'])
                             ->whereDate('created_at',$now)
                             ->latest()
-                            ->take(8)
+                            ->take(4)
                             ->get();
 
 
@@ -86,6 +96,7 @@ class WelcomeController extends Controller
             'japanPenpalCount'  => $japanPenpalCount,
             'koreaPercent'      => $koreaPercent,
             'japanPercent'      => $japanPercent,
+            'winners'           => $winners,
         ]);
         
     }

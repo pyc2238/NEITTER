@@ -7,6 +7,7 @@
     <div class="row justify-content-center">
         <div class="col">
                 @include('home.component.main.penpalCountBoard')
+                @include('home.component.main.pointRankBoard')
         </div>
         <div class="col-7">
                 @include('home.component.main.slider')
