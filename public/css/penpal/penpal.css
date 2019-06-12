@@ -41,14 +41,14 @@
     font-size: 11px;
     overflow: hidden;
     display: -webkit-box;
-    -webkit-line-clamp: 2;
+    -webkit-line-clamp: 3;
      -webkit-box-orient: vertical;
   
 }
 
 .penpal-list-translation{
     width: 680px;
-    height: 50px;
+    height: 55px;
     padding-top:4px;
     padding-left:12px;
     padding-right:12px;
@@ -60,7 +60,7 @@
     font-size: 11px;
     overflow: hidden;
     display: -webkit-box;
-    -webkit-line-clamp: 2;
+    -webkit-line-clamp: 3;
      -webkit-box-orient: vertical;
 }
 

@@ -21,6 +21,7 @@
         'date'     => '일시',
         'country'   => '국적',
         'gender'   => '성별',
-        'my_mail'   => '내쪽지',
+        'my_mail'   => '내 쪽지',
+        'my_friends'   => '내 친구',
     ];
 ?>

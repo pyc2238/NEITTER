@@ -23,5 +23,6 @@
         'country'   => '国籍',
         'gender'   => '性別',
         'my_mail'   => '私のメッセージ',
+        'my_friends'   => '私の友達',
     ];
 ?>

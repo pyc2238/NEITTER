@@ -22,8 +22,10 @@ class Localization
     {
 
         
+
         if(!session('locale')){
-            $locale = 'ko';
+            $locale = substr($_SERVER['HTTP_ACCEPT_LANGUAGE'], 0, 2); 
+    
             session(['locale' => $locale]);
         }
 

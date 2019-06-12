@@ -40,7 +40,7 @@ class WelcomeController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
         $now            = date('Y-m-d');
         $koreaPercent   = 0;
