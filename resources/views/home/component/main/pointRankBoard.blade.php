@@ -1,7 +1,7 @@
 <div class="penpal-point-box">
 
     <div class="col">
-        <h5 style="padding-top:2%;"><i class="fa fa-calendar" style="color:blue"></i>&nbsp;NEITTER 우수 회원
+        <h5 style="padding-top:2%;"><i class="fa fa-calendar" style="color:blue"></i>&nbsp;@lang('home/main.excellent_member')
         </h5>
         <hr>
         <table style="margin-top:5%; border-collapse: separate; border-spacing: 0 10px;">

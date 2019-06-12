@@ -8,6 +8,7 @@
         <div class="col">
                 @include('home.component.main.penpalCountBoard')
                 @include('home.component.main.pointRankBoard')
+                @include('home.component.main.youtubeBox')
         </div>
         <div class="col-7">
                 @include('home.component.main.slider')

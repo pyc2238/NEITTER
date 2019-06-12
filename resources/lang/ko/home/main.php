@@ -15,6 +15,8 @@
         'penpal' => '펜팔',
         'korea' => '한국',
         'japan' => '일본',
+        'excellent_member' => 'NEITTER 우수회원',
+        'couple_video'   => '커플영상',
     ];
 
 ?>

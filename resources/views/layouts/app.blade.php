@@ -81,7 +81,9 @@
 @include('home.component.header')
 
 <body>
+  
     @yield('content')
+
 </body>
 
 

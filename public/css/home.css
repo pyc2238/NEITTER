@@ -44,7 +44,7 @@
 }
 
 .boardsBox {
-    height:300px;
+    height:350px;
     background-color: white;
     border: 1px solid #bcbcbc;
     padding-bottom: 4%;
@@ -125,4 +125,13 @@
     vertical-align: middle;
     background-color: #777;
     border-radius: 10px;
+}
+
+
+.penpal-youtube-box{
+    height: 350px;
+    background-color: white;
+    border: 1px solid #bcbcbc;
+    box-shadow: 0 4px 0.5px -4px gray;
+    margin-top: 3%;
 }
