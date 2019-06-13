@@ -35,6 +35,7 @@ trait Translation
             $langCode = $json['langCode']; 
         } else {
             echo "점검 중";
+            // $langCode = "ko";
             // echo "Error 내용:".$response;
         }
         return $langCode;    

@@ -18,8 +18,6 @@ Route::get('locale/{locale?}',function($locale = 'ko'){
 });
 
 
-
-
 /*CkEditor 파일업로드*/
 Route::post('/ckUpload', 'Helper\FileUploadController@fileUpload')->name('ckUpload');
 // 이미지 새창

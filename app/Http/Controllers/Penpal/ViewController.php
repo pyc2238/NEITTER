@@ -97,6 +97,7 @@ class ViewController extends Controller
             ->latest()
             ->paginate($list);
 
+
         //Content translation
          foreach($penpals as $penpal){
             $translationPenpal = $this->translation(

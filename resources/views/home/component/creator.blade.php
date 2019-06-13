@@ -184,7 +184,7 @@
                 <div class="row text-center">
                     <div class="col-sm">
 
-                        <img class="img-thumbnail" src="{{asset("data/ProjectImages/master/logoImage/6.png")}}" alt="Bogeun">
+                        <img class="img-thumbnail" src="{{ asset("data/ProjectImages/master/logoImage/6.png") }}" alt="Bogeun">
                         <br><br>
 
 

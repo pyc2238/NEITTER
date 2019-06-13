@@ -14,7 +14,7 @@
                 <li class="nav-item">
                     <a class="nav-link text-uppercase" href="{{route('community.index')}}">@lang('home/header.community')</a>
                 </li>
-                <li class="nav-item">
+                {{-- <li class="nav-item">
                 <a class="nav-link text-uppercase" href="{{route('forum.index')}}">@lang('home/header.forum')</a>
                 </li>
                 <li class="nav-item">
@@ -25,7 +25,7 @@
                 </li>
                 <li class="nav-item">
                     <a class="nav-link  text-uppercase" href="#contact">@lang('home/header.contact')</a>
-                </li>
+                </li> --}}
             </ul>
         </div>
     </div>

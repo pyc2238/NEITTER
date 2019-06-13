@@ -7,6 +7,20 @@
     {{-- - 웹브라우저의 화면을 각 디바이스에 최적화 된 크기로 표현해준다. --}}
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
+    <?php if (preg_match('/(facebook|kakaotalk)/',$_SERVER['HTTP_USER_AGENT']) == true) { ?>
+
+        <meta property="og:type" content="website">
+        
+        <meta property="og:title" content="NEITTER">
+        
+        <meta property="og:url" content="neitter.site">
+        
+        <meta property="og:description" content="한국과 일본의 펜팔 사이트입니다.">
+        
+        <meta property="og:image" content="{{ asset("data/ProjectImages/master/logoImage/6.png")}}"> 
+        
+        <?php } ?>
+    
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
