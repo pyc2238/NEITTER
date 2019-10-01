@@ -52,6 +52,14 @@ class CommunityContoller extends Controller
         $commentCount = $this->communityModel->with(['comments']);
         $count = count(Community::all());
 
+        //추천수가 가장많은 상위 3개 게시물 조회
+        $hotMsgs =  $this->communityModel->with('user:id,name')
+            // ->latest('created_at')    
+            ->latest('commend')
+            ->take(3)
+            ->get();
+
+
         if($request->search){
             switch($request->where){
                     
@@ -81,7 +89,8 @@ class CommunityContoller extends Controller
             ->with('search',$request->search)
             ->with('where',$request->where)
             ->with('msgs',$msgs)
-            ->with('count',$count);
+            ->with('count',$count)
+            ->with('hotMsgs',$hotMsgs);
             // ->with('autoSearch',$autoSearch);
     }
 
