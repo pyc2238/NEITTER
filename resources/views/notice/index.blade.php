@@ -15,6 +15,10 @@
     <hr>
 
     <div class="row">
+            <div class="col">
+                <button class='reloadBtn float-left' onclick="window.location.reload()" title="reload"
+                    style="background-color: #1c4176;"><i class="fa fa-retweet" style="width:50px;color:white"></i></button>
+            </div>
         <div class='col'>
             <h5 style="font:bold; display:inline-block;" class='float-right'><i class="fa fa-calculator ">TOTAL :
             {{$count}}</i></h5>

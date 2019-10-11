@@ -8,7 +8,7 @@
 @endsection --}}
 
 
-<div class="col-sm" style='margin-top:5%;margin-bottom:3%;'>
+<div class="col-sm" style='margin-top:6.5%;margin-bottom:3%;'>
     <div class="input-group col-md-10">
         <select id="inputState" class="form-control" name="where" required>
             <option selected value="title">@lang('community/component/indexTools.title')</option>
@@ -20,16 +20,16 @@
         <button class="button" type="button" onclick="searchBtn('community')">@lang('community/component/indexTools.search')</button>
     </div>
 </div>
-<div class="Custompagination " style='margin-top:5%;margin-bottom:3%;'>
+<div class="Custompagination " style='margin-top:6.5%;margin-bottom:3%;'>
     @if($msgs->hasPages())
     {{$msgs->appends(['search'=>$search,'where'=>$where])->onEachSide(5)->links()}}
     @endif
 </div>
-<div class="col-4" style='margin-top:4%'>
+<div class="col-4" style='margin-top:5.5%'>
 
     @if(Auth::check())
     <button class="btn btn-outline-warning float-right" type="button"><i class="fa fa-pencil" style="font-size:15px;"
-            onclick="location.href='{{route('community.create',['search'=>$search,'where'=>$where,'page'=>$page])}}'">@lang('community/component/indexTools.write')</i></button>
+            onclick="location.href='{{ route('community.create',['search'=>$search,'where'=>$where,'page'=>$page]) }}'">@lang('community/component/indexTools.write')</i></button>
     @endif
     @if($search&& $where)
     <button class="btn btn-outline-warning  float-right" type="button" onclick="location.href='{{route('community.index')}}'"><i

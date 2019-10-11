@@ -15,42 +15,6 @@
     
     <tbody>
     
-        @foreach($hotMsgs as $hotMsg)
-            <tr style="background-color:#ABFCA1">
-                <td style="width:60px;"><b>{{ $hotMsg->num }}</b></td>
-                <td style="width:50px;">
-                    @if($hotMsg->country == 'ko')
-                        <img src="{{asset('/data/ProjectImages/community/korea.png')}}" alt="korea">
-                    @else
-                        <img src="{{asset('/data/ProjectImages/community/japan.png')}}" alt="japan">
-                    @endif    
-                </td>
-                <td style="overflow:hidden;white-space:nowrap;text-overflow:ellipsis;">
-                    <a href="{{ route('community.show',['boardNum'=>$hotMsg->num,'search'=>$search,'where'=>$where,'page'=>$page])}}">
-                        <b>{{ $hotMsg->title}}</b>
-                    </a>  
-                    
-                    @if($hotMsg->comment_count != 0)
-                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(<b style="color:red;">{{ $hotMsg->comment_count }}</b>)</b>
-                    @endif
-                    
-                </td>
-
-                @if($where == 'writer')
-                <td style="width:150px;"><b>{{$hotMsg->name}}</b></td>
-                @else
-                <td style="width:150px;"><b>{{$hotMsg->user->name}}</b></td>
-                @endif
-                <td style="width:60px;"><b>{{date('m-d',strtotime($hotMsg->created_at))}}</b></td>
-                <td class="text-right" style="width:70px;"><b>{{$hotMsg->hits}}</b></td>
-                <td class="text-right" style="width:70px;"><b>{{$hotMsg->commend}}</b></td>
-        
-                <td class="text-right"><img  src="{{ asset('/data/ProjectImages/community/hot-icon.gif') }}" style="width:25%;margin-right:13%" alt="hot"></td>
-            
-            </tr>
-    
-        @endforeach
-   
         @foreach($msgs as $msg)
         <tr>
             <td style="width:60px;"><b>{{ $msg->num }}</b></td>

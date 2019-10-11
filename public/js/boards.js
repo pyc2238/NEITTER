@@ -123,3 +123,50 @@ function searchDB(getDB) {
         });
     });
 }
+
+//게시판 핫한 게시물 네비
+$(function () {
+    $('#hot-hits').click(function () { 
+        $('#hot-hits-box').css('display');  
+        $('#hot-hits').css('color','orange'); 
+        $('#hot-hits-box').show(); 
+  
+
+        $('#hot-commend-box').hide();
+        $('#hot-commend-box').css("display", "none");
+        $('#hot-commend').css('color','white'); 
+        $('#hot-comment-box').hide(); 
+        $('#hot-comment-box').css("display", "none");
+        $('#hot-comment').css('color','white'); 
+    });
+
+    $('#hot-commend').click(function () { 
+        $('#hot-commend-box').css('display');
+        $('#hot-commend').css('color','orange'); 
+
+        $('#hot-commend-box').show(); 
+        $('#hot-hits-box').hide(); 
+        $('#hot-hits-box').css("display", "none");
+        $('#hot-hits').css('color','white'); 
+        $('#hot-comment-box').hide(); 
+        $('#hot-comment-box').css("display", "none");
+        $('#hot-comment').css('color','white');
+    });
+
+
+    $('#hot-comment').click(function () { 
+        $('#hot-comment-box').css('display');  
+        $('#hot-comment').css('color','orange'); 
+        $('#hot-comment-box').show(); 
+
+        $('#hot-hits-box').hide(); 
+        $('#hot-hits-box').css("display", "none");
+        $('#hot-hits').css('color','white'); 
+        $('#hot-commend-box').hide();
+        $('#hot-commend-box').css("display", "none");
+        $('#hot-commend').css('color','white'); 
+        
+    });
+
+});
+

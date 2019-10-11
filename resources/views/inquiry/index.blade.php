@@ -15,7 +15,16 @@
     <hr>
 
     <div class="row">
+        <div class="col">
+                <button class='createBtn float-left'
+                onclick="location.href='{{ route('inquiry.create',['search'=>$search,'where'=>$where,'page'=>$page]) }}'"
+                }}' title="create" style="background-color: #1c4176;"><i class="fa fa-pencil"
+                    style="width:50px;color:white"></i></button>
+            <button class='reloadBtn float-left' onclick="window.location.reload()" title="reload"
+                style="background-color: #1c4176;"><i class="fa fa-retweet" style="width:50px;color:white"></i></button>
+        </div>
         <div class='col'>
+
             <h5 style="font:bold; display:inline-block;" class='float-right'><i class="fa fa-calculator ">TOTAL :
                     {{$count}}</i></h5>
         </div>

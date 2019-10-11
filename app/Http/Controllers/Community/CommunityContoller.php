@@ -51,13 +51,30 @@ class CommunityContoller extends Controller
         $msgs =  $this->communityModel->getMsgs();
         $commentCount = $this->communityModel->with(['comments']);
         $count = count(Community::all());
-
-        //추천수가 가장많은 상위 3개 게시물 조회
+  
+  
+        //조회수가 가장많은 상위 10개 게시물 조회
+        $hitMsgs =  $this->communityModel->with('user:id,name')
+        // ->latest('created_at')    
+        ->latest('hits')
+        ->take(10)
+        ->get();
+      
+        //추천수가 가장많은 상위 10개 게시물 조회
         $hotMsgs =  $this->communityModel->with('user:id,name')
             // ->latest('created_at')    
             ->latest('commend')
-            ->take(3)
+            ->take(10)
             ->get();
+
+      
+
+        //댓글이 가장많은 상위 10개 게시물 조회
+        $commentMsgs =  $this->communityModel->with('user:id,name')
+        // ->latest('created_at')    
+        ->latest('comment_count')
+        ->take(10)
+        ->get();
 
 
         if($request->search){
@@ -90,10 +107,12 @@ class CommunityContoller extends Controller
             ->with('where',$request->where)
             ->with('msgs',$msgs)
             ->with('count',$count)
-            ->with('hotMsgs',$hotMsgs);
+            ->with('hitMsgs',$hitMsgs)
+            ->with('hotMsgs',$hotMsgs)
+            ->with('commentMsgs',$commentMsgs);
             // ->with('autoSearch',$autoSearch);
     }
-
+    
     /**
      * Show the form for creating a new resource.
      *

@@ -4,7 +4,7 @@
     </div>
     <div class="col">
             <span id="penpal-image-view" class="fa fa-th float-right" style="font-size: 25px;"></span> 
-            <span id="penpal-list-view" class="fa fa-list float-right" style="font-size: 25px;padding-right:7px;"></span> 
+            <span id="penpal-list-view" class="fa fa-list float-right" style="font-size: 25px;padding-right:7px;color:orange;"></span> 
     </div>
     <div class="col">
         <div class="col">

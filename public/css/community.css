@@ -448,4 +448,82 @@ a#MOVE_COMMENT_BTN {
 }
 
 
+.hotboard{
+    float: left;
+    width: 22px;
+    text-align: center;
+    font-family: Calibri;
+    font-size: 16px;
+    font-weight: bold;
+    color:black
+}
+.hottitle{
+    color: black;
+    font-size: 16px;
+    text-decoration: none;
+}
 
+
+.hottitle:hover {
+    color: orange;
+    text-decoration: none;
+}
+
+#hot-hits {
+    background-color: #1c4176;
+    display: block;
+    padding: 0 7px;
+    font-size: 1.0em;
+    font-weight: 500;
+    line-height: 2.4em;
+    color: orange;
+    cursor: pointer;
+    cursor: hand;
+}
+
+#hot-hits:hover {
+    color: orange;
+}
+
+#hot-commend {
+    background-color: #1c4176;
+    display: block;
+    padding: 0 7px;
+    font-size: 1.0em;
+    font-weight: 500;
+    line-height: 2.4em;
+    color: white;
+    cursor: pointer;
+    cursor: hand;
+}
+
+#hot-commend:hover {
+    color: orange;
+}
+
+
+#hot-comment {
+    background-color: #1c4176;
+    display: block;
+    padding: 0 7px;
+    font-size: 1.0em;
+    font-weight: 500;
+    line-height: 2.4em;
+    color: white;
+    cursor: pointer;
+    cursor: hand;
+}
+
+
+#hot-comment:hover {
+    color: orange;
+}
+
+
+.hot-boards {
+    padding-top: 0.5%;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    max-width: 425px;
+}
