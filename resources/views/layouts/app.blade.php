@@ -90,12 +90,11 @@
 
 </script>
 
-
 @include('component.noticeModal')
 @include('home.component.header')
 
 <body>
-  
+
     @yield('content')
 
 </body>

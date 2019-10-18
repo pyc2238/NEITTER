@@ -25,6 +25,7 @@ Route::get('/image', 'Home\WelcomeController@viewImage')->name('image.view');
 
 
 // papago 번역기
+Route::get('translationBox', 'Home\TranslationController@translationBox')->name('translationBox')->middleware('auth');
 Route::post('translation', 'Home\TranslationController@languageTranslation')->name('translation')->middleware('auth');
 Route::post('translation/recodes', 'Home\TranslationController@getRecodes')->name('translation.recodes')->middleware('auth');
 Route::post('translation/delete', 'Home\TranslationController@recodeDelete')->name('translation.recode.delete')->middleware('auth');

@@ -7,6 +7,7 @@
         'not_friends' => '오늘 펜팔을 등록한 유저가 없습니다.',
         'translator' => '번역기',
         'translation' => '번역',
+        'translation_notice' => '번역할 글자를 입력해주세요.',
         'translationRecord' => '번역기록',
         'recode_delete' => '삭제',
         'recode_all_delete' => ' 전체삭제',

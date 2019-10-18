@@ -35,8 +35,8 @@
     <div class="home">
         <a href="{{ route('home.index') }}" title="home"><i class="fa fa-home" id="home"></i> </a>
         @if(Auth::check())
-            <a  data-toggle="modal" data-target="#Modal-translation" title="translation"><i class="fa fa-exchange" id="translation"></i> </a>
-        @endif
+            <a onclick="translationBox()" title="translation"><i class="fa fa-exchange" id="translation"></i> </a>
+            @endif
         <a href="{{ route('notice.index') }}" title="notice"><i class="fa fa-bullhorn" id="bullhorn"></i></a>
     </div>
 
@@ -84,10 +84,6 @@
     @endunless
 </div>
 
-@include('home.component.translationModal')
-
-
-
 <script>
     
     function openInbox(){  
@@ -121,6 +117,12 @@
     });    
     }
     
+    function translationBox(){  
+        window.open('{{ route('translationBox') }}',
+         "inbox",
+         "width=600, height=445, toolbar=no, menubar=no, scrollbars=no, resizable=yes"
+         );  
+    }
     
 </script>
 

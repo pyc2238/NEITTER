@@ -23,6 +23,11 @@ class TranslationController extends Controller
     }
 
 
+    public function translationBox(){
+        return view('home.component.main.translationBox');
+    }
+
+
     public function languageTranslation(Request $request){
     
     
@@ -83,4 +88,6 @@ class TranslationController extends Controller
 
         return response()->json('true');
     }
+
+
 }
