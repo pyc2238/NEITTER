@@ -29,7 +29,7 @@
                     <img id=Rand_Banner class="img-fluid" src="{{asset("data/ProjectImages/master/logoImage/search.png")}}"
                         alt="Responsive image">
     
-                    <h1 style="margin-top:5%"><b style="color:blue">"{{$search}}"</b>@lang('community/index.search_result')</h1>
+                    <h1 style="margin-top:5%"><b style="color:blue">"{{ $search }}"</b>@lang('community/index.search_result')</h1>
                 </div>
                 @else
                 @include('notice.component.indexTable')

@@ -14,10 +14,10 @@
                 <li class="nav-item">
                     <a class="nav-link text-uppercase" href="{{route('community.index')}}">@lang('home/header.community')</a>
                 </li>
-                {{-- <li class="nav-item">
+                <li class="nav-item">
                 <a class="nav-link text-uppercase" href="{{route('forum.index')}}">@lang('home/header.forum')</a>
                 </li>
-                <li class="nav-item">
+                {{-- <li class="nav-item">
                     <a class="nav-link text-uppercase" href="#works">@lang('home/header.club')</a>
                 </li>
                 <li class="nav-item">

@@ -395,6 +395,7 @@ small {
 
 #sombra_fija {
     -webkit-transform: translateX(0);
+    background-color: white;
 }
 
 #sombra_fija:before {
@@ -526,4 +527,13 @@ a#MOVE_COMMENT_BTN {
     white-space: nowrap;
     text-overflow: ellipsis;
     max-width: 425px;
+}
+
+#content-box img{
+    max-width:  977px;
+    max-height: 650px;
+}
+.translation img{
+    max-width:  977px;
+    max-height: 650px;
 }

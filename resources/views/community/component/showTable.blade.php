@@ -36,7 +36,7 @@
             </thead>
             <tbody>
                 <tr>
-                    <td colspan="6">
+                    <td id="content-box" colspan="6">
                         {!!$community->content!!}
                     </td>
                 </tr>
