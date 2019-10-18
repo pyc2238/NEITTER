@@ -89,7 +89,7 @@
     function openInbox(){  
         window.open('{{ route('mail.inbox') }}',
          "inbox",
-         "width=710, height=665, toolbar=no, menubar=no, scrollbars=no, resizable=yes"
+         "width=710, height=665, toolbar=no, menubar=no, scrollbars=no, resizable=yes",
          );  
     }
     
@@ -119,8 +119,8 @@
     
     function translationBox(){  
         window.open('{{ route('translationBox') }}',
-         "inbox",
-         "width=600, height=445, toolbar=no, menubar=no, scrollbars=no, resizable=yes"
+         "translationBox",
+         "width=900, height=525, toolbar=no, menubar=no, scrollbars=no, resizable=yes"
          );  
     }
     

@@ -70,6 +70,8 @@
                         class="btn btn-success">@lang('home/main.translationRecord')</button>
                     <button style="display:inline-block" id="copy-url" type="button" title="copy"
                         class="btn btn-success"><i class="fa fa-copy"></i></button>
+                        <button style="display:inline-block" id="closeBtn" type="button" title="reset"
+                        class="btn btn-danger"><i class="fa fa-eraser"></i></button>
                     <button style="display:inline-block; margin-bottom:2%;margin-right:2%;" onclick="window.close();" type="button"
                         class="btn btn-danger float-right"
                         data-dismiss="modal">@lang('auth/profile.model_check')</button>
