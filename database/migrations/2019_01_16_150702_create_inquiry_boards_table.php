@@ -18,8 +18,8 @@ class CreateInquiryBoardsTable extends Migration
             $table->string('country',255);
             $table->string('title',255);
             $table->text('content');
-            $table->integer('hits')->default(0)->unsigned();
-            $table->integer('commend')->default(0)->unsigned();
+            $table->integer('hits')->default(0);
+            $table->integer('commend')->default(0);
             $table->integer('user_id')->unsigned();
             $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade')->onUpdate('cascade');
             $table->integer('comment_count')->default(0);

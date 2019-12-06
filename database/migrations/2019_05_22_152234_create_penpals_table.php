@@ -18,8 +18,8 @@ class CreatePenpalsTable extends Migration
             $table->text('self_context')->nullable();
             $table->text('image')->nullable();
             $table->json('language');
-            $table->integer('visitors_count')->default(0)->unsigned();
-            $table->integer('winks_count')->default(0)->unsigned();
+            $table->integer('visitors_count')->default(0);
+            $table->integer('winks_count')->default(0);
             $table->integer('user_id')->unsigned();
             $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
             $table->integer('goal_id')->unsigned();
