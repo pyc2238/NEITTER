@@ -98,11 +98,18 @@ class ViewController extends Controller
             ->paginate($list);
 
 
+       
+
         //Content translation
          foreach($penpals as $penpal){
-            $translationPenpal = $this->translation(
-                    $penpal->self_context,
-                    $this->langCode($penpal->self_context)
+            
+            //컨텐츠 글자 길이가 1 이상이면 0~500글자 까지만 출력
+            if (strlen($penpal->self_context) > 1)
+                $penpal_content_str = substr($penpal->self_context, 0, 500);
+                
+                $translationPenpal = $this->translation(
+                        $penpal_content_str,
+                        $this->langCode($penpal->self_context)
                 );
 
             $penpal->translation = $translationPenpal;

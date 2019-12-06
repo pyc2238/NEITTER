@@ -8,6 +8,8 @@ use App\Http\Controllers\Controller;
 trait Translation 
 {
      
+
+  //언어감지
      public static function langCode($papago){
    
         $client_id      =  config('papago.client_sening_id');
@@ -34,13 +36,15 @@ trait Translation
             $json = json_decode($response, true);
             $langCode = $json['langCode']; 
         } else {
-            echo "점검 중";
+            echo "Checking language detection.";
             // $langCode = "ko";
             // echo "Error 내용:".$response;
         }
         return $langCode;    
     }
 
+
+    //언어변역
     public static function translation($papago,$langCode) {
 
           $client_id      = config('papago.client_language_translation_id');
@@ -58,7 +62,7 @@ trait Translation
             $postvars = "source=ko&target=ja&text=".$encText;
           }
           
-          $url = "https://openapi.naver.com/v1/language/translate";
+          $url = "https://openapi.naver.com/v1/papago/n2mt";
           $is_post = true;
           $ch = curl_init();
           curl_setopt($ch, CURLOPT_URL, $url);
@@ -79,9 +83,10 @@ trait Translation
             $translation = $json['message']['result']['translatedText']; 
 
         } else {
-            $translation = '점검 중';
+            $translation = 'Checking the translation function.';
             //   echo "Error 내용:".$response;
           }
           return  $translation;
+
     }
 }
