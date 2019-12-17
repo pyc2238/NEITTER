@@ -9,9 +9,9 @@
     <a href=""><img class="mySlides"
         src="{{ asset("data/ProjectImages/master/main/log2.jpg") }}"
         style="width:100%"></a>
-    <a href=""><img class="mySlides"
+    {{-- <a href=""><img class="mySlides"
         src="{{ asset("data/ProjectImages/master/main/log3.jpg") }}"
-         style="width:100%"></a>
+         style="width:100%"></a> --}}
     {{-- <a href=""><img class="mySlides"
         src="http://neitter.s3-ap-northeast-2.amazonaws.com/users_penpal_photo/ca557505-2927-409c-a049-ef2a17dc2070KakaoTalk_20181202_043105760.jpg"
         style="width:100%"></a> --}}
@@ -20,7 +20,7 @@
         <div class="w3-right w3-hover-text-khaki" onclick="plusDivs(1)">&#10095;</div>
         <span class="w3-badge demo w3-border w3-transparent w3-hover-white" onclick="currentDiv(1)"></span>
         <span class="w3-badge demo w3-border w3-transparent w3-hover-white" onclick="currentDiv(2)"></span>
-        <span class="w3-badge demo w3-border w3-transparent w3-hover-white" onclick="currentDiv(3)"></span>
+        {{-- <span class="w3-badge demo w3-border w3-transparent w3-hover-white" onclick="currentDiv(3)"></span> --}}
         {{-- <span class="w3-badge demo w3-border w3-transparent w3-hover-white" onclick="currentDiv(4)"></span>  --}}
     </div>
 </div>

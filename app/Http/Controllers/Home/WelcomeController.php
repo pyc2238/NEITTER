@@ -84,8 +84,8 @@ class WelcomeController extends Controller
         
     
         //최근 게시물과 공지사항
-        $communities        = $this->communityModel->latest()->take(12)->get();
-        $notices            = $this->noticeModel->latest()->take(12)->get();
+        $communities        = $this->communityModel->latest()->take(10)->get();
+        $notices            = $this->noticeModel->latest()->take(10)->get();
         
 
         return view('home.welcome')->with([
